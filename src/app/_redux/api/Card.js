@@ -1,0 +1,43 @@
+const { createAsyncThunk, createSlice } = require("@reduxjs/toolkit");
+
+const initialState = {
+    items: [],
+    status: 'idle',
+    error: null
+}
+export const cardThunk = createAsyncThunk('thunk/card', async () => {
+    try {
+        const url = 'https://inviting-thrill-7bbda9fa6e.strapiapp.com/api/cards?populate=TourPackageCard.image';
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        return data.data
+
+    } catch (error) {
+        console.log(error)
+    }
+});
+
+const cardSlice = createSlice({
+    name: "cardThunk",
+    initialState,
+    extraReducers: (builder) => {
+        builder.addCase(cardThunk.pending, (state) => {
+            state.status = 'loading'
+        }),
+            builder.addCase(cardThunk.fulfilled, (state, action) => {
+                state.items = action.payload;
+                state.status = 'success'
+            }),
+            builder.addCase(cardThunk.rejected, (state, action) => {
+                state.status = 'rejected'
+                state.error = action.error.message
+            })
+    }
+});
+
+export default cardSlice.reducer

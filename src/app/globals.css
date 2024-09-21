@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: 'Sancoale Softened';
+        src: url('../public/fonts/Sancoale Softened Medium.ttf');
+    }
+
+    .ribbon {
+        font-size: 28px;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .ribbon {
+        --r: .8em;
+        padding-left: calc(var(--r) + .25em);
+        line-height: 1.8;
+        clip-path: polygon(100vw 0, 0 0, var(--r) 50%, 0 100%, 100vw 100%);
+        border-image: conic-gradient(#2699dc 0 0) fill 0 /100vw;
+            width: fit-content;
+    }
+
+
+}
