@@ -1,12 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    eslint: {
-        ignoreDuringBuilds: true,
-    },
     images: {
         domains: [
             'inviting-thrill-7bbda9fa6e.strapiapp.com',
-            'inviting-thrill-7bbda9fa6e.media.strapiapp.com'
+            'inviting-thrill-7bbda9fa6e.media.strapiapp.com' // Add this line
         ],
         remotePatterns: [
             {
@@ -15,12 +12,9 @@ const nextConfig = {
             },
             {
                 protocol: "https",
-                hostname: "inviting-thrill-7bbda9fa6e.media.strapiapp.com",
+                hostname: "inviting-thrill-7bbda9fa6e.media.strapiapp.com", // Add this line
             }
         ],
-    },
-    experimental: {
-        webpackMemoryOptimizations: true,
     },
 };
 
