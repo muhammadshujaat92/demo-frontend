@@ -1,3 +1,4 @@
+import { mainUrl } from "@/app/page";
 const { createAsyncThunk, createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
@@ -7,7 +8,7 @@ const initialState = {
 }
 export const cardThunk = createAsyncThunk('thunk/card', async () => {
     try {
-        const url = 'https://inviting-thrill-7bbda9fa6e.strapiapp.com/api/cards?populate=TourPackageCard.image';
+        const url = mainUrl('cards?populate=TourPackageCard.image')
         const response = await fetch(url, {
             method: 'GET',
             headers: {

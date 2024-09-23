@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 
-const ContactForm = ({ colspan2 }) => {
+const ContactForm = ({ colspan2, fontSize }) => {
     const [country, setCountry] = useState('')
 
     const fetchCountry = async () => {
@@ -19,8 +19,8 @@ const ContactForm = ({ colspan2 }) => {
     }, [])
 
     return (
-        <form method="POST" className={`border w-[325px] bg-white border-gray-500 rounded-2xl ${colspan2}`}>
-            <h1 className='font-sancoaleSoftened text-[28px] bg-orange-500 text-white rounded-t-2xl p-[1px] mb-3 text-center leading-[2.3] md:leading-[1]'>REQUEST FOR TRAVEL ESTIMATE</h1>
+        <form method="POST" className={`border bg-white border-gray-500 rounded-2xl ${colspan2}`}>
+            <h1 className={`font-sancoaleSoftened ${fontSize ? `text-${fontSize}` : "text-[28px]"} bg-orange-500 text-white rounded-t-2xl mb-3 text-center`}>REQUEST FOR TRAVEL ESTIMATE</h1>
             <div className="mb-4 px-3 md:px-5">
                 <input type="name" name='name' id="name" className="text-sm rounded-lg block w-full p-2.5 bg-gray-200 focus:outline-none border-none focus:border-0" placeholder="Enter Your Name" required />
             </div>

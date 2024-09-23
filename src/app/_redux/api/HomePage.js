@@ -1,4 +1,4 @@
-import { baseUrl } from "@/app/page";
+import { baseUrl, mainUrl } from "@/app/page";
 
 const { createAsyncThunk, createSlice } = require("@reduxjs/toolkit");
 
@@ -9,7 +9,7 @@ const initialState = {
 }
 export const homePageThunk = createAsyncThunk('page/homePage', async () => {
     try {
-        const url = "https://inviting-thrill-7bbda9fa6e.strapiapp.com/api/home-pages?populate=slides&populate=section1.BackgroundImage&populate=section2.image&populate=section3.image&populate=section4.sideBox&populate=section5.content&populate=section5.content.image&populate=testimonialBox.userImages&populate=testimonialBox.testimonialContent&populate=faqSection.BackImage&populate=faqSection.FrontImage&populate=faqSection.AccordianData&populate=lastSectionData.contactDetail";
+        const url = mainUrl('home-pages?populate=slides&populate=section1.BackgroundImage&populate=section2.image&populate=section3.image&populate=section4.sideBox&populate=section5.content&populate=section5.content.image&populate=testimonialBox.userImages&populate=testimonialBox.testimonialContent&populate=faqSection.BackImage&populate=faqSection.FrontImage&populate=faqSection.AccordianData&populate=lastSectionData.contactDetail')
         const response = await fetch(url, {
             method: 'GET',
             headers: {

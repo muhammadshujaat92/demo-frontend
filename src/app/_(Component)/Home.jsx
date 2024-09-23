@@ -38,7 +38,9 @@ const Home = () => {
                 <div className='h-[70%] flex flex-col justify-center gap-28 col-span-2'>
                     <HeaderComponent data={slides} />
                 </div>
-                <ContactForm />
+                <div className='w-[340px]'>
+                    <ContactForm fontSize={'[25px]'}/>
+                </div>
             </div>
             <HomeSection1 data={section1} />
             <HomeSection2 data={section2} />

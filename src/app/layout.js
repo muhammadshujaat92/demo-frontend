@@ -14,12 +14,14 @@ export default function RootLayout({ children }) {
       <head>
       </head>
       <body
-        className={`antialiased`}
+        className={`antialiased flex justify-center`}
       >
         <ReduxProvider>
-          <Navbar />
-          {children}
-          <Footer />
+          <div className="max-w-[1350px]">
+            <Navbar />
+            {children}
+            <Footer />
+          </div>
         </ReduxProvider>
       </body>
     </html >
