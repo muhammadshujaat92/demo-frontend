@@ -1,4 +1,5 @@
 import { mainUrl } from "@/app/page";
+import axios from "axios";
 const { createAsyncThunk, createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
@@ -9,14 +10,12 @@ const initialState = {
 export const cardThunk = createAsyncThunk('thunk/card', async () => {
     try {
         const url = mainUrl('cards?populate=TourPackageCard.image')
-        const response = await fetch(url, {
-            method: 'GET',
+        const response = await axios.get(url, {
             headers: {
                 'Content-Type': 'application/json'
             }
         });
-        const data = await response.json();
-        return data.data
+        return response.data.data
 
     } catch (error) {
         console.log(error)

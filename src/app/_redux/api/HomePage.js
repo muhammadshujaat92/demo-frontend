@@ -1,4 +1,5 @@
-import { baseUrl, mainUrl } from "@/app/page";
+import { mainUrl } from "@/app/page";
+import axios from "axios";
 
 const { createAsyncThunk, createSlice } = require("@reduxjs/toolkit");
 
@@ -10,14 +11,12 @@ const initialState = {
 export const homePageThunk = createAsyncThunk('page/homePage', async () => {
     try {
         const url = mainUrl('home-pages?populate=slides&populate=section1.BackgroundImage&populate=section2.image&populate=section3.image&populate=section4.sideBox&populate=section5.content&populate=section5.content.image&populate=testimonialBox.userImages&populate=testimonialBox.testimonialContent&populate=faqSection.BackImage&populate=faqSection.FrontImage&populate=faqSection.AccordianData&populate=lastSectionData.contactDetail')
-        const response = await fetch(url, {
-            method: 'GET',
+        const response = await axios.get(url, {
             headers: {
                 'Content-Type': 'application/json'
             }
         });
-        const data = await response.json();
-        return data.data
+        return response.data.data
 
     } catch (error) {
         console.log(error)

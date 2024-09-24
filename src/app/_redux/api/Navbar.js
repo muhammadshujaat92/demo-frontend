@@ -1,4 +1,5 @@
 import { baseUrl } from "@/app/page";
+import axios from "axios";
 
 const { createAsyncThunk, createSlice } = require("@reduxjs/toolkit");
 
@@ -10,14 +11,12 @@ const initialState = {
 export const navbarThunk = createAsyncThunk('thunk/navbar', async () => {
     try {
         const url = baseUrl('navbars');
-        const response = await fetch(url, {
-            method: 'GET',
+        const response = await axios.get(url, {
             headers: {
                 'Content-Type': 'application/json'
             }
         });
-        const data = await response.json();
-        return data.data
+        return response.data.data
 
     } catch (error) {
         console.log(error)

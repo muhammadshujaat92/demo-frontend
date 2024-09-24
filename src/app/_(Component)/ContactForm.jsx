@@ -1,4 +1,5 @@
 'use client'
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
 const ContactForm = ({ colspan2, fontSize }) => {
@@ -6,9 +7,8 @@ const ContactForm = ({ colspan2, fontSize }) => {
 
     const fetchCountry = async () => {
         try {
-            const response = await fetch('https://ipinfo.io/?token=9063eb09bb0e26')
-            const data = await response.json();
-            setCountry(data.country)
+            const response = await axios.get('https://ipinfo.io/?token=9063eb09bb0e26')
+            setCountry(response.data.country)
         } catch (error) {
             console.error('Error fetching country info:', error)
         }

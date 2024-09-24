@@ -1,21 +1,17 @@
-import cardSlice from "../api/Card";
-import contactPageSlice from "../api/Contact";
-import homePageSlice from "../api/HomePage";
-import navbarSlice from "../api/Navbar";
-import tourPackageSlice from "../api/TourPackage";
+import storage from "redux-persist/lib/storage";
+import rootReducer from "./reducer";
+import { persistReducer, persistStore } from "redux-persist";
+const { configureStore } = require("@reduxjs/toolkit");
 
-const { combineReducers, configureStore } = require("@reduxjs/toolkit");
+const persistConfig = {
+    key: "root",
+    storage
+};
 
-const rootReducer = combineReducers({
-    navbarThunk: navbarSlice,
-    cardThunk: cardSlice,
-    tourPackageThunk: tourPackageSlice,
-    contactPageThunk: contactPageSlice,
-    homePageThunk: homePageSlice
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+    reducer: persistedReducer
 });
 
-const store = configureStore({
-    reducer: rootReducer
-});
-
-export default store
+export const persistor = persistStore(store)

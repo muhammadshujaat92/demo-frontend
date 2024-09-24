@@ -10,14 +10,12 @@ const initialState = {
 export const contactPageThunk = createAsyncThunk('page/contactPage', async () => {
     try {
         const url = baseUrl('contact-uses');
-        const response = await fetch(url, {
-            method: 'GET',
+        const response = await axios.get(url, {
             headers: {
                 'Content-Type': 'application/json'
             }
         });
-        const data = await response.json();
-        return data.data
+        return response.data.data
 
     } catch (error) {
         console.log(error)
