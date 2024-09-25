@@ -1,10 +1,21 @@
-import React from 'react'
+'use client'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
 import { FaStar } from "react-icons/fa";
+import { mainUrl } from '../page';
+import { useDispatch, useSelector } from 'react-redux';
+import { homeSection7Thunk } from '../_redux/api/homePage/section7';
 
-const HomeSection6 = ({ item }) => {
-    const { Heading, Paragraph, testimonialContent, userImages } = item || {};
-    const imageUrl = 'https://inviting-thrill-7bbda9fa6e.strapiapp.com'
+const HomeSection6 = () => {
+    const dispatch = useDispatch();
+    const { items, status } = useSelector(state => state?.homeSection7Thunk || {});
+
+    useEffect(() => {
+        dispatch(homeSection7Thunk());
+    }, [dispatch]);
+
+    const { Heading, Paragraph, testimonialContent, userImages } = items?.[0]?.attributes || {};
+    const imageUrl = mainUrl()
     const { data } = userImages || {}
 
     return (
@@ -29,10 +40,6 @@ const HomeSection6 = ({ item }) => {
                                 <div>...</div>
                             )
                         }
-
-                        {/* <Image className="w-10 h-10 border-white rounded-full dark:border-gray-800" src={userImg} width={100} height={100} alt="" />
-                        <Image className="w-10 h-10 border-white rounded-full dark:border-gray-800" src={userImg} width={100} height={100} alt="" />
-                        <Image className="w-10 h-10 border-white rounded-full dark:border-gray-800" src={userImg} width={100} height={100} alt="" /> */}
                     </div>
                     <div>
                         <div className='flex items-center'>

@@ -9,7 +9,7 @@ const initialState = {
 }
 export const homeSection8Thunk = createAsyncThunk('page/homeSection8', async () => {
     try {
-        const url = mainUrl()
+        const url = mainUrl("home-page-section8s?populate=*")
         const response = await axios.get(url, {
             headers: {
                 'Content-Type': 'application/json'

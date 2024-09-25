@@ -4,6 +4,7 @@ import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux'
 import { navbarThunk } from '../_redux/api/Navbar'
+import { mainUrl } from '../page'
 
 const Navbar = () => {
     const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const Navbar = () => {
         dispatch(navbarThunk())
     }, [dispatch]);
 
-    const imageUrl = 'https://inviting-thrill-7bbda9fa6e.strapiapp.com'
+    const imageUrl = mainUrl()
     const Img = url ? `${url}` : ""
 
     return (

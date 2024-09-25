@@ -5,7 +5,7 @@ export const baseUrl = (category) => {
   return url
 }
 export const mainUrl = (prefix) => {
-  const url = prefix ? `https://inviting-thrill-7bbda9fa6e.strapiapp.com/api/${prefix}` : `https://inviting-thrill-7bbda9fa6e.strapiapp.com/api`
+  const url = prefix ? `https://inviting-thrill-7bbda9fa6e.strapiapp.com/api/${prefix}` : `https://inviting-thrill-7bbda9fa6e.strapiapp.com`
   return url
 }
 const page = () => {

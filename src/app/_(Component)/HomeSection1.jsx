@@ -4,28 +4,32 @@ import React, { useEffect } from 'react'
 import Card from './Card'
 import { useDispatch, useSelector } from 'react-redux'
 import { cardThunk } from '../_redux/api/Card'
+import { mainUrl } from '../page'
+import { homeSection2Thunk } from '../_redux/api/homePage/section2'
 
-const HomeSection1 = ({ data }) => {
+const HomeSection1 = () => {
     const dispatch = useDispatch();
     const { items, status } = useSelector(state => state?.cardThunk || {});
-    const imageUrl = 'https://inviting-thrill-7bbda9fa6e.strapiapp.com'
+    const state = useSelector(state => state?.homeSection2Thunk);
+    const imageUrl = mainUrl()
 
     useEffect(() => {
+        dispatch(homeSection2Thunk());
         dispatch(cardThunk())
     }, [dispatch]);
 
-    const { BackgroundImageTitle, ButtonText, Paragraph, Title, BackgroundImage } = data || {}
-    const { url } = BackgroundImage?.data?.attributes || {}
+    const { backgroundImageTitle, buttonText, paragraph, title, backgroundImage } = state?.items?.[0]?.attributes || {}
+    const { url } = backgroundImage?.data?.attributes || {}
     const backgroundImg = url ? `${url}` : ""
 
     return (
         <div className='py-[40px] px-20'>
             <div>
                 <div>
-                    <h1 className='text-[32px] font-semibold text-gray-700 '>{Title}</h1>
-                    <p className='text-[18px] mt-3'>{Paragraph}</p>
+                    <h1 className='text-[32px] font-semibold text-gray-700 '>{title}</h1>
+                    <p className='text-[18px] mt-3'>{paragraph}</p>
                     <div className='flex justify-end mb-3'>
-                        <button className='bg-yellow-400 font-semibold'>{ButtonText}</button>
+                        <button className='bg-yellow-400 font-semibold'>{buttonText}</button>
                     </div>
                 </div>
 
@@ -40,7 +44,7 @@ const HomeSection1 = ({ data }) => {
                         }
                     </div>
                     <div className='absolute top-8 w-full text-center'>
-                        <h1 className='font-semibold text-[35px]'>{BackgroundImageTitle}</h1>
+                        <h1 className='font-semibold text-[35px]'>{backgroundImageTitle}</h1>
                     </div>
                     <div className='absolute top-[28%] flex items-center w-full justify-center gap-20'>
 
@@ -59,12 +63,6 @@ const HomeSection1 = ({ data }) => {
                                 <div>NO PACKAGE</div>
                             )
                         }
-
-                        {/* <Card Img={cardImg1} title={'Noteworthy technology'} description={'Here are the biggest enterprise technology so chronological order.'} btnText={'Read more'} priceText={'$100.00'} days={'4 DAYS-5 NIGHTS'} />
-
-                        <Card Img={cardImg2} title={'Noteworthy technology'} description={'Here are the biggest enterprise technology so chronological order.'} btnText={'Read more'} priceText={'$64.00'} days={'2 DAYS-1 NIGHTS'} spanText={'$92.00'} saleBtn={'Sale!'} />
-
-                        <Card Img={cardImg3} title={'Noteworthy technology'} description={'Here are the biggest enterprise technology so chronological order.'} btnText={'Read more'} priceText={'$100.00'} days={'6 DAYS-5 NIGHTS'} /> */}
                     </div>
                 </div>
             </div>

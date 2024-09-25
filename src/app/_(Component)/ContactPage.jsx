@@ -7,11 +7,12 @@ import ContactForm from "./ContactForm";
 import Slider from "./Slider";
 import Spinner from "./Spinner";
 import userImg from '@/public/user.png'
+import { mainUrl } from "../page";
 
 const ContactPage = () => {
     const dispatch = useDispatch();
     const { items, status } = useSelector(state => state.contactPageThunk);
-    const imageUrl = 'https://inviting-thrill-7bbda9fa6e.strapiapp.com'
+    const imageUrl = mainUrl()
 
     useEffect(() => {
         dispatch(contactPageThunk())

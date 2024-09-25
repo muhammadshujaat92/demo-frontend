@@ -7,12 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { cardThunk } from "../_redux/api/Card";
 import { tourPackageThunk } from "../_redux/api/TourPackage";
 import Spinner from "./Spinner";
+import { mainUrl } from "../page";
 
 const TourPage = () => {
     const dispatch = useDispatch();
     const { items, status } = useSelector(state => state?.cardThunk || {});
     const state = useSelector(state => state?.tourPackageThunk || {});
-    const imageUrl = 'https://inviting-thrill-7bbda9fa6e.strapiapp.com'
+    const imageUrl = mainUrl()
 
     useEffect(() => {
         dispatch(cardThunk())
