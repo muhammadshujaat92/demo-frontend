@@ -1,67 +1,56 @@
-'use client'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { IoIosPlayCircle } from "react-icons/io";
 import { BsArrowRight } from "react-icons/bs";
 import Image from 'next/image';
 import { mainUrl } from '../page';
-import { useDispatch, useSelector } from 'react-redux';
-import { homeSection6Thunk } from '../_redux/api/homePage/section6';
 
-const HomeSection5 = () => {
-    const dispatch = useDispatch();
-    const { items, status } = useSelector(state => state?.homeSection6Thunk || {});
-
-    useEffect(() => {
-        dispatch(homeSection6Thunk());
-    }, [dispatch]);
-
-    const { Title, BoxHeading1, BoxHeading2, BoxText1, BoxText2, content } = items?.[0]?.attributes || {}
+const HomeSection5 = ({ data }) => {
+    const { Title, BoxHeading1, BoxHeading2, BoxText1, BoxText2, content } = data || {}
 
     return (
         <div className='py-2'>
-            <div className='bg-[#f0f0f0] my-4 py-[1.5rem] px-[6rem] flex flex-col gap-[2rem]'>
+            <div className='bg-[#f0f0f0] my-4 py-[2rem] px-[5rem] flex flex-col gap-[2rem]'>
                 <h1 className='font-semibold text-[20px]'>{Title}</h1>
-                <div className='grid grid-cols-3'>
+                <div className='flex'>
                     <div>
                         <p className='font-semibold text-[14px] text-green-700'>{BoxHeading1}</p>
-                        <h1 className='font-bold text-[40px] text-gray-800 leading-[2.8rem] my-3'>{BoxHeading2}</h1>
+                        <h1 className='font-bold text-[60px] text-gray-800 leading-[4rem] my-3'>{BoxHeading2}</h1>
                         <p className='text-[14px] font-semibold'>in <span className='text-green-700'>{BoxText1}</span></p>
                         <p className='text-[14px] text-blue-700 font-semibold flex items-center mt-2'><IoIosPlayCircle />{BoxText2}</p>
                     </div>
-                    <div className='flex items-center justify-center col-span-2 gap-[1rem]'>
+                    {/* <div className='flex items-center justify-center gap-[1rem]'> */}
+                    {
+                        content && content.length > 0 ? (
+                            content.map((data, index) => {
+                                const { Paragraph, Text, image } = data;
+                                const imageUrl = mainUrl()
+                                const { url } = image?.data?.attributes || {}
+                                const Img = url ? `${url}` : ""
 
-                        {
-                            content && content.length > 0 ? (
-                                content.map((data, index) => {
-                                    const { Paragraph, Text, image } = data;
-                                    const imageUrl = mainUrl()
-                                    const { url } = image?.data?.attributes || {}
-                                    const Img = url ? `${url}` : ""
-
-                                    return (
-                                        <>
-                                            <div key={data.id} className='flex flex-col justify-center items-center gap-[1rem] w-[8rem] text-center'>
-                                                <div>
-                                                    <Image src={Img} alt='icon' width={110} height={110} />
-                                                </div>
-                                                <div>
-                                                    <h1 className='font-semibold text-lg leading-[1.5rem]'>{Text}</h1>
-                                                    <p className='text-sm'>{Paragraph}</p>
-                                                </div>
+                                return (
+                                    <div key={data.id} className='flex items-center justify-center gap-[1rem]'>
+                                        <div className='flex flex-col justify-center items-center gap-[1rem] w-[8rem] text-center'>
+                                            <div>
+                                                <Image src={Img} alt='icon' width={110} height={110} />
                                             </div>
-                                            {index < content.length - 1 && (
-                                                <div>
-                                                    <BsArrowRight className='text-green-700 text-[30px]' />
-                                                </div>
-                                            )}
-                                        </>
-                                    );
-                                })
-                            ) : (
-                                <div>..</div>
-                            )
-                        }
-                    </div>
+                                            <div>
+                                                <h1 className='font-semibold text-lg leading-[1.5rem]'>{Text}</h1>
+                                                <p className='text-sm'>{Paragraph}</p>
+                                            </div>
+                                        </div>
+                                        {index < content.length - 1 && (
+                                            <div>
+                                                <BsArrowRight className='text-green-700 text-[30px]' />
+                                            </div>
+                                        )}
+                                    </div>
+                                );
+                            })
+                        ) : (
+                            <div>..</div>
+                        )
+                    }
+                    {/* </div> */}
                 </div>
             </div>
         </div>

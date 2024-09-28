@@ -21,7 +21,7 @@ const Navbar = () => {
 
     return (
         <div className='shadow-md'>
-            <nav className='flex justify-between items-center py-6 px-16'>
+            <nav className='flex justify-between items-center py-6 px-[5rem]'>
                 <div className='w-[9rem]'>
                     {Img ? (
                         <Image src={Img} alt='logo' width={300} height={300} className='w-full' />

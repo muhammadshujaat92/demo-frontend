@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
         className={`antialiased flex justify-center`}
       >
         <ReduxProvider>
-          <div className="max-w-[1350px]">
+          <div className="w-full max-w-[1600px]">
             <Navbar />
             {children}
             <Footer />

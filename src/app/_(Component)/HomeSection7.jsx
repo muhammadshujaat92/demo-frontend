@@ -1,23 +1,13 @@
-'use client'
-import React, { useEffect } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import Accordian from './Accordian'
 import { mainUrl } from '../page'
-import { useDispatch, useSelector } from 'react-redux'
-import { homeSection8Thunk } from '../_redux/api/homePage/section8'
 
-const HomeSection7 = () => {
-    const dispatch = useDispatch();
-    const { items, status } = useSelector(state => state?.homeSection8Thunk || {});
-
-    useEffect(() => {
-        dispatch(homeSection8Thunk());
-    }, [dispatch]);
-
-    const { images, frontText1, frontText2, Heading1, Heading2, text, accordian } = items?.[0]?.attributes || {}
+const HomeSection7 = ({ data }) => {
+    const { BackImage, FrontImage, frontText1, frontText2, Heading1, Heading2, Text, AccordianData } = data || {}
     const imageUrl = mainUrl()
-    const backImageUrl = images?.data?.[0]?.attributes?.url || ''
-    const frontImageUrl = images?.data?.[1]?.attributes?.url || ''
+    const backImageUrl = BackImage?.data?.attributes?.url || ''
+    const frontImageUrl = FrontImage?.data?.attributes?.url || ''
     const backImg = backImageUrl ? `${backImageUrl}` : ""
     const frontImg = frontImageUrl ? `${frontImageUrl}` : ""
 
@@ -38,14 +28,16 @@ const HomeSection7 = () => {
                     <div className='px-4'>
                         <h1 className='text-blue-600 text-[23px] font-semibold'>{Heading1}</h1>
                         <h1 className='text-[45px] font-semibold leading-[3rem] my-6'>{Heading2}</h1>
-                        <p>{text}</p>
+                        <p>{Text}</p>
                     </div>
                     {
-                        accordian || accordian?.length > 0 ? (
-                            accordian.map((data) => {
+                        AccordianData || AccordianData?.length > 0 ? (
+                            AccordianData.map((data) => {
                                 const { questionText, answerText } = data || {}
                                 return (
-                                    <Accordian key={data.id} title={questionText} answerText={answerText} />
+                                    <div key={data.id}>
+                                        <Accordian title={questionText} answerText={answerText} />
+                                    </div>
                                 )
                             })
                         ) : (

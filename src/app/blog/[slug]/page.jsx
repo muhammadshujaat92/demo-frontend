@@ -1,8 +1,9 @@
+import BlogContent from '@/app/_(Component)/BlogContent'
 import React from 'react'
 
-const page = ({params}) => {
+const page = ({ params }) => {
     return (
-        <div>page {params.slug}</div>
+        <BlogContent slug={params.slug}/>
     )
 }
 

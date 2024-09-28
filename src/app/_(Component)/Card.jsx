@@ -6,8 +6,8 @@ import { LuAlarmClock } from "react-icons/lu";
 
 const Card = ({ Img, title, description, btnText, priceText, days, saleBtn, spanText }) => {
     return (
-        <div className="md:max-w-[16rem] bg-white border border-gray-200 rounded-lg shadow-md">
-            <div className='md:max-w-[16rem] h-[14rem] md:h-[12rem] relative'>
+        <div className="md:max-w-[20rem] bg-white border border-gray-200 rounded-lg shadow-md">
+            <div className='md:max-w-[20rem] h-[14rem] relative'>
                 <Image className="rounded-t-lg w-full h-full" src={Img} width={250} height={250} alt="cardImg" />
                 <div className={`absolute top-3 font-semibold text-[13px] ${saleBtn ? "flex items-center justify-between w-full" : ""}`}>
                     <button className='bg-yellow-300 p-1'><span className='text-[11px] me-1 line-through text-gray-600'>{spanText}</span>{priceText}</button>

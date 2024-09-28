@@ -1,26 +1,16 @@
-'use client'
-import React, { useEffect } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import { FaStar } from "react-icons/fa";
 import { mainUrl } from '../page';
-import { useDispatch, useSelector } from 'react-redux';
-import { homeSection7Thunk } from '../_redux/api/homePage/section7';
 
-const HomeSection6 = () => {
-    const dispatch = useDispatch();
-    const { items, status } = useSelector(state => state?.homeSection7Thunk || {});
-
-    useEffect(() => {
-        dispatch(homeSection7Thunk());
-    }, [dispatch]);
-
-    const { Heading, Paragraph, testimonialContent, userImages } = items?.[0]?.attributes || {};
+const HomeSection6 = ({ item }) => {
+    const { Heading, Paragraph, testimonialContent, userImages } = item || {};
     const imageUrl = mainUrl()
     const { data } = userImages || {}
 
     return (
         <>
-            <div className="max-w-sm p-6 bg-white rounded-lg flex flex-col gap-[3rem]">
+            <div className="max-w-sm p-3 bg-white rounded-lg flex flex-col gap-[3rem]">
                 <div>
                     <h1 className='text-[30px] mb-6 font-bold'>{Heading}</h1>
                     <p className="text-gray-700 font-semibold">{Paragraph}</p>

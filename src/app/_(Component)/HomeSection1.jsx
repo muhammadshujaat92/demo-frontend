@@ -5,36 +5,33 @@ import Card from './Card'
 import { useDispatch, useSelector } from 'react-redux'
 import { cardThunk } from '../_redux/api/Card'
 import { mainUrl } from '../page'
-import { homeSection2Thunk } from '../_redux/api/homePage/section2'
 
-const HomeSection1 = () => {
+const HomeSection1 = ({ data }) => {
     const dispatch = useDispatch();
     const { items, status } = useSelector(state => state?.cardThunk || {});
-    const state = useSelector(state => state?.homeSection2Thunk);
     const imageUrl = mainUrl()
 
     useEffect(() => {
-        dispatch(homeSection2Thunk());
         dispatch(cardThunk())
     }, [dispatch]);
 
-    const { backgroundImageTitle, buttonText, paragraph, title, backgroundImage } = state?.items?.[0]?.attributes || {}
-    const { url } = backgroundImage?.data?.attributes || {}
+    const { BackgroundImageTitle, ButtonText, Paragraph, Title, BackgroundImage } = data || {}
+    const { url } = BackgroundImage?.data?.attributes || {}
     const backgroundImg = url ? `${url}` : ""
 
     return (
-        <div className='py-[40px] px-20'>
+        <div className='py-[40px]'>
             <div>
-                <div>
-                    <h1 className='text-[32px] font-semibold text-gray-700 '>{title}</h1>
-                    <p className='text-[18px] mt-3'>{paragraph}</p>
+                <div className='px-[5rem]'>
+                    <h1 className='text-[32px] font-semibold text-gray-700 '>{Title}</h1>
+                    <p className='text-[18px] mt-3'>{Paragraph}</p>
                     <div className='flex justify-end mb-3'>
-                        <button className='bg-yellow-400 font-semibold'>{buttonText}</button>
+                        <button className='bg-yellow-400 font-semibold'>{ButtonText}</button>
                     </div>
                 </div>
 
                 <div className='relative'>
-                    <div className='h-[35rem] w-full'>
+                    <div className='h-[38rem] w-full'>
                         {
                             backgroundImg ? (
                                 <Image className='h-full w-full' src={backgroundImg} alt='bg-img' width={1500} height={1500} />
@@ -44,9 +41,9 @@ const HomeSection1 = () => {
                         }
                     </div>
                     <div className='absolute top-8 w-full text-center'>
-                        <h1 className='font-semibold text-[35px]'>{backgroundImageTitle}</h1>
+                        <h1 className='font-semibold text-[35px]'>{BackgroundImageTitle}</h1>
                     </div>
-                    <div className='absolute top-[28%] flex items-center w-full justify-center gap-20'>
+                    <div className='absolute top-[28%] flex items-center w-full justify-center gap-[8rem]'>
 
                         {
                             items || items.length > 0 ? (

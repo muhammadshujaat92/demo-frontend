@@ -11,17 +11,24 @@ import { mainUrl } from "../page";
 
 const ContactPage = () => {
     const dispatch = useDispatch();
-    const { items, status } = useSelector(state => state.contactPageThunk);
-    const imageUrl = mainUrl()
-
     useEffect(() => {
         dispatch(contactPageThunk())
     }, [dispatch])
 
+    const { items, status } = useSelector(state => state.contactPageThunk);
+    const imageUrl = mainUrl()
 
     const { Banner, bannerHeading, bannerParagraph, contactPageBox } = items?.[0]?.attributes || {}
     const { url } = Banner?.data?.attributes || {}
     const bannerImg = url ? `${url}` : ""
+
+    if (status === 'loading') {
+        return (
+            <div className='h-screen flex items-center justify-center'>
+                <Spinner />
+            </div>
+        )
+    }
 
     return (
         <div>
@@ -32,39 +39,38 @@ const ContactPage = () => {
                     ) : (
                         <div className='w-full h-full'></div>
                     )}
-                    <div className='absolute top-24 px-12 flex flex-col gap-8'>
+                    <div className='absolute top-24 px-[5rem] flex flex-col gap-8'>
                         <h1 className='text-[40px] text-white font-sancoaleSoftened'>{bannerHeading}</h1>
                         <p className='text-lg text-white font-bold'>{bannerParagraph}</p>
                     </div>
                 </div>
             </section>
-            <section className='px-12 py-10 grid grid-cols-3 gap-5'>
+            <section className='px-[5rem] py-10 grid grid-cols-3 gap-5'>
                 <ContactForm colspan2={"col-span-2"} />
                 <Slider />
             </section>
-            <section className='flex justify-center items-center gap-36 py-5'>
+            <section className='flex justify-center items-center gap-36 py-5 px-[5rem]'>
+                {contactPageBox && contactPageBox.length > 0 ? (
+                    contactPageBox.map((data, index) => {
+                        const { title, text } = data || {};
+                        const h1BgColor = index === 0 ? 'bg-orange-500' : index === 1 ? 'bg-gray-500' : 'bg-green-600';
+                        const pBgColor = index === 0 ? 'bg-orange-200' : index === 1 ? 'bg-gray-300' : 'bg-green-400';
 
-                {
-                    status === 'loading' ? (
-                        <Spinner />
-                    ) : (
-                        contactPageBox || contactPageBox?.length || {} > 0 ? (
-                            contactPageBox.map((data) => {
-                                const { title, text, Theme, headingTheme } = data || {}
-                                return (
-                                    <div className='w-[20rem]' key={data.id}>
-                                        <h1 className={`bg-${headingTheme} py-3 px-4 rounded-t-3xl font-semibold text-center flex items-center text-lg`}>
-                                            <Image src={userImg} alt='' width={30} height={30} className='me-4' />
-                                            {title}</h1>
-                                        <p className={`bg-${Theme} p-3`}>{text}</p>
-                                    </div>
-                                )
-                            })
-                        ) : (
-                            <div>----</div>
-                        )
-                    )
-                }
+                        return (
+                            <div className='w-[20rem]' key={data.id}>
+                                <h1 className={`${h1BgColor} text-white py-3 px-4 rounded-t-3xl font-semibold text-center flex items-center text-lg`}>
+                                    <Image src={userImg} alt='' width={30} height={30} className='me-4' />
+                                    {title}
+                                </h1>
+                                <p className={`${pBgColor} p-3`}>
+                                    {text}
+                                </p>
+                            </div>
+                        );
+                    })
+                ) : (
+                    <div></div>
+                )}
             </section>
         </div>
     )

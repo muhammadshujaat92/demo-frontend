@@ -1,6 +1,5 @@
 import { baseUrl } from "@/app/page";
 import axios from "axios";
-
 const { createAsyncThunk, createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
