@@ -34,12 +34,12 @@ const Home = () => {
 
     return (
         <>
-            <div className='h-fit py-[2rem] border-t-2 border-gray-400 flex justify-between px-[5rem] bg-orange-300'>
-                <div className='h-[25rem] flex flex-col justify-center gap-28'>
+            <div className='h-fit md:py-[2rem] border-t-2 border-gray-400 md:flex justify-between md:px-[1rem] xl:px-[5rem] bg-orange-300'>
+                <div className='h-[25rem] flex flex-col justify-center gap-[5rem] md:gap-28'>
                     <HeaderComponent data={slides} />
                 </div>
-                <div className='w-[340px]'>
-                    <ContactForm fontSize={'[25px]'}/>
+                <div className='xl:w-[340px]'>
+                    <ContactForm fontSize={'[25px]'} />
                 </div>
             </div>
             <HomeSection1 data={section1} />
@@ -47,7 +47,7 @@ const Home = () => {
             <HomeSection3 data={section3} />
             <HomeSection4 data={section4} />
             <HomeSection5 data={section5} />
-            <div className='py-[3rem] flex items-center gap-6 justify-center'>
+            <div className='py-[3rem] flex items-center justify-between px-[5rem]'>
                 <HomeSection6 item={testimonialBox} />
             </div>
             <HomeSection7 data={faqSection} />

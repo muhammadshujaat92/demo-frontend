@@ -6,8 +6,8 @@ import { LuAlarmClock } from "react-icons/lu";
 
 const Card = ({ Img, title, description, btnText, priceText, days, saleBtn, spanText }) => {
     return (
-        <div className="md:max-w-[20rem] bg-white border border-gray-200 rounded-lg shadow-md">
-            <div className='md:max-w-[20rem] h-[14rem] relative'>
+        <div className="max-w-[18rem] bg-white border border-gray-200 rounded-lg shadow-md">
+            <div className='max-w-[18rem] h-[15rem] max-h-[15rem] relative'>
                 <Image className="rounded-t-lg w-full h-full" src={Img} width={250} height={250} alt="cardImg" />
                 <div className={`absolute top-3 font-semibold text-[13px] ${saleBtn ? "flex items-center justify-between w-full" : ""}`}>
                     <button className='bg-yellow-300 p-1'><span className='text-[11px] me-1 line-through text-gray-600'>{spanText}</span>{priceText}</button>
@@ -22,7 +22,7 @@ const Card = ({ Img, title, description, btnText, priceText, days, saleBtn, span
                         <h5 className="text-lg font-bold tracking-tight text-gray-900">{title}</h5>
                     </a>
                     <p className='text-xs text-gray-500 flex items-center my-3'><LuAlarmClock className='text-[17px] me-1' />{days}</p>
-                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 text-sm">{description}</p>
+                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 text-xs">{description}</p>
                 </div>
                 <div className='text-end relative flex items-center justify-between bg-gray-100'>
                     <div className='flex gap-1 ms-3 text-[18px] items-center'>

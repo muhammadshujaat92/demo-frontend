@@ -10,9 +10,9 @@ const HomeSection6 = ({ item }) => {
 
     return (
         <>
-            <div className="max-w-sm p-3 bg-white rounded-lg flex flex-col gap-[3rem]">
+            <div className="max-w-sm bg-white rounded-lg flex flex-col justify-between h-[29rem] pb-[2rem]">
                 <div>
-                    <h1 className='text-[30px] mb-6 font-bold'>{Heading}</h1>
+                    <h1 className='text-[38px] mb-6 font-bold'>{Heading}</h1>
                     <p className="text-gray-700 font-semibold">{Paragraph}</p>
                 </div>
                 <div className='flex items-center gap-[1.6rem]'>
@@ -43,24 +43,26 @@ const HomeSection6 = ({ item }) => {
                     </div>
                 </div>
             </div>
-            {
-                testimonialContent || testimonialContent?.length > 0 ? (
-                    testimonialContent.map((data) => {
-                        const { ReviewText, AuthorName, AuthorDesignation, AuthorCountry } = data
-                        return (
-                            <div key={data.id} className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 flex flex-col gap-[8rem]">
-                                <p className="font-normal text-gray-700">{ReviewText}</p>
-                                <div>
-                                    <h1 className='font-semibold text-[25px]'>{AuthorName}</h1>
-                                    <p>{AuthorDesignation} | <span className='text-orange-500 font-semibold'>{AuthorCountry}</span></p>
+            <div className='flex items-center gap-[2rem]'>
+                {
+                    testimonialContent || testimonialContent?.length > 0 ? (
+                        testimonialContent.map((data) => {
+                            const { ReviewText, AuthorName, AuthorCountry } = data
+                            return (
+                                <div key={data.id} className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 flex flex-col justify-between h-[29rem]">
+                                    <p className="font-normal text-gray-700">{ReviewText}</p>
+                                    <div>
+                                        <h1 className='font-semibold text-[25px]'>{AuthorName}</h1>
+                                        <p className='text-orange-500 font-semibold'>{AuthorCountry}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        )
-                    })
-                ) : (
-                    <div>..</div>
-                )
-            }
+                            )
+                        })
+                    ) : (
+                        <div>..</div>
+                    )
+                }
+            </div>
         </>
     )
 }

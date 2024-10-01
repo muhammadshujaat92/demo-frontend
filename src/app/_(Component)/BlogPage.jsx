@@ -15,16 +15,20 @@ const BlogPage = () => {
     const dispatch = useDispatch();
     const [selectedDate, setSelectedDate] = useState(null);
     const { items, status } = useSelector(state => state?.blogPageThunk);
-    const { data } = useSelector(state => state.blogCardThunk);
+    // const { data, meta } = useSelector(state => state?.blogCardThunk?.data);
+    const { data, meta } = useSelector(state => state?.blogCardThunk?.data || {});
+    // const state = useSelector(state => state.blogCardThunk);
 
     const { bannerHeading, bannerImage } = items?.[0]?.attributes || {};
     const { url } = bannerImage?.data?.attributes || {};
     const bannerImg = url ? `${url}` : "";
 
+    const [currentPage, setCurrentPage] = useState("1");  // Add state for pagination
+
     useEffect(() => {
         dispatch(blogPageThunk());
-        dispatch(blogCardThunk());
-    }, [dispatch]);
+        dispatch(blogCardThunk({ pageSize: 6, page: currentPage }));
+    }, [dispatch, currentPage]);
 
     // Memoized function to format the date
     const getDate = useMemo(() => {
@@ -35,6 +39,8 @@ const BlogPage = () => {
             return `${month}-${year}`;
         };
     }, []);
+
+    console.log(meta);
 
     // Memoized function to filter posts by selected date
     const filteredData = useMemo(() => {
@@ -61,6 +67,10 @@ const BlogPage = () => {
         return Array.from(unique); // Convert Set to array
     }, [data]);
 
+    const handlePageChange = (newPage) => {
+        setCurrentPage(newPage);
+    };
+
     if (status === 'loading') {
         return (
             <div className='h-screen flex items-center justify-center'>
@@ -72,9 +82,9 @@ const BlogPage = () => {
     return (
         <div>
             <section className='mt-8'>
-                <div className="relative h-[20rem] flex items-center justify-center xl:block md:h-[28rem] bg-black">
-                    <Image src={bannerImg} alt='banner' width={1500} height={900} className='w-full h-full opacity-60' />
-                    <div className='absolute xl:top-28 px-[5rem] flex flex-col gap-8'>
+                <div className="relative h-[20rem] flex items-center justify-center xl:block md:h-[30rem] bg-black">
+                    <Image src={bannerImg} alt='banner' priority width={1500} height={900} className='w-full h-full opacity-60' />
+                    <div className='absolute xl:top-32 px-[5rem] flex flex-col gap-8'>
                         <h1 className='text-[60px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
                     </div>
                 </div>
@@ -90,7 +100,7 @@ const BlogPage = () => {
                                 )
                             })
                         ) : (
-                            <div>No posts available for this date.</div>
+                            <div>No posts available</div>
                         )
                     }
                 </div>
@@ -139,6 +149,33 @@ const BlogPage = () => {
                             )}
                         </div>
                     </div>
+                </div>
+                <div className='mt-8'>
+                    <ul class="flex items-center -space-x-px h-10 text-base">
+                        <li>
+                            <a href="#" class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">
+                                <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">1</a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">3</a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
+                                <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </section>
         </div>

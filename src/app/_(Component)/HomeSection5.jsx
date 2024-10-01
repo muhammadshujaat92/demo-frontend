@@ -11,14 +11,14 @@ const HomeSection5 = ({ data }) => {
         <div className='py-2'>
             <div className='bg-[#f0f0f0] my-4 py-[2rem] px-[5rem] flex flex-col gap-[2rem]'>
                 <h1 className='font-semibold text-[20px]'>{Title}</h1>
-                <div className='flex'>
+                <div className='flex justify-between gap-[2rem]'>
                     <div>
                         <p className='font-semibold text-[14px] text-green-700'>{BoxHeading1}</p>
                         <h1 className='font-bold text-[60px] text-gray-800 leading-[4rem] my-3'>{BoxHeading2}</h1>
                         <p className='text-[14px] font-semibold'>in <span className='text-green-700'>{BoxText1}</span></p>
                         <p className='text-[14px] text-blue-700 font-semibold flex items-center mt-2'><IoIosPlayCircle />{BoxText2}</p>
                     </div>
-                    {/* <div className='flex items-center justify-center gap-[1rem]'> */}
+                    <div className='flex items-center justify-center gap-[1rem]'>
                     {
                         content && content.length > 0 ? (
                             content.map((data, index) => {
@@ -50,7 +50,7 @@ const HomeSection5 = ({ data }) => {
                             <div>..</div>
                         )
                     }
-                    {/* </div> */}
+                    </div>
                 </div>
             </div>
         </div>

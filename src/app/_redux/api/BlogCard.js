@@ -7,15 +7,15 @@ const initialState = {
     status: 'idle',
     error: null
 }
-export const blogCardThunk = createAsyncThunk('page/blogCard', async () => {
+export const blogCardThunk = createAsyncThunk('page/blogCard', async ({ pageSize, page }) => {
     try {
-        const url = mainUrl(`blog-contents?populate=*`)
+        const url = mainUrl(`blog-contents/?populate=*&pagination[pageSize]=${pageSize}&pagination[page]=${page}`)
         const response = await axios.get(url, {
             headers: {
                 'Content-Type': 'application/json'
             }
         });
-        return response.data.data
+        return response.data
 
     } catch (error) {
         console.log(error)

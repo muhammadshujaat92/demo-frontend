@@ -7,19 +7,39 @@ import Image from 'next/image';
 import logoImg from '@/public/IndiaYaatra-logo.webp';
 
 const Footer = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
+    const [formData, setFormData] = useState({ name: "", email: "" })
     const [isChecked, setIsChecked] = useState(false);
     const [showMessage, setShowMessage] = useState(false);
 
     // Check if all fields are filled
-    const isFormValid = name.trim() !== '' && email.trim() !== '' && isChecked;
+    const isFormValid = formData.name.trim() !== '' && formData.email.trim() !== '' && isChecked;
 
     const handleSubscribe = () => {
         if (isFormValid) {
             setShowMessage(true);
+            setFormData({ name: "", email: "" })
         }
     };
+
+    const handleInput = (e) => {
+        const { name, value } = e.target
+        if (name === 'name') {
+            // Allow only alphabetic characters for the name field
+            const alphabetOnly = /^[A-Za-z\s]*$/;
+            if (alphabetOnly.test(value)) {
+                setFormData({
+                    ...formData,
+                    [name]: value,
+                });
+            }
+        }
+        else {
+            setFormData({
+                ...formData,
+                [name]: value,
+            });
+        }
+    }
 
     return (
         <footer className='bg-green-700 text-white grid grid-cols-4 py-[2rem] px-[5rem] gap-[3rem]'>
@@ -48,9 +68,10 @@ const Footer = () => {
                         id='name'
                         type="text"
                         placeholder='Name'
-                        className='w-full py-[10px] px-[8px]'
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        className='w-full py-[10px] px-[8px] text-black'
+                        value={formData.name}
+                        name='name'
+                        onChange={handleInput}
                     />
                 </div>
                 <div className='mb-4'>
@@ -59,9 +80,10 @@ const Footer = () => {
                         id='email'
                         type="email"
                         placeholder='Email'
-                        className='w-full py-[10px] px-[8px]'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        className='w-full py-[10px] px-[8px] text-black'
+                        value={formData.email}
+                        name='email'
+                        onChange={handleInput}
                     />
                 </div>
                 <div className='mb-4'>

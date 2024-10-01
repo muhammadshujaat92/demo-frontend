@@ -9,7 +9,7 @@ const initialState = {
 }
 export const cardThunk = createAsyncThunk('thunk/card', async () => {
     try {
-        const url = mainUrl('cards?populate=TourPackageCard.image')
+        const url = mainUrl('cards?populate=*')
         const response = await axios.get(url, {
             headers: {
                 'Content-Type': 'application/json'

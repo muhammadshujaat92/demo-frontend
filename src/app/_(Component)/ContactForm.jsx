@@ -24,10 +24,32 @@ const ContactForm = ({ colspan2, fontSize }) => {
     };
 
     const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
+        const { name, value } = e.target;
+
+        if (name === 'name') {
+            // Allow only alphabetic characters for the name field
+            const alphabetOnly = /^[A-Za-z\s]*$/;
+            if (alphabetOnly.test(value)) {
+                setFormData({
+                    ...formData,
+                    [name]: value,
+                });
+            }
+        } else if (name === 'number' || name === 'adult' || name === 'children') {
+            // Allow only numeric values in the number field
+            const numericOnly = /^[0-9]*$/;
+            if (numericOnly.test(value)) {
+                setFormData({
+                    ...formData,
+                    [name]: value,
+                });
+            }
+        } else {
+            setFormData({
+                ...formData,
+                [name]: value,
+            });
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -67,14 +89,14 @@ const ContactForm = ({ colspan2, fontSize }) => {
             </div>
             <div className="mb-4 px-3 md:px-5 flex items-center">
                 <label htmlFor="number" className='p-2 bg-[#c4c0c0] rounded-l-lg h-[40px]'>{country}</label>
-                <input type="number" name='number' value={formData.number} onChange={handleChange} className="text-sm rounded-r-lg block w-full p-2.5 bg-gray-200" required placeholder='Phone no.' />
+                <input type="text" name='number' value={formData.number} onChange={handleChange} className="text-sm rounded-r-lg block w-full p-2.5 bg-gray-200" required placeholder='Phone no.' />
             </div>
             <div className="mb-4 px-3 md:px-5">
                 <input type="text" name='date' value={formData.date} onChange={handleChange} className="text-sm rounded-lg block w-full p-2.5 bg-gray-200" onFocus={(e) => (e.target.type = "date")} onBlur={(e) => (e.target.type = "text")} required placeholder='Choose Date' />
             </div>
             <div className="mb-4 px-3 md:px-5 grid grid-cols-2 gap-3 mt-3">
-                <input type="number" name='adult' value={formData.adult} onChange={handleChange} className="text-sm rounded-lg block w-full p-2.5 bg-gray-200" required placeholder='Adults' />
-                <input type="number" name='children' value={formData.children} onChange={handleChange} className="text-sm rounded-lg block w-full p-2.5 bg-gray-200" required placeholder='Children' />
+                <input type="text" name='adult' value={formData.adult} onChange={handleChange} className="text-sm rounded-lg block w-full p-2.5 bg-gray-200" required placeholder='Adults' />
+                <input type="text" name='children' value={formData.children} onChange={handleChange} className="text-sm rounded-lg block w-full p-2.5 bg-gray-200" required placeholder='Children' />
             </div>
             <div className="mb-4 px-3 md:px-5">
                 <textarea id="message" name='message' value={formData.message} onChange={handleChange} rows="4" className="block p-2.5 w-full text-sm bg-gray-200 rounded-lg" placeholder="Tour Plan"></textarea>

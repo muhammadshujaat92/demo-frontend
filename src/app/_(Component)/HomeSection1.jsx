@@ -22,7 +22,7 @@ const HomeSection1 = ({ data }) => {
     return (
         <div className='py-[40px]'>
             <div>
-                <div className='px-[5rem]'>
+                <div className='px-[1rem] xl:px-[5rem]'>
                     <h1 className='text-[32px] font-semibold text-gray-700 '>{Title}</h1>
                     <p className='text-[18px] mt-3'>{Paragraph}</p>
                     <div className='flex justify-end mb-3'>
@@ -30,31 +30,23 @@ const HomeSection1 = ({ data }) => {
                     </div>
                 </div>
 
-                <div className='relative'>
-                    <div className='h-[38rem] w-full'>
-                        {
-                            backgroundImg ? (
-                                <Image className='h-full w-full' src={backgroundImg} alt='bg-img' width={1500} height={1500} />
-                            ) : (
-                                <div className='h-full w-full'></div>
-                            )
-                        }
+                <div className='relative h-fit'>
+                    <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${backgroundImg})` }} />
+                    <div className='relative py-[1rem] w-full text-center'>
+                        <h1 className='font-semibold text-[30px] md:text-[35px]'>{BackgroundImageTitle}</h1>
                     </div>
-                    <div className='absolute top-8 w-full text-center'>
-                        <h1 className='font-semibold text-[35px]'>{BackgroundImageTitle}</h1>
-                    </div>
-                    <div className='absolute top-[28%] flex items-center w-full justify-center gap-[8rem]'>
-
+                    <div className='relative py-[2rem] flex items-center flex-col md:flex-row w-full justify-center gap-[2rem] xl:gap-[8rem] px-[0.5rem]'>
                         {
                             items || items.length > 0 ? (
-                                items.map((data) => {
-                                    const { title, description, buttonText, price, Days, Sale, oldPrice, image } = data?.attributes?.TourPackageCard || {}
+                                items.slice(0, 3).map((data) => {
+                                    const { title, description, buttonText, price, Days, Sale, oldPrice, image, showCard } = data?.attributes || {}
                                     const { url } = image?.data?.attributes || {};
                                     const Img = url ? `${url}` : ""
-
-                                    return (
-                                        <Card key={data.id} Img={Img} title={title} description={description} btnText={buttonText} priceText={price} days={Days} saleBtn={Sale} spanText={oldPrice} />
-                                    )
+                                    if (showCard === 'homePage' || showCard === "tour&homePage") {
+                                        return (
+                                            <Card key={data.id} Img={Img} title={title} description={description} btnText={buttonText} priceText={price} days={Days} saleBtn={Sale} spanText={oldPrice} />
+                                        )
+                                    }
                                 })
                             ) : (
                                 <div>NO PACKAGE</div>

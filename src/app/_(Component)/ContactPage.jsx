@@ -33,13 +33,9 @@ const ContactPage = () => {
     return (
         <div>
             <section className='mt-8'>
-                <div className='h-[28rem] bg-black relative'>
-                    {bannerImg ? (
-                        <Image src={bannerImg} alt='banner' width={1500} height={900} className='w-full h-full opacity-80' />
-                    ) : (
-                        <div className='w-full h-full'></div>
-                    )}
-                    <div className='absolute top-24 px-[5rem] flex flex-col gap-8'>
+                <div className='h-[30rem] bg-black relative'>
+                    <Image src={bannerImg} alt='banner' priority width={1500} height={900} className='w-full h-full opacity-80' />
+                    <div className='absolute top-28 px-[5rem] flex flex-col gap-8'>
                         <h1 className='text-[40px] text-white font-sancoaleSoftened'>{bannerHeading}</h1>
                         <p className='text-lg text-white font-bold'>{bannerParagraph}</p>
                     </div>
@@ -49,6 +45,7 @@ const ContactPage = () => {
                 <ContactForm colspan2={"col-span-2"} />
                 <Slider />
             </section>
+            <h1 className="text-[30px] px-[5rem]">Heading</h1>
             <section className='flex justify-center items-center gap-36 py-5 px-[5rem]'>
                 {contactPageBox && contactPageBox.length > 0 ? (
                     contactPageBox.map((data, index) => {

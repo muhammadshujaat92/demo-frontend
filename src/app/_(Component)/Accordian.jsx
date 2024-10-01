@@ -3,12 +3,21 @@ import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { GoPlusCircle } from "react-icons/go";
 import { FiMinusCircle } from "react-icons/fi";
 
-const Accordian = ({ key, title, answerText }) => {
+const Accordian = ({ AccordianData }) => {
     return (
         <Accordion variant="splitted">
-            <AccordionItem key={key} aria-label="Accordion 1" title={title} indicator={({ isOpen }) => (isOpen ? <FiMinusCircle className='text-[25px] text-gray-600' /> : <GoPlusCircle className='text-[25px] text-gray-600' />)} className='bg-gray-100 relative'>
-                <div className='bg-white border-t-2 absolute w-full left-0 p-[1rem] rounded-b-2xl z-10 mb-2'>{answerText}</div>
-            </AccordionItem>
+            {
+                AccordianData?.map((data) => {
+                    const { questionText, answerText } = data || {}
+                    return (
+                        <AccordionItem key={data.id} aria-label={`Accordion ${data.id}`} title={questionText} indicator={({ isOpen }) => (isOpen ? <FiMinusCircle className='text-[25px] text-red-600 rotate-90' /> : <GoPlusCircle className='text-[25px] text-gray-600' />)} className='bg-gray-100 relative'>
+                            {/* <span className='border-t-2'>{answerText}</span> */}
+                            {/* <div className='bg-white border-t-2 w-full p-[1rem] rounded-b-2xl'>{answerText}</div> */}
+                            {answerText}
+                        </AccordionItem>
+                    )
+                })
+            }
         </Accordion>
     )
 }
