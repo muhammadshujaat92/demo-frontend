@@ -41,7 +41,7 @@ const BlogContent = ({ slug }) => {
         <div>
             <section className='mt-8'>
                 <div className="relative h-[20rem] flex items-center justify-center xl:block md:h-[30rem] bg-black">
-                    <Image src={bannerImg} alt='banner' width={1500} priority height={900} className='w-full h-full opacity-60' />
+                    <Image src={url} alt='banner' width={1500} priority height={900} className='w-full h-full opacity-60' />
                     <div className='absolute xl:top-32 px-[5rem] flex flex-col gap-8'>
                         <h1 className='text-[60px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
                     </div>

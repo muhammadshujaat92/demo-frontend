@@ -6,16 +6,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { cardThunk } from '../_redux/api/Card'
 import { mainUrl } from '../page'
 
-const HomeSection1 = ({ data }) => {
+const HomeSection1 = ({ secData }) => {
     const dispatch = useDispatch();
-    const { items, status } = useSelector(state => state?.cardThunk || {});
+    const { data } = useSelector(state => state?.cardThunk?.items || {});
     const imageUrl = mainUrl()
 
     useEffect(() => {
-        dispatch(cardThunk())
+        dispatch(cardThunk({ pageSize: 8, page: 1 }))
     }, [dispatch]);
 
-    const { BackgroundImageTitle, ButtonText, Paragraph, Title, BackgroundImage } = data || {}
+    const { BackgroundImageTitle, ButtonText, Paragraph, Title, BackgroundImage } = secData || {}
     const { url } = BackgroundImage?.data?.attributes || {}
     const backgroundImg = url ? `${url}` : ""
 
@@ -37,8 +37,8 @@ const HomeSection1 = ({ data }) => {
                     </div>
                     <div className='relative py-[2rem] flex items-center flex-col md:flex-row w-full justify-center gap-[2rem] xl:gap-[8rem] px-[0.5rem]'>
                         {
-                            items || items.length > 0 ? (
-                                items.slice(0, 3).map((data) => {
+                            data && data.length > 0 ? (
+                                data.map((data) => {
                                     const { title, description, buttonText, price, Days, Sale, oldPrice, image, showCard } = data?.attributes || {}
                                     const { url } = image?.data?.attributes || {};
                                     const Img = url ? `${url}` : ""

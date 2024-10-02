@@ -9,11 +9,13 @@ import Spinner from "./Spinner";
 import userImg from '@/public/user.png'
 import { mainUrl } from "../page";
 
-const ContactPage = () => {
+const ContactPage = ({keyword}) => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(contactPageThunk())
     }, [dispatch])
+
+    const uri = decodeURIComponent(keyword)
 
     const { items, status } = useSelector(state => state.contactPageThunk);
     const imageUrl = mainUrl()
@@ -34,9 +36,9 @@ const ContactPage = () => {
         <div>
             <section className='mt-8'>
                 <div className='h-[30rem] bg-black relative'>
-                    <Image src={bannerImg} alt='banner' priority width={1500} height={900} className='w-full h-full opacity-80' />
+                    <Image src={url} alt='banner' priority width={1500} height={900} className='w-full h-full opacity-80' />
                     <div className='absolute top-28 px-[5rem] flex flex-col gap-8'>
-                        <h1 className='text-[40px] text-white font-sancoaleSoftened'>{bannerHeading}</h1>
+                        <h1 className='text-[40px] text-white font-sancoaleSoftened'>{bannerHeading} {keyword && `- ${uri}`}</h1>
                         <p className='text-lg text-white font-bold'>{bannerParagraph}</p>
                     </div>
                 </div>

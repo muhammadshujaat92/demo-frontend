@@ -42,7 +42,7 @@ const Home = () => {
                     <ContactForm fontSize={'[25px]'} />
                 </div>
             </div>
-            <HomeSection1 data={section1} />
+            <HomeSection1 secData={section1} />
             <HomeSection2 data={section2} />
             <HomeSection3 data={section3} />
             <HomeSection4 data={section4} />
