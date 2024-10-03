@@ -12,8 +12,8 @@ const HomeSection7 = ({ data }) => {
     const frontImg = frontImageUrl ? `${frontImageUrl}` : ""
 
     return (
-        <>
-            <div className='pt-[7rem] pb-[5rem] px-[5rem] grid grid-cols-2 bg-gray-200'>
+        <div className='flex justify-center'>
+            <div className='pt-[7rem] pb-[5rem] w-full max-w-[1250px] grid grid-cols-2 bg-gray-200'>
                 <div className='relative top-0'>
                     <Image src={backImg} alt='img' width={470} height={470} className='rounded-3xl' />
                     <div className='absolute top-[-70px] left-[230px]'>
@@ -30,22 +30,10 @@ const HomeSection7 = ({ data }) => {
                         <h1 className='text-[45px] font-semibold leading-[3rem] my-6'>{Heading2}</h1>
                         <p>{Text}</p>
                     </div>
-                    {/* {
-                        AccordianData || AccordianData?.length > 0 ? (
-                            AccordianData.map((data) => {
-                                const { questionText, answerText } = data || {}
-                                return (
-                                    <Accordian key={data.id} id={data.id} title={questionText} answerText={answerText}/>
-                                )
-                            })
-                        ) : (
-                            <div>..</div>
-                        )
-                    } */}
                     <Accordian AccordianData={AccordianData}/>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

@@ -15,8 +15,8 @@ const HomeSection3 = ({ data }) => {
     const slug = Heading ? toSlug(Heading) : '';
 
     return (
-        <div className='px-[1rem] md:px-[5rem] py-[3rem] bg-gray-200'>
-            <div className='md:flex justify-between gap-[3rem]'>
+        <div className='flex justify-center py-[3rem] bg-gray-200'>
+            <div className='md:flex justify-between gap-[3rem] w-full max-w-[1250px]'>
                 <div className='flex flex-col gap-[3rem] items-start'>
                     <h1 className='font-bold text-[27px] md:text-[35px]'>{Heading}</h1>
                     <div>

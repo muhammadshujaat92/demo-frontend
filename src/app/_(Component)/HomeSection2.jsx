@@ -14,8 +14,8 @@ const HomeSection2 = ({ data }) => {
 
     const slug = Heading ? toSlug(Heading) : '';
     return (
-        <>
-            <div className='px-[1rem] md:px-[5rem]'>
+        <div className='flex justify-center'>
+            <div className='w-full max-w-[1250px]'>
                 <h1 className='font-bold text-[27px] md:text-[35px] text-center'>{Title}</h1>
                 <div className='md:flex justify-between gap-[3rem] my-4 py-[2rem]'>
                     <div className='md:w-[135rem] max-w-[135rem] h-[20rem] md:h-[25rem] max-h-[25rem] relative rounded-r-[15rem]'>
@@ -30,7 +30,7 @@ const HomeSection2 = ({ data }) => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

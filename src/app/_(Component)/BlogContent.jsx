@@ -47,18 +47,20 @@ const BlogContent = ({ slug }) => {
                     </div>
                 </div>
             </section>
-            <section className='py-[2rem] px-[5rem] grid grid-cols-3 gap-[3rem]'>
-                <div className='col-span-2'>
-                    <h1 className='font-bold text-[50px] mb-2'>{Title}</h1>
-                    <p>{paragraph1}</p>
-                    <br />
-                    <p>{paragraph2}</p>
-                </div>
-                <div>
-                    <ContactForm />
+            <section className='flex justify-center'>
+                <div className='py-[2rem] w-full max-w-[1250px] grid grid-cols-3 gap-[3rem]'>
+                    <div className='col-span-2'>
+                        <h1 className='font-bold text-[50px] mb-2'>{Title}</h1>
+                        <p>{paragraph1}</p>
+                        <br />
+                        <p>{paragraph2}</p>
+                    </div>
+                    <div>
+                        <ContactForm />
+                    </div>
                 </div>
             </section>
-            <section className='px-[5rem] grid grid-cols-3 py-[2rem]'>
+            <section className='grid grid-cols-2 py-[2rem]'>
                 <ContactForm />
             </section>
         </div>

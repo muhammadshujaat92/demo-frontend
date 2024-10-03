@@ -8,8 +8,8 @@ const HomeSection5 = ({ data }) => {
     const { Title, BoxHeading1, BoxHeading2, BoxText1, BoxText2, content } = data || {}
 
     return (
-        <div className='py-2'>
-            <div className='bg-[#f0f0f0] my-4 py-[2rem] px-[5rem] flex flex-col gap-[2rem]'>
+        <div className='py-2 flex justify-center'>
+            <div className='bg-[#f0f0f0] my-4 py-[2rem] w-full max-w-[1250px] flex flex-col gap-[2rem]'>
                 <h1 className='font-semibold text-[20px]'>{Title}</h1>
                 <div className='flex justify-between gap-[2rem]'>
                     <div>

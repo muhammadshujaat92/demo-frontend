@@ -42,33 +42,35 @@ const TourPage = () => {
             <section className='mt-8'>
                 <div className={`relative h-[20rem] flex items-center justify-center xl:block md:h-[30rem] bg-black`}>
                     <Image src={url} alt='banner' width={1500} height={900} className='w-full h-full opacity-60' priority />
-                    <div className='absolute xl:top-32 px-[5rem] flex flex-col gap-8'>
+                    <div className='absolute xl:top-32 max-w-[1250px] flex flex-col gap-8'>
                         <h1 className='text-[42px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
                         <p className='lg:text-lg text-white lg:font-bold'>{bannerParagraph}</p>
                     </div>
                 </div>
             </section>
-            <section className='py-12 md:px-[5rem] flex gap-[1rem] justify-between'>
-                <div className=' flex items-center flex-wrap gap-7 md:gap-[1rem]'>
-                    {data && data.length > 0 ? (
-                        data.map((data) => {
-                            const { title, description, buttonText, price, Days, Sale, oldPrice, image, showCard } = data.attributes
-                            const { url } = image.data.attributes;
-                            const Img = url ? `${url}` : ""
-                            return (
-                                <Card key={data.id} Img={Img} title={title} description={description} btnText={buttonText} priceText={price} days={Days} saleBtn={Sale} spanText={oldPrice} />
-                            )
-                        })
-                    ) : (
-                        <div>NO PACKAGE</div>
-                    )}
-                </div>
-                <div className="w-[33rem]">
-                    <ContactForm />
+            <section className='flex justify-center'>
+                <div className="py-12 md:px-[5rem] flex gap-[1rem] justify-between">
+                    <div className=' flex items-center flex-wrap gap-7 md:gap-[1rem]'>
+                        {data && data.length > 0 ? (
+                            data.map((data) => {
+                                const { title, description, buttonText, price, Days, Sale, oldPrice, image, showCard } = data.attributes
+                                const { url } = image.data.attributes;
+                                const Img = url ? `${url}` : ""
+                                return (
+                                    <Card key={data.id} Img={Img} title={title} description={description} btnText={buttonText} priceText={price} days={Days} saleBtn={Sale} spanText={oldPrice} />
+                                )
+                            })
+                        ) : (
+                            <div>NO PACKAGE</div>
+                        )}
+                    </div>
+                    <div className="w-[33rem]">
+                        <ContactForm />
+                    </div>
                 </div>
             </section>
-            <section className='mb-8 px-[5rem]'>
-                <ul class="flex items-center -space-x-px h-10 text-base">
+            <section className='mb-8 flex justify-center'>
+                <ul class="flex items-center -space-x-px w-full max-w-[1250px] h-10 text-base">
                     <button
                         onClick={() => setPageNo((prev) => prev - 1)}
                         disabled={pageNo === 1}
@@ -87,9 +89,6 @@ const TourPage = () => {
                             </button>
                         ))
                     }
-                    {/* <button className='flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700'>
-                            Page: {totalPages}
-                        </button> */}
                     <button
                         type="button"
                         onClick={() => setPageNo((prev) => prev + 1)}

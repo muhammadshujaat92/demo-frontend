@@ -90,101 +90,100 @@ const BlogPage = () => {
                     </div>
                 </div>
             </section>
-            <section className='grid grid-cols-3 py-[2rem] px-[5rem]'>
-                <div className=' flex items-center flex-wrap gap-[3rem] col-span-2'>
-                    {
-                        filteredData && filteredData.length > 0 ? (
-                            filteredData.map((post) => {
-                                const { BlogCardTitle, BlogCardDescription, BlogCardImage, BlogCardButtonText } = post.attributes;
-                                return (
-                                    <BlogCard key={post.id} BlogCardTitle={BlogCardTitle} BlogCardDescription={BlogCardDescription} BlogCardButtonText={BlogCardButtonText} slug={post.id} BlogCardImage={BlogCardImage} />
-                                )
-                            })
-                        ) : (
-                            <div>No posts available</div>
-                        )
-                    }
-                </div>
-                <div>
-                    <ContactForm />
-                    <div className='border border-gray-500 rounded-2xl pb-4 bg-gray-200 mt-5'>
-                        <h1 className='font-sancoaleSoftened text-white bg-orange-500 text-[28px] text-center rounded-t-2xl'>Recent Posts</h1>
-                        <div className='px-5'>
-                            {data && data.length > 0 ? (
-                                data.slice(-5).map((data) => {
-                                    const { BlogCardTitle } = data.attributes;
-                                    return (
-                                        <Link key={data.id} href={`/blog/${data.id}`}>
-                                            <div className='bg-gray-200 flex items-center py-5 gap-2 border border-b-gray-400'>
-                                                <GiCheckMark className='text-orange-500' />
-                                                <h1 className='text-blue-500 font-semibold'>{BlogCardTitle}</h1>
-                                            </div>
-                                        </Link>
-                                    );
-                                })
-                            ) : (
-                                <div>..</div>
-                            )}
-                        </div>
-                    </div>
-                    <div className='border border-gray-500 rounded-2xl pb-4 bg-gray-200 mt-5'>
-                        <h1 className='font-sancoaleSoftened text-white bg-orange-500 text-[28px] text-center rounded-t-2xl'>Archives</h1>
-                        <div className='px-5'>
-                            {uniqueDates.length > 0 ? (
-                                uniqueDates.map((monthYearKey) => {
-                                    const [year, month] = monthYearKey.split('-');
-                                    const displayDate = getDate(`${year}-${month}-01`); // Create a valid date string
-                                    return (
-                                        <div
-                                            key={monthYearKey}
-                                            onClick={() => setSelectedDate(monthYearKey)}
-                                            className='bg-gray-200 flex items-center py-5 gap-2 border border-b-gray-400 cursor-pointer'
-                                        >
-                                            <GiCheckMark className='text-orange-500' />
-                                            <h1 className='text-blue-500 font-semibold'>{displayDate}</h1>
-                                        </div>
-                                    );
-                                })
-                            ) : (
-                                <div>No archive data available.</div>
-                            )}
-                        </div>
-                    </div>
-                </div>
-                <div className='mt-8'>
-                    <ul class="flex items-center -space-x-px h-10 text-base">
-                        <button
-                            onClick={() => setPageNo((prev) => prev - 1)}
-                            disabled={pageNo === 1}
-                            className={`flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 ${pageNo === 1
-                                ? 'text-gray-400 cursor-not-allowed'
-                                : ''
-                                }`}>
-                            <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
-                            </svg>
-                        </button>
+            <section className='flex justify-center'>
+                <div className='grid grid-cols-3 py-[2rem] w-full max-w-[1250px]'>
+                    <div className=' flex items-center flex-wrap gap-[3rem] col-span-2'>
                         {
-                            pageOptions.map((page, index) => (
-                                <button key={index} className={`${pageNo === page ? "bg-[#f0f0f0]" : ""} flex items-center justify-center px-4 h-10 leading-tight text-gray-500 border border-gray-300 hover:bg-gray-100 hover:text-gray-700`} onClick={() => setPageNo(page)}>
-                                    {page}
-                                </button>
-                            ))
+                            filteredData && filteredData.length > 0 ? (
+                                filteredData.map((post) => {
+                                    const { BlogCardTitle, BlogCardDescription, BlogCardImage, BlogCardButtonText } = post.attributes;
+                                    return (
+                                        <BlogCard key={post.id} BlogCardTitle={BlogCardTitle} BlogCardDescription={BlogCardDescription} BlogCardButtonText={BlogCardButtonText} slug={post.id} BlogCardImage={BlogCardImage} />
+                                    )
+                                })
+                            ) : (
+                                <div>No posts available</div>
+                            )
                         }
-                        {/* <button className='flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700'>
-                            Page: {totalPages}
-                        </button> */}
-                        <button
-                            type="button"
-                            onClick={() => setPageNo((prev) => prev + 1)}
-                            disabled={pageNo === totalPages}
-                            className={`${pageNo === totalPages ? "cursor-not-allowed" : ""} flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700`}
-                        >
-                            <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
-                            </svg>
-                        </button>
-                    </ul>
+                    </div>
+                    <div>
+                        <ContactForm />
+                        <div className='border border-gray-500 rounded-2xl pb-4 bg-gray-200 mt-5'>
+                            <h1 className='font-sancoaleSoftened text-white bg-orange-500 text-[28px] text-center rounded-t-2xl'>Recent Posts</h1>
+                            <div className='px-5'>
+                                {data && data.length > 0 ? (
+                                    data.slice(-5).map((data) => {
+                                        const { BlogCardTitle } = data.attributes;
+                                        return (
+                                            <Link key={data.id} href={`/blog/${data.id}`}>
+                                                <div className='bg-gray-200 flex items-center py-5 gap-2 border border-b-gray-400'>
+                                                    <GiCheckMark className='text-orange-500' />
+                                                    <h1 className='text-blue-500 font-semibold'>{BlogCardTitle}</h1>
+                                                </div>
+                                            </Link>
+                                        );
+                                    })
+                                ) : (
+                                    <div>..</div>
+                                )}
+                            </div>
+                        </div>
+                        <div className='border border-gray-500 rounded-2xl pb-4 bg-gray-200 mt-5'>
+                            <h1 className='font-sancoaleSoftened text-white bg-orange-500 text-[28px] text-center rounded-t-2xl'>Archives</h1>
+                            <div className='px-5'>
+                                {uniqueDates.length > 0 ? (
+                                    uniqueDates.map((monthYearKey) => {
+                                        const [year, month] = monthYearKey.split('-');
+                                        const displayDate = getDate(`${year}-${month}-01`); // Create a valid date string
+                                        return (
+                                            <div
+                                                key={monthYearKey}
+                                                onClick={() => setSelectedDate(monthYearKey)}
+                                                className='bg-gray-200 flex items-center py-5 gap-2 border border-b-gray-400 cursor-pointer'
+                                            >
+                                                <GiCheckMark className='text-orange-500' />
+                                                <h1 className='text-blue-500 font-semibold'>{displayDate}</h1>
+                                            </div>
+                                        );
+                                    })
+                                ) : (
+                                    <div>No archive data available.</div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                    <div className='mt-8 flex justify-center'>
+                        <ul class="flex items-center -space-x-px h-10 text-base w-full max-w-[1250px]">
+                            <button
+                                onClick={() => setPageNo((prev) => prev - 1)}
+                                disabled={pageNo === 1}
+                                className={`flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 ${pageNo === 1
+                                    ? 'text-gray-400 cursor-not-allowed'
+                                    : ''
+                                    }`}>
+                                <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
+                                </svg>
+                            </button>
+                            {
+                                pageOptions.map((page, index) => (
+                                    <button key={index} className={`${pageNo === page ? "bg-[#f0f0f0]" : ""} flex items-center justify-center px-4 h-10 leading-tight text-gray-500 border border-gray-300 hover:bg-gray-100 hover:text-gray-700`} onClick={() => setPageNo(page)}>
+                                        {page}
+                                    </button>
+                                ))
+                            }
+                            <button
+                                type="button"
+                                onClick={() => setPageNo((prev) => prev + 1)}
+                                disabled={pageNo === totalPages}
+                                className={`${pageNo === totalPages ? "cursor-not-allowed" : ""} flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700`}
+                            >
+                                <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
+                                </svg>
+                            </button>
+                        </ul>
+                    </div>
                 </div>
             </section>
         </div>

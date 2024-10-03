@@ -34,12 +34,14 @@ const Home = () => {
 
     return (
         <>
-            <div className='h-fit md:py-[2rem] border-t-2 border-gray-400 md:flex justify-between md:px-[1rem] xl:px-[5rem] bg-orange-300'>
-                <div className='h-[25rem] flex flex-col justify-center gap-[5rem] md:gap-28'>
-                    <HeaderComponent data={slides} />
-                </div>
-                <div className='xl:w-[340px]'>
-                    <ContactForm fontSize={'[25px]'} />
+            <div className='h-fit md:py-[2rem] border-t-2 border-gray-400 md:flex justify-center bg-orange-300'>
+                <div className='w-full max-w-[1250px] flex justify-between'>
+                    <div className='h-[25rem] flex flex-col justify-center gap-[5rem] md:gap-28'>
+                        <HeaderComponent data={slides} />
+                    </div>
+                    <div className='xl:w-[340px]'>
+                        <ContactForm fontSize={'[25px]'} />
+                    </div>
                 </div>
             </div>
             <HomeSection1 secData={section1} />

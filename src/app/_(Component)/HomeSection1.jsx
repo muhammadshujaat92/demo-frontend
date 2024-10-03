@@ -20,9 +20,9 @@ const HomeSection1 = ({ secData }) => {
     const backgroundImg = url ? `${url}` : ""
 
     return (
-        <div className='py-[40px]'>
-            <div>
-                <div className='px-[1rem] xl:px-[5rem]'>
+        <div className='py-[40px] flex justify-center'>
+            <div className='w-full max-w-[1250px]'>
+                <div>
                     <h1 className='text-[32px] font-semibold text-gray-700 '>{Title}</h1>
                     <p className='text-[18px] mt-3'>{Paragraph}</p>
                     <div className='flex justify-end mb-3'>
@@ -35,7 +35,7 @@ const HomeSection1 = ({ secData }) => {
                     <div className='relative py-[1rem] w-full text-center'>
                         <h1 className='font-semibold text-[30px] md:text-[35px]'>{BackgroundImageTitle}</h1>
                     </div>
-                    <div className='relative py-[2rem] flex items-center flex-col md:flex-row w-full justify-center gap-[2rem] xl:gap-[8rem] px-[0.5rem]'>
+                    <div className='relative py-[2rem] flex items-center flex-col md:flex-row w-full justify-center gap-[2rem] xl:gap-[8rem]'>
                         {
                             data && data.length > 0 ? (
                                 data.map((data) => {

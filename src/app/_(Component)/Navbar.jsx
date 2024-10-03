@@ -20,8 +20,8 @@ const Navbar = () => {
     const Img = url ? `${url}` : ""
 
     return (
-        <div className='shadow-md'>
-            <nav className='flex justify-between items-center py-6 px-[5rem]'>
+        <div className='shadow-md flex justify-center'>
+            <nav className='flex justify-between items-center py-6 max-w-[1250px] w-full'>
                 <div className='w-[9rem]'>
                     {Img ? (
                         <Image src={Img} alt='logo' priority width={300} height={300} className='w-full' />

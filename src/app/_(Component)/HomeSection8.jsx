@@ -12,32 +12,34 @@ const HomeSection8 = ({ data }) => {
     };
 
     return (
-        <div className='px-[5rem]'>
-            <h1 className='text-[35px] font-bold mt-8'>{Title}</h1>
-            <div className='grid grid-cols-2 gap-[3rem] py-[3rem]'>
-                <ContactForm />
-                <div>
-                    <h1 className='text-[38px] font-bold leading-[2.5rem] my-5'>{Heading}</h1>
-                    <p>{Paragraph}</p>
-                    <ul className='flex flex-col gap-5'>
-                        {
-                            contactDetail && contactDetail.length > 0 ? (
-                                contactDetail.map((contact) => {
-                                    const { id, detail } = contact;
-                                    return (
-                                        <li key={id} className='shadow-md py-[1.5rem] px-[1rem] rounded-xl'>
-                                            <p className='flex items-center gap-2 font-semibold text-[18px]'>
-                                                {iconMap[id]}
-                                                {detail}
-                                            </p>
-                                        </li>
-                                    );
-                                })
-                            ) : (
-                                <div>..</div>
-                            )
-                        }
-                    </ul>
+        <div className='flex justify-center'>
+            <div className='w-full max-w-[1250px]'>
+                <h1 className='text-[35px] font-bold mt-8'>{Title}</h1>
+                <div className='grid grid-cols-2 gap-[3rem] py-[3rem]'>
+                    <ContactForm />
+                    <div>
+                        <h1 className='text-[38px] font-bold leading-[2.5rem] my-5'>{Heading}</h1>
+                        <p>{Paragraph}</p>
+                        <ul className='flex flex-col gap-5'>
+                            {
+                                contactDetail && contactDetail.length > 0 ? (
+                                    contactDetail.map((contact) => {
+                                        const { id, detail } = contact;
+                                        return (
+                                            <li key={id} className='shadow-md py-[1.5rem] px-[1rem] rounded-xl'>
+                                                <p className='flex items-center gap-2 font-semibold text-[18px]'>
+                                                    {iconMap[id]}
+                                                    {detail}
+                                                </p>
+                                            </li>
+                                        );
+                                    })
+                                ) : (
+                                    <div>..</div>
+                                )
+                            }
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
