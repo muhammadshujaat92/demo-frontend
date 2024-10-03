@@ -42,8 +42,8 @@ const Footer = () => {
     }
 
     return (
-        <div className='flex justify-center'>
-            <footer className='bg-green-700 text-white grid grid-cols-4 py-[2rem] w-full max-w-[1250px] gap-[3rem]'>
+        <div className='flex justify-center bg-green-700'>
+            <footer className='text-white grid grid-cols-4 py-[2rem] w-full max-w-[1250px] gap-[3rem] ps-3'>
                 <div className=' pe-2'>
                     <Image src={logoImg} alt='logo' width={150} height={150} />
                     <p className='text-[15px] py-[2rem]'>

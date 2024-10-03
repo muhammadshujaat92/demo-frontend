@@ -49,7 +49,7 @@ const Home = () => {
             <HomeSection3 data={section3} />
             <HomeSection4 data={section4} />
             <HomeSection5 data={section5} />
-            <div className='py-[3rem] flex items-center justify-between px-[5rem]'>
+            <div className='py-[3rem] flex justify-center'>
                 <HomeSection6 item={testimonialBox} />
             </div>
             <HomeSection7 data={faqSection} />

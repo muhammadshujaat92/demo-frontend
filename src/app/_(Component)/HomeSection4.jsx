@@ -11,7 +11,7 @@ const HomeSection4 = ({ data }) => {
 
     return (
         <div className='flex justify-center'>
-            <div className='w-full max-w-[1250px]'>
+            <div className='w-full max-w-[1250px] py-[3rem] ps-3'>
                 <h1 className='text-gray-700 text-[35px] font-bold'>{Title}</h1>
                 <div className="grid grid-cols-2 pt-[3rem] gap-[3rem]">
                     <p className='font-semibold text-[22px]'>{Paragraph}</p>

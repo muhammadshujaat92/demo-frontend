@@ -42,13 +42,15 @@ const BlogContent = ({ slug }) => {
             <section className='mt-8'>
                 <div className="relative h-[20rem] flex items-center justify-center xl:block md:h-[30rem] bg-black">
                     <Image src={url} alt='banner' width={1500} priority height={900} className='w-full h-full opacity-60' />
-                    <div className='absolute xl:top-32 px-[5rem] flex flex-col gap-8'>
-                        <h1 className='text-[60px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
+                    <div className='flex justify-center'>
+                        <div className='absolute xl:top-32 w-full max-w-[1250px] ps-3 flex flex-col gap-8'>
+                            <h1 className='text-[60px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
+                        </div>
                     </div>
                 </div>
             </section>
-            <section className='flex justify-center'>
-                <div className='py-[2rem] w-full max-w-[1250px] grid grid-cols-3 gap-[3rem]'>
+            <section className='flex items-center flex-col'>
+                <div className='py-[2rem] w-full max-w-[1250px] grid grid-cols-3 gap-[3rem] ps-3'>
                     <div className='col-span-2'>
                         <h1 className='font-bold text-[50px] mb-2'>{Title}</h1>
                         <p>{paragraph1}</p>
@@ -59,9 +61,9 @@ const BlogContent = ({ slug }) => {
                         <ContactForm />
                     </div>
                 </div>
-            </section>
-            <section className='grid grid-cols-2 py-[2rem]'>
-                <ContactForm />
+                <section className='grid grid-cols-3 py-[2rem] w-full max-w-[1250px] ps-3'>
+                    <ContactForm colspan2={'col-span-2'} />
+                </section>
             </section>
         </div>
     )

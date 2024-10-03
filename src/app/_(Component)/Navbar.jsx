@@ -21,7 +21,7 @@ const Navbar = () => {
 
     return (
         <div className='shadow-md flex justify-center'>
-            <nav className='flex justify-between items-center py-6 max-w-[1250px] w-full'>
+            <nav className='flex justify-between items-center py-6 max-w-[1250px] w-full ps-3'>
                 <div className='w-[9rem]'>
                     {Img ? (
                         <Image src={Img} alt='logo' priority width={300} height={300} className='w-full' />

@@ -9,9 +9,8 @@ const HomeSection6 = ({ item }) => {
     const { data } = userImages || {}
 
     return (
-        <div className='flex justify-center'>
-            <div className='w-full max-w-[1250px]'>
-                <div className="max-w-sm bg-white rounded-lg flex flex-col justify-between h-[29rem] pb-[2rem]">
+            <div className='w-full max-w-[1250px] flex items-center justify-between'>
+                <div className="max-w-sm bg-white rounded-lg flex flex-col justify-between h-[29rem] pb-[2rem] ps-3">
                     <div>
                         <h1 className='text-[38px] mb-6 font-bold'>{Heading}</h1>
                         <p className="text-gray-700 font-semibold">{Paragraph}</p>
@@ -65,7 +64,6 @@ const HomeSection6 = ({ item }) => {
                     }
                 </div>
             </div>
-        </div>
     )
 }
 

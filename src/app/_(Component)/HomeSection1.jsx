@@ -20,22 +20,24 @@ const HomeSection1 = ({ secData }) => {
     const backgroundImg = url ? `${url}` : ""
 
     return (
-        <div className='py-[40px] flex justify-center'>
-            <div className='w-full max-w-[1250px]'>
-                <div>
+        <div className='py-[40px]'>
+            <div className='flex justify-center'>
+                <div className='w-full max-w-[1250px] ps-3'>
                     <h1 className='text-[32px] font-semibold text-gray-700 '>{Title}</h1>
                     <p className='text-[18px] mt-3'>{Paragraph}</p>
                     <div className='flex justify-end mb-3'>
                         <button className='bg-yellow-400 font-semibold'>{ButtonText}</button>
                     </div>
                 </div>
+            </div>
 
-                <div className='relative h-fit'>
-                    <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${backgroundImg})` }} />
-                    <div className='relative py-[1rem] w-full text-center'>
-                        <h1 className='font-semibold text-[30px] md:text-[35px]'>{BackgroundImageTitle}</h1>
-                    </div>
-                    <div className='relative py-[2rem] flex items-center flex-col md:flex-row w-full justify-center gap-[2rem] xl:gap-[8rem]'>
+            <div className='relative h-fit'>
+                <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${backgroundImg})` }} />
+                <div className='relative py-[1rem] w-full text-center'>
+                    <h1 className='font-semibold text-[30px] md:text-[35px]'>{BackgroundImageTitle}</h1>
+                </div>
+                <div className='flex justify-center'>
+                    <div className='relative py-[2rem] flex items-center flex-col md:flex-row w-full ps-3 justify-between max-w-[1250px] gap-[2rem] xl:gap-[8rem]'>
                         {
                             data && data.length > 0 ? (
                                 data.map((data) => {
@@ -49,7 +51,7 @@ const HomeSection1 = ({ secData }) => {
                                     }
                                 })
                             ) : (
-                                <div>NO PACKAGE</div>
+                                <div></div>
                             )
                         }
                     </div>

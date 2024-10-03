@@ -8,8 +8,8 @@ const HomeSection5 = ({ data }) => {
     const { Title, BoxHeading1, BoxHeading2, BoxText1, BoxText2, content } = data || {}
 
     return (
-        <div className='py-2 flex justify-center'>
-            <div className='bg-[#f0f0f0] my-4 py-[2rem] w-full max-w-[1250px] flex flex-col gap-[2rem]'>
+        <div className='py-2 flex justify-center bg-[#f0f0f0]'>
+            <div className='my-4 py-[2rem] w-full max-w-[1250px] flex flex-col gap-[2rem] ps-3'>
                 <h1 className='font-semibold text-[20px]'>{Title}</h1>
                 <div className='flex justify-between gap-[2rem]'>
                     <div>
@@ -18,7 +18,7 @@ const HomeSection5 = ({ data }) => {
                         <p className='text-[14px] font-semibold'>in <span className='text-green-700'>{BoxText1}</span></p>
                         <p className='text-[14px] text-blue-700 font-semibold flex items-center mt-2'><IoIosPlayCircle />{BoxText2}</p>
                     </div>
-                    <div className='flex items-center justify-center gap-[1rem]'>
+                    <div className='flex items-center gap-[1rem]'>
                     {
                         content && content.length > 0 ? (
                             content.map((data, index) => {
@@ -29,7 +29,7 @@ const HomeSection5 = ({ data }) => {
 
                                 return (
                                     <div key={data.id} className='flex items-center justify-center gap-[1rem]'>
-                                        <div className='flex flex-col justify-center items-center gap-[1rem] w-[8rem] text-center'>
+                                        <div className='flex flex-col justify-center items-center gap-[2rem] w-[8rem] text-center'>
                                             <div>
                                                 <Image src={Img} alt='icon' width={110} height={110} />
                                             </div>

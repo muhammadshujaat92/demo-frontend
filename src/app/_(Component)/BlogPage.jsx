@@ -85,13 +85,15 @@ const BlogPage = () => {
             <section className='mt-8'>
                 <div className="relative h-[20rem] flex items-center justify-center xl:block md:h-[30rem] bg-black">
                     <Image src={url} alt='banner' priority width={1500} height={900} className='w-full h-full opacity-60' />
-                    <div className='absolute xl:top-32 px-[5rem] flex flex-col gap-8'>
-                        <h1 className='text-[60px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
+                    <div className='flex justify-center'>
+                        <div className='absolute xl:top-32 w-full max-w-[1250px] ps-3 flex flex-col gap-8'>
+                            <h1 className='text-[60px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
+                        </div>
                     </div>
                 </div>
             </section>
             <section className='flex justify-center'>
-                <div className='grid grid-cols-3 py-[2rem] w-full max-w-[1250px]'>
+                <div className='grid grid-cols-3 py-[2rem] w-full max-w-[1250px] ps-3'>
                     <div className=' flex items-center flex-wrap gap-[3rem] col-span-2'>
                         {
                             filteredData && filteredData.length > 0 ? (
@@ -124,7 +126,7 @@ const BlogPage = () => {
                                         );
                                     })
                                 ) : (
-                                    <div>..</div>
+                                    <div></div>
                                 )}
                             </div>
                         </div>
@@ -147,7 +149,7 @@ const BlogPage = () => {
                                         );
                                     })
                                 ) : (
-                                    <div>No archive data available.</div>
+                                    <div>No data.</div>
                                 )}
                             </div>
                         </div>

@@ -16,7 +16,7 @@ const HomeSection3 = ({ data }) => {
 
     return (
         <div className='flex justify-center py-[3rem] bg-gray-200'>
-            <div className='md:flex justify-between gap-[3rem] w-full max-w-[1250px]'>
+            <div className='md:flex justify-between gap-[3rem] w-full max-w-[1250px] ps-3'>
                 <div className='flex flex-col gap-[3rem] items-start'>
                     <h1 className='font-bold text-[27px] md:text-[35px]'>{Heading}</h1>
                     <div>
@@ -24,8 +24,8 @@ const HomeSection3 = ({ data }) => {
                     </div>
                     <Link href={`/contact/${slug}`} className='font-bold bg-green-600 text-white px-4 py-1 text-[18px]'>{ButtonText}</Link>
                 </div>
-                <div className='md:w-[135rem] max-w-[135rem] h-[20rem] md:h-[25rem] max-h-[25rem] relative rounded-r-[15rem] mt-7 md:mt-0'>
-                    <div className="absolute inset-0 bg-contain bg-center bg-no-repeat rounded-r-[15rem]" style={{ backgroundImage: `url(${Secimg})` }} />
+                <div className='md:w-[135rem] max-w-[135rem] h-[20rem] md:h-[25rem] max-h-[25rem] relative rounded-l-[15rem] mt-7 md:mt-0'>
+                    <div className="absolute inset-0 bg-contain bg-center bg-no-repeat rounded-l-[15rem]" style={{ backgroundImage: `url(${Secimg})` }} />
                 </div>
             </div>
         </div>

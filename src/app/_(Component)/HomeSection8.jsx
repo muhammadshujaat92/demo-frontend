@@ -13,7 +13,7 @@ const HomeSection8 = ({ data }) => {
 
     return (
         <div className='flex justify-center'>
-            <div className='w-full max-w-[1250px]'>
+            <div className='w-full max-w-[1250px] ps-3'>
                 <h1 className='text-[35px] font-bold mt-8'>{Title}</h1>
                 <div className='grid grid-cols-2 gap-[3rem] py-[3rem]'>
                     <ContactForm />

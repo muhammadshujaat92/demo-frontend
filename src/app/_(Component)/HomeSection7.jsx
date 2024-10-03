@@ -12,8 +12,8 @@ const HomeSection7 = ({ data }) => {
     const frontImg = frontImageUrl ? `${frontImageUrl}` : ""
 
     return (
-        <div className='flex justify-center'>
-            <div className='pt-[7rem] pb-[5rem] w-full max-w-[1250px] grid grid-cols-2 bg-gray-200'>
+        <div className='flex justify-center bg-gray-200'>
+            <div className='pt-[7rem] pb-[5rem] w-full max-w-[1250px] grid grid-cols-2 ps-3'>
                 <div className='relative top-0'>
                     <Image src={backImg} alt='img' width={470} height={470} className='rounded-3xl' />
                     <div className='absolute top-[-70px] left-[230px]'>
