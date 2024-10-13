@@ -19,7 +19,7 @@ const HomeSection4 = ({ data }) => {
                     <div className='grid grid-cols-3 gap-2'>
                         {sideBox && sideBox.length > 0 ? (
                             sideBox.map((item) => (
-                                <div className='flex'>
+                                <div key={item.id} className='flex'>
                                     <div>
                                         <i className={`text-[1rem] text-white bg-blue-400 p-2 rounded-full me-2 ${item.icon}`}></i>
                                     </div>

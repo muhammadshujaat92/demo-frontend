@@ -6,6 +6,7 @@ import EditBar from "./_(Component)/EditBar";
 import AuthProvider from "./_context/AuthContext";
 import { baseUrl } from "./page";
 import axios from "axios";
+import Script from "next/script";
 
 export const metadata = {
   title: "Create Next App",
@@ -46,7 +47,7 @@ export default async function RootLayout({ children }) {
             </div>
           </AuthProvider>
         </ReduxProvider>
-        <script src="https://kit.fontawesome.com/ca347752a7.js" crossOrigin="anonymous"></script>
+        <Script src="https://kit.fontawesome.com/ca347752a7.js" crossOrigin="anonymous"></Script>
       </body>
     </html >
   );

@@ -39,7 +39,7 @@ const Edit = () => {
             // Redirect to the base path
             router.push(basePath);
         }
-    }, [status, items, login, pathName]);
+    }, [router, status, items, login, pathName]);
 
     return (
         <div className="h-screen flex justify-center items-center">

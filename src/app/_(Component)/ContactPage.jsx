@@ -77,7 +77,7 @@ const ContactPage = ({ contactData }) => {
                             {
                                 conDetail && conDetail.length > 0 ? (
                                     conDetail.map((data) => (
-                                        <li className="flex items-center gap-2">
+                                        <li key={data.id} className="flex items-center gap-2">
                                             <i className={`py-[12px] px-3 text-[20px] border border-gray-500 rounded-full ${data.Icon}`}></i>
                                             <span className="text-[18px]">{data.contact}</span>
                                         </li>
