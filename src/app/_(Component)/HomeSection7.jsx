@@ -8,8 +8,8 @@ const HomeSection7 = ({ data }) => {
     const imageUrl = mainUrl()
     const backImageUrl = BackImage?.data?.attributes?.url || ''
     const frontImageUrl = FrontImage?.data?.attributes?.url || ''
-    const backImg = backImageUrl ? `${backImageUrl}` : ""
-    const frontImg = frontImageUrl ? `${frontImageUrl}` : ""
+    const backImg = backImageUrl ? `${imageUrl}${backImageUrl}` : ""
+    const frontImg = frontImageUrl ? `${imageUrl}${frontImageUrl}` : ""
 
     return (
         <div className='flex justify-center bg-gray-200'>

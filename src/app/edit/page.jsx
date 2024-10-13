@@ -1,9 +1,9 @@
-import ContactPage from '@/app/_(Component)/ContactPage'
 import React from 'react'
+import Edit from '../_(Component)/Edit'
 
 const page = () => {
     return (
-        <ContactPage />
+        <Edit />
     )
 }
 

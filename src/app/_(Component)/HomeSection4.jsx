@@ -17,7 +17,22 @@ const HomeSection4 = ({ data }) => {
                     <p className='font-semibold text-[22px]'>{Paragraph}</p>
 
                     <div className='grid grid-cols-3 gap-2'>
-                        <div className='flex'>
+                        {sideBox && sideBox.length > 0 ? (
+                            sideBox.map((item) => (
+                                <div className='flex'>
+                                    <div>
+                                        <i className={`text-[1rem] text-white bg-blue-400 p-2 rounded-full me-2 ${item.icon}`}></i>
+                                    </div>
+                                    <div>
+                                        <h1 className='text-sm font-bold'>{item.UpperText}</h1>
+                                        <p className='text-xs text-gray-400'>{item.LowerText}</p>
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <div></div>
+                        )}
+                        {/* <div className='flex'>
                             <div>
                                 <AiOutlineGlobal className='text-[2.5rem] text-white bg-blue-400 p-2 rounded-full me-2' />
                             </div>
@@ -70,7 +85,7 @@ const HomeSection4 = ({ data }) => {
                                 <h1 className='text-sm font-bold'>{sideBox?.[5]?.UpperText || ""}</h1>
                                 <p className='text-xs text-gray-400'>{sideBox?.[5]?.LowerText || ""}</p>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

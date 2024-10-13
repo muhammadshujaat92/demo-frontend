@@ -1,4 +1,4 @@
-import { baseUrl } from "@/app/page";
+import { mainUrl } from "@/app/page";
 import axios from "axios";
 const { createAsyncThunk, createSlice } = require("@reduxjs/toolkit");
 
@@ -9,7 +9,7 @@ const initialState = {
 }
 export const contactPageThunk = createAsyncThunk('page/contactPage', async () => {
     try {
-        const url = baseUrl('contact-uses');
+        const url = mainUrl('contact-uses/?populate=*,getInTouch,Banner,contactPageBox,contactPageTestimonial.contactTestmonialContent,contactPageTestimonial.userImages');
         const response = await axios.get(url, {
             headers: {
                 'Content-Type': 'application/json'

@@ -6,14 +6,14 @@ import { mainUrl } from '../page'
 const BlogCard = ({ BlogCardTitle, BlogCardDescription, BlogCardButtonText, slug, BlogCardImage }) => {
     const { url } = BlogCardImage?.data?.attributes || {}
     const imageUrl = mainUrl()
-    const cardImg = url ? `${url}` : ""
+    const cardImg = url ? `${imageUrl}${url}` : ""
     let descriptionTruncate = BlogCardDescription?.split(' ')
     let truncatedBlogCardDescription = descriptionTruncate?.length > 15 ? `${descriptionTruncate.slice(0, 15).join(' ')}...` : BlogCardDescription;
     let titleTruncate = BlogCardTitle?.split(' ')
     let truncatedBlogCardTitle = titleTruncate?.length > 6 ? `${titleTruncate.slice(0, 6).join(' ')}...` : BlogCardTitle
 
     return (
-        <div className="max-w-[23rem] border border-gray-200 rounded-lg shadow">
+        <div className="max-w-[23rem] border h-[31rem] border-gray-200 rounded-lg shadow">
             <Link href={`/blog/${slug}`}>
                 <Image className="rounded-t-lg h-[17rem]" src={cardImg} alt="cardImg" width={600} height={600} />
             </Link>

@@ -12,12 +12,12 @@ const HomeSection1 = ({ secData }) => {
     const imageUrl = mainUrl()
 
     useEffect(() => {
-        dispatch(cardThunk({ pageSize: 8, page: 1 }))
+        dispatch(cardThunk())
     }, [dispatch]);
 
     const { BackgroundImageTitle, ButtonText, Paragraph, Title, BackgroundImage } = secData || {}
     const { url } = BackgroundImage?.data?.attributes || {}
-    const backgroundImg = url ? `${url}` : ""
+    const backgroundImg = url ? `${imageUrl}${url}` : ""
 
     return (
         <div className='py-[40px]'>
@@ -41,12 +41,12 @@ const HomeSection1 = ({ secData }) => {
                         {
                             data && data.length > 0 ? (
                                 data.map((data) => {
-                                    const { title, description, buttonText, price, Days, Sale, oldPrice, image, showCard } = data?.attributes || {}
+                                    const { title, description, buttonText, price, Days, Sale, oldPrice, image, showCardToHome,icon } = data?.attributes || {}
                                     const { url } = image?.data?.attributes || {};
-                                    const Img = url ? `${url}` : ""
-                                    if (showCard === 'homePage' || showCard === "tour&homePage") {
+                                    const Img = url ? `${imageUrl}${url}` : ""
+                                    if (showCardToHome) {
                                         return (
-                                            <Card key={data.id} Img={Img} title={title} description={description} btnText={buttonText} priceText={price} days={Days} saleBtn={Sale} spanText={oldPrice} />
+                                            <Card key={data.id} Img={Img} title={title} description={description} btnText={buttonText} priceText={price} days={Days} saleBtn={Sale} spanText={oldPrice} icon={icon}/>
                                         )
                                     }
                                 })

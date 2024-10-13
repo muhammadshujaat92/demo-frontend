@@ -6,29 +6,31 @@ import { useDispatch, useSelector } from 'react-redux'
 import { navbarThunk } from '../_redux/api/Navbar'
 import { mainUrl } from '../page'
 
-const Navbar = () => {
+const Navbar = ({test}) => {
     const dispatch = useDispatch();
     const { items, status } = useSelector(state => state?.navbarThunk || {});
-    const { Link1, Link2, Link3, Link4 } = items?.[0]?.attributes || {};
-    const { url } = items?.[0]?.attributes?.Logo?.data?.attributes || {};
+    const { Link1, Link2, Link3, Link4 } = test?.[0]?.attributes || {};
+    const { url } = test?.[0]?.attributes?.Logo?.data?.attributes || {};
 
-    useEffect(() => {
-        dispatch(navbarThunk())
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(navbarThunk())
+    // }, [dispatch]);
 
     const imageUrl = mainUrl()
-    const Img = url ? `${url}` : ""
+    const Img = url ? `${imageUrl}${url}` : ""
 
     return (
         <div className='shadow-md flex justify-center'>
             <nav className='flex justify-between items-center py-6 max-w-[1250px] w-full ps-3'>
-                <div className='w-[9rem]'>
-                    {Img ? (
-                        <Image src={Img} alt='logo' priority width={300} height={300} className='w-full' />
-                    ) : (
-                        <span className='w-full'>.</span>
-                    )}
-                </div>
+                <Link href={'/'}>
+                    <div className='w-[9rem]'>
+                        {Img ? (
+                            <Image src={Img} alt='logo' priority width={300} height={300} className='w-full' />
+                        ) : (
+                            <span className='w-full h-full'></span>
+                        )}
+                    </div>
+                </Link>
                 <ul className='flex items-center gap-6 tracking-wide text-[15px] font-semibold'>
                     <Link href={'/'}>{Link1}</Link>
                     <Link href={'/tour-packages'}>{Link2}</Link>

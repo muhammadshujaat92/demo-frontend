@@ -1,5 +1,6 @@
 import { mainUrl } from "@/app/page";
 import axios from "axios";
+
 const { createAsyncThunk, createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
@@ -7,9 +8,9 @@ const initialState = {
     status: 'idle',
     error: null
 }
-export const homeSection6Thunk = createAsyncThunk('page/homeSection6', async () => {
+export const footerThunk = createAsyncThunk('thunk/footer', async () => {
     try {
-        const url = mainUrl("home-page-section6s?populate=content.image")
+        const url = mainUrl('footers/?populate=*');
         const response = await axios.get(url, {
             headers: {
                 'Content-Type': 'application/json'
@@ -22,22 +23,22 @@ export const homeSection6Thunk = createAsyncThunk('page/homeSection6', async () 
     }
 });
 
-const homeSection6Slice = createSlice({
-    name: "homeSection6Thunk",
+const footerSlice = createSlice({
+    name: "footerThunk",
     initialState,
     extraReducers: (builder) => {
-        builder.addCase(homeSection6Thunk.pending, (state) => {
+        builder.addCase(footerThunk.pending, (state) => {
             state.status = 'loading'
         }),
-            builder.addCase(homeSection6Thunk.fulfilled, (state, action) => {
+            builder.addCase(footerThunk.fulfilled, (state, action) => {
                 state.items = action.payload;
                 state.status = 'success'
             }),
-            builder.addCase(homeSection6Thunk.rejected, (state, action) => {
+            builder.addCase(footerThunk.rejected, (state, action) => {
                 state.status = 'rejected'
                 state.error = action.error.message
             })
     }
 });
 
-export default homeSection6Slice.reducer
+export default footerSlice.reducer

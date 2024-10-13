@@ -25,7 +25,7 @@ const HomeSection5 = ({ data }) => {
                                 const { Paragraph, Text, image } = data;
                                 const imageUrl = mainUrl()
                                 const { url } = image?.data?.attributes || {}
-                                const Img = url ? `${url}` : ""
+                                const Img = url ? `${imageUrl}${url}` : ""
 
                                 return (
                                     <div key={data.id} className='flex items-center justify-center gap-[1rem]'>
@@ -47,7 +47,7 @@ const HomeSection5 = ({ data }) => {
                                 );
                             })
                         ) : (
-                            <div>..</div>
+                            <div></div>
                         )
                     }
                     </div>

@@ -7,9 +7,9 @@ const HomeSection2 = ({ data }) => {
     const { ButtonText, Heading, Paragraph, Title, image } = data || {}
     const imageUrl = mainUrl()
     const { url } = image?.data?.attributes || {}
-    const Secimg = url ? `${url}` : ""
+    const Secimg = url ? `${imageUrl}${url}` : ""
     const toSlug = (text) => {
-        return text.toLowerCase().replace(/ /g, '-');
+        return text.replace(/ /g, '-');
     }
 
     const slug = Heading ? toSlug(Heading) : '';
@@ -26,7 +26,7 @@ const HomeSection2 = ({ data }) => {
                             <h1 className='font-semibold text-[30px]'>{Heading}</h1>
                             <p className='my-3 text-[18px]'>{Paragraph}</p>
                         </div>
-                        <Link href={`/contact/${slug}`} className='font-bold bg-green-600 text-white px-4 py-1 text-[18px]'>{ButtonText}</Link>
+                        <Link href={`/contact/?rh=${slug}`} className='font-bold bg-green-600 text-white px-4 py-1 text-[18px]'>{ButtonText}</Link>
                     </div>
                 </div>
             </div>

@@ -35,7 +35,7 @@ const HomeSection8 = ({ data }) => {
                                         );
                                     })
                                 ) : (
-                                    <div>..</div>
+                                    <div></div>
                                 )
                             }
                         </ul>

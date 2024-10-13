@@ -8,6 +8,8 @@ import tourPackageSlice from "../api/TourPackage";
 import blogPageSlice from "../api/BlogPage"
 import blogCardSlice from "../api/BlogCard";
 import blogContentSlice from "../api/BlogContent";
+import editSlice from "../api/edit";
+import footerSlice from "../api/footerApi";
 
 const rootReducer = combineReducers({
     navbarThunk: navbarSlice,
@@ -17,7 +19,9 @@ const rootReducer = combineReducers({
     homePageThunk: homePageSlice,
     blogPageThunk: blogPageSlice,
     blogCardThunk: blogCardSlice,
-    blogContentThunk: blogContentSlice
+    blogContentThunk: blogContentSlice,
+    editThunk: editSlice,
+    footerThunk: footerSlice
 });
 
 export const store = configureStore({
