@@ -1,22 +1,10 @@
-import BlogContent from '@/app/_(Component)/BlogContent'
-import { mainUrl } from '@/app/page';
-import axios from 'axios';
 import React from 'react'
+import BlogContent from '@/app/_(Component)/BlogContent'
+import { fetchData } from '@/utils/apiHelper';
 
 const Page = async ({ params }) => {
-    try {
-        const url = mainUrl(`blog-contents/${params.slug}?populate=blogData.bannerImage&populate=admin`)
-        const response = await axios.get(url,{
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        })
-        const blogContent = response.data.data
-        return <BlogContent blogContent={blogContent}/>
-    } catch (error) {
-        console.log(error.message);
-        return <div>Internal Server Error</div>
-    }
+    const blogContent = fetchData(`blog-contents/${params.slug}?populate=blogData.bannerImage&populate=admin`)
+    return <BlogContent blogContent={blogContent} />
 }
 
 export default Page

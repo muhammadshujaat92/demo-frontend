@@ -1,24 +1,10 @@
 import React from 'react';
-import { baseUrl } from '../page';
-import axios from 'axios';
 import TourPage from '../_(Component)/TourPage';
+import { fetchData } from '@/utils/apiHelper';
 
 const Page = async () => {
-  try {
-    const url = baseUrl('tour-packages');
-    const response = await axios.get(url, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    const tourPackages = response.data.data;
-
+    const tourPackages = await fetchData("tour-packages/?populate=*")
     return <TourPage test={tourPackages} />;
-  } catch (error) {
-    console.error(error.message);
-    return <div>Error loading tour packages</div>;
-  }
 };
 
 export default Page;

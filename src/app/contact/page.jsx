@@ -1,24 +1,10 @@
 import React from 'react'
 import ContactPage from '../_(Component)/ContactPage'
-import { mainUrl } from '../page';
-import axios from 'axios';
+import { fetchData } from '@/utils/apiHelper';
 
-const Page = async () => {
-    try {
-        const url = mainUrl('contact-uses/?populate=*,getInTouch.conDetail,Banner,contactPageBox,tst.feData,tst.userImgs');
-        const response = await axios.get(url, {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-
-        const contactData = response.data.data;
-
-        return <ContactPage contactData={contactData} />;
-    } catch (error) {
-        console.error(error.message);
-        return <div>Error loading tour packages</div>;
-    }
+const page = async () => {
+    const contactData = await fetchData("contact-uses/?populate=Banner&populate=contactPageBox&populate=tst.feData&populate=tst.userImgs&populate=getInTouch.conDetail")
+    return <ContactPage contactData={contactData} />
 };
 
-export default Page
+export default page

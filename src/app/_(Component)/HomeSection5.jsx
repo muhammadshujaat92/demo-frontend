@@ -29,7 +29,7 @@ const HomeSection5 = ({ data }) => {
 
                                 return (
                                     <div key={data.id} className='flex items-center justify-center gap-[1rem]'>
-                                        <div className='flex flex-col justify-center items-center gap-[2rem] w-[8rem] text-center'>
+                                        <div className='flex flex-col justify-center items-center gap-[1rem] w-[8rem] text-center'>
                                             <div>
                                                 <Image src={Img} alt='icon' width={110} height={110} />
                                             </div>

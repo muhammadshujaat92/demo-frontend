@@ -8,9 +8,6 @@ const HomeSection6 = ({ item }) => {
     const imageUrl = mainUrl()
     const { data } = userImages || {}
 
-    console.log(item);
-    
-
     return (
         <div className='w-full max-w-[1250px] flex items-center justify-between'>
             <div className="max-w-sm bg-white rounded-lg flex flex-col justify-between h-[27rem] pb-[2rem] ps-3">
