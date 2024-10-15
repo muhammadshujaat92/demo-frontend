@@ -1,15 +1,14 @@
 'use client'
-import Image from 'next/image'
 import React, { useEffect } from 'react'
 import Card from './Card'
 import { useDispatch, useSelector } from 'react-redux'
 import { cardThunk } from '../_redux/api/Card'
-import { mainUrl } from '../page'
+import { imageUrl } from '@/utils/apiHelper'
 
 const HomeSection1 = ({ secData }) => {
     const dispatch = useDispatch();
     const { data } = useSelector(state => state?.cardThunk?.items || {});
-    const imageUrl = mainUrl()
+    const imgUrl = imageUrl()
 
     useEffect(() => {
         dispatch(cardThunk())
@@ -17,7 +16,7 @@ const HomeSection1 = ({ secData }) => {
 
     const { BackgroundImageTitle, ButtonText, Paragraph, Title, BackgroundImage } = secData || {}
     const { url } = BackgroundImage?.data?.attributes || {}
-    const backgroundImg = url ? `${imageUrl}${url}` : ""
+    const backgroundImg = url ? `${imgUrl}${url}` : ""
 
     return (
         <div className='py-[40px]'>
@@ -43,7 +42,7 @@ const HomeSection1 = ({ secData }) => {
                                 data.map((data) => {
                                     const { title, description, buttonText, price, Days, Sale, oldPrice, image, showCardToHome,icon } = data?.attributes || {}
                                     const { url } = image?.data?.attributes || {};
-                                    const Img = url ? `${imageUrl}${url}` : ""
+                                    const Img = url ? `${imgUrl}${url}` : ""
                                     if (showCardToHome) {
                                         return (
                                             <Card key={data.id} Img={Img} title={title} description={description} btnText={buttonText} priceText={price} days={Days} saleBtn={Sale} spanText={oldPrice} icon={icon}/>

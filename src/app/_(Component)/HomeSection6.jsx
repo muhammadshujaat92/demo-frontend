@@ -1,12 +1,12 @@
 import React from 'react'
 import Image from 'next/image'
 import { FaStar } from "react-icons/fa";
-import { mainUrl } from '../page';
+import { imageUrl } from '@/utils/apiHelper';
 
 const HomeSection6 = ({ item }) => {
     const { Heading, Paragraph, rating, secData, userImages } = item || {};
-    const imageUrl = mainUrl()
     const { data } = userImages || {}
+    const imgUrl = imageUrl()
 
     return (
         <div className='w-full max-w-[1250px] flex items-center justify-between'>
@@ -21,7 +21,7 @@ const HomeSection6 = ({ item }) => {
                             data || data?.length > 0 ? (
                                 data.map((data) => {
                                     const { url } = data?.attributes || {}
-                                    const Img = url ? `${imageUrl}${url}` : ""
+                                    const Img = url ? `${imgUrl}${url}` : ""
                                     return (
                                         <Image key={data.id} className="w-10 h-10 border-white rounded-full dark:border-gray-800" src={Img} width={100} height={100} alt="" />
                                     )

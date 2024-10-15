@@ -1,13 +1,13 @@
 import React from 'react'
-import Image from 'next/image'
-import { mainUrl } from '../page'
 import Link from 'next/link'
+import { imageUrl } from '@/utils/apiHelper'
 
 const HomeSection2 = ({ data }) => {
     const { ButtonText, Heading, Paragraph, Title, image } = data || {}
-    const imageUrl = mainUrl()
     const { url } = image?.data?.attributes || {}
-    const Secimg = url ? `${imageUrl}${url}` : ""
+    const imgUrl = imageUrl()
+    const Img = url ? `${imgUrl}${url}` : ""
+
     const toSlug = (text) => {
         return text.replace(/ /g, '-');
     }
@@ -19,7 +19,7 @@ const HomeSection2 = ({ data }) => {
                 <h1 className='font-bold text-[27px] md:text-[35px] text-center'>{Title}</h1>
                 <div className='md:flex justify-between gap-[3rem] my-4 py-[2rem]'>
                     <div className='md:w-[135rem] max-w-[135rem] h-[20rem] md:h-[25rem] max-h-[25rem] relative rounded-r-[15rem]'>
-                        <div className="absolute inset-0 bg-contain bg-center bg-no-repeat rounded-r-[15rem]" style={{ backgroundImage: `url(${Secimg})` }} />
+                        <div className="absolute inset-0 bg-contain bg-center bg-no-repeat rounded-r-[15rem]" style={{ backgroundImage: `url(${Img})` }} />
                     </div>
                     <div className='flex flex-col gap-[2rem] md:gap-[3rem] items-end mt-5 md:mt-0'>
                         <div>

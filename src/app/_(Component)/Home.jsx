@@ -1,10 +1,6 @@
 'use client';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { homePageThunk } from '../_redux/api/HomePage';
-import Spinner from './Spinner';
+import React from 'react';
 import dynamic from 'next/dynamic';
-// const HeaderComponent = dynamic(() => import('./HeaderComponent'))
 import HeaderComponent from './HeaderComponent'
 const HomeSection1 = dynamic(() => import('./HomeSection1'))
 const HomeSection2 = dynamic(() => import('./HomeSection2'))
@@ -17,22 +13,7 @@ const HomeSection8 = dynamic(() => import('./HomeSection8'))
 const ContactForm = dynamic(() => import('./ContactForm'))
 
 const Home = ({ homeData }) => {
-    const dispatch = useDispatch();
-    const { items = [], status = 'idle' } = useSelector(state => state?.homePageThunk || {});
-
-    // useEffect(() => {
-    //     dispatch(homePageThunk())
-    // }, [dispatch])
-
     const { slides, section1, section2, section3, section4, section5, sec6, faqSection, lastSectionData } = homeData?.[0]?.attributes || {};
-
-    if (status === 'loading') {
-        return (
-            <div className='h-screen flex items-center justify-center'>
-                <Spinner />
-            </div>
-        )
-    }
 
     return (
         <>

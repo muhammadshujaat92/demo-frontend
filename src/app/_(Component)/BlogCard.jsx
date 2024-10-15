@@ -1,12 +1,12 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { mainUrl } from '../page'
+import { imageUrl } from '@/utils/apiHelper'
 
 const BlogCard = ({ BlogCardTitle, BlogCardDescription, BlogCardButtonText, slug, BlogCardImage }) => {
     const { url } = BlogCardImage?.data?.attributes || {}
-    const imageUrl = mainUrl()
-    const cardImg = url ? `${imageUrl}${url}` : ""
+    const imgUrl = imageUrl()
+    const cardImg = url ? `${imgUrl}${url}` : ""
     let descriptionTruncate = BlogCardDescription?.split(' ')
     let truncatedBlogCardDescription = descriptionTruncate?.length > 15 ? `${descriptionTruncate.slice(0, 15).join(' ')}...` : BlogCardDescription;
     let titleTruncate = BlogCardTitle?.split(' ')

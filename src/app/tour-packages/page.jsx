@@ -4,7 +4,7 @@ import { fetchData } from '@/utils/apiHelper';
 
 const Page = async () => {
     const tourPackages = await fetchData("tour-packages/?populate=*")
-    return <TourPage test={tourPackages} />;
+    return <TourPage pageData={tourPackages} />;
 };
 
 export default Page;

@@ -2,7 +2,7 @@ import React from 'react'
 import { IoIosPlayCircle } from "react-icons/io";
 import { BsArrowRight } from "react-icons/bs";
 import Image from 'next/image';
-import { mainUrl } from '../page';
+import { imageUrl } from '@/utils/apiHelper';
 
 const HomeSection5 = ({ data }) => {
     const { Title, BoxHeading1, BoxHeading2, BoxText1, BoxText2, content } = data || {}
@@ -23,9 +23,9 @@ const HomeSection5 = ({ data }) => {
                         content && content.length > 0 ? (
                             content.map((data, index) => {
                                 const { Paragraph, Text, image } = data;
-                                const imageUrl = mainUrl()
+                                const imgUrl = imageUrl()
                                 const { url } = image?.data?.attributes || {}
-                                const Img = url ? `${imageUrl}${url}` : ""
+                                const Img = url ? `${imgUrl}${url}` : ""
 
                                 return (
                                     <div key={data.id} className='flex items-center justify-center gap-[1rem]'>

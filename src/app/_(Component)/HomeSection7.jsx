@@ -1,15 +1,15 @@
 import React from 'react'
 import Image from 'next/image'
 import Accordian from './Accordian'
-import { mainUrl } from '../page'
+import { imageUrl } from '@/utils/apiHelper'
 
 const HomeSection7 = ({ data }) => {
     const { BackImage, FrontImage, frontText1, frontText2, Heading1, Heading2, Text, AccordianData } = data || {}
-    const imageUrl = mainUrl()
+    const imgUrl = imageUrl()
     const backImageUrl = BackImage?.data?.attributes?.url || ''
     const frontImageUrl = FrontImage?.data?.attributes?.url || ''
-    const backImg = backImageUrl ? `${imageUrl}${backImageUrl}` : ""
-    const frontImg = frontImageUrl ? `${imageUrl}${frontImageUrl}` : ""
+    const backImg = backImageUrl ? `${imgUrl}${backImageUrl}` : ""
+    const frontImg = frontImageUrl ? `${imgUrl}${frontImageUrl}` : ""
 
     return (
         <div className='flex justify-center bg-gray-200'>

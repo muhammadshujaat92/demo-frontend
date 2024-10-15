@@ -1,60 +1,26 @@
 'use client'
 import Image from "next/image";
-import dynamic from "next/dynamic";
-import { useEffect, useState, useRef } from "react";
-const ContactForm = dynamic(() => import('./ContactForm'))
-const Card = dynamic(() => import('./Card'))
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cardThunk } from "../_redux/api/Card";
-import { tourPackageThunk } from "../_redux/api/TourPackage";
-import Spinner from "./Spinner";
-import { mainUrl } from "../page";
 import discountImg from '@/public/discount.png'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { imageUrl } from "@/utils/apiHelper";
+import ContactForm from "./ContactForm";
+import Card from "./Card";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const TourPage = ({ test }) => {
+const TourPage = ({ pageData }) => {
     const dispatch = useDispatch();
-    const formRef = useRef();
-    const [isImageLoaded, setIsImageLoaded] = useState(false);
-
-    useEffect(() => {
-        ScrollTrigger.create({
-            trigger: formRef.current,
-            start: "top 2%",
-            end: "top -120%",
-            pin: true,
-            scrub: true,
-            pinSpacing: true
-        });
-
-        return () => {
-            ScrollTrigger.killAll(); // Clean up on unmount
-        };
-    }, []);
 
     useEffect(() => {
         dispatch(cardThunk())
-        // dispatch(tourPackageThunk())
     }, [dispatch]);
 
-    const { data, meta } = useSelector(state => state?.cardThunk?.items || {});
-    const { items, status } = useSelector(state => state?.tourPackageThunk || {});
-    const imageUrl = mainUrl()
+    const { data } = useSelector(state => state?.cardThunk?.items || {});
+    const imgUrl = imageUrl()
 
-    const { Banner, bannerHeading, bannerParagraph, discountHeading, discountParagraph, discountBtnText } = test?.[0]?.attributes || {}
+    const { Banner, bannerHeading, bannerParagraph, discountHeading, discountParagraph, discountBtnText } = pageData?.[0]?.attributes || {}
     const { url } = Banner?.data?.attributes || {}
-    const BannerImg = url ? `${imageUrl}${url}` : ""
-
-    // if (status === 'loading') {
-    //     return (
-    //         <div className='h-screen flex items-center justify-center'>
-    //             <Spinner />
-    //         </div>
-    //     )
-    // }
+    const BannerImg = url ? `${imgUrl}${url}` : ""
 
     return (
         <div>
@@ -66,7 +32,7 @@ const TourPage = ({ test }) => {
                         width={1500}
                         height={900}
                         className={`w-full h-full opacity-60`}
-                        priority
+                        priority={true}
                     />
                     <div className="flex justify-center">
                         <div className='absolute xl:top-32 w-full max-w-[1250px] flex flex-col gap-8 ps-3'>
@@ -83,7 +49,7 @@ const TourPage = ({ test }) => {
                             data.slice(0, 3).map((data) => {
                                 const { title, description, buttonText, price, Days, Sale, oldPrice, image, showCard, icon } = data.attributes
                                 const { url } = image.data.attributes;
-                                const Img = url ? `${imageUrl}${url}` : ""
+                                const Img = url ? `${imgUrl}${url}` : ""
                                 return (
                                     <Card key={data.id} Width={'max-w-[16rem]'} icon={icon} Img={Img} title={title} description={description} btnText={buttonText} priceText={price} days={Days} saleBtn={Sale} spanText={oldPrice} />
                                 )
@@ -109,7 +75,7 @@ const TourPage = ({ test }) => {
                             data.slice(3).map((data) => {
                                 const { title, description, buttonText, price, Days, Sale, oldPrice, image, icon } = data.attributes
                                 const { url } = image.data.attributes;
-                                const Img = url ? `${imageUrl}${url}` : ""
+                                const Img = url ? `${imgUrl}${url}` : ""
                                 return (
                                     <Card key={data.id} Width={'max-w-[16rem]'} icon={icon} Img={Img} title={title} description={description} btnText={buttonText} priceText={price} days={Days} saleBtn={Sale} spanText={oldPrice} />
                                 )
@@ -118,8 +84,10 @@ const TourPage = ({ test }) => {
                             <div>NO PACKAGE</div>
                         )}
                     </div>
-                    <div ref={formRef} className="h-fit">
-                        <ContactForm />
+                    <div className={`h-full relative`}>
+                        <div className={`sticky top-[2%] right-0`}>
+                            <ContactForm />
+                        </div>
                     </div>
                 </div>
             </section>

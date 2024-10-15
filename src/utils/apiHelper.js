@@ -1,6 +1,10 @@
-// utils/apiHelper.js
 import axios from 'axios';
 const apiUrl = process.env.API_URL;
+
+export const imageUrl = () => {
+    const url = "https://admin.indiayaatra.com"
+    return url
+}
 
 export const fetchData = async (endpoint) => {
     try {
