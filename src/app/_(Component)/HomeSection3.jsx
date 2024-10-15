@@ -1,13 +1,13 @@
 import React from 'react'
-import Image from 'next/image'
-import { mainUrl } from '../page'
 import Link from 'next/link'
+import { imageUrl } from '@/utils/apiHelper'
 
 const HomeSection3 = ({ data }) => {
     const { ButtonText, Heading, Paragraph, image } = data || {}
-    const imageUrl = mainUrl()
     const { url } = image?.data?.attributes || {}
-    const Secimg = url ? `${imageUrl}${url}` : ""
+    const imgUrl = imageUrl()
+    const Img = url ? `${imgUrl}${url}` : ""
+
     const toSlug = (text) => {
         return text.replace(/ /g, '-');
     }
@@ -25,7 +25,7 @@ const HomeSection3 = ({ data }) => {
                     <Link href={`/contact/?rh=${slug}`} className='font-bold bg-green-600 text-white px-4 py-1 text-[18px]'>{ButtonText}</Link>
                 </div>
                 <div className='md:w-[135rem] max-w-[135rem] h-[20rem] md:h-[25rem] max-h-[25rem] relative rounded-l-[15rem] mt-7 md:mt-0'>
-                    <div className="absolute inset-0 bg-contain bg-center bg-no-repeat rounded-l-[15rem]" style={{ backgroundImage: `url(${Secimg})` }} />
+                    <div className="absolute inset-0 bg-contain bg-center bg-no-repeat rounded-l-[15rem]" style={{ backgroundImage: `url(${Img})` }} />
                 </div>
             </div>
         </div>

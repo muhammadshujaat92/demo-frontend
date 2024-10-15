@@ -1,40 +1,31 @@
 'use client'
 import React, { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
-import dynamic from 'next/dynamic'
 import Image from 'next/image'
-// import BlogCard from './BlogCard'
-const BlogCard = dynamic(() => import('./BlogCard'))
+import BlogCard from './BlogCard'
 import { useDispatch, useSelector } from 'react-redux'
-import { blogPageThunk } from '../_redux/api/BlogPage'
-import { mainUrl } from '../page'
-// import ContactForm from './ContactForm'
-const ContactForm = dynamic(() => import('./ContactForm'))
+import ContactForm from './ContactForm'
 import { blogCardThunk } from '../_redux/api/BlogCard'
-import Spinner from './Spinner'
 import { GiCheckMark } from "react-icons/gi";
+import { imageUrl } from '@/utils/apiHelper'
 
 const BlogPage = ({ blogData }) => {
     const dispatch = useDispatch();
     const [selectedDate, setSelectedDate] = useState(null);
-    const [isImageLoaded, setIsImageLoaded] = useState(false);
-    const { items, status } = useSelector(state => state?.blogPageThunk);
+    const [pageNo, setPageNo] = useState(1);  // Add state for pagination
     const { data, meta } = useSelector(state => state?.blogCardThunk?.data || {});
 
     const { bannerHeading, bannerImage } = blogData?.[0]?.attributes || {};
     const { url } = bannerImage?.data?.attributes || {};
-    const imageUrl = mainUrl()
-    const bannerImg = url ? `${imageUrl}${url}` : "";
-    const [pageNo, setPageNo] = useState(1);  // Add state for pagination
+    const imgUrl = imageUrl()
+    const bannerImg = url ? `${imgUrl}${url}` : "";
 
-    const { page } = meta?.pagination || {}
     const totalCards = meta?.pagination?.total || 0;  // Total number of posts
     const cardsPerPage = 8; // Show 6 cards per page
     const totalPages = Math.ceil(totalCards / cardsPerPage);
     const pageOptions = Array.from({ length: totalPages }, (_, i) => i + 1);
 
     useEffect(() => {
-        // dispatch(blogPageThunk());
         dispatch(blogCardThunk({ pageSize: 8, page: pageNo }));
     }, [dispatch, pageNo]);
 
@@ -73,18 +64,6 @@ const BlogPage = ({ blogData }) => {
         return Array.from(unique); // Convert Set to array
     }, [data]);
 
-    const handlePageChange = (newPage) => {
-        setCurrentPage(newPage);
-    };
-
-    if (status === 'loading') {
-        return (
-            <div className='h-screen flex items-center justify-center'>
-                <Spinner />
-            </div>
-        );
-    }
-
     return (
         <div>
             <section>
@@ -95,7 +74,7 @@ const BlogPage = ({ blogData }) => {
                         width={1500}
                         height={900}
                         className={`w-full h-full opacity-60`}
-                        priority
+                        priority={true}
                     />
                     <div className='flex justify-center'>
                         <div className='absolute xl:top-32 w-full max-w-[1250px] ps-3 flex flex-col gap-8'>
@@ -106,7 +85,7 @@ const BlogPage = ({ blogData }) => {
             </section>
             <section className='flex justify-center'>
                 <div className='grid grid-cols-3 py-[2rem] w-full max-w-[1250px] ps-3 gap-[1rem]'>
-                    <div className=' flex items-center flex-wrap gap-[1.5rem] col-span-2'>
+                    <div className='flex flex-wrap gap-[1.5rem] col-span-2'>
                         {
                             filteredData && filteredData.length > 0 ? (
                                 filteredData.map((post) => {

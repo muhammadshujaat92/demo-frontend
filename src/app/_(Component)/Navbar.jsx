@@ -1,23 +1,15 @@
 'use client'
 import Image from 'next/image'
-import React, { useEffect } from 'react'
+import React from 'react'
 import Link from 'next/link'
-import { useDispatch, useSelector } from 'react-redux'
-import { navbarThunk } from '../_redux/api/Navbar'
-import { mainUrl } from '../page'
+import { imageUrl } from '@/utils/apiHelper'
 
-const Navbar = ({test}) => {
-    const dispatch = useDispatch();
-    const { items, status } = useSelector(state => state?.navbarThunk || {});
-    const { Link1, Link2, Link3, Link4 } = test?.[0]?.attributes || {};
-    const { url } = test?.[0]?.attributes?.Logo?.data?.attributes || {};
+const Navbar = ({navBarData}) => {
+    const { Link1, Link2, Link3, Link4 } = navBarData?.[0]?.attributes || {};
+    const { url } = navBarData?.[0]?.attributes?.Logo?.data?.attributes || {};
 
-    // useEffect(() => {
-    //     dispatch(navbarThunk())
-    // }, [dispatch]);
-
-    const imageUrl = mainUrl()
-    const Img = url ? `${imageUrl}${url}` : ""
+    const imgUrl = imageUrl()
+    const Img = url ? `${imgUrl}${url}` : ""
 
     return (
         <div className='shadow-md flex justify-center'>

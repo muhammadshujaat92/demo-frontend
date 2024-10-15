@@ -37,7 +37,7 @@ const HeaderComponent = ({ data }) => {
                     </Link>
                 </div>
             ) : (
-                <div></div>
+                <span></span>
             )}
             <div className="flex items-center text-[10px] md:text-[12px] gap-[0.8rem] md:gap-[2rem] xl:gap-[5rem] xl:text-[18px] px-3">
                 {data?.map((item, index) => (

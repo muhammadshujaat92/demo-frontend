@@ -1,29 +1,21 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { IoMail, IoLocationSharp } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
 import Link from 'next/link';
 import Image from 'next/image';
 import logoImg from '@/public/IndiaYaatra-logo.webp';
-import { useDispatch, useSelector } from 'react-redux';
-import { footerThunk } from '../_redux/api/footerApi';
-import { mainUrl } from '../page';
+import { imageUrl } from '@/utils/apiHelper';
 
-const Footer = () => {
+const Footer = ({footerData}) => {
     const [formData, setFormData] = useState({ name: "", email: "" })
     const [isChecked, setIsChecked] = useState(false);
     const [showMessage, setShowMessage] = useState(false);
-    const dispatch = useDispatch();
-    const { items } = useSelector(state => state.footerThunk)
 
-    useEffect(() => {
-        dispatch(footerThunk())
-    }, [dispatch]);
-
-    const { Logo, paragraph, contactEmail, contactPhone, location } = items?.[0]?.attributes || {}
+    const { Logo, paragraph, contactEmail, contactPhone, location } = footerData?.[0]?.attributes || {}
     const { url } = Logo?.data?.attributes || {}
-    const imageUrl = mainUrl()
-    const Img = url ? `${imageUrl}${url}` : ""
+    const imgUrl = imageUrl()
+    const Img = url ? `${imgUrl}${url}` : ""
 
     // Check if all fields are filled
     const isFormValid = formData.name.trim() !== '' && formData.email.trim() !== '' && isChecked;

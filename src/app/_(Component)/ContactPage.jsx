@@ -1,49 +1,25 @@
 'use client'
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import dynamic from "next/dynamic";
-import { useDispatch, useSelector } from "react-redux";
-import { contactPageThunk } from "../_redux/api/Contact";
-const ContactForm = dynamic(() => import('./ContactForm'))
-import Spinner from "./Spinner";
-import userImg from '@/public/user.png'
-import { mainUrl } from "../page";
-import { IoMail, IoLocationSharp } from "react-icons/io5";
-import { FaPhoneAlt, FaStar } from "react-icons/fa";
 import { useSearchParams } from "next/navigation";
+import { imageUrl } from "@/utils/apiHelper";
+import ContactForm from "./ContactForm";
 
 const ContactPage = ({ contactData }) => {
-    const dispatch = useDispatch();
-    const [isImageLoaded, setIsImageLoaded] = useState(false);
     const searchParams = useSearchParams();
-
     const keyword = searchParams.get('rh');
-
-    // useEffect(() => {
-    //     dispatch(contactPageThunk())
-    // }, [dispatch])
 
     const toSlug = (text) => {
         return text.replace(/[^A-Za-z0-9]/g, ' ');
     }
 
-    const { items, status } = useSelector(state => state.contactPageThunk);
-    const imageUrl = mainUrl()
+    const imgUrl = imageUrl()
 
     const { Banner, bannerHeading, bannerParagraph, contactPageBox, blowHeading, tst, getInTouch } = contactData?.[0]?.attributes || {};
     const { heading, paragraph, conDetail } = getInTouch || {}
     const { Heading, para, rating, feData, userImgs, icon } = tst || {}
     const { url } = Banner?.data?.attributes || {}
-    const bannerImg = url ? `${imageUrl}${url}` : ""
+    const bannerImg = url ? `${imgUrl}${url}` : ""
     const { data } = userImgs || {}
-
-    if (status === 'loading') {
-        return (
-            <div className='h-screen flex items-center justify-center'>
-                <Spinner />
-            </div>
-        )
-    }
 
     return (
         <div>
@@ -55,7 +31,7 @@ const ContactPage = ({ contactData }) => {
                         width={1500}
                         height={900}
                         className={`w-full h-full opacity-60`}
-                        priority
+                        priority={true}
                     />
                     <div className="flex justify-center">
                         <div className='absolute top-28 w-full max-w-[1250px] ps-3 flex flex-col gap-8'>
@@ -101,7 +77,7 @@ const ContactPage = ({ contactData }) => {
                                     data && data?.length > 0 ? (
                                         data.map((data) => {
                                             const { url } = data?.attributes || {}
-                                            const Img = url ? `${imageUrl}${url}` : ""
+                                            const Img = url ? `${imgUrl}${url}` : ""
                                             return (
                                                 <Image key={data.id} className="w-10 h-10 border-white rounded-full dark:border-gray-800" src={Img} width={100} height={100} alt="" />
                                             )
@@ -152,7 +128,6 @@ const ContactPage = ({ contactData }) => {
                             return (
                                 <div className='w-[20rem]' key={data.id}>
                                     <h1 className={`${h1BgColor} text-white py-3 px-4 rounded-t-3xl font-semibold text-center flex items-center text-lg`}>
-                                        {/* <Image src={userImg} alt='' width={30} height={30} className='me-4' /> */}
                                         <i className={`me-4 ${data.icon}`}></i>
                                         {title}
                                     </h1>

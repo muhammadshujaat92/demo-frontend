@@ -1,12 +1,12 @@
 import Image from 'next/image'
 import React from 'react'
-import { CiStar } from "react-icons/ci";
-import { FaStar } from "react-icons/fa";
 import { LuAlarmClock } from "react-icons/lu";
 
 const Card = ({ Width, Img, title, description, btnText, priceText, days, saleBtn, spanText, icon }) => {
     let descriptionTruncate = description?.split(' ')
     let truncateDescription = descriptionTruncate?.length > 15 ? `${descriptionTruncate.slice(0, 12).join(' ')}...` : description;
+    let titleTruncate = title?.split(' ')
+    let truncatedTitle = titleTruncate?.length > 3 ? `${titleTruncate.slice(0, 3).join(' ')}...` : title
 
     return (
         <div className={`${Width ? `${Width}` : "max-w-[18rem]"} max-h-[27rem] bg-white border border-gray-200 rounded-lg shadow-md`}>
@@ -22,19 +22,13 @@ const Card = ({ Width, Img, title, description, btnText, priceText, days, saleBt
             <div className="flex flex-col justify-between h-[12rem] max-h-[12rem]">
                 <div className='p-3'>
                     <a href="#">
-                        <h5 className="text-lg font-bold tracking-tight text-gray-900">{title}</h5>
+                        <h5 className="text-lg font-bold tracking-tight text-gray-900">{truncatedTitle}</h5>
                     </a>
                     <p className='text-xs text-gray-500 flex items-center my-3'><LuAlarmClock className='text-[17px] me-1' />{days}</p>
                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 text-xs">{truncateDescription}</p>
                 </div>
                 <div className='text-end relative flex items-center justify-between bg-gray-100'>
-                    <div className='flex gap-1 ms-3 text-[18px] items-center'>
-                        {/* <FaStar className='text-yellow-500' />
-                        <FaStar className='text-yellow-500' />
-                        <FaStar className='text-yellow-500' />
-                        <FaStar className='text-yellow-500' />
-                        <CiStar className='text-yellow-500' /> */}
-                        {/* <FontAwesomeIcon icon="fa-regular fa-star" /> */}
+                    <div className='flex gap-1 ms-3 text-[15px] items-center'>
                         <i className={`text-yellow-500 ${icon}`}></i>
                         <i className={`text-yellow-500 ${icon}`}></i>
                         <i className={`text-yellow-500 ${icon}`}></i>
