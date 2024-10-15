@@ -12,6 +12,7 @@ import { imageUrl } from '@/utils/apiHelper'
 const BlogPage = ({ blogData }) => {
     const dispatch = useDispatch();
     const [selectedDate, setSelectedDate] = useState(null);
+    const [isImageLoad, setIsImageLoad] = useState(false)
     const [pageNo, setPageNo] = useState(1);  // Add state for pagination
     const { data, meta } = useSelector(state => state?.blogCardThunk?.data || {});
 
@@ -67,20 +68,26 @@ const BlogPage = ({ blogData }) => {
     return (
         <div>
             <section>
-                <div className={`relative h-[30rem] bg-black`}>
+                <div className={`relative h-[30rem]`}>
                     <Image
                         src={bannerImg}
                         alt='banner'
                         width={1500}
                         height={900}
-                        className={`w-full h-full opacity-60`}
+                        className={`w-full h-full ${isImageLoad ? "visible" : "invisible"}`}
                         priority={true}
+                        onLoad={() => setIsImageLoad(true)}
                     />
-                    <div className='flex justify-center'>
-                        <div className='absolute xl:top-32 w-full max-w-[1250px] ps-3 flex flex-col gap-8'>
-                            <h1 className='text-[60px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
-                        </div>
-                    </div>
+                    {
+                        isImageLoad ? (
+                            <div className='flex justify-center imgae'>
+                                <div className='absolute xl:top-32 w-full max-w-[1250px] ps-3 flex flex-col gap-8'>
+                                    <h1 className='text-[60px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
+                                </div>
+                            </div>
+                        ) : (
+                            <span></span>
+                        )}
                 </div>
             </section>
             <section className='flex justify-center'>

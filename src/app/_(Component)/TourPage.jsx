@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cardThunk } from "../_redux/api/Card";
 import discountImg from '@/public/discount.png'
@@ -10,6 +10,7 @@ import Card from "./Card";
 
 const TourPage = ({ pageData }) => {
     const dispatch = useDispatch();
+    const [isImageLoad, setIsImageLoad] = useState(false)
 
     useEffect(() => {
         dispatch(cardThunk())
@@ -25,21 +26,28 @@ const TourPage = ({ pageData }) => {
     return (
         <div>
             <section>
-                <div className={`relative h-[20rem] flex items-center justify-center xl:block md:h-[30rem] bg-black`}>
+                <div className={`relative h-[20rem] flex items-center justify-center xl:block md:h-[30rem]`}>
                     <Image
                         src={BannerImg}
                         alt='banner'
                         width={1500}
                         height={900}
-                        className={`w-full h-full opacity-60`}
+                        className={`w-full h-full ${isImageLoad ? "visible" : "invisible"}`}
                         priority={true}
+                        onLoad={() => setIsImageLoad(true)}
                     />
-                    <div className="flex justify-center">
-                        <div className='absolute xl:top-32 w-full max-w-[1250px] flex flex-col gap-8 ps-3'>
-                            <h1 className='text-[42px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
-                            <p className='lg:text-lg text-white lg:font-bold'>{bannerParagraph}</p>
-                        </div>
-                    </div>
+                    {
+                        isImageLoad ? (
+                            <div className="flex justify-center imgae">
+                                <div className='absolute xl:top-32 w-full max-w-[1250px] flex flex-col gap-8 ps-3'>
+                                    <h1 className='text-[42px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
+                                    <p className='lg:text-lg text-white lg:font-bold'>{bannerParagraph}</p>
+                                </div>
+                            </div>
+                        ) : (
+                            <span></span>
+                        )
+                    }
                 </div>
             </section>
             <section className='flex justify-center'>
