@@ -4,6 +4,7 @@ import Card from './Card'
 import { useDispatch, useSelector } from 'react-redux'
 import { cardThunk } from '../_redux/api/Card'
 import { imageUrl } from '@/utils/apiHelper'
+import Image from 'next/image'
 
 const HomeSection1 = ({ secData }) => {
     const dispatch = useDispatch();
@@ -31,7 +32,15 @@ const HomeSection1 = ({ secData }) => {
             </div>
 
             <div className='relative h-fit'>
-                <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${backgroundImg})` }} />
+                {/* <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${backgroundImg})` }} /> */}
+                <Image
+                    src={backgroundImg}
+                    alt=""
+                    layout="fill"
+                    objectFit="cover"
+                    className="z-[-1]"
+                    priority={true}
+                />
                 <div className='relative py-[1rem] w-full text-center'>
                     <h1 className='font-semibold text-[30px] md:text-[35px]'>{BackgroundImageTitle}</h1>
                 </div>
@@ -40,12 +49,12 @@ const HomeSection1 = ({ secData }) => {
                         {
                             data && data.length > 0 ? (
                                 data.map((data) => {
-                                    const { title, description, buttonText, price, Days, Sale, oldPrice, image, showCardToHome,icon } = data?.attributes || {}
+                                    const { title, description, buttonText, price, Days, Sale, oldPrice, image, showCardToHome, icon } = data?.attributes || {}
                                     const { url } = image?.data?.attributes || {};
                                     const Img = url ? `${imgUrl}${url}` : ""
                                     if (showCardToHome) {
                                         return (
-                                            <Card key={data.id} Img={Img} title={title} description={description} btnText={buttonText} priceText={price} days={Days} saleBtn={Sale} spanText={oldPrice} icon={icon}/>
+                                            <Card key={data.id} Img={Img} title={title} description={description} btnText={buttonText} priceText={price} days={Days} saleBtn={Sale} spanText={oldPrice} icon={icon} />
                                         )
                                     }
                                 })

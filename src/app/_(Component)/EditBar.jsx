@@ -2,6 +2,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../_context/AuthContext';
 import { usePathname } from 'next/navigation';
+import { baseUrl } from '@/utils/apiHelper';
 
 const EditBar = () => {
     const { token, logout } = useContext(AuthContext);
@@ -13,24 +14,24 @@ const EditBar = () => {
 
         switch (pathName) {
             case '/':
-                editUrl = 'http://localhost:1337/admin/content-manager/collection-types/api::home-page.home-page/1';
+                editUrl = `${baseUrl}/admin/content-manager/collection-types/api::home-page.home-page/1`;
                 break;
             case '/tour-packages':
-                editUrl = 'http://localhost:1337/admin/content-manager/collection-types/api::tour-package.tour-package/1';
+                editUrl = `${baseUrl}/admin/content-manager/collection-types/api::tour-package.tour-package/1`;
                 break;
             case '/contact':
-                editUrl = 'http://localhost:1337/admin/content-manager/collection-types/api::contact-us.contact-us/1';
+                editUrl = `${baseUrl}/admin/content-manager/collection-types/api::contact-us.contact-us/1`;
                 break;
             case '/blog':
-                editUrl = 'http://localhost:1337/admin/content-manager/collection-types/api::blog-page.blog-page/1';
+                editUrl = `${baseUrl}/admin/content-manager/collection-types/api::blog-page.blog-page/1`;
                 break;
             default:
                 const match = pathName.match(isDynamicBlog);
                 if (match) {
                     const blogId = match[1];
-                    editUrl = `http://localhost:1337/admin/content-manager/collection-types/api::blog-content.blog-content/${blogId}`;
+                    editUrl = `${baseUrl}/content-manager/collection-types/api::blog-content.blog-content/${blogId}`;
                 } else {
-                    editUrl = 'http://localhost:1337/admin'; // Fallback URL
+                    editUrl = baseUrl; // Fallback URL
                 }
         }
 

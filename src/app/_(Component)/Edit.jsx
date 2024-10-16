@@ -1,9 +1,8 @@
 "use client"
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { editThunk } from '../_redux/api/edit';
+import { editThunk, login } from '../_redux/api/edit';
 import { useRouter, usePathname } from 'next/navigation';
-import { AuthContext } from '../_context/AuthContext';
 
 const Edit = () => {
     const [credentials, setCredentials] = useState({ identifier: "", password: "" });
@@ -12,7 +11,6 @@ const Edit = () => {
     const { items, status } = state || {};
     const router = useRouter();
     const pathName = usePathname();
-    const { login } = useContext(AuthContext);
 
     const handleChange = (e) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value })
@@ -24,19 +22,10 @@ const Edit = () => {
 
     useEffect(() => {
         if (status === "success" && items && items.jwt) {
-            // Store the token
-            login(items.jwt); // Using context to manage auth state
-
-            // Define a regex to match '/edit' at the end of the path
+            dispatch(login(items.jwt))
             const editRegex = /^(.*)\/edit$/;
-
-            // Apply the regex to the current pathname
             const match = pathName.match(editRegex);
-
-            // Determine the base path
             const basePath = match ? match[1] || '/' : '/';
-
-            // Redirect to the base path
             router.push(basePath);
         }
     }, [router, status, items, login, pathName]);

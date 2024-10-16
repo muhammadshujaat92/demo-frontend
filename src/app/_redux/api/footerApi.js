@@ -1,4 +1,4 @@
-import { mainUrl } from "@/app/page";
+import { apiUrl } from "@/utils/apiHelper";
 import axios from "axios";
 
 const { createAsyncThunk, createSlice } = require("@reduxjs/toolkit");
@@ -10,7 +10,7 @@ const initialState = {
 }
 export const footerThunk = createAsyncThunk('thunk/footer', async () => {
     try {
-        const url = mainUrl('footers/?populate=*');
+        const url = `${apiUrl}/footers/?populate=*`;
         const response = await axios.get(url, {
             headers: {
                 'Content-Type': 'application/json'

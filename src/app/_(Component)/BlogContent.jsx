@@ -1,19 +1,28 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import ContactForm from './ContactForm';
 import userImg from '@/public/user.png'
 import Slider from './Slider';
 import { imageUrl } from '@/utils/apiHelper';
+import { useDispatch, useSelector } from 'react-redux';
+import { blogCardThunk } from '../_redux/api/BlogCard';
 
 const BlogContent = ({ blogContent }) => {
+    const dispatch = useDispatch();
     const [isImageLoad, setIsImageLoad] = useState(false)
     const { blogData, admin } = blogContent?.attributes || {}
+    const { data } = useSelector(state => state?.blogCardThunk?.data || {});
     const { Title, bannerHeading, paragraph1, paragraph2, bannerImage } = blogData || {};
     const { Name, paragraph } = admin || {}
     const { url } = bannerImage?.data?.attributes || {}
     const imgUrl = imageUrl()
     const bannerImg = url ? `${imgUrl}${url}` : ""
+
+    useEffect(() => {
+        dispatch(blogCardThunk());
+    }, [dispatch]);
+
 
     if (blogData === null) {
         return (
@@ -59,7 +68,7 @@ const BlogContent = ({ blogContent }) => {
                         </div>
                         <section className="ps-3 py-[2rem]">
                             <h1 className="text-white bg-orange-500 font-semibold text-[25px] text-center">RECENT POSTS</h1>
-                            <Slider />
+                            <Slider imgData={data} />
                             <div className="bg-[#f2f2f2] p-[1rem] mt-2">
                                 <h1 className="font-semibold text-[20px] mb-4">{Name}</h1>
                                 <div className="flex gap-[1rem]">
