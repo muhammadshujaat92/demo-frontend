@@ -8,7 +8,7 @@ export const fetchData = async (endpoint) => {
         const url = `${apiUrl}/${endpoint}`;
         const response = await fetch(url, {
             headers: { 'Content-Type': 'application/json' },
-            cache: 'no-store', // Disable caching
+            next: { revalidate: 5 }
         });
 
         if (!response.ok) {
