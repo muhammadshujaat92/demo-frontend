@@ -1,10 +1,12 @@
-const { createAsyncThunk, createSlice, current } = require("@reduxjs/toolkit");
+const { createAsyncThunk, createSlice } = require("@reduxjs/toolkit");
 import { apiUrl } from "@/utils/apiHelper";
 import axios from "axios";
 
+const initialToken = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+
 const initialState = {
     items: [],
-    token: null,
+    token: initialToken,
     status: 'idle',
     error: null
 }
@@ -16,7 +18,6 @@ export const editThunk = createAsyncThunk("page/editPage", async (editData) => {
     const url = `${apiUrl}/auth/local`
     try {
         const response = await axios.post(url, formData);
-        console.log(response.data);
         return response.data
     } catch (error) {
         console.log(error);
@@ -28,13 +29,12 @@ const editSlice = createSlice({
     initialState,
     reducers: {
         login: (state, action) => {
-            state = JSON.stringify(current(action.payload));
-            localStorage.setItem('token', state)
-            console.log(state);
+            state.token = JSON.stringify(action.payload);
+            localStorage.setItem('token', state.token)
         },
-        logout: (state, action) => {
-            state = action.payload;
-            localStorage.removeItem('token', state)
+        logout: (state) => {
+            state.token = null;
+            localStorage.removeItem('token')
         }
     },
     extraReducers: (builder) => {

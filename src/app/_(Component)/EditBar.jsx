@@ -1,13 +1,22 @@
-'use client';
-import React, { useContext } from 'react';
-import { AuthContext } from '../_context/AuthContext';
+"use client"
+import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { baseUrl } from '@/utils/apiHelper';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../_redux/api/edit';
 
 const EditBar = () => {
-    const { token, logout } = useContext(AuthContext);
+    const dispatch = useDispatch();
+    const state = useSelector(state => state?.editThunk);
+    const { token } = state || {};
     const pathName = usePathname();
     const isDynamicBlog = /^\/blog\/(\d+)$/;
+    const [isTokenPresent, setIsTokenPresent] = useState(false); // Start with false
+
+    useEffect(() => {
+        // Set the token only after the component mounts
+        setIsTokenPresent(!!token);
+    }, [token]);
 
     const handleEdit = () => {
         let editUrl = '';
@@ -29,7 +38,7 @@ const EditBar = () => {
                 const match = pathName.match(isDynamicBlog);
                 if (match) {
                     const blogId = match[1];
-                    editUrl = `${baseUrl}/content-manager/collection-types/api::blog-content.blog-content/${blogId}`;
+                    editUrl = `${baseUrl}/admin/content-manager/collection-types/api::blog-content.blog-content/${blogId}`;
                 } else {
                     editUrl = baseUrl; // Fallback URL
                 }
@@ -39,11 +48,14 @@ const EditBar = () => {
     };
 
     const handleClose = () => {
-        logout();
+        dispatch(logout());
+        setIsTokenPresent(false);
     };
 
+    if (!isTokenPresent) return null; // Avoid rendering if token is not present
+
     return (
-        <div className={`bg-[#3f3f3f] text-white py-2 px-4 ${token ? "flex" : "hidden"} justify-between items-center`}>
+        <div className="bg-[#3f3f3f] text-white py-2 px-4 flex justify-between items-center">
             <button onClick={handleEdit} className="border py-[2px] px-[15px]">Edit</button>
             <button onClick={handleClose} className="border py-[2px] px-[15px]">Close</button>
         </div>

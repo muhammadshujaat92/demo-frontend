@@ -3,7 +3,6 @@ import Navbar from "./_(Component)/Navbar";
 import ReduxProvider from "./_redux/ReduxProvider";
 import Footer from "./_(Component)/Footer";
 import EditBar from "./_(Component)/EditBar";
-import AuthProvider from "./_context/AuthContext";
 import Script from "next/script";
 import { fetchData } from "@/utils/apiHelper";
 
@@ -23,14 +22,12 @@ export default async function RootLayout({ children }) {
         className={`antialiased`}
       >
         <ReduxProvider>
-          <AuthProvider>
-            <div>
-              <EditBar />
-              <Navbar navBarData={navBarData} />
-              {children}
-              <Footer footerData={footerData}/>
-            </div>
-          </AuthProvider>
+          <div>
+            <EditBar />
+            <Navbar navBarData={navBarData} />
+            {children}
+            <Footer footerData={footerData} />
+          </div>
         </ReduxProvider>
         <Script src="https://kit.fontawesome.com/ca347752a7.js" crossOrigin="anonymous"></Script>
       </body>

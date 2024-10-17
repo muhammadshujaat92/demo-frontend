@@ -21,7 +21,7 @@ const Edit = () => {
     };
 
     useEffect(() => {
-        if (status === "success" && items && items.jwt) {
+        if (status === "success" && items?.jwt) {
             dispatch(login(items.jwt))
             const editRegex = /^(.*)\/edit$/;
             const match = pathName.match(editRegex);
