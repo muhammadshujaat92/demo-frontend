@@ -28,7 +28,7 @@ const Edit = () => {
             const basePath = match ? match[1] || '/' : '/';
             router.push(basePath);
         }
-    }, [router, status, items, login, pathName]);
+    }, [dispatch, router, status, items, login, pathName]);
 
     return (
         <div className="h-screen flex justify-center items-center">
