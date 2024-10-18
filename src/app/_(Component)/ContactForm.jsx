@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 const ContactForm = ({ colspan2, fontSize }) => {
     const [country, setCountry] = useState('');
+    const [referrer, setReferrer] = useState('');
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -60,7 +61,10 @@ const ContactForm = ({ colspan2, fontSize }) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({
+                    ...formData,
+                    referrer
+                }),
             });
 
             const data = await response.json();
@@ -75,6 +79,7 @@ const ContactForm = ({ colspan2, fontSize }) => {
     };
 
     useEffect(() => {
+        setReferrer(document.referrer || window.location.href);
         fetchCountry();
     }, []);
 
