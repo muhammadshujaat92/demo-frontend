@@ -2,7 +2,7 @@ import { Resend } from 'resend';
 const resend = new Resend('re_6ycAQxQ2_LNbdHq41HEG14rPCZkrnRy9i');
 
 export async function POST(req) {
-    const { name, email, number, date, adult, children, message,referrer } = await req.json();
+    const { name, email, number, date, adult, children, message, referrer } = await req.json();
 
     try {
         const ipInfo = await fetch('https://ipinfo.io/?token=9063eb09bb0e26');
@@ -13,12 +13,12 @@ export async function POST(req) {
             subject: 'India Yaatra',
             html: `
                 <div style="font-family: Arial, sans-serif; color: #333; border: 2px solid #ff7300; padding: 20px;">
-                    <img style="width: 20rem; margin: 10px 0px;" src="../public/IndiaYaatra-logo.webp" alt="">
+                    <img style="width: 20rem; margin: 10px 0px;" src="https://admin.indiayaatra.com/uploads/India_Yaatra_logo_1504ad9733.webp" alt="">
                     <p style="font-size: 15px;">Dear Admin,</p>
                     <p style="font-size: 15px;">You have a new enquiry.</p>
                     <p style="font-size: 15px;">Please see details:</p>
 
-                    <table style="border: 1px solid #999999; width: 100%; margin: 40px 0px;">
+                    <table style="border: 1px solid #999999; width: 100%; margin: 30px 0px;">
                         <tr>
                             <th style="border: 1px solid #999999; padding: 8px; text-align: left; font-size: 15px; width:5rem;">Name
                             </th>
@@ -74,10 +74,8 @@ export async function POST(req) {
                             <td style="border: 1px solid #999999; padding: 8px;">${date}</td>
                         </tr>
                     </table>
-                    <div style="font-size: 15px;">
-                        <p>You have a new enquiry.</p>
-                        <p>Please see details:</p>
-                    </div>
+                        <p style="font-size: 15px;">Thanking You</p>
+                        <p style="font-size: 15px;">India Yaatra</p>
                 </div>
           `,
         });

@@ -70,6 +70,15 @@ const ContactForm = ({ colspan2, fontSize }) => {
             const data = await response.json();
             if (data.success) {
                 alert('Email sent successfully!');
+                setFormData({
+                    name: '',
+                    email: '',
+                    number: '',
+                    date: '',
+                    adult: '',
+                    children: '',
+                    message: ''
+                })
             } else {
                 alert('Failed to send email.');
             }
