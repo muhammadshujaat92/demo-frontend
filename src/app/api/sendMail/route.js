@@ -1,14 +1,15 @@
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
-    host: 'mail.indiayaatra.com',
-    port: 465, // Secure SSL/TLS port
-    secure: true, // Use SSL/TLS
+    host: 'mail.indiayaatra.com', // SMTP server
+    port: 465, // SSL port
+    secure: true,
     // service: 'gmail',
     auth: {
-        user: process.env.EMAIL_USER, // Your email
-        pass: process.env.EMAIL_PASS, // Your email password or app-specific password
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
     },
+    tls: true
 });
 
 export async function POST(req) {
@@ -21,8 +22,8 @@ export async function POST(req) {
 
     // Email options
     const mailOptions = {
-        from: `"India Yaatra" <${process.env.EMAIL_USER}>`,
-        to: 'umuhammadshujaat@gmail.com', // Recipient
+        from: `"India Yaatra" <${email}>`, // Sender address
+        to: 'info@indiayaatra.com', // Recipient
         subject: 'New Travel Estimate Request',
         html: `
                 <div style="font-family: Arial, sans-serif; color: #333; border: 2px solid #ff7300; padding: 20px;">
