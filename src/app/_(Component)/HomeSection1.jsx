@@ -32,12 +32,11 @@ const HomeSection1 = ({ secData }) => {
             </div>
 
             <div className='relative h-fit'>
-                {/* <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${backgroundImg})` }} /> */}
                 <Image
                     src={backgroundImg}
                     alt=""
                     layout="fill"
-                    objectFit="cover"
+                    style={{ objectFit: "cover" }}
                     className="z-[-1]"
                     priority={true}
                 />

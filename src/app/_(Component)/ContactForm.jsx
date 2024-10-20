@@ -1,9 +1,11 @@
 'use client'
 import React, { useEffect, useState } from 'react'
+import Spinner from './Spinner';
 
 const ContactForm = ({ colspan2, fontSize }) => {
     const [country, setCountry] = useState('');
     const [referrer, setReferrer] = useState('');
+    const [isLoading, setIsLoading] = useState(false); // Loading state
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -55,8 +57,9 @@ const ContactForm = ({ colspan2, fontSize }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true); // Start loading
         try {
-            const response = await fetch('/api/sendEmail', {
+            const response = await fetch('/api/sendMail', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -84,6 +87,8 @@ const ContactForm = ({ colspan2, fontSize }) => {
             }
         } catch (error) {
             console.error('Error submitting form:', error);
+        } finally {
+            setIsLoading(false); // Stop loading
         }
     };
 
@@ -116,7 +121,7 @@ const ContactForm = ({ colspan2, fontSize }) => {
                 <textarea id="message" name='message' value={formData.message} onChange={handleChange} rows="4" className="block p-2.5 w-full text-sm bg-gray-200 rounded-lg" placeholder="Tour Plan"></textarea>
             </div>
             <div className="px-3 md:px-5 mb-2">
-                <button type="submit" className="text-white mt-2 bg-green-600 hover:bg-green-500 font-medium rounded-[4px] w-full px-5 py-[3px] text-center text-[25px]">SUBMIT</button>
+                <button type="submit" className="text-white mt-2 bg-green-600 hover:bg-green-500 font-medium rounded-[4px] w-full px-5 py-[3px] text-center text-[25px] flex justify-center items-center">{isLoading ? <Spinner /> : 'SUBMIT'}</button>
             </div>
         </form>
     );

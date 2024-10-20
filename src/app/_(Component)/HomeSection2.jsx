@@ -20,8 +20,7 @@ const HomeSection2 = ({ data }) => {
                 <h1 className='font-bold text-[27px] md:text-[35px] text-center'>{Title}</h1>
                 <div className='md:flex justify-between gap-[3rem] my-4 py-[2rem]'>
                     <div className='md:w-[123rem] max-w-[123rem] h-[20rem] md:h-[25rem] max-h-[25rem] relative rounded-r-[15rem]'>
-                        {/* <div className="absolute inset-0 bg-contain bg-center bg-no-repeat rounded-r-[15rem]" style={{ backgroundImage: `url(${Img})` }} /> */}
-                        <Image src={Img} alt='' className='rounded-r-[15rem]' priority={true} layout='fill' objectFit='contain'/>
+                        <Image src={Img} alt='' className='rounded-r-[15rem]' priority={true} layout='fill' style={{ objectFit: "cover" }}/>
                     </div>
                     <div className='flex flex-col gap-[2rem] md:gap-[3rem] items-end mt-5 md:mt-0'>
                         <div>

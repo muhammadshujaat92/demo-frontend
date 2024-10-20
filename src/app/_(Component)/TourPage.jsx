@@ -35,6 +35,7 @@ const TourPage = ({ pageData }) => {
                         className={`w-full h-full ${isImageLoad ? "visible" : "invisible"}`}
                         priority={true}
                         onLoad={() => setIsImageLoad(true)}
+                        style={{ objectFit: "cover" }}
                     />
                     {
                         isImageLoad ? (
@@ -54,7 +55,7 @@ const TourPage = ({ pageData }) => {
                 <div className="py-12 w-full max-w-[1250px] ps-3 grid grid-cols-3 gap-[1rem]">
                     <div className='flex items-center flex-wrap gap-7 md:gap-[1.5rem] col-span-2 h-fit'>
                         {data && data.length > 0 ? (
-                            data.slice(0, 3).map((data) => {
+                            data.slice(0, 6).map((data) => {
                                 const { title, description, buttonText, price, Days, Sale, oldPrice, image, showCard, icon } = data.attributes
                                 const { url } = image.data.attributes;
                                 const Img = url ? `${imgUrl}${url}` : ""
@@ -80,7 +81,7 @@ const TourPage = ({ pageData }) => {
                             </div>
                         </div>
                         {data && data.length > 0 ? (
-                            data.slice(3).map((data) => {
+                            data.slice(6).map((data) => {
                                 const { title, description, buttonText, price, Days, Sale, oldPrice, image, icon } = data.attributes
                                 const { url } = image.data.attributes;
                                 const Img = url ? `${imgUrl}${url}` : ""

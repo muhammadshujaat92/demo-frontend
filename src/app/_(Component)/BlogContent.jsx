@@ -79,7 +79,7 @@ const BlogContent = ({ blogContent }) => {
                         </section>
                     </div>
                     <div className="h-full relative">
-                        <div className="sticky top-0 right-0">
+                        <div className="sticky top-[2%] right-0">
                             <ContactForm />
                         </div>
                     </div>
