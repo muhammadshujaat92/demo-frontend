@@ -13,21 +13,21 @@ const HomeSection7 = ({ data }) => {
 
     return (
         <div className='flex justify-center bg-gray-200'>
-            <div className='pt-[7rem] pb-[5rem] w-full max-w-[1250px] grid grid-cols-2 ps-3'>
-                <div className='relative top-0'>
+            <div className='md:pt-[7rem] md:pb-[5rem] py-[2rem] w-full max-w-[1250px] md:grid grid-cols-2 px-2 md:pe-3 md:ps-3 xl:pe-0'>
+                <div className='md:relative top-0 md:block flex flex-col items-center'>
                     <Image src={backImg} alt='img' width={470} height={470} className='rounded-3xl' />
-                    <div className='absolute top-[-70px] left-[230px]'>
+                    <div className='md:absolute top-[-70px] left-[230px] my-[2rem] md:my-0'>
                         <Image src={frontImg} alt='img' width={280} height={280} className='rounded-3xl border-[8px] border-white' />
                     </div>
-                    <div className='absolute top-[20rem] left-[-28px] bg-white rounded-[10px] py-[1rem]'>
-                        <h1 className='text-[3rem]'>{frontText1}</h1>
+                    <div className='md:absolute w-full md:w-fit top-[20rem] left-[-28px] bg-white rounded-[10px] py-[1.5rem] px-[1rem] text-center'>
+                        <h1 className='text-[2rem] font-[500]'>{frontText1}</h1>
                         <p>{frontText2}</p>
                     </div>
                 </div>
-                <div className='flex flex-col gap-[2rem] relative bottom-[70px]'>
-                    <div className='px-4'>
-                        <h1 className='text-blue-600 text-[23px] font-semibold'>{Heading1}</h1>
-                        <h1 className='text-[45px] font-semibold leading-[3rem] my-6'>{Heading2}</h1>
+                <div className='flex flex-col gap-[2rem] md:relative bottom-[70px]'>
+                    <div className='px-4 pt-[2rem] md:pt-0'>
+                        <h1 className='text-blue-600 text-[20px] md:text-[23px] font-semibold'>{Heading1}</h1>
+                        <h1 className='text-[30px] md:text-[45px] font-semibold leading-[2.5rem] md:leading-[3rem] my-6'>{Heading2}</h1>
                         <p>{Text}</p>
                     </div>
                     <Accordian AccordianData={AccordianData}/>

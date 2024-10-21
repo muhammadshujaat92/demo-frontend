@@ -17,7 +17,9 @@ const Home = ({ homeData }) => {
 
     return (
         <>
-            <div className='h-fit md:py-[2rem] border-t-2 border-gray-400 md:flex justify-center bg-orange-300'>
+            {/*
+            */}
+            <div className='h-fit pb-[2rem] md:py-[2rem] border-t-2 border-gray-400 md:flex justify-center bg-orange-300'>
                 <div className='w-full max-w-[1250px] md:flex justify-between'>
                     <div className='h-[25rem] flex flex-col justify-center gap-[5rem] md:gap-28'>
                         <HeaderComponent data={slides} />
@@ -27,13 +29,12 @@ const Home = ({ homeData }) => {
                     </div>
                 </div>
             </div>
-
             <HomeSection1 secData={section1} />
             <HomeSection2 data={section2} />
             <HomeSection3 data={section3} />
             <HomeSection4 data={section4} />
             <HomeSection5 data={section5} />
-            <div className='py-[3rem] flex justify-center'>
+            <div className='py-[1.7rem] md:py-[3rem] flex justify-center'>
                 <HomeSection6 item={sec6} />
             </div>
             <HomeSection7 data={faqSection} />

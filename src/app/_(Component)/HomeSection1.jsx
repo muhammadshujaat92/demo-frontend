@@ -22,9 +22,9 @@ const HomeSection1 = ({ secData }) => {
     return (
         <div className='py-[40px]'>
             <div className='flex justify-center'>
-                <div className='w-full max-w-[1250px] ps-3'>
+                <div className='w-full max-w-[1250px] px-2 md:pe-3 md:ps-3 xl:pe-0'>
                     <h1 className='text-[32px] font-semibold text-gray-700 '>{Title}</h1>
-                    <p className='text-[18px] mt-3'>{Paragraph}</p>
+                    <p className='text-[15px] md:text-[18px] mt-3'>{Paragraph}</p>
                     <div className='flex justify-end mb-3'>
                         <button className='bg-yellow-400 font-semibold'>{ButtonText}</button>
                     </div>
@@ -44,7 +44,7 @@ const HomeSection1 = ({ secData }) => {
                     <h1 className='font-semibold text-[30px] md:text-[35px]'>{BackgroundImageTitle}</h1>
                 </div>
                 <div className='flex justify-center'>
-                    <div className='relative py-[2rem] flex items-center flex-col md:flex-row w-full ps-3 justify-between max-w-[1250px] gap-[2rem] xl:gap-[8rem]'>
+                    <div className='relative py-[2rem] flex items-center flex-col md:flex-row w-full justify-between max-w-[1250px] gap-[2rem] xl:gap-[8rem] px-2 md:pe-3 md:ps-3 xl:pe-0'>
                         {
                             data && data.length > 0 ? (
                                 data.map((data) => {

@@ -22,6 +22,10 @@
     box-shadow: 2px 1px 10px 1px #cacaca;
 }
 
+.form-shadow {
+    box-shadow: 0px 4px 10px 0 #00000033;
+}
+
 @layer base {
     @font-face {
         font-family: 'Sancoale Softened';

@@ -27,7 +27,7 @@ const Card = ({ Width, Img, title, description, btnText, priceText, days, saleBt
                     <p className='text-xs text-gray-500 flex items-center my-3'><LuAlarmClock className='text-[17px] me-1' />{days}</p>
                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 text-xs">{truncateDescription}</p>
                 </div>
-                <div className='text-end relative flex items-center justify-between bg-gray-100'>
+                <div className='text-end relative flex items-center justify-between bg-gray-100 rounded-b-lg'>
                     <div className='flex gap-1 ms-3 text-[15px] items-center'>
                         <i className={`text-yellow-500 ${icon}`}></i>
                         <i className={`text-yellow-500 ${icon}`}></i>

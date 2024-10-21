@@ -98,7 +98,7 @@ const ContactForm = ({ colspan2, fontSize }) => {
     }, []);
 
     return (
-        <form onSubmit={handleSubmit} className={`border bg-white border-gray-500 rounded-2xl ${colspan2}`}>
+        <form onSubmit={handleSubmit} className={`bg-white form-shadow rounded-2xl pb-[0.7rem] ${colspan2}`}>
             <h1 className={`font-sancoaleSoftened ${fontSize ? `text-${fontSize}` : "text-[28px]"} bg-orange-500 text-white rounded-t-2xl mb-3 text-center`}>REQUEST FOR TRAVEL ESTIMATE</h1>
             <div className="mb-4 px-3 md:px-5">
                 <input type="name" name='name' value={formData.name} onChange={handleChange} className="text-sm rounded-lg block w-full p-2.5 bg-gray-200" placeholder="Enter Your Name" required />

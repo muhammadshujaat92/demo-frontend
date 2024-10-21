@@ -39,7 +39,7 @@ const HeaderComponent = ({ data }) => {
             ) : (
                 <span></span>
             )}
-            <div className="flex items-center text-[10px] md:text-[12px] gap-[0.8rem] md:gap-[2rem] xl:gap-[5rem] xl:text-[18px] px-3">
+            <div className="flex items-center text-[9.5px] md:text-[12.5px] gap-[0.8rem] md:gap-[2rem] xl:gap-[5rem] xl:text-[18px] px-3">
                 {data?.map((item, index) => (
                     <button key={index} onClick={() => setCurrentIndex(index)} className={`border-b-2 border-gray-400 relative font-semibold ${currentIndex === index ? 'text-orange-500' : ''}`}>
                         {item.Category}
