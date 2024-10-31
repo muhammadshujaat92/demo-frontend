@@ -2,9 +2,23 @@ import React from 'react'
 import ContactPage from '../_(Component)/ContactPage'
 import { fetchData } from '@/utils/apiHelper';
 
-export const metadata = {
-    title: 'Contact Us',
-};
+export async function generateMetadata() {
+    try {
+        const blogData = await fetchData("contact-uses");
+        const { Tabtitle, metaDescription } = blogData?.[0]?.attributes || {};
+
+        return {
+            title: Tabtitle || 'Default Title',
+            description: metaDescription || 'Default Description',
+        };
+    } catch (error) {
+        console.error("Error generating metadata:", error);
+        return {
+            title: 'Default Title',
+            description: 'Default Description'
+        };
+    }
+}
 
 const page = async () => {
     try {

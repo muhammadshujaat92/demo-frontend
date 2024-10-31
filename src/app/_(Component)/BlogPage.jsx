@@ -153,7 +153,7 @@ const BlogPage = ({ blogData }) => {
                         </div>
                     </div>
                     <div className="col-span-2 flex justify-center flex-col pt-[2rem]">
-                        <ul class="mt-8 flex items-center -space-x-px h-10 text-base w-full max-w-[1250px]">
+                        <ul className="mt-8 flex items-center -space-x-px h-10 text-base w-full max-w-[1250px]">
                             <button
                                 onClick={() => setPageNo((prev) => prev - 1)}
                                 disabled={pageNo === 1}
@@ -161,7 +161,7 @@ const BlogPage = ({ blogData }) => {
                                     ? 'text-gray-400 cursor-not-allowed'
                                     : ''
                                     }`}>
-                                <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                <svg className="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
                                 </svg>
                                 Previous
@@ -180,7 +180,7 @@ const BlogPage = ({ blogData }) => {
                                 className={`${pageNo === totalPages ? "cursor-not-allowed" : ""} flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700`}
                             >
                                 Next
-                                <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                <svg className="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
                                 </svg>
                             </button>
