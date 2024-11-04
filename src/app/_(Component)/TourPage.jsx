@@ -57,7 +57,7 @@ const TourPage = ({ pageData }) => {
                         {data && data.length > 0 ? (
                             data.slice(0, 6).map((data) => {
                                 const { title, description, buttonText, price, Days, Sale, oldPrice, image, showCard, icon } = data.attributes
-                                const { url } = image.data.attributes;
+                                const { url } = image?.data?.attributes || "";
                                 const Img = url ? `${imgUrl}${url}` : ""
                                 return (
                                     <Card key={data.id} Width={'max-w-[16rem]'} icon={icon} Img={Img} title={title} description={description} btnText={buttonText} priceText={price} days={Days} saleBtn={Sale} spanText={oldPrice} />
@@ -66,8 +66,8 @@ const TourPage = ({ pageData }) => {
                         ) : (
                             <div>NO PACKAGE</div>
                         )}
-                        <div className="flex gap-[2rem] px-[1rem] pt-[3rem] pb-[2rem] rounded-xl bg-[#f2f2f2]">
-                            <div className="flex flex-col gap-[2.5rem]">
+                        <div className="flex gap-[2rem] px-[1rem] pt-[3rem] pb-[2rem] rounded-xl bg-[#f2f2f2] min-w-full max-w-full">
+                            <div className="flex flex-col w-[28rem] gap-[1.5rem]">
                                 <div>
                                     <h1 className="font-semibold text-[30px] leading-[2.2rem]">{discountHeading}</h1>
                                     <p className="text-[14px] mt-[1rem]">{discountParagraph}</p>
@@ -76,14 +76,14 @@ const TourPage = ({ pageData }) => {
                                     <button className="bg-green-700 text-white py-[10px] px-[35px] rounded-[35px]">{discountBtnText}</button>
                                 </div>
                             </div>
-                            <div className="w-[35rem]">
+                            <div className="w-[20rem] h-[16rem]">
                                 <Image src={discountImg} width={300} height={300} alt='img' className="w-full h-full" />
                             </div>
                         </div>
                         {data && data.length > 0 ? (
                             data.slice(6).map((data) => {
                                 const { title, description, buttonText, price, Days, Sale, oldPrice, image, icon } = data.attributes
-                                const { url } = image.data.attributes;
+                                const { url } = image?.data?.attributes || "";
                                 const Img = url ? `${imgUrl}${url}` : ""
                                 return (
                                     <Card key={data.id} Width={'max-w-[16rem]'} icon={icon} Img={Img} title={title} description={description} btnText={buttonText} priceText={price} days={Days} saleBtn={Sale} spanText={oldPrice} />
