@@ -3,11 +3,10 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { imageUrl } from "@/utils/apiHelper";
 import ContactForm from "./ContactForm";
-import { useState } from "react";
+import defaultImg from '@/public/imgs/Contact-IndiaYaatra.webp'
 
 const ContactPage = ({ contactData }) => {
     const searchParams = useSearchParams();
-    const [isImageLoad, setIsImageLoad] = useState(false)
     const keyword = searchParams.get('rh');
 
     const toSlug = (text) => {
@@ -27,27 +26,38 @@ const ContactPage = ({ contactData }) => {
         <div>
             <section>
                 <div className={`relative h-[30rem]`}>
-                    <Image
-                        src={bannerImg}
-                        alt='banner'
-                        width={1500}
-                        height={900}
-                        className={`w-full h-full ${isImageLoad ? "visible" : "invisible"}`}
-                        priority={true}
-                        onLoad={() => setIsImageLoad(true)}
-                    />
                     {
-                        isImageLoad ? (
-                            <div className="flex justify-center imgae">
-                                <div className='absolute top-28 w-full max-w-[1250px] ps-3 flex flex-col gap-8'>
-                                    <h1 className='text-[40px] text-white font-sancoaleSoftened'>{bannerHeading} {keyword && `- ${toSlug(keyword)}`}</h1>
-                                    <p className='text-lg text-white font-bold'>{bannerParagraph}</p>
-                                </div>
-                            </div>
+                        bannerImg ? (
+                            <Image
+                                src={bannerImg}
+                                alt='banner'
+                                width={1500}
+                                height={900}
+                                className={`w-full h-full`}
+                                priority
+                                fetchPriority="high"
+                                placeholder="blur"
+                                blurDataURL="/imgs/homeSection1BlurData.jpg"
+                                style={{ objectFit: "cover" }}
+                            />
                         ) : (
-                            <span></span>
+                            <Image
+                                src={defaultImg}
+                                alt='banner'
+                                width={1500}
+                                height={900}
+                                className={`w-full h-full`}
+                                style={{ objectFit: "cover" }}
+                                priority
+                            />
                         )
                     }
+                    <div className="flex justify-center imgae">
+                        <div className='absolute top-28 w-full max-w-[1250px] ps-3 flex flex-col gap-8'>
+                            <h1 className='text-[40px] text-white font-sancoaleSoftened'>{bannerHeading} {keyword && `- ${toSlug(keyword)}`}</h1>
+                            <p className='text-lg text-white font-bold'>{bannerParagraph}</p>
+                        </div>
+                    </div>
                 </div>
             </section>
             <div className="flex flex-col items-center">

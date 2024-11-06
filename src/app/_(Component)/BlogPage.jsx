@@ -8,11 +8,11 @@ import ContactForm from './ContactForm'
 import { blogCardThunk } from '../_redux/api/BlogCard'
 import { GiCheckMark } from "react-icons/gi";
 import { imageUrl } from '@/utils/apiHelper'
+import defaultImg from '@/public/imgs/blogimg.webp'
 
 const BlogPage = ({ blogData }) => {
     const dispatch = useDispatch();
     const [selectedDate, setSelectedDate] = useState(null);
-    const [isImageLoad, setIsImageLoad] = useState(false)
     const [pageNo, setPageNo] = useState(1);  // Add state for pagination
     const { data, meta } = useSelector(state => state?.blogCardThunk?.data || {});
 
@@ -69,25 +69,37 @@ const BlogPage = ({ blogData }) => {
         <div>
             <section>
                 <div className={`relative h-[30rem]`}>
-                    <Image
-                        src={bannerImg}
-                        alt='banner'
-                        width={1500}
-                        height={900}
-                        className={`w-full h-full ${isImageLoad ? "visible" : "invisible"}`}
-                        priority={true}
-                        onLoad={() => setIsImageLoad(true)}
-                    />
                     {
-                        isImageLoad ? (
-                            <div className='flex justify-center imgae'>
-                                <div className='absolute xl:top-32 w-full max-w-[1250px] ps-3 flex flex-col gap-8'>
-                                    <h1 className='text-[60px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
-                                </div>
-                            </div>
+                        bannerImg ? (
+                            <Image
+                                src={bannerImg}
+                                alt='banner'
+                                width={1500}
+                                height={900}
+                                className={`w-full h-full`}
+                                priority
+                                fetchPriority="high"
+                                placeholder="blur"
+                                blurDataURL="/imgs/homeSection1BlurData.jpg"
+                                style={{ objectFit: "cover" }}
+                            />
                         ) : (
-                            <span></span>
-                        )}
+                            <Image
+                                src={defaultImg}
+                                alt='banner'
+                                width={1500}
+                                height={900}
+                                className={`w-full h-full`}
+                                priority
+                                style={{ objectFit: "cover" }}
+                            />
+                        )
+                    }
+                    <div className='flex justify-center imgae'>
+                        <div className='absolute xl:top-32 w-full max-w-[1250px] ps-3 flex flex-col gap-8'>
+                            <h1 className='text-[60px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
+                        </div>
+                    </div>
                 </div>
             </section>
             <section className='flex justify-center'>

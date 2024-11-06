@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { imageUrl } from '@/utils/apiHelper'
 import Image from 'next/image'
+import defaultImg from '@/public/imgs/woman-mountain-peak.webp'
 
 const HomeSection3 = ({ data }) => {
     const { ButtonText, Heading, Paragraph, image } = data || {}
@@ -26,7 +27,13 @@ const HomeSection3 = ({ data }) => {
                     <Link href={`/contact/?rh=${slug}`} className='font-bold bg-green-600 text-white px-4 py-1 text-[18px]'>{ButtonText}</Link>
                 </div>
                 <div className='h-[20rem] md:h-[25rem] max-h-[25rem] relative rounded-l-[15rem] mt-7 md:mt-0'>
-                    <Image src={Img} alt='' className='rounded-l-[15rem]' priority={true} layout='fill' style={{ objectFit: "cover" }} />
+                    {
+                        Img ? (
+                            <Image src={Img} alt='bg-img' className='rounded-l-[15rem]' priority layout='fill' style={{ objectFit: "cover" }} />
+                        ) : (
+                            <Image src={defaultImg} alt='bg-img' className='rounded-l-[15rem]' priority layout='fill' style={{ objectFit: "cover" }} />
+                        )
+                    }
                 </div>
             </div>
         </div>

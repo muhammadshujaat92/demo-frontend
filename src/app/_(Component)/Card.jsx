@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import { LuAlarmClock } from "react-icons/lu";
+import cardImg from "@/public/imgs/gellary-2.jpg"
 
 const Card = ({ Width, Img, title, description, btnText, priceText, days, saleBtn, spanText, icon }) => {
     let descriptionTruncate = description?.split(' ')
@@ -11,7 +12,13 @@ const Card = ({ Width, Img, title, description, btnText, priceText, days, saleBt
     return (
         <div className={`${Width ? `${Width}` : "max-w-[18rem]"} max-h-[27rem] bg-white border border-gray-200 rounded-lg shadow-md`}>
             <div className={`${Width ? `${Width}` : "max-w-[18rem]"} h-[15rem] max-h-[15rem] relative`}>
-                <Image className="rounded-t-lg w-full h-full" src={Img} width={250} height={250} alt="cardImg" />
+                {
+                    Img ? (
+                        <Image className="rounded-t-lg w-full h-full" src={Img} width={250} height={250} alt="cardImg"/>
+                    ) : (
+                        <Image className="rounded-t-lg w-full h-full" src={cardImg} width={250} height={250} alt="cardImg" />
+                    )
+                }
                 <div className={`absolute top-3 font-semibold text-[13px] ${saleBtn ? "flex items-center justify-between w-full" : ""}`}>
                     <button className='bg-yellow-300 p-1'><span className='text-[11px] me-1 line-through text-gray-600'>{spanText}</span>{priceText}</button>
                     {saleBtn ? (

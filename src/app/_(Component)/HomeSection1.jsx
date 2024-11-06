@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { cardThunk } from '../_redux/api/Card'
 import { imageUrl } from '@/utils/apiHelper'
 import Image from 'next/image'
+import bgImg from "@/public/imgs/homeSection1Default.webp"
 
 const HomeSection1 = ({ secData }) => {
     const dispatch = useDispatch();
@@ -32,14 +33,25 @@ const HomeSection1 = ({ secData }) => {
             </div>
 
             <div className='relative h-fit'>
-                <Image
-                    src={backgroundImg}
-                    alt=""
-                    layout="fill"
-                    style={{ objectFit: "cover" }}
-                    className="z-[-1]"
-                    priority={true}
-                />
+                {url ? (
+                    <Image
+                        src={backgroundImg}
+                        alt="banner_image"
+                        style={{ objectFit: "cover" }}
+                        className="z-[-1]"
+                        layout="fill"
+                        priority
+                        fetchPriority="high"
+                        placeholder="blur"
+                        blurDataURL="/imgs/homeSection1BlurData.jpg"
+                    />
+                ) : (
+                    <Image src={bgImg}
+                        layout="fill"
+                        style={{ objectFit: "cover" }}
+                        className="z-[-1]"
+                        priority />
+                )}
                 <div className='relative py-[1rem] w-full text-center'>
                     <h1 className='font-semibold text-[30px] md:text-[35px]'>{BackgroundImageTitle}</h1>
                 </div>

@@ -1,16 +1,16 @@
 'use client'
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cardThunk } from "../_redux/api/Card";
-import discountImg from '@/public/discount.png'
+import discountImg from '@/public/imgs/discount.webp'
 import { imageUrl } from "@/utils/apiHelper";
 import ContactForm from "./ContactForm";
 import Card from "./Card";
+import defaultImg from '@/public/imgs/India-tour-package.webp'
 
 const TourPage = ({ pageData }) => {
     const dispatch = useDispatch();
-    const [isImageLoad, setIsImageLoad] = useState(false)
 
     useEffect(() => {
         dispatch(cardThunk())
@@ -27,28 +27,39 @@ const TourPage = ({ pageData }) => {
         <div>
             <section>
                 <div className={`relative h-[20rem] flex items-center justify-center xl:block md:h-[30rem]`}>
-                    <Image
-                        src={BannerImg}
-                        alt='banner'
-                        width={1500}
-                        height={900}
-                        className={`w-full h-full ${isImageLoad ? "visible" : "invisible"}`}
-                        priority={true}
-                        onLoad={() => setIsImageLoad(true)}
-                        style={{ objectFit: "cover" }}
-                    />
                     {
-                        isImageLoad ? (
-                            <div className="flex justify-center imgae">
-                                <div className='absolute xl:top-32 w-full max-w-[1250px] flex flex-col gap-8 ps-3'>
-                                    <h1 className='text-[42px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
-                                    <p className='lg:text-lg text-white lg:font-bold'>{bannerParagraph}</p>
-                                </div>
-                            </div>
+                        BannerImg ? (
+                            <Image
+                                src={BannerImg}
+                                alt='banner'
+                                width={1500}
+                                height={900}
+                                className={`w-full h-full`}
+                                // layout="fill"
+                                fetchPriority="high"
+                                placeholder="blur"
+                                blurDataURL="/imgs/homeSection1BlurData.jpg"
+                                priority
+                                style={{ objectFit: "cover" }}
+                            />
                         ) : (
-                            <span></span>
+                            <Image
+                                src={defaultImg}
+                                alt='banner'
+                                width={1500}
+                                height={900}
+                                className={`w-full h-full`}
+                                priority
+                                style={{ objectFit: "cover" }}
+                            />
                         )
                     }
+                    <div className="flex justify-center imgae">
+                        <div className='absolute xl:top-32 w-full max-w-[1250px] flex flex-col gap-8 ps-3'>
+                            <h1 className='text-[42px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
+                            <p className='lg:text-lg text-white lg:font-bold'>{bannerParagraph}</p>
+                        </div>
+                    </div>
                 </div>
             </section>
             <section className='flex justify-center'>
@@ -73,7 +84,7 @@ const TourPage = ({ pageData }) => {
                                     <p className="text-[14px] mt-[1rem]">{discountParagraph}</p>
                                 </div>
                                 <div className="flex justify-end">
-                                    <button className="bg-green-700 text-white py-[10px] px-[35px] rounded-[35px]">{discountBtnText}</button>
+                                    <button className="bg-orange-500 font-semibold hover:bg-orange-600 text-white py-[10px] px-[35px] rounded-[35px]">{discountBtnText}</button>
                                 </div>
                             </div>
                             <div className="w-[20rem] h-[16rem]">

@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { imageUrl } from '@/utils/apiHelper'
+import defaultImg from "@/public/imgs/gellary-2.jpg"
 
 const BlogCard = ({ BlogCardTitle, BlogCardDescription, BlogCardButtonText, slug, BlogCardImage }) => {
     const { url } = BlogCardImage?.data?.attributes || {}
@@ -13,15 +14,22 @@ const BlogCard = ({ BlogCardTitle, BlogCardDescription, BlogCardButtonText, slug
     let truncatedBlogCardTitle = titleTruncate?.length > 6 ? `${titleTruncate.slice(0, 6).join(' ')}...` : BlogCardTitle
 
     return (
-        <div className="max-w-[23rem] border h-[31rem] border-gray-200 rounded-lg shadow">
-            <Link href={`/blog/${slug}`}>
-                <Image className="rounded-t-lg h-[17rem]" src={cardImg} alt="cardImg" width={600} height={600} />
-            </Link>
-            <div className="p-5">
-                <Link href={`/blog/${slug}`}>
+        <div className="max-w-[23rem] border h-[33rem] max-h-[33rem] border-gray-200 rounded-lg shadow">
+            <div className='h-[18rem]'>
+                {
+                    cardImg ? (
+                        <Image className="rounded-t-lg h-full object-cover" src={cardImg} alt="cardImg" width={600} height={600} />
+
+                    ) : (
+                        <Image className="rounded-t-lg h-full object-cover" src={defaultImg} alt="cardImg" width={600} height={600} />
+                    )
+                }
+            </div>
+            <div className="p-5 h-[45%] flex justify-between items-start flex-col">
+                <div>
                     <h5 className="mb-2 text-2xl font-bold tracking-tight">{truncatedBlogCardTitle}</h5>
-                </Link>
-                <p className="mb-3 font-normal text-gray-700">{truncatedBlogCardDescription}</p>
+                    <p className="mb-3 font-normal text-gray-700">{truncatedBlogCardDescription}</p>
+                </div>
                 <Link href={`/blog/${slug}`} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-600 rounded-lg">
                     {BlogCardButtonText}
                     <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">

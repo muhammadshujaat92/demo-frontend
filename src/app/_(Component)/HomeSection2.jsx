@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { imageUrl } from '@/utils/apiHelper'
 import Image from 'next/image'
+import defaultImg from '@/public/imgs/woman-mountain-peak.webp'
 
 const HomeSection2 = ({ data }) => {
     const { ButtonText, Heading, Paragraph, Title, image } = data || {}
@@ -20,7 +21,13 @@ const HomeSection2 = ({ data }) => {
                 <h1 className='font-bold text-[27px] md:text-[35px] text-center'>{Title}</h1>
                 <div className='md:grid grid-cols-2 gap-[3rem] md:gap-[1rem] xl:gap-[3rem] my-4 py-[2rem]'>
                     <div className='h-[20rem] md:h-[25rem] max-h-[25rem] relative rounded-r-[15rem]'>
-                        <Image src={Img} alt='' className='rounded-r-[15rem]' priority={true} layout='fill' style={{ objectFit: "cover" }}/>
+                        {
+                            Img ? (
+                                <Image src={Img} alt='bg-img' className='rounded-r-[15rem]' priority layout='fill' style={{ objectFit: "cover" }} />
+                            ) : (
+                                <Image src={defaultImg} alt='bg-img' className='rounded-r-[15rem]' priority layout='fill' style={{ objectFit: "cover" }} />
+                            )
+                        }
                     </div>
                     <div className='flex flex-col gap-[2rem] md:gap-[3rem] items-end mt-5 md:mt-0'>
                         <div>

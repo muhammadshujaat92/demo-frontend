@@ -1,26 +1,28 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
 import ContactForm from './ContactForm';
 import userImg from '@/public/user.png'
 import Slider from './Slider';
 import { imageUrl } from '@/utils/apiHelper';
 import { useDispatch, useSelector } from 'react-redux';
-import { blogCardThunk } from '../_redux/api/BlogCard';
+import defaultImg from '@/public/imgs/blogimg.webp'
+import { blogContentThunk } from '../_redux/api/BlogContent';
 
 const BlogContent = ({ blogContent }) => {
     const dispatch = useDispatch();
-    const [isImageLoad, setIsImageLoad] = useState(false)
     const { blogData, admin } = blogContent?.attributes || {}
-    const { data } = useSelector(state => state?.blogCardThunk?.data || {});
+    const { data } = useSelector(state => state?.blogContentThunk?.data || {});
     const { Title, bannerHeading, paragraph1, paragraph2, bannerImage } = blogData || {};
     const { Name, paragraph } = admin || {}
     const { url } = bannerImage?.data?.attributes || {}
     const imgUrl = imageUrl()
     const bannerImg = url ? `${imgUrl}${url}` : ""
+    console.log(data);
+
 
     useEffect(() => {
-        dispatch(blogCardThunk());
+        dispatch(blogContentThunk());
     }, [dispatch]);
 
 
@@ -36,25 +38,37 @@ const BlogContent = ({ blogContent }) => {
         <div>
             <section>
                 <div className={`relative h-[30rem]`}>
-                    <Image
-                        src={bannerImg}
-                        alt='banner'
-                        width={1500}
-                        height={900}
-                        className={`w-full h-full ${isImageLoad ? "visible" : "invisible"}`}
-                        priority={true}
-                        onLoad={() => setIsImageLoad(true)}
-                    />
                     {
-                        isImageLoad ? (
-                            <div className='flex justify-center imgae'>
-                                <div className='absolute xl:top-32 w-full max-w-[1250px] ps-3 flex flex-col gap-8'>
-                                    <h1 className='text-[60px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
-                                </div>
-                            </div>
+                        bannerImg ? (
+                            <Image
+                                src={bannerImg}
+                                alt='banner'
+                                width={1500}
+                                height={900}
+                                className={`w-full h-full`}
+                                priority
+                                fetchPriority="high"
+                                placeholder="blur"
+                                blurDataURL="/imgs/homeSection1BlurData.jpg"
+                                style={{ objectFit: "cover" }}
+                            />
                         ) : (
-                            <span></span>
-                        )}
+                            <Image
+                                src={defaultImg}
+                                alt='banner'
+                                width={1500}
+                                height={900}
+                                className={`w-full h-full`}
+                                priority
+                                style={{ objectFit: "cover" }}
+                            />
+                        )
+                    }
+                    <div className='flex justify-center imgae'>
+                        <div className='absolute xl:top-32 w-full max-w-[1250px] ps-3 flex flex-col gap-8'>
+                            <h1 className='text-[60px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
+                        </div>
+                    </div>
                 </div>
             </section>
             <section className='flex items-center flex-col'>

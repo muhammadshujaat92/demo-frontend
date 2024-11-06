@@ -2,6 +2,7 @@
 import React from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import defaultImg from '@/public/imgs/recentpost.jpg'
 
 // Import Swiper styles
 import 'swiper/css';
@@ -32,12 +33,19 @@ const Slider = ({ imgData }) => {
                 imgData ? (
                     imgData.slice(-7).map((item) => {
                         const { BlogCardTitle, BlogCardImage } = item.attributes;
-                        const { url } = BlogCardImage.data.attributes;
+                        const { url } = BlogCardImage?.data?.attributes || "";
                         const blogImg = url ? `${baseUrl}${url}` : ""
                         return (
                             <SwiperSlide key={item.id}>
                                 <div className="w-[9rem] py-[1.5rem]">
-                                    <Image src={blogImg} width={130} height={130} alt="img" className="w-full min-h-[8rem] max-h-[8rem]" />
+                                    {
+                                        blogImg ? (
+                                            <Image src={blogImg} width={130} height={130} alt="img" className="w-full min-h-[8rem] max-h-[8rem]" priority/>
+
+                                        ) : (
+                                            <Image src={defaultImg} width={130} height={130} alt="img" className="w-full min-h-[8rem] max-h-[8rem]" priority/>
+                                        )
+                                    }
                                     <Link href={`/blog/${item.id}`} className="mt-1 text-[14px] text-[#337ab7] font-semibold">
                                         <p className='text-center'>{BlogCardTitle}</p>
                                     </Link>
