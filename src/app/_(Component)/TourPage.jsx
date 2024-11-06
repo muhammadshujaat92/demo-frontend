@@ -32,25 +32,20 @@ const TourPage = ({ pageData }) => {
                             <Image
                                 src={BannerImg}
                                 alt='banner'
-                                // width={1500}
-                                // height={900}
                                 className={`w-full object-cover`}
                                 layout="fill"
                                 fetchPriority="high"
                                 placeholder="blur"
                                 blurDataURL="/imgs/homeSection1BlurData.jpg"
                                 priority
-                                // style={{ objectFit: "cover" }}
                             />
                         ) : (
                             <Image
                                 src={defaultImg}
                                 alt='banner'
-                                width={1500}
-                                height={900}
-                                className={`w-full h-full`}
+                                className={`w-full object-cover`}
+                                layout="fill"
                                 priority
-                                style={{ objectFit: "cover" }}
                             />
                         )
                     }

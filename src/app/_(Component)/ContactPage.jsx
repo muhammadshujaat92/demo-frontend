@@ -31,28 +31,24 @@ const ContactPage = ({ contactData }) => {
                             <Image
                                 src={bannerImg}
                                 alt='banner'
-                                width={1500}
-                                height={900}
-                                className={`w-full h-full`}
+                                className={`w-full object-cover`}
+                                layout="fill"
                                 priority
                                 fetchPriority="high"
                                 placeholder="blur"
                                 blurDataURL="/imgs/homeSection1BlurData.jpg"
-                                style={{ objectFit: "cover" }}
                             />
                         ) : (
                             <Image
                                 src={defaultImg}
                                 alt='banner'
-                                width={1500}
-                                height={900}
-                                className={`w-full h-full`}
-                                style={{ objectFit: "cover" }}
+                                className={`w-full object-cover`}
+                                layout="fill"
                                 priority
                             />
                         )
                     }
-                    <div className="flex justify-center imgae">
+                    <div className="flex justify-center inset-0 absolute bg-black bg-opacity-50">
                         <div className='absolute top-28 w-full max-w-[1250px] ps-3 flex flex-col gap-8'>
                             <h1 className='text-[40px] text-white font-sancoaleSoftened'>{bannerHeading} {keyword && `- ${toSlug(keyword)}`}</h1>
                             <p className='text-lg text-white font-bold'>{bannerParagraph}</p>
