@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import ContactForm from './ContactForm';
 import userImg from '@/public/user.png'
@@ -11,14 +11,80 @@ import { blogContentThunk } from '../_redux/api/BlogContent';
 
 const BlogContent = ({ blogContent }) => {
     const dispatch = useDispatch();
-    const { blogData, admin } = blogContent?.attributes || {}
+    const { blogData, admin, content } = blogContent?.attributes || {}
     const { data } = useSelector(state => state?.blogContentThunk?.data || {});
     const { Title, bannerHeading, paragraph1, paragraph2, bannerImage } = blogData || {};
     const { Name, paragraph } = admin || {}
     const { url } = bannerImage?.data?.attributes || {}
     const imgUrl = imageUrl()
     const bannerImg = url ? `${imgUrl}${url}` : ""
-    console.log(data);
+    const [text, setText] = useState('');
+
+    useEffect(() => {
+        let textt = content ?? '';
+
+        // Horizontal lines
+        textt = textt.replace(/^\s*(?:-{3,}|\*{3,}|_{3,})\s*$/gm, '<hr class="my-[1rem] border-[1px] border-[#c9c9c9]"/>');
+
+        // Headings
+        textt = textt.replace(
+            /^#\s(.+)/gm,
+            '<h1 class="font-acme text-[32px] uppercase font-normal mb-[-10px] text-[#30B1C0]">$1</h1>'
+        );
+        textt = textt.replace(
+            /^##\s(.+)/gm,
+            '<h2 class="font-acme text-[24px] uppercase font-normal mb-[-25px] text-[#30B1C0]">$1</h2>'
+        );
+        textt = textt.replace(
+            /^###\s(.+)/gm,
+            '<h3 class="font-acme text-[20px] uppercase font-normal mb-[-25px] text-[#30B1C0]">$1</h3>'
+        );
+        textt = textt.replace(
+            /^####\s(.+)/gm,
+            '<h4 class="font-acme text-[18px] uppercase font-normal mb-[-25px] text-[#30B1C0]">$1</h4>'
+        );
+        textt = textt.replace(
+            /^#####\s(.+)/gm,
+            '<h5 class="font-acme text-[16px] uppercase font-normal mb-[-25px] text-[#30B1C0]">$1</h5>'
+        );
+        textt = textt.replace(
+            /^######\s(.+)/gm,
+            '<h6 class="font-acme text-[14px] uppercase font-normal mb-[-25px] text-[#30B1C0]">$1</h6>'
+        );
+
+        // Images
+        textt = textt.replace(
+            /!\[([^\]]+)\]\(([^)]+)\)/g,
+            `<img src="$2" class='w-[100%] h-[100%]'>`
+        );
+
+        // Links
+        textt = textt.replace(
+            /\[([^\]]+)\]\(([^)]+)\)/g,
+            '<a href="$2" class="text-[#F60] font-bold">$1</a>'
+        );
+
+        // Bold, Italic, and Strikethrough
+        textt = textt.replace(/\*\*(.*?)\*\*/g, '<strong class="text-[#F60]">$1</strong>');
+        textt = textt.replace(/_(?![^<]*>)(.*?)_(?![^<]*>)/g, '<em>$1</em>');
+        textt = textt.replace(/~~(.*?)~~/g, '<del>$1</del>');
+
+        // Blockquote
+        textt = textt.replace(/^>\s(.+)/gm, '<blockquote class="border-l-4 pl-4 italic text-gray-500">$1</blockquote>');
+
+        // Lists
+        textt = textt.replace(/\n/gi, '<br/> \n');
+        textt = textt.replace(/^- (.+)(\n- .+)*/gm, function (match, p1) {
+            const listItems = match
+                .trim()
+                .split('\n')
+                .map((item) => `<li class="">${item.slice(2)}</li>`)
+                .join('\n');
+            return `<ul class='chooseus'>\n${listItems}\n</ul>`;
+        });
+
+        setText(textt);
+    }, [blogContent]);
 
 
     useEffect(() => {
@@ -48,7 +114,7 @@ const BlogContent = ({ blogContent }) => {
                                 priority
                                 fetchPriority="high"
                                 placeholder="blur"
-                                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAAGAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAQF/8QAHxAAAQQCAgMAAAAAAAAAAAAAAgABAxEEBSEiEoGh/8QAFQEBAQAAAAAAAAAAAAAAAAAABQb/xAAaEQEAAgMBAAAAAAAAAAAAAAABACECAxOh/9oADAMBAAIRAxEAPwC/SQz4OrACyjkkJuxFy116f6sw8Dc+ZVso6vjo7IiWcAKk532Lb4T/2Q=="
+                                blurDataURL="/imgs/homeSection1BlurData.jpg"
                             />
                         ) : (
                             <Image
@@ -73,6 +139,7 @@ const BlogContent = ({ blogContent }) => {
                         <div>
                             <h1 className='font-bold text-[50px] mb-2'>{Title}</h1>
                             <p>{paragraph1}</p>
+                            <div dangerouslySetInnerHTML={{ __html: text }}></div>
                             <br />
                             <p>{paragraph2}</p>
                         </div>
