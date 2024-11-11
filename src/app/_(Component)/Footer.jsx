@@ -49,13 +49,13 @@ const Footer = ({ footerData }) => {
 
     return (
         <div className='flex justify-center bg-green-700 z-10'>
-            <footer className='text-white flex py-[2rem] w-full max-w-[1250px] gap-[3rem] ps-3'>
-                <div className='w-[35%] pe-2'>
+            <footer className='text-white xl:flex py-[2rem] w-full max-w-[1250px] gap-[3rem] px-3 xl:ps-3'>
+                <div className='xl:w-[35%] xl:pe-2'>
                     <Image src={logoImg} alt='logo' width={150} height={150} />
                     <p className='text-[15px] py-[2rem]'>{paragraph}</p>
                 </div>
-                <div className='flex justify-between w-[65%]'>
-                    <div className='flex flex-col items-center '>
+                <div className='flex justify-between flex-wrap xl:w-[65%] gap-[2rem] md:gap-0'>
+                    <div className='flex flex-col items-center gap-[1.5rem] xl:gap-0'>
                         <h1 className='text-[25px] font-semibold'>Useful Links</h1>
                         <ul className='flex flex-col justify-center h-[75%] text-[20px] gap-5'>
                             <li><Link href={'/'}>Home</Link></li>
@@ -65,7 +65,7 @@ const Footer = ({ footerData }) => {
                         </ul>
                     </div>
 
-                    <div className="flex flex-col gap-[3rem]">
+                    <div className="flex flex-col gap-[1.5rem] xl:gap-[3rem]">
                         <h1 className='text-[25px] font-semibold'>News Letter</h1>
                         <div>
                             <div className='mb-4'>
@@ -115,7 +115,7 @@ const Footer = ({ footerData }) => {
 
                     <div className='flex flex-col items-center'>
                         <div className='h-full'>
-                            <h1 className='text-[25px] font-semibold'>Contact Details</h1>
+                            <h1 className='text-[25px] font-semibold mb-[1.5rem] xl:mb-0'>Contact Details</h1>
                             <div className='h-[75%] flex justify-center flex-col gap-7'>
                                 <p className='flex items-center gap-2'><FaPhoneAlt className='p-2 text-[2rem] border rounded-full' />{contactPhone}</p>
                                 <p className='flex items-center gap-2'><IoLocationSharp className='p-2 text-[2rem] border rounded-full' />{location}</p>

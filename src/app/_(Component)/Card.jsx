@@ -29,20 +29,20 @@ const Card = ({ Width, Img, title, description, btnText, priceText, days, saleBt
             <div className="flex flex-col justify-between h-[12rem] max-h-[12rem]">
                 <div className='p-3'>
                     <a href="#">
-                        <h5 className="text-lg font-bold tracking-tight text-gray-900">{truncatedTitle}</h5>
+                        <h5 className="text-lg md:text-[1rem] xl:text-lg font-bold tracking-tight text-gray-900">{truncatedTitle}</h5>
                     </a>
                     <p className='text-xs text-gray-500 flex items-center my-3'><LuAlarmClock className='text-[17px] me-1' />{days}</p>
                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 text-xs">{truncateDescription}</p>
                 </div>
                 <div className='text-end relative flex items-center justify-between bg-gray-100 rounded-b-lg'>
-                    <div className='flex gap-1 ms-3 text-[15px] items-center'>
+                    <div className='flex gap-1 ms-3 text-[15px] md:text-[12px] xl:text-[15px] items-center'>
                         <i className={`text-yellow-500 ${icon}`}></i>
                         <i className={`text-yellow-500 ${icon}`}></i>
                         <i className={`text-yellow-500 ${icon}`}></i>
                         <i className={`text-yellow-500 ${icon}`}></i>
                         <i className={`text-yellow-500 ${icon}`}></i>
                     </div>
-                    <button className="ribbon px-[30px] rounded-br-lg py-2 text-sm font-medium text-center text-white bg-green-700 hover:bg-green-800">
+                    <button className="ribbon px-[30px] rounded-br-lg py-2 md:text-[12px] xl:text-sm text-sm font-medium text-center text-white bg-green-700 hover:bg-green-800">
                         {btnText}
                     </button>
                 </div>

@@ -68,7 +68,7 @@ const BlogPage = ({ blogData }) => {
     return (
         <div>
             <section>
-                <div className={`relative h-[30rem]`}>
+                <div className={`relative h-[20rem] flex items-center justify-center xl:block md:h-[30rem]`}>
                     {
                         bannerImg ? (
                             <Image
@@ -92,15 +92,15 @@ const BlogPage = ({ blogData }) => {
                         )
                     }
                     <div className='flex justify-center inset-0 absolute bg-black bg-opacity-50'>
-                        <div className='absolute xl:top-32 w-full max-w-[1250px] ps-3 flex flex-col gap-8'>
-                            <h1 className='text-[60px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
+                        <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
+                            <h1 className='text-[35px] leading-[2.5rem] md:text-[60px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
                         </div>
                     </div>
                 </div>
             </section>
             <section className='flex justify-center'>
-                <div className='grid grid-cols-3 py-[2rem] w-full max-w-[1250px] ps-3 gap-[1rem]'>
-                    <div className='flex flex-wrap gap-[1.5rem] col-span-2'>
+                <div className='md:grid grid-cols-3 py-[2rem] w-full max-w-[1250px] px-3 xl:ps-3 gap-[1rem]'>
+                    <div className='flex flex-wrap gap-[1.5rem] col-span-2 mb-[2rem] md:mb-0 justify-center md:justify-normal'>
                         {
                             filteredData && filteredData.length > 0 ? (
                                 filteredData.map((post) => {

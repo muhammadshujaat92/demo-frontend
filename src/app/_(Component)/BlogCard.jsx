@@ -14,8 +14,8 @@ const BlogCard = ({ BlogCardTitle, BlogCardDescription, BlogCardButtonText, slug
     let truncatedBlogCardTitle = titleTruncate?.length > 6 ? `${titleTruncate.slice(0, 6).join(' ')}...` : BlogCardTitle
 
     return (
-        <div className="max-w-[23rem] border h-[33rem] max-h-[33rem] border-gray-200 rounded-lg shadow">
-            <div className='h-[18rem]'>
+        <div className="max-w-[23rem] md:max-w-[14rem] lg:max-w-[19rem] xl:max-w-[23rem] border h-[33rem] max-h-[33rem] border-gray-200 rounded-lg shadow">
+            <div className='h-[18rem] md:h-[16rem] xl:h-[18rem]'>
                 {
                     cardImg ? (
                         <Image className="rounded-t-lg h-full object-cover" src={cardImg} alt="cardImg" width={600} height={600} />
@@ -25,10 +25,10 @@ const BlogCard = ({ BlogCardTitle, BlogCardDescription, BlogCardButtonText, slug
                     )
                 }
             </div>
-            <div className="p-5 h-[45%] flex justify-between items-start flex-col">
+            <div className="p-5 h-[45%] md:h-[50%] xl:h-[45%] flex justify-between items-start flex-col">
                 <div>
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight">{truncatedBlogCardTitle}</h5>
-                    <p className="mb-3 font-normal text-gray-700">{truncatedBlogCardDescription}</p>
+                    <h5 className="mb-2 text-2xl md:text-[1rem] lg:text-2xl font-bold md:leading-[1.4rem] tracking-tight">{truncatedBlogCardTitle}</h5>
+                    <p className="mb-3 font-normal md:text-[14px] xl:text-[16px] text-gray-700">{truncatedBlogCardDescription}</p>
                 </div>
                 <Link href={`/blog/${slug}`} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-600 rounded-lg">
                     {BlogCardButtonText}

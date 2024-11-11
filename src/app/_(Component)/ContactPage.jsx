@@ -25,7 +25,7 @@ const ContactPage = ({ contactData }) => {
     return (
         <div>
             <section>
-                <div className={`relative h-[30rem]`}>
+                <div className={`relative h-[20rem] flex items-center justify-center xl:block md:h-[30rem]`}>
                     {
                         bannerImg ? (
                             <Image
@@ -49,17 +49,17 @@ const ContactPage = ({ contactData }) => {
                         )
                     }
                     <div className="flex justify-center inset-0 absolute bg-black bg-opacity-50">
-                        <div className='absolute top-28 w-full max-w-[1250px] ps-3 flex flex-col gap-8'>
-                            <h1 className='text-[40px] text-white font-sancoaleSoftened'>{bannerHeading} {keyword && `- ${toSlug(keyword)}`}</h1>
-                            <p className='text-lg text-white font-bold'>{bannerParagraph}</p>
+                        <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
+                            <h1 className='text-[35px] leading-[2.5rem] md:text-[42px] text-white font-sancoaleSoftened'>{bannerHeading} {keyword && `- ${toSlug(keyword)}`}</h1>
+                            <p className='lg:text-lg text-white lg:font-bold'>{bannerParagraph}</p>
                         </div>
                     </div>
                 </div>
             </section>
             <div className="flex flex-col items-center">
-                <section className='py-10 grid grid-cols-3 gap-5 w-full max-w-[1250px] ps-3'>
-                    <ContactForm colspan2={"col-span-2"} />
-                    <div className="bg-gray-100 rounded-2xl py-[1.5rem] px-[2rem] flex flex-col gap-[2rem]">
+                <section className='py-10 md:grid md:grid-cols-2 xl:grid-cols-3 gap-5 w-full max-w-[1250px] px-3 xl:ps-3'>
+                    <ContactForm colspan2={"xl:col-span-2"} />
+                    <div className="bg-gray-100 rounded-2xl py-[1.5rem] px-3 md:px-[2rem] flex flex-col gap-[2rem] my-[2rem] md:my-0">
                         <div>
                             <h1 className="text-[30px] font-semibold">{heading}</h1>
                             <p className="my-2">{paragraph}</p>
@@ -80,13 +80,13 @@ const ContactPage = ({ contactData }) => {
                         </ul>
                     </div>
                 </section>
-                <div className="grid grid-cols-3 max-w-[1250px] w-full ps-3">
-                    <div className="max-w-sm bg-white rounded-lg flex flex-col justify-between h-[20rem] pb-[2rem] ps-3">
+                <div className="md:grid grid-cols-3 md:gap-[1rem] xl:gap-0 max-w-[1250px] w-full px-3 md:ps-3">
+                    <div className="max-w-sm bg-white rounded-lg flex flex-col justify-between h-[20rem] pb-[2rem] px-3 md:ps-3">
                         <div>
-                            <h1 className='text-[34px] mb-6 font-bold'>{Heading}</h1>
+                            <h1 className='text-[34px] md:text-[30px] xl:text-[34px] mb-6 font-bold'>{Heading}</h1>
                             <p className="text-gray-700 font-semibold">{para}</p>
                         </div>
-                        <div className='flex items-center gap-[1.6rem]'>
+                        <div className='md:flex items-center gap-[1.6rem]'>
                             <div className="flex -space-x-4 rtl:space-x-reverse">
                                 {
                                     data && data?.length > 0 ? (
@@ -114,7 +114,7 @@ const ContactPage = ({ contactData }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-span-2 flex items-center gap-[2rem]">
+                    <div className="col-span-2 flex flex-col md:flex-row items-center gap-3 xl:gap-[2rem]">
                         {
                             feData && feData.length > 0 ? (
                                 feData.map((data) => (
@@ -132,8 +132,8 @@ const ContactPage = ({ contactData }) => {
                         }
                     </div>
                 </div>
-                <h1 className="text-[35px] w-full font-semibold max-w-[1250px] ps-3 pt-[2rem]">{blowHeading}</h1>
-                <section className='flex justify-center items-center gap-36 py-5 w-full max-w-[1250px] ps-3'>
+                <h1 className="text-[35px] w-full font-semibold max-w-[1250px] px-3 xl:ps-3 pt-[2rem]">{blowHeading}</h1>
+                <section className='flex flex-col md:flex-row justify-center items-center gap-[1rem] xl:gap-36 py-5 w-full max-w-[1250px] px-3 md:ps-3'>
                     {contactPageBox && contactPageBox.length > 0 ? (
                         contactPageBox.map((data, index) => {
                             const { title, text } = data || {};
@@ -141,12 +141,12 @@ const ContactPage = ({ contactData }) => {
                             const pBgColor = index === 0 ? 'bg-orange-200' : index === 1 ? 'bg-gray-300' : 'bg-green-400';
 
                             return (
-                                <div className='w-[20rem]' key={data.id}>
-                                    <h1 className={`${h1BgColor} text-white py-3 px-4 rounded-t-3xl font-semibold text-center flex items-center text-lg`}>
+                                <div className='md:w-[20rem]' key={data.id}>
+                                    <h1 className={`${h1BgColor} text-white py-3 px-4 rounded-t-3xl font-semibold text-center flex items-center text-lg md:text-[1rem] xl:text-lg`}>
                                         <i className={`me-4 ${data.icon}`}></i>
                                         {title}
                                     </h1>
-                                    <p className={`${pBgColor} p-3`}>
+                                    <p className={`${pBgColor} p-3 text-[15px] md:text-[13px] xl:text-[15px] h-[8rem] max-h-[8rem] md:h-[10rem] md:max-h-[10rem] xl:h-[8rem] xl:max-h-[8rem] flex items-center`}>
                                         {text}
                                     </p>
                                 </div>

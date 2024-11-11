@@ -8,6 +8,11 @@
     transition-timing-function: linear !important;
 }
 
+.swiper-slide{
+    width: fit-content !important;
+    margin-right: 1rem !important;
+}
+
 .imgae::before {
     content: '';
     position: absolute;

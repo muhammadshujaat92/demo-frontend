@@ -36,7 +36,7 @@ const Slider = ({ imgData }) => {
                         const { url } = BlogCardImage?.data?.attributes || "";
                         const blogImg = url ? `${baseUrl}${url}` : ""
                         return (
-                            <SwiperSlide key={item.id}>
+                            <SwiperSlide className='w-fit' key={item.id}>
                                 <div className="w-[9rem] py-[1.5rem]">
                                     {
                                         blogImg ? (

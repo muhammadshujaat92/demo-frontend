@@ -103,7 +103,7 @@ const BlogContent = ({ blogContent }) => {
     return (
         <div>
             <section>
-                <div className={`relative h-[30rem]`}>
+                <div className={`relative h-[20rem] flex items-center justify-center xl:block md:h-[30rem]`}>
                     {
                         bannerImg ? (
                             <Image
@@ -127,23 +127,23 @@ const BlogContent = ({ blogContent }) => {
                         )
                     }
                     <div className='flex justify-center inset-0 absolute bg-black bg-opacity-50'>
-                        <div className='absolute xl:top-32 w-full max-w-[1250px] ps-3 flex flex-col gap-8'>
-                            <h1 className='text-[60px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
+                        <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
+                            <h1 className='text-[35px] leading-[2.5rem] md:leading-[4rem] md:text-[60px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
                         </div>
                     </div>
                 </div>
             </section>
             <section className='flex items-center flex-col'>
-                <div className='py-[2rem] w-full max-w-[1250px] grid grid-cols-3 gap-[3rem] ps-3'>
-                    <div className='col-span-2'>
-                        <div>
+                <div className='py-[2rem] w-full max-w-[1250px] md:grid grid-cols-5 lg:grid-cols-3 gap-[3rem] xl:ps-3'>
+                    <div className='md:col-span-3 lg:col-span-2'>
+                        <div className='px-3 xl:px-0'>
                             <h1 className='font-bold text-[50px] mb-2'>{Title}</h1>
                             <p>{paragraph1}</p>
                             <div dangerouslySetInnerHTML={{ __html: text }}></div>
                             <br />
                             <p>{paragraph2}</p>
                         </div>
-                        <section className="ps-3 py-[2rem]">
+                        <section className="md:ps-3 xl:ps-0 py-[2rem]">
                             <h1 className="text-white bg-orange-500 font-semibold text-[25px] text-center">RECENT POSTS</h1>
                             <Slider imgData={data} />
                             <div className="bg-[#f2f2f2] p-[1rem] mt-2">
@@ -155,8 +155,8 @@ const BlogContent = ({ blogContent }) => {
                             </div>
                         </section>
                     </div>
-                    <div className="h-full relative">
-                        <div className="sticky top-[2%] right-0">
+                    <div className="md:h-full md:relative px-3 xl:px-0 md:col-span-2 lg:col-span-1">
+                        <div className="md:sticky md:top-[2%] md:right-0">
                             <ContactForm />
                         </div>
                     </div>
