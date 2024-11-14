@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
     host: 'mail.indiayaatra.com',
-    port: 587,
+    port: 25,
     secure: false,
     auth: {
         user: process.env.EMAIL_USER,
@@ -95,7 +95,6 @@ export async function POST(req) {
     };
 
     try {
-        // Send the email
         await transporter.sendMail(mailOptions);
         return new Response(JSON.stringify({ success: true, message: 'Email sent successfully!' }), {
             status: 200,
@@ -103,7 +102,7 @@ export async function POST(req) {
         });
     } catch (error) {
         console.error('Error sending email:', error);
-        return new Response(JSON.stringify({ success: false, message: 'Error sending email.' }), {
+        return new Response(JSON.stringify({ success: false, message: error.message || 'Error sending email.' }), {
             status: 500,
             headers: { 'Content-Type': 'application/json' },
         });

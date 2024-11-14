@@ -61,36 +61,42 @@ const ContactForm = ({ colspan2, fontSize }) => {
         try {
             const response = await fetch('/api/sendMail', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     ...formData,
                     referrer
                 }),
             });
 
-            const data = await response.json();
-            if (data.success) {
-                alert('Email sent successfully!');
-                setFormData({
-                    name: '',
-                    email: '',
-                    number: '',
-                    date: '',
-                    adult: '',
-                    children: '',
-                    message: ''
-                })
+            // Check if the response is JSON
+            const contentType = response.headers.get("content-type");
+            if (contentType && contentType.indexOf("application/json") !== -1) {
+                const data = await response.json();
+                if (data.success) {
+                    alert('Email sent successfully!');
+                    setFormData({
+                        name: '',
+                        email: '',
+                        number: '',
+                        date: '',
+                        adult: '',
+                        children: '',
+                        message: ''
+                    });
+                } else {
+                    alert('Failed to send email.');
+                }
             } else {
-                alert('Failed to send email.');
+                alert('Received unexpected response from the server.');
             }
         } catch (error) {
             console.error('Error submitting form:', error);
+            alert('An error occurred: ' + error.message);
         } finally {
             setIsLoading(false); // Stop loading
         }
     };
+
 
     useEffect(() => {
         setReferrer(document.referrer || window.location.href);
