@@ -1,14 +1,15 @@
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
-    // host: 'mail.indiayaatra.com', // SMTP server
-    // port: 465, // SSL port
-    // secure: true,
-    service: 'gmail',
+    host: 'mail.indiayaatra.com',
+    port: 587,
+    secure: false,
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
-    }
+    },
+    debug: true, // Enable debug mode
+    logger: true, // Enable logging
 });
 
 export async function POST(req) {
@@ -21,7 +22,7 @@ export async function POST(req) {
 
     // Email options
     const mailOptions = {
-        from: `"India Yaatra" <${email}>`, // Sender address
+        from: `"India Yaatra" <umuhammadshujaat@gmail.com>`, // Sender address
         to: 'info@indiayaatra.com', // Recipient
         subject: 'New Travel Estimate Request',
         html: `
