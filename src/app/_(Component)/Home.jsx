@@ -11,21 +11,31 @@ const HomeSection6 = dynamic(() => import('./HomeSection6'))
 const HomeSection7 = dynamic(() => import('./HomeSection7'))
 const HomeSection8 = dynamic(() => import('./HomeSection8'))
 const ContactForm = dynamic(() => import('./ContactForm'))
+import headerImg from '@/public/header.jpg'
+import Image from 'next/image';
 
 const Home = ({ homeData }) => {
     const { slides, section1, section2, section3, section4, section5, sec6, faqSection, lastSectionData } = homeData?.[0]?.attributes || {};
 
     return (
         <>
-            {/*
-            */}
-            <div className='h-fit pb-[2rem] md:py-[2rem] border-t-2 border-gray-400 md:flex justify-center bg-orange-300'>
-                <div className='w-full max-w-[1250px] md:flex justify-between'>
-                    <div className='h-[25rem] flex flex-col justify-center gap-[5rem] md:gap-28'>
-                        <HeaderComponent data={slides} />
-                    </div>
-                    <div className='xl:w-[340px] px-2 md:ps-0'>
-                        <ContactForm fontSize={'[25px]'} />
+            <div className='h-[36rem] pb-[2rem] md:py-[2rem] relative'>
+                <Image
+                    src={headerImg}
+                    alt="banner_image"
+                    className="object-cover"
+                    layout="fill"
+                    priority
+                    fetchPriority="high"
+                />
+                <div className='inset-0 absolute bg-black bg-opacity-60 md:flex justify-center items-center'>
+                    <div className='w-full max-w-[1250px] md:flex justify-between'>
+                        <div className='h-[25rem] flex flex-col justify-center gap-[5rem] md:gap-28 text-white'>
+                            <HeaderComponent data={slides} />
+                        </div>
+                        <div className='xl:w-[340px] px-2 md:ps-0'>
+                            <ContactForm fontSize={'[25px]'} />
+                        </div>
                     </div>
                 </div>
             </div>

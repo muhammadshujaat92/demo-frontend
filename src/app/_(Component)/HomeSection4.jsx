@@ -10,7 +10,7 @@ const HomeSection4 = ({ data }) => {
                 <div className="lg:grid grid-cols-2 pt-[1.5rem] xl:pt-[3rem] gap-[2rem]">
                     <p className='font-semibold text-[15px] xl:text-[18px] pb-[2rem] xl:pb-0'>{Paragraph}</p>
 
-                    <div className='grid grid-cols-2 md:grid-cols-3 gap-[1rem] md:max-h-[15rem] items-center'>
+                    <div className='grid grid-cols-2 md:grid-cols-3 gap-[1.5rem] md:max-h-[15rem] items-center'>
                         {sideBox && sideBox.length > 0 ? (
                             sideBox.map((item) => (
                                 <div key={item.id} className='flex'>
@@ -19,7 +19,7 @@ const HomeSection4 = ({ data }) => {
                                     </div>
                                     <div>
                                         <h1 className='text-[12px] xl:text-[15px] font-bold'>{item.UpperText}</h1>
-                                        <p className='text-[10px] xl:text-[12px] text-gray-400'>{item.LowerText}</p>
+                                        <p className='text-[10px] xl:text-[13px] text-gray-500'>{item.LowerText}</p>
                                     </div>
                                 </div>
                             ))

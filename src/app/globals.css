@@ -1,3 +1,11 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Boogaloo&display=swap');
+
+@font-face {
+    font-family: 'Sancoale Softened';
+    src: url('/fonts/Sancoale Softened Medium.ttf') format('truetype');
+    font-display: swap;
+} */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,7 +16,7 @@
     transition-timing-function: linear !important;
 }
 
-.swiper-slide{
+.swiper-slide {
     width: fit-content !important;
     margin-right: 1rem !important;
 }
@@ -32,10 +40,10 @@
 }
 
 @layer base {
-    @font-face {
+    /* @font-face {
         font-family: 'Sancoale Softened';
         src: url('../public/fonts/Sancoale Softened Medium.ttf');
-    }
+    } */
 
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {

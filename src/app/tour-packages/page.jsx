@@ -4,15 +4,27 @@ import { fetchData } from '@/utils/apiHelper';
 
 export async function generateMetadata() {
     try {
-        const blogData = await fetchData("tour-packages");
-        const { Tabtitle, metaDescription } = blogData?.[0]?.attributes || {};
+        const metaData = await fetchData("tour-packages");
+        const { Tabtitle, metaDescription, metaKeywords, canonicalUrl, ogTitle, ogDescription, ogImage } = metaData?.[0]?.attributes || {};
 
         return {
             title: Tabtitle || 'Default Title',
             description: metaDescription || 'Default Description',
+            keywords: metaKeywords || "tour packages, default, keywords",
+            openGraph: {
+                title: ogTitle || Tabtitle,
+                description: ogDescription || metaDescription,
+                images: [
+                    {
+                        url: ogImage ? `https://indiayaatra.com${ogImage}` : "https://indiayaatra.com/media/India_Tour_Package_b46abceaa3.webp",
+                    }
+                ]
+            },
+            alternates: {
+                canonical: canonicalUrl || `https://indiayaatra.com/tour-packages`,
+            }
         };
     } catch (error) {
-        console.error("Error generating metadata:", error);
         return {
             title: 'Default Title',
             description: 'Default Description'

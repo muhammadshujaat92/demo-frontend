@@ -8,15 +8,27 @@ import { fetchData } from "@/utils/apiHelper";
 
 export async function generateMetadata() {
   try {
-    const blogData = await fetchData("home-pages");
-    const { Tabtitle, metaDescription } = blogData?.[0]?.attributes || {};
+    const metaData = await fetchData("home-pages");
+    const { Tabtitle, metaDescription, metaKeywords, canonicalUrl, ogTitle, ogDescription, ogImage } = metaData?.[0]?.attributes || {};
 
     return {
       title: Tabtitle || 'Default Title',
       description: metaDescription || 'Default Description',
+      keywords: metaKeywords || "home, default, keywords",
+      openGraph: {
+        title: ogTitle || Tabtitle,
+        description: ogDescription || metaDescription,
+        images: [
+          {
+            url: ogImage ? `https://indiayaatra.com/media/${ogImage.replace('/uploads', '')}` : "https://indiayaatra.com/media/India_Yaatra_logo_1504ad9733.webp",
+          }
+        ]
+      },
+      alternates: {
+        canonical: canonicalUrl || `https://indiayaatra.com`,
+      }
     };
   } catch (error) {
-    console.error("Error generating metadata:", error);
     return {
       title: 'Default Title',
       description: 'Default Description'

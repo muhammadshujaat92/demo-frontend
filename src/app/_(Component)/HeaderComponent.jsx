@@ -4,6 +4,7 @@ import { FaArrowRightLong } from 'react-icons/fa6';
 import { TiMediaPlay } from 'react-icons/ti';
 import ProgressBar from './ProgressBar';
 import Link from 'next/link';
+import { sancoaleSoftened } from './Font';
 
 const HeaderComponent = ({ data }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -25,7 +26,7 @@ const HeaderComponent = ({ data }) => {
             {data?.length ? (
                 <div key={animationKey} className="flex flex-col gap-[2rem] md:gap-12 h-[11rem] animate-slide-in-left">
                     <div>
-                        <div className="flex items-center text-[28px] md:text-[40px] font-sancoaleSoftened text-white leading-[2rem]">
+                        <div style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className="flex items-center text-[28px] md:text-[40px] text-white leading-[2rem]">
                             <TiMediaPlay className="text-orange-500" />
                             <h1>{data[currentIndex].Title}</h1>
                         </div>

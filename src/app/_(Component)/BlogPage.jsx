@@ -9,17 +9,19 @@ import { blogCardThunk } from '../_redux/api/BlogCard'
 import { GiCheckMark } from "react-icons/gi";
 import { imageUrl } from '@/utils/apiHelper'
 import defaultImg from '@/public/imgs/blogimg.webp'
+import { sancoaleSoftened } from './Font'
 
 const BlogPage = ({ blogData }) => {
     const dispatch = useDispatch();
     const [selectedDate, setSelectedDate] = useState(null);
+    const [bannerLoaded, setBannerLoaded] = useState(false)
     const [pageNo, setPageNo] = useState(1);  // Add state for pagination
     const { data, meta } = useSelector(state => state?.blogCardThunk?.data || {});
 
     const { bannerHeading, bannerImage } = blogData?.[0]?.attributes || {};
     const { url } = bannerImage?.data?.attributes || {};
     const imgUrl = imageUrl()
-    const bannerImg = url ? `${imgUrl}${url}` : "";
+    const bannerImg = url ? `${imgUrl}${url}` : defaultImg;
 
     const totalCards = meta?.pagination?.total || 0;  // Total number of posts
     const cardsPerPage = 8; // Show 6 cards per page
@@ -29,6 +31,12 @@ const BlogPage = ({ blogData }) => {
     useEffect(() => {
         dispatch(blogCardThunk({ pageSize: 8, page: pageNo }));
     }, [dispatch, pageNo]);
+
+    useEffect(() => {
+        const img = new window.Image();
+        img.src = bannerImg;
+        img.onload = () => setBannerLoaded(true);
+    }, [bannerImg]);
 
     // Memoized function to format the date
     const getDate = useMemo(() => {
@@ -69,31 +77,21 @@ const BlogPage = ({ blogData }) => {
         <div>
             <section>
                 <div className={`relative h-[20rem] flex items-center justify-center xl:block md:h-[30rem]`}>
-                    {
-                        bannerImg ? (
-                            <Image
-                                src={bannerImg}
-                                alt='banner'
-                                className={`w-full object-cover`}
-                                layout="fill"
-                                priority
-                                fetchPriority="high"
-                                placeholder="blur"
-                                blurDataURL="/imgs/homeSection1BlurData.jpg"
-                            />
-                        ) : (
-                            <Image
-                                src={defaultImg}
-                                alt='banner'
-                                className={`w-full object-cover`}
-                                layout="fill"
-                                priority
-                            />
-                        )
-                    }
-                    <div className='flex justify-center inset-0 absolute bg-black bg-opacity-50'>
+                    {bannerLoaded && (
+                        <Image
+                            src={bannerImg}
+                            alt='banner'
+                            className={`w-full object-cover`}
+                            layout="fill"
+                            priority
+                            fetchPriority="high"
+                            placeholder="blur"
+                            blurDataURL="/imgs/homeSection1BlurData.jpg"
+                        />
+                    )}
+                    <div className={`flex justify-center inset-0 absolute ${bannerLoaded ? "bg-black bg-opacity-50" : ""}`}>
                         <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
-                            <h1 className='text-[35px] leading-[2.5rem] md:text-[60px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
+                            <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[55px] text-white'>{bannerHeading}</h1>
                         </div>
                     </div>
                 </div>

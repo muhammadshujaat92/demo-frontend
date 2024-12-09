@@ -5,16 +5,10 @@ import Image from 'next/image'
 import defaultImg from '@/public/imgs/woman-mountain-peak.webp'
 
 const HomeSection3 = ({ data }) => {
-    const { ButtonText, Heading, Paragraph, image } = data || {}
+    const { ButtonText, Heading, Paragraph, image, URL } = data || {}
     const { url } = image?.data?.attributes || {}
     const imgUrl = imageUrl()
-    const Img = url ? `${imgUrl}${url}` : ""
-
-    const toSlug = (text) => {
-        return text.replace(/ /g, '-');
-    }
-
-    const slug = Heading ? toSlug(Heading) : '';
+    const Img = url ? `${imgUrl}${url}` : defaultImg
 
     return (
         <div className='flex justify-center py-[3rem] bg-gray-200'>
@@ -24,16 +18,10 @@ const HomeSection3 = ({ data }) => {
                         <h1 className='font-bold text-[27px] md:text-[35px]'>{Heading}</h1>
                         <p className='my-3 text-[15px] md:text-[18px]'>{Paragraph}</p>
                     </div>
-                    <Link href={`/contact/?rh=${slug}`} className='font-bold bg-green-600 text-white px-4 py-1 text-[18px]'>{ButtonText}</Link>
+                    <Link href={`/contact/?rh=${URL}`} className='font-bold bg-green-600 text-white px-4 py-1 text-[18px]'>{ButtonText}</Link>
                 </div>
                 <div className='h-[20rem] md:h-[25rem] max-h-[25rem] relative rounded-l-[15rem] mt-7 md:mt-0'>
-                    {
-                        Img ? (
-                            <Image src={Img} alt='bg-img' className='rounded-l-[15rem]' priority layout='fill' style={{ objectFit: "cover" }} />
-                        ) : (
-                            <Image src={defaultImg} alt='bg-img' className='rounded-l-[15rem]' priority layout='fill' style={{ objectFit: "cover" }} />
-                        )
-                    }
+                    <Image src={Img} alt='bg-img' className='rounded-l-[15rem]' priority layout='fill' style={{ objectFit: "cover" }} />
                 </div>
             </div>
         </div>

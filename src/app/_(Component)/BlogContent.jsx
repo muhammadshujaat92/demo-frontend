@@ -8,17 +8,19 @@ import { imageUrl } from '@/utils/apiHelper';
 import { useDispatch, useSelector } from 'react-redux';
 import defaultImg from '@/public/imgs/blogimg.webp'
 import { blogContentThunk } from '../_redux/api/BlogContent';
+import { sancoaleSoftened } from './Font';
 
 const BlogContent = ({ blogContent }) => {
     const dispatch = useDispatch();
     const { blogData, admin, content } = blogContent?.attributes || {}
     const { data } = useSelector(state => state?.blogContentThunk?.data || {});
-    const { Title, bannerHeading, paragraph1, paragraph2, bannerImage } = blogData || {};
+    const { Title, bannerHeading, bannerImage } = blogData || {};
     const { Name, paragraph } = admin || {}
     const { url } = bannerImage?.data?.attributes || {}
     const imgUrl = imageUrl()
-    const bannerImg = url ? `${imgUrl}${url}` : ""
+    const bannerImg = url ? `${imgUrl}${url}` : defaultImg
     const [text, setText] = useState('');
+    const [bannerLoaded, setBannerLoaded] = useState(false)
 
     useEffect(() => {
         let textt = content ?? '';
@@ -29,59 +31,76 @@ const BlogContent = ({ blogContent }) => {
         // Headings
         textt = textt.replace(
             /^#\s(.+)/gm,
-            '<h1 class="font-acme text-[32px] uppercase font-normal mb-[-10px] text-[#30B1C0]">$1</h1>'
+            '<h1 class="font-acme text-[32px] uppercase font-bold my-[10px]">$1</h1>'
         );
         textt = textt.replace(
             /^##\s(.+)/gm,
-            '<h2 class="font-acme text-[24px] uppercase font-normal mb-[-25px] text-[#30B1C0]">$1</h2>'
+            '<h2 class="font-acme text-[24px] uppercase font-bold my-[10px]">$1</h2>'
         );
         textt = textt.replace(
             /^###\s(.+)/gm,
-            '<h3 class="font-acme text-[20px] uppercase font-normal mb-[-25px] text-[#30B1C0]">$1</h3>'
+            '<h3 class="font-acme text-[20px] uppercase font-bold my-[10px]">$1</h3>'
         );
         textt = textt.replace(
             /^####\s(.+)/gm,
-            '<h4 class="font-acme text-[18px] uppercase font-normal mb-[-25px] text-[#30B1C0]">$1</h4>'
+            '<h4 class="font-acme text-[18px] uppercase font-bold my-[10px]">$1</h4>'
         );
         textt = textt.replace(
             /^#####\s(.+)/gm,
-            '<h5 class="font-acme text-[16px] uppercase font-normal mb-[-25px] text-[#30B1C0]">$1</h5>'
+            '<h5 class="font-acme text-[16px] uppercase font-bold my-[10px]">$1</h5>'
         );
         textt = textt.replace(
             /^######\s(.+)/gm,
-            '<h6 class="font-acme text-[14px] uppercase font-normal mb-[-25px] text-[#30B1C0]">$1</h6>'
+            '<h6 class="font-acme text-[14px] uppercase font-bold my-[10px]">$1</h6>'
         );
 
         // Images
         textt = textt.replace(
             /!\[([^\]]+)\]\(([^)]+)\)/g,
-            `<img src="$2" class='w-[100%] h-[100%]'>`
+            `<img src="$2">`
         );
 
         // Links
         textt = textt.replace(
             /\[([^\]]+)\]\(([^)]+)\)/g,
-            '<a href="$2" class="text-[#F60] font-bold">$1</a>'
+            '<a href="$2" class="underline text-blue-700 font-semibold">$1</a>'
         );
 
         // Bold, Italic, and Strikethrough
-        textt = textt.replace(/\*\*(.*?)\*\*/g, '<strong class="text-[#F60]">$1</strong>');
+        textt = textt.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
         textt = textt.replace(/_(?![^<]*>)(.*?)_(?![^<]*>)/g, '<em>$1</em>');
         textt = textt.replace(/~~(.*?)~~/g, '<del>$1</del>');
 
         // Blockquote
-        textt = textt.replace(/^>\s(.+)/gm, '<blockquote class="border-l-4 pl-4 italic text-gray-500">$1</blockquote>');
+        textt = textt.replace(/^>\s(.+)/gm, '<blockquote class="border-l-4 pl-4 italic text-gray-600">$1</blockquote>');
 
-        // Lists
-        textt = textt.replace(/\n/gi, '<br/> \n');
-        textt = textt.replace(/^- (.+)(\n- .+)*/gm, function (match, p1) {
+        // Numbered lists
+        textt = textt.replace(/^(\d+)\.\s(.+)(\n\d+\.\s.+)*/gm, function (match) {
             const listItems = match
                 .trim()
                 .split('\n')
-                .map((item) => `<li class="">${item.slice(2)}</li>`)
+                .map((item) => {
+                    const matchItem = item.match(/^(\d+)\.\s(.+)/);
+                    return matchItem ? `<li class="list-decimal">${matchItem[2]}</li>` : '';
+                })
                 .join('\n');
-            return `<ul class='chooseus'>\n${listItems}\n</ul>`;
+            return `<ol class='ms-[15px]'>\n${listItems}\n</ol>`;
         });
+
+        // Bullet lists
+        textt = textt.replace(/^- (.+)(\n- .+)*/gm, function (match) {
+            const listItems = match
+                .trim()
+                .split('\n')
+                .map((item) => `<li class="list-disc">${item.slice(2)}</li>`)
+                .join('\n');
+            return `<ul class='ms-[20px]'>\n${listItems}\n</ul>`;
+        });
+
+        // Paragraphs (all text not already matched)
+        textt = textt.replace(/^\/\/\s(.+)/gm, '<p class="mb-[1em]">$1</p>');
+
+        textt = textt.replace(/\\n/g, '<br/>');
 
         setText(textt);
     }, [blogContent]);
@@ -90,6 +109,12 @@ const BlogContent = ({ blogContent }) => {
     useEffect(() => {
         dispatch(blogContentThunk());
     }, [dispatch]);
+
+    useEffect(() => {
+        const img = new window.Image();
+        img.src = bannerImg;
+        img.onload = () => setBannerLoaded(true);
+    }, [bannerImg]);
 
 
     if (blogData === null) {
@@ -104,31 +129,32 @@ const BlogContent = ({ blogContent }) => {
         <div>
             <section>
                 <div className={`relative h-[20rem] flex items-center justify-center xl:block md:h-[30rem]`}>
-                    {
-                        bannerImg ? (
-                            <Image
-                                src={bannerImg}
-                                alt='banner'
-                                className={`w-full object-cover`}
-                                layout="fill"
-                                priority
-                                fetchPriority="high"
-                                placeholder="blur"
-                                blurDataURL="/imgs/homeSection1BlurData.jpg"
-                            />
-                        ) : (
-                            <Image
-                                src={defaultImg}
-                                alt='banner'
-                                className={`w-full object-cover`}
-                                layout="fill"
-                                priority
-                            />
-                        )
-                    }
-                    <div className='flex justify-center inset-0 absolute bg-black bg-opacity-50'>
+                    {bannerLoaded ? (
+                        <Image
+                            src={bannerImg}
+                            alt='banner'
+                            className={`w-full object-cover`}
+                            layout="fill"
+                            priority
+                            fetchPriority="high"
+                            placeholder="blur"
+                            blurDataURL="/imgs/homeSection1BlurData.jpg"
+                        />
+                    ) : (
+                        <Image
+                            src={defaultImg}
+                            alt='banner'
+                            className={`w-full object-cover`}
+                            layout="fill"
+                            priority
+                            fetchPriority="high"
+                            placeholder="blur"
+                            blurDataURL="/imgs/homeSection1BlurData.jpg"
+                        />
+                    )}
+                    <div className={`flex justify-center inset-0 absolute ${bannerLoaded ? "bg-black bg-opacity-50" : ""}`}>
                         <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
-                            <h1 className='text-[35px] leading-[2.5rem] md:leading-[4rem] md:text-[60px] font-sancoaleSoftened text-white'>{bannerHeading}</h1>
+                            <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[55px] text-white'>{bannerHeading}</h1>
                         </div>
                     </div>
                 </div>
@@ -137,13 +163,9 @@ const BlogContent = ({ blogContent }) => {
                 <div className='py-[2rem] w-full max-w-[1250px] md:grid grid-cols-5 lg:grid-cols-3 gap-[3rem] xl:ps-3'>
                     <div className='md:col-span-3 lg:col-span-2'>
                         <div className='px-3 xl:px-0'>
-                            <h1 className='font-bold text-[50px] mb-2'>{Title}</h1>
-                            <p>{paragraph1}</p>
                             <div dangerouslySetInnerHTML={{ __html: text }}></div>
-                            <br />
-                            <p>{paragraph2}</p>
                         </div>
-                        <section className="md:ps-3 xl:ps-0 py-[2rem]">
+                        <section className="md:ps-3 xl:ps-0 pb-[2rem]">
                             <h1 className="text-white bg-orange-500 font-semibold text-[25px] text-center">RECENT POSTS</h1>
                             <Slider imgData={data} />
                             <div className="bg-[#f2f2f2] p-[1rem] mt-2">

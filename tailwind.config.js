@@ -15,7 +15,12 @@ module.exports = {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        sancoaleSoftened: ["Sancoale Softened", "sans-serif"],
+        // boogaloo: ["Boogaloo", "sans-serif"],
+        // sancoaleSoftened: ["Sancoale Softened", "sans-serif"],
+        // freeman: ['Freeman', 'sans-serif'],
+        // asul: ['Asul', 'serif'],
+        // francois: ["Francois One", 'sans-serif'],
+        // carter: ["Carter One", "system-ui"]
       },
       keyframes: {
         'slide-in-left': {

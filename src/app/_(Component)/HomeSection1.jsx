@@ -6,6 +6,7 @@ import { cardThunk } from '../_redux/api/Card'
 import { imageUrl } from '@/utils/apiHelper'
 import Image from 'next/image'
 import bgImg from "@/public/imgs/homeSection1Default.webp"
+import { boogaloo } from './Font'
 
 const HomeSection1 = ({ secData }) => {
     const dispatch = useDispatch();
@@ -18,40 +19,32 @@ const HomeSection1 = ({ secData }) => {
 
     const { BackgroundImageTitle, ButtonText, Paragraph, Title, BackgroundImage } = secData || {}
     const { url } = BackgroundImage?.data?.attributes || {}
-    const backgroundImg = url ? `${imgUrl}${url}` : ""
+    const backgroundImg = url ? `${imgUrl}${url}` : bgImg
 
     return (
         <div className='py-[40px]'>
-            <div className='flex justify-center'>
+            <div className='flex justify-center pt-[25px] pb-[35px]'>
                 <div className='w-full max-w-[1250px] px-2 md:pe-3 md:ps-3 xl:pe-0'>
-                    <h1 className='text-[32px] font-semibold text-gray-700 '>{Title}</h1>
+                    <h1 style={{ fontFamily: boogaloo.style.fontFamily }} className='text-[50px] text-[#e75c00]'>{Title}</h1>
                     <p className='text-[15px] md:text-[18px] mt-3'>{Paragraph}</p>
                     <div className='flex justify-end mb-3'>
-                        <button className='bg-yellow-400 font-semibold'>{ButtonText}</button>
+                        <button className='bg-yellow-400 font-semibold py-[10px] px-[60px] hover:bg-yellow-500 shadow-md shadow-orange-500'>{ButtonText}</button>
                     </div>
                 </div>
             </div>
 
             <div className='relative h-fit'>
-                {url ? (
-                    <Image
-                        src={backgroundImg}
-                        alt="banner_image"
-                        style={{ objectFit: "cover" }}
-                        className="z-[-1]"
-                        layout="fill"
-                        priority
-                        fetchPriority="high"
-                        placeholder="blur"
-                        blurDataURL="/imgs/homeSection1BlurData.jpg"
-                    />
-                ) : (
-                    <Image src={bgImg}
-                        layout="fill"
-                        style={{ objectFit: "cover" }}
-                        className="z-[-1]"
-                        priority />
-                )}
+                <Image
+                    src={backgroundImg}
+                    alt="banner_image"
+                    style={{ objectFit: "cover" }}
+                    className="z-[-1]"
+                    layout="fill"
+                    priority
+                    fetchPriority="high"
+                    placeholder="blur"
+                    blurDataURL="/imgs/homeSection1BlurData.jpg"
+                />
                 <div className='relative py-[1rem] w-full text-center'>
                     <h1 className='font-semibold text-[30px] md:text-[35px]'>{BackgroundImageTitle}</h1>
                 </div>
