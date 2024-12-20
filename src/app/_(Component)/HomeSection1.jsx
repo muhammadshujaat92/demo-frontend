@@ -22,13 +22,13 @@ const HomeSection1 = ({ secData }) => {
     const backgroundImg = url ? `${imgUrl}${url}` : bgImg
 
     return (
-        <div className='py-[40px]'>
+        <div className='py-[40px] mt-[20rem] md:mt-0'>
             <div className='flex justify-center pt-[25px] pb-[35px]'>
                 <div className='w-full max-w-[1250px] px-2 md:pe-3 md:ps-3 xl:pe-0'>
-                    <h1 style={{ fontFamily: boogaloo.style.fontFamily }} className='text-[50px] text-[#e75c00]'>{Title}</h1>
+                    <h1 style={{ fontFamily: boogaloo.style.fontFamily }} className='text-[40px] leading-[2.7rem] md:leading-none md:text-[50px] text-[#e75c00]'>{Title}</h1>
                     <p className='text-[15px] md:text-[18px] mt-3'>{Paragraph}</p>
                     <div className='flex justify-end mb-3'>
-                        <button className='bg-yellow-400 font-semibold py-[10px] px-[60px] hover:bg-yellow-500 shadow-md shadow-orange-500'>{ButtonText}</button>
+                        <button className='bg-yellow-400 font-semibold py-[10px] px-[60px] hover:bg-yellow-500 shadow-md shadow-orange-500 mt-2'>{ButtonText}</button>
                     </div>
                 </div>
             </div>

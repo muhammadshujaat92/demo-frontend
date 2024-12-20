@@ -39,12 +39,17 @@ module.exports = {
           '50%': { 'stroke-dasharray': '90, 200', 'stroke-dashoffset': '-35px' },
           '100%': { 'stroke-dashoffset': '-125px' },
         },
+        ping: {
+          '0%, 100%': { transform: 'scale(1)', opacity: '0' },
+          '50%': { transform: 'scale(1)', opacity: '1' },
+        },
       },
       animation: {
         'slide-in-left': 'slide-in-left 1s ease-out',
         'progress': 'progress 8s ease-out infinite',
         'rotate4': 'rotate4 1s linear infinite',
         'dash4': 'dash4 1.6s ease-in-out infinite',
+        'ping': 'ping 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
     },
   },

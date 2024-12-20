@@ -3,32 +3,33 @@ import BlogContent from '@/app/_(Component)/BlogContent'
 import { fetchData } from '@/utils/apiHelper';
 
 export async function generateMetadata({ params }) {
-    const metaData = await fetchData(`blog-contents/${params.slug}`);
-    const { Tabtitle, metaDescription, metaKeywords, canonicalUrl, ogTitle, ogDescription, ogImage } = metaData?.attributes || {};
+    const slug = params.slug.replace(/-/g, ' ');
+    const metaData = await fetchData(`blog-contents/${slug}`);
+    const { metaDescription } = metaData?.attributes?.attributes || {};
 
     return {
-        title: Tabtitle || 'Default Title',
+        title: slug || 'Default Title',
         description: metaDescription || 'Default Description',
-        keywords: metaKeywords || "blog content, default, keywords",
         openGraph: {
-            title: ogTitle || Tabtitle,
-            description: ogDescription || metaDescription,
+            title: slug || 'Default Title',
+            description: metaDescription || 'Default Description',
             images: [
                 {
-                    url: ogImage ? `https://indiayaatra.com/media/${ogImage.replace('/uploads', '')}` : "https://indiayaatra.com/media/India_Yaatra_logo_1504ad9733.webp",
+                    url: "https://indiayaatra.com/media/India_Yaatra_logo_1504ad9733.webp",
                 }
             ]
         },
         alternates: {
-            canonical: canonicalUrl || `https://indiayaatra.com/blog/${params.slug}`,
+            canonical: `https://indiayaatra.com/blog/${slug}`,
         }
     }
 }
 
 const Page = async ({ params }) => {
+    const slug = params.slug.replace(/-/g, ' ');
     try {
-        const blogContent = await fetchData(`blog-contents/${params.slug}?populate=blogData.bannerImage&populate=admin`)
-        return <BlogContent blogContent={blogContent} />
+        const blogData = await fetchData(`blog-contents/${slug}`)
+        return <BlogContent blogData={blogData} />
     } catch (error) {
         return <div>Oops! something went wrong</div>
     }

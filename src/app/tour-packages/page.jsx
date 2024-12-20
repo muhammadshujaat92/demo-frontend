@@ -5,23 +5,22 @@ import { fetchData } from '@/utils/apiHelper';
 export async function generateMetadata() {
     try {
         const metaData = await fetchData("tour-packages");
-        const { Tabtitle, metaDescription, metaKeywords, canonicalUrl, ogTitle, ogDescription, ogImage } = metaData?.[0]?.attributes || {};
+        const { Tabtitle, metaDescription } = metaData?.[0]?.attributes || {};
 
         return {
             title: Tabtitle || 'Default Title',
             description: metaDescription || 'Default Description',
-            keywords: metaKeywords || "tour packages, default, keywords",
             openGraph: {
-                title: ogTitle || Tabtitle,
-                description: ogDescription || metaDescription,
+                title: Tabtitle || 'Default Title',
+                description: metaDescription || 'Default Description',
                 images: [
                     {
-                        url: ogImage ? `https://indiayaatra.com${ogImage}` : "https://indiayaatra.com/media/India_Tour_Package_b46abceaa3.webp",
+                        url: "https://indiayaatra.com/media/India_Yaatra_logo_1504ad9733.webp",
                     }
                 ]
             },
             alternates: {
-                canonical: canonicalUrl || `https://indiayaatra.com/tour-packages`,
+                canonical: `https://indiayaatra.com/tour-packages`,
             }
         };
     } catch (error) {

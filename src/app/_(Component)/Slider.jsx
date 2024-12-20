@@ -32,22 +32,23 @@ const Slider = ({ imgData }) => {
             {
                 imgData ? (
                     imgData.slice(-7).map((item) => {
-                        const { BlogCardTitle, BlogCardImage } = item.attributes;
+                        const { BlogTitle, BlogCardImage } = item?.attributes || {};
                         const { url } = BlogCardImage?.data?.attributes || "";
                         const blogImg = url ? `${baseUrl}${url}` : ""
+                        const slug = BlogTitle.replace(/[^A-Za-z0-9]/g, '-');
                         return (
                             <SwiperSlide className='w-fit' key={item.id}>
                                 <div className="w-[9rem] py-[1.5rem]">
                                     {
                                         blogImg ? (
-                                            <Image src={blogImg} width={130} height={130} alt="img" className="w-full min-h-[8rem] max-h-[8rem]" priority/>
+                                            <Image src={blogImg} width={130} height={130} alt="img" className="w-full min-h-[8rem] max-h-[8rem]" priority />
 
                                         ) : (
-                                            <Image src={defaultImg} width={130} height={130} alt="img" className="w-full min-h-[8rem] max-h-[8rem]" priority/>
+                                            <Image src={defaultImg} width={130} height={130} alt="img" className="w-full min-h-[8rem] max-h-[8rem]" priority />
                                         )
                                     }
-                                    <Link href={`/blog/${item.id}`} className="mt-1 text-[14px] text-[#337ab7] font-semibold">
-                                        <p className='text-center'>{BlogCardTitle}</p>
+                                    <Link href={`/blog/${slug}`} className="mt-1 text-[14px] text-[#337ab7] font-semibold">
+                                        <p className='text-center'>{BlogTitle}</p>
                                     </Link>
                                 </div>
                             </SwiperSlide>

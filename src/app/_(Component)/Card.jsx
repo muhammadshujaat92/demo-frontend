@@ -16,7 +16,7 @@ const Card = ({ Width, Img, title, description, btnText, priceText, days, saleBt
 
     // const slug = title ? toSlug(title) : '';
 
-    console.log(readMoreURL || "");
+    // console.log(readMoreURL || "");
 
     return (
         <div className={`${Width ? `${Width}` : "max-w-[18rem]"} max-h-[31rem] bg-white border border-gray-200 rounded-lg shadow-md`}>

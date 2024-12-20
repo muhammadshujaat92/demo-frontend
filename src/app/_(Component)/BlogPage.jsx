@@ -18,6 +18,7 @@ const BlogPage = ({ blogData }) => {
     const [pageNo, setPageNo] = useState(1);  // Add state for pagination
     const { data, meta } = useSelector(state => state?.blogCardThunk?.data || {});
 
+
     const { bannerHeading, bannerImage } = blogData?.[0]?.attributes || {};
     const { url } = bannerImage?.data?.attributes || {};
     const imgUrl = imageUrl()
@@ -102,9 +103,9 @@ const BlogPage = ({ blogData }) => {
                         {
                             filteredData && filteredData.length > 0 ? (
                                 filteredData.map((post) => {
-                                    const { BlogCardTitle, BlogCardDescription, BlogCardImage, BlogCardButtonText } = post.attributes;
+                                    const { BlogTitle, BlogCardImage, blogContent } = post.attributes;
                                     return (
-                                        <BlogCard key={post.id} BlogCardTitle={BlogCardTitle} BlogCardDescription={BlogCardDescription} BlogCardButtonText={BlogCardButtonText} slug={post.id} BlogCardImage={BlogCardImage} />
+                                        <BlogCard key={post.id} BlogTitle={BlogTitle} BlogCardImage={BlogCardImage} blogContent={blogContent} />
                                     )
                                 })
                             ) : (
@@ -119,12 +120,13 @@ const BlogPage = ({ blogData }) => {
                             <div className='px-5'>
                                 {data && data.length > 0 ? (
                                     data.slice(-5).map((data) => {
-                                        const { BlogCardTitle } = data.attributes;
+                                        const { BlogTitle } = data.attributes;
+                                        const slug = BlogTitle.replace(/[^A-Za-z0-9]/g, '-');
                                         return (
-                                            <Link key={data.id} href={`/blog/${data.id}`}>
+                                            <Link key={data.id} href={`/blog/${slug}`}>
                                                 <div className='bg-gray-200 flex items-center py-5 gap-2 border border-b-gray-400'>
                                                     <GiCheckMark className='text-orange-500' />
-                                                    <h1 className='text-blue-500 font-semibold'>{BlogCardTitle}</h1>
+                                                    <h1 className='text-blue-500 font-semibold'>{BlogTitle}</h1>
                                                 </div>
                                             </Link>
                                         );

@@ -10,20 +10,18 @@ import defaultImg from '@/public/imgs/blogimg.webp'
 import { blogContentThunk } from '../_redux/api/BlogContent';
 import { sancoaleSoftened } from './Font';
 
-const BlogContent = ({ blogContent }) => {
+const BlogContent = ({ blogData }) => {
     const dispatch = useDispatch();
-    const { blogData, admin, content } = blogContent?.attributes || {}
+    const { BlogTitle, blogContent, bannerImage, createdBy, displayImageText, displayImageUrl } = blogData?.attributes?.attributes || {}
     const { data } = useSelector(state => state?.blogContentThunk?.data || {});
-    const { Title, bannerHeading, bannerImage } = blogData || {};
-    const { Name, paragraph } = admin || {}
-    const { url } = bannerImage?.data?.attributes || {}
+    const { url } = bannerImage || {}
     const imgUrl = imageUrl()
     const bannerImg = url ? `${imgUrl}${url}` : defaultImg
     const [text, setText] = useState('');
     const [bannerLoaded, setBannerLoaded] = useState(false)
 
     useEffect(() => {
-        let textt = content ?? '';
+        let textt = blogContent ?? '';
 
         // Horizontal lines
         textt = textt.replace(/^\s*(?:-{3,}|\*{3,}|_{3,})\s*$/gm, '<hr class="my-[1rem] border-[1px] border-[#c9c9c9]"/>');
@@ -57,13 +55,19 @@ const BlogContent = ({ blogContent }) => {
         // Images
         textt = textt.replace(
             /!\[([^\]]+)\]\(([^)]+)\)/g,
-            `<img src="$2">`
+            `
+            <div class="my-[6px] relative">
+                <img src="$2" alt="Image">
+                ${!displayImageUrl ? `` : `<a target="_blank" href="${displayImageUrl}" class="inset-0 absolute"></a>`}
+                ${!displayImageText ? `` : `<span class="text-white bg-black bg-opacity-50 absolute w-full text-center text-[25px] font-semibold py-[10px] bottom-[75px]">${displayImageText}</span>`}
+            </div>
+            `
         );
 
         // Links
         textt = textt.replace(
             /\[([^\]]+)\]\(([^)]+)\)/g,
-            '<a href="$2" class="underline text-blue-700 font-semibold">$1</a>'
+            '<a target="_blank" href="$2" class="underline text-blue-700 font-semibold">$1</a>'
         );
 
         // Bold, Italic, and Strikethrough
@@ -97,10 +101,7 @@ const BlogContent = ({ blogContent }) => {
             return `<ul class='ms-[20px]'>\n${listItems}\n</ul>`;
         });
 
-        // Paragraphs (all text not already matched)
-        textt = textt.replace(/^\/\/\s(.+)/gm, '<p class="mb-[1em]">$1</p>');
-
-        textt = textt.replace(/\\n/g, '<br/>');
+        textt = textt.replace(/(\n\s*\n)/g, '<br/>');
 
         setText(textt);
     }, [blogContent]);
@@ -129,20 +130,9 @@ const BlogContent = ({ blogContent }) => {
         <div>
             <section>
                 <div className={`relative h-[20rem] flex items-center justify-center xl:block md:h-[30rem]`}>
-                    {bannerLoaded ? (
+                    {bannerLoaded && (
                         <Image
                             src={bannerImg}
-                            alt='banner'
-                            className={`w-full object-cover`}
-                            layout="fill"
-                            priority
-                            fetchPriority="high"
-                            placeholder="blur"
-                            blurDataURL="/imgs/homeSection1BlurData.jpg"
-                        />
-                    ) : (
-                        <Image
-                            src={defaultImg}
                             alt='banner'
                             className={`w-full object-cover`}
                             layout="fill"
@@ -154,7 +144,7 @@ const BlogContent = ({ blogContent }) => {
                     )}
                     <div className={`flex justify-center inset-0 absolute ${bannerLoaded ? "bg-black bg-opacity-50" : ""}`}>
                         <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
-                            <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[55px] text-white'>{bannerHeading}</h1>
+                            <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[55px] text-white'>{BlogTitle}</h1>
                         </div>
                     </div>
                 </div>
@@ -165,14 +155,14 @@ const BlogContent = ({ blogContent }) => {
                         <div className='px-3 xl:px-0'>
                             <div dangerouslySetInnerHTML={{ __html: text }}></div>
                         </div>
-                        <section className="md:ps-3 xl:ps-0 pb-[2rem]">
+                        <section className="md:ps-3 xl:ps-0 py-[2rem]">
                             <h1 className="text-white bg-orange-500 font-semibold text-[25px] text-center">RECENT POSTS</h1>
                             <Slider imgData={data} />
                             <div className="bg-[#f2f2f2] p-[1rem] mt-2">
-                                <h1 className="font-semibold text-[20px] mb-4">{Name}</h1>
+                                <h1 className="font-semibold text-[17px] mb-4">Author</h1>
                                 <div className="flex gap-[1rem]">
                                     <Image src={userImg} alt="img" width={80} height={80} />
-                                    <p className="text-[15px]">{paragraph}</p>
+                                    <p className="text-[20px] font-semibold">{createdBy.firstname + " " + createdBy.lastname}</p>
                                 </div>
                             </div>
                         </section>
