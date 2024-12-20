@@ -41,7 +41,7 @@ const ContactPage = ({ contactData }) => {
                         <div className={`flex justify-center inset-0 absolute bg-black bg-opacity-50`}>
                             <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
                                 <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[55px] text-white'>{bannerHeading} {keyword && `- ${toSlug(keyword)}`}</h1>
-                                <p className='lg:text-[18px] text-white lg:font-bold w-[550px]'>{bannerParagraph}</p>
+                                <p className='lg:text-[18px] text-white lg:font-bold md:w-[550px]'>{bannerParagraph}</p>
                             </div>
                         </div>
                     )}

@@ -42,15 +42,15 @@ const TourPage = ({ pageData }) => {
                         <div className={`flex justify-center inset-0 absolute bg-black bg-opacity-50`}>
                             <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
                                 <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[55px] text-white'>{bannerHeading}</h1>
-                                <p className='lg:text-[18px] text-white lg:font-bold w-[550px]'>{bannerParagraph}</p>
+                                <p className='lg:text-[18px] text-white lg:font-bold md:w-[550px]'>{bannerParagraph}</p>
                             </div>
                         </div>
                     )}
                 </div>
             </section>
             <section className='flex justify-center'>
-                <div className="py-8 md:py-12 w-full max-w-[1250px] md:px-3 xl:pe-0 xl:ps-3 md:grid grid-cols-3 xl:gap-[1rem]">
-                    <div className='flex items-center mb-[2rem] md:pe-3 xl:pe-0 md:mb-0 justify-center md:justify-normal flex-wrap gap-7 md:gap-[1.5rem] col-span-2 h-fit'>
+                <div className="py-8 md:py-12 w-full max-w-[1250px] md:px-3 xl:pe-0 xl:ps-3 lg:grid grid-cols-3 xl:gap-[1rem]">
+                    <div className='flex items-center mb-[2rem] lg:pe-3 xl:pe-0 lg:mb-0 justify-center lg:justify-normal flex-wrap gap-7 md:gap-[1.5rem] col-span-2 h-fit'>
                         {data && data.length > 0 ? (
                             data.slice(0, 6).map((data) => {
                                 const { title, description, buttonText, price, Days, Sale, oldPrice, image, readMoreURL, icon } = data.attributes
@@ -63,8 +63,8 @@ const TourPage = ({ pageData }) => {
                         ) : (
                             <div>Loading...</div>
                         )}
-                        <div className="xl:flex gap-[2rem] px-[1rem] pt-[3rem] pb-[2rem] rounded-xl bg-orange-500 text-white min-w-full max-w-full">
-                            <div className="flex flex-col xl:w-[28rem] gap-[1.5rem]">
+                        <div className="md:flex gap-[2rem] px-[1rem] pt-[3rem] pb-[2rem] rounded-xl bg-orange-500 text-white min-w-full max-w-full">
+                            <div className="flex flex-col md:w-[28rem] gap-[1.5rem]">
                                 <div>
                                     <h1 className="font-semibold text-[30px] leading-[2.2rem]">{discountHeading}</h1>
                                     <p className="text-[15px] mt-[1rem]">{discountParagraph}</p>
@@ -90,8 +90,8 @@ const TourPage = ({ pageData }) => {
                             <div>loading...</div>
                         )}
                     </div>
-                    <div className={`md:h-full md:relative px-3 md:px-0`}>
-                        <div className={`md:sticky top-[2%] right-0`}>
+                    <div className={`lg:h-full lg:relative px-3 lg:px-0`}>
+                        <div className={`lg:sticky top-[2%] right-0`}>
                             <ContactForm />
                         </div>
                     </div>

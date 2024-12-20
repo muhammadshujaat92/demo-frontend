@@ -58,7 +58,7 @@ const BlogContent = ({ blogData }) => {
             <div class="my-[6px] relative">
                 <img src="$2" alt="Image">
                 ${!displayImageUrl ? `` : `<a target="_blank" href="${displayImageUrl}" class="inset-0 absolute"></a>`}
-                ${!displayImageText ? `` : `<span class="text-white bg-black bg-opacity-50 absolute w-full text-center text-[25px] font-semibold py-[10px] bottom-[75px]">${displayImageText}</span>`}
+                ${!displayImageText ? `` : `<span class="text-white bg-black bg-opacity-50 absolute w-full text-center lg:text-[25px] font-semibold py-[5px] lg:py-[10px] bottom-[50px] lg:bottom-[75px]">${displayImageText}</span>`}
             </div>
             `
         );
@@ -147,14 +147,14 @@ const BlogContent = ({ blogData }) => {
                         <div className='px-3 xl:px-0'>
                             <div dangerouslySetInnerHTML={{ __html: text }}></div>
                         </div>
-                        <section className="md:ps-3 xl:ps-0 py-[2rem]">
+                        <section className="md:ps-3 xl:ps-0 md:py-[2rem]">
                             <h1 className="text-white bg-orange-500 font-semibold text-[25px] text-center">RECENT POSTS</h1>
                             <Slider imgData={data} />
-                            <div className="bg-[#f2f2f2] p-[1rem] mt-2">
+                            <div className="bg-[#f2f2f2] p-[1rem] mt-2 mb-[20px]">
                                 <h1 className="font-semibold text-[17px] mb-4">Author</h1>
                                 <div className="flex gap-[1rem]">
                                     <Image src={userImg} alt="img" width={80} height={80} />
-                                    <p className="text-[20px] font-semibold">{createdBy.firstname + " " + createdBy.lastname}</p>
+                                    <p className="md:text-[20px] font-semibold">{createdBy.firstname + " " + createdBy.lastname}</p>
                                 </div>
                             </div>
                         </section>
