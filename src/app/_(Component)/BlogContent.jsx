@@ -18,7 +18,6 @@ const BlogContent = ({ blogData }) => {
     const imgUrl = imageUrl()
     const bannerImg = url ? `${imgUrl}${url}` : defaultImg
     const [text, setText] = useState('');
-    const [bannerLoaded, setBannerLoaded] = useState(false)
 
     useEffect(() => {
         let textt = blogContent ?? '';
@@ -111,14 +110,7 @@ const BlogContent = ({ blogData }) => {
         dispatch(blogContentThunk());
     }, [dispatch]);
 
-    useEffect(() => {
-        const img = new window.Image();
-        img.src = bannerImg;
-        img.onload = () => setBannerLoaded(true);
-    }, [bannerImg]);
-
-
-    if (blogData === null) {
+    if (blogData === null || blogData == undefined) {
         return (
             <div className='h-screen flex justify-center items-center'>
                 <h1 className='text-2xl'>No Blog</h1>
@@ -130,23 +122,23 @@ const BlogContent = ({ blogData }) => {
         <div>
             <section>
                 <div className={`relative h-[20rem] flex items-center justify-center xl:block md:h-[30rem]`}>
-                    {bannerLoaded && (
-                        <Image
-                            src={bannerImg}
-                            alt='banner'
-                            className={`w-full object-cover`}
-                            layout="fill"
-                            priority
-                            fetchPriority="high"
-                            placeholder="blur"
-                            blurDataURL="/imgs/homeSection1BlurData.jpg"
-                        />
-                    )}
-                    <div className={`flex justify-center inset-0 absolute ${bannerLoaded ? "bg-black bg-opacity-50" : ""}`}>
-                        <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
-                            <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[55px] text-white'>{BlogTitle}</h1>
+                    <Image
+                        src={bannerImg}
+                        alt='banner'
+                        className={`w-full object-cover`}
+                        layout="fill"
+                        priority
+                        fetchPriority="high"
+                        placeholder="blur"
+                        blurDataURL="/imgs/homeSection1BlurData.jpg"
+                    />
+                    {bannerImg && (
+                        <div className={`flex justify-center inset-0 absolute bg-black bg-opacity-50`}>
+                            <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
+                                <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[55px] text-white'>{BlogTitle}</h1>
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </section>
             <section className='flex items-center flex-col'>

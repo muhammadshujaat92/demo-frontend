@@ -5,12 +5,10 @@ import { imageUrl } from "@/utils/apiHelper";
 import ContactForm from "./ContactForm";
 import defaultImg from '@/public/imgs/Contact-IndiaYaatra.webp'
 import { sancoaleSoftened } from "./Font";
-import { useEffect, useState } from "react";
 
 const ContactPage = ({ contactData }) => {
     const searchParams = useSearchParams();
     const keyword = searchParams.get('rh');
-    const [bannerLoaded, setBannerLoaded] = useState(false)
 
     const toSlug = (text) => {
         return text.replace(/[^A-Za-z0-9]/g, ' ');
@@ -25,34 +23,28 @@ const ContactPage = ({ contactData }) => {
     const bannerImg = url ? `${imgUrl}${url}` : defaultImg
     const { data } = userImgs || {}
 
-    useEffect(() => {
-        const img = new window.Image();
-        img.src = bannerImg;
-        img.onload = () => setBannerLoaded(true);
-    }, [bannerImg]);
-
     return (
         <div>
             <section>
                 <div className={`relative h-[20rem] flex items-center justify-center xl:block md:h-[30rem]`}>
-                    {bannerLoaded && (
-                        <Image
-                            src={bannerImg}
-                            alt="banner"
-                            className="w-full object-cover"
-                            layout="fill"
-                            fetchPriority="high"
-                            priority
-                            placeholder="blur"
-                            blurDataURL="/imgs/homeSection1BlurData.jpg"
-                        />
-                    )}
-                    <div className={`flex justify-center inset-0 absolute ${bannerLoaded ? "bg-black bg-opacity-50" : ""}`}>
-                        <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
-                            <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[55px] text-white'>{bannerHeading} {keyword && `- ${toSlug(keyword)}`}</h1>
-                            <p className='lg:text-[18px] text-white lg:font-bold w-[550px]'>{bannerParagraph}</p>
+                    <Image
+                        src={bannerImg}
+                        alt="banner"
+                        className="w-full object-cover"
+                        layout="fill"
+                        fetchPriority="high"
+                        priority
+                        placeholder="blur"
+                        blurDataURL="/imgs/homeSection1BlurData.jpg"
+                    />
+                    {bannerImg && (
+                        <div className={`flex justify-center inset-0 absolute bg-black bg-opacity-50`}>
+                            <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
+                                <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[55px] text-white'>{bannerHeading} {keyword && `- ${toSlug(keyword)}`}</h1>
+                                <p className='lg:text-[18px] text-white lg:font-bold w-[550px]'>{bannerParagraph}</p>
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </section >
             <div className="flex flex-col items-center">

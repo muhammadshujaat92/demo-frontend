@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cardThunk } from "../_redux/api/Card";
 import discountImg from '@/public/imgs/discount.webp'
@@ -12,7 +12,6 @@ import { sancoaleSoftened } from "./Font";
 
 const TourPage = ({ pageData }) => {
     const dispatch = useDispatch();
-    const [bannerLoaded, setBannerLoaded] = useState(false)
 
     useEffect(() => {
         dispatch(cardThunk())
@@ -25,34 +24,28 @@ const TourPage = ({ pageData }) => {
     const { url } = Banner?.data?.attributes || {}
     const BannerImg = url ? `${imgUrl}${url}` : defaultImg
 
-    useEffect(() => {
-        const img = new window.Image();
-        img.src = BannerImg;
-        img.onload = () => setBannerLoaded(true);
-    }, [BannerImg]);
-
     return (
         <div>
             <section>
                 <div className={`relative h-[20rem] flex items-center justify-center xl:block md:h-[30rem]`}>
-                    {bannerLoaded && (
-                        <Image
-                            src={BannerImg}
-                            alt='banner'
-                            className={`w-full object-cover`}
-                            layout="fill"
-                            fetchPriority="high"
-                            placeholder="blur"
-                            blurDataURL="/imgs/homeSection1BlurData.jpg"
-                            priority
-                        />
-                    )}
-                    <div className={`flex justify-center inset-0 absolute ${bannerLoaded ? "bg-black bg-opacity-50" : ""}`}>
-                        <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
-                            <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[55px] text-white'>{bannerHeading}</h1>
-                            <p className='lg:text-[18px] text-white lg:font-bold w-[550px]'>{bannerParagraph}</p>
+                    <Image
+                        src={BannerImg}
+                        alt='banner'
+                        className={`w-full object-cover`}
+                        layout="fill"
+                        fetchPriority="high"
+                        placeholder="blur"
+                        blurDataURL="/imgs/homeSection1BlurData.jpg"
+                        priority
+                    />
+                    {BannerImg && (
+                        <div className={`flex justify-center inset-0 absolute bg-black bg-opacity-50`}>
+                            <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
+                                <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[55px] text-white'>{bannerHeading}</h1>
+                                <p className='lg:text-[18px] text-white lg:font-bold w-[550px]'>{bannerParagraph}</p>
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </section>
             <section className='flex justify-center'>
