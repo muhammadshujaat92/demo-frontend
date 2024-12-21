@@ -91,8 +91,8 @@ const BlogPage = ({ blogData }) => {
                 </div>
             </section>
             <section className='flex justify-center'>
-                <div className='md:grid grid-cols-3 py-[2rem] w-full max-w-[1250px] px-3 xl:ps-3 gap-[1rem]'>
-                    <div className='flex flex-wrap gap-[1.5rem] col-span-2 mb-[2rem] md:mb-0 justify-center md:justify-normal'>
+                <div className='lg:grid grid-cols-3 py-[2rem] w-full max-w-[1250px] px-3 xl:ps-3 gap-[1rem]'>
+                    <div className='flex flex-wrap gap-[1.5rem] col-span-2 mb-[2rem] lg:mb-0 justify-center lg:justify-normal'>
                         {
                             filteredData && filteredData.length > 0 ? (
                                 filteredData.map((post) => {

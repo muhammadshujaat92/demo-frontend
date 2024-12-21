@@ -10,49 +10,64 @@ const EditBar = () => {
     const state = useSelector(state => state?.editThunk);
     const { token } = state || {};
     const pathName = usePathname();
-    const isDynamicBlog = /^\/blog\/(\d+)$/;
-    const [isTokenPresent, setIsTokenPresent] = useState(false); // Start with false
+    const isDynamicBlog = /^\/blog\/([^/]+)$/;
+    const [isTokenPresent, setIsTokenPresent] = useState(false);
 
     useEffect(() => {
-        // Set the token only after the component mounts
         setIsTokenPresent(!!token);
     }, [token]);
 
-    const handleEdit = () => {
+    const handleEdit = async () => {
         let editUrl = '';
+        const match = pathName.match(isDynamicBlog);
 
-        switch (pathName) {
-            case '/':
-                editUrl = `${baseUrl}/admin/content-manager/collection-types/api::home-page.home-page/1`;
-                break;
-            case '/tour-packages':
-                editUrl = `${baseUrl}/admin/content-manager/collection-types/api::tour-package.tour-package/1`;
-                break;
-            case '/contact':
-                editUrl = `${baseUrl}/admin/content-manager/collection-types/api::contact-us.contact-us/1`;
-                break;
-            case '/blog':
-                editUrl = `${baseUrl}/admin/content-manager/collection-types/api::blog-page.blog-page/1`;
-                break;
-            default:
-                const match = pathName.match(isDynamicBlog);
-                if (match) {
-                    const blogId = match[1];
+        if (match) {
+            const blogTitle = match[1];
+            const slug = blogTitle.replace(/-/g, ' ');
+
+            try {
+                const response = await fetch(`${baseUrl}/api/blog-contents/${slug}`);
+                const data = await response.json();
+
+                if (data) {
+                    const blogId = data.data.id;
                     editUrl = `${baseUrl}/admin/content-manager/collection-types/api::blog-content.blog-content/${blogId}`;
-                } else {
-                    editUrl = baseUrl; // Fallback URL
                 }
+            } catch (error) {
+                console.error('Error fetching blog ID:', error);
+                return;
+            }
+        } else {
+            switch (pathName) {
+                case '/':
+                    editUrl = `${baseUrl}/admin/content-manager/collection-types/api::home-page.home-page/1`;
+                    break;
+                case '/tour-packages':
+                    editUrl = `${baseUrl}/admin/content-manager/collection-types/api::tour-package.tour-package/1`;
+                    break;
+                case '/contact':
+                    editUrl = `${baseUrl}/admin/content-manager/collection-types/api::contact-us.contact-us/1`;
+                    break;
+                case '/blog':
+                    editUrl = `${baseUrl}/admin/content-manager/collection-types/api::blog-page.blog-page/1`;
+                    break;
+                default:
+                    editUrl = baseUrl;
+            }
         }
 
-        window.open(editUrl, '_blank');
+        if (editUrl) {
+            window.open(editUrl, '_blank');
+        }
     };
+
 
     const handleClose = () => {
         dispatch(logout());
         setIsTokenPresent(false);
     };
 
-    if (!isTokenPresent) return null; // Avoid rendering if token is not present
+    if (!isTokenPresent) return null;
 
     return (
         <div className="bg-[#3f3f3f] text-white py-2 px-4 flex justify-between items-center">
