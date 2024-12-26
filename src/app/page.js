@@ -1,5 +1,5 @@
-import Home from '../Components/Homepage/Home'
-import { fetchData } from '@/utils/apiHelper'
+import Home from "@/Components/Homepage/Home";
+import { fetchData } from "@/utils/apiHelper";
 
 export async function generateMetadata() {
   try {

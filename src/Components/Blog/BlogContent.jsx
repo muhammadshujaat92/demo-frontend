@@ -1,14 +1,14 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import Image from 'next/image'
+import defaultImg from '@/public/imgs/blogimg.webp'
+import { useDispatch, useSelector } from 'react-redux';
+import { imageUrl } from '@/utils/apiHelper';
+import { blogContentThunk } from '@/app/_redux/api/BlogContent';
+import Image from 'next/image';
+import { sancoaleSoftened } from '../Font';
+import Slider from '../Slider';
 import ContactForm from '../ContactForm';
 import userImg from '@/public/user.png'
-import Slider from '../Slider';
-import { imageUrl } from '@/utils/apiHelper';
-import { useDispatch, useSelector } from 'react-redux';
-import defaultImg from '@/public/imgs/blogimg.webp'
-import { blogContentThunk } from '../../app/_redux/api/BlogContent';
-import { sancoaleSoftened } from '../Font';
 
 const BlogContent = ({ blogData }) => {
     const dispatch = useDispatch();

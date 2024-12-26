@@ -1,10 +1,10 @@
 'use client'
-import Image from "next/image";
-import { useSearchParams } from "next/navigation";
-import { imageUrl } from "@/utils/apiHelper";
-import ContactForm from "../ContactForm";
 import defaultImg from '@/public/imgs/Contact-IndiaYaatra.webp'
-import { sancoaleSoftened } from "../Font";
+import { imageUrl } from '@/utils/apiHelper';
+import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
+import ContactForm from '../ContactForm';
+import { sancoaleSoftened } from '../Font';
 
 const ContactPage = ({ contactData }) => {
     const searchParams = useSearchParams();

@@ -1,12 +1,12 @@
 'use client'
 import React, { useEffect } from 'react'
-import Card from '../Card'
-import { useDispatch, useSelector } from 'react-redux'
-import { cardThunk } from '../../app/_redux/api/Card'
-import { imageUrl } from '@/utils/apiHelper'
-import Image from 'next/image'
 import bgImg from "@/public/imgs/homeSection1Default.webp"
-import { boogaloo, kanit } from '../Font'
+import { useDispatch, useSelector } from 'react-redux';
+import { imageUrl } from '@/utils/apiHelper';
+import { cardThunk } from '@/app/_redux/api/Card';
+import { boogaloo, kanit } from '../Font';
+import Image from 'next/image';
+import Card from '../Card';
 
 const HomeSection1 = ({ secData }) => {
     const dispatch = useDispatch();

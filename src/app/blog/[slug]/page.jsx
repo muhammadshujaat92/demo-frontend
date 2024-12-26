@@ -1,5 +1,5 @@
 import React from 'react'
-import BlogContent from '../../../Components/Blog/BlogContent'
+import BlogContent from '@/Components/Blog/BlogContent';
 import { fetchData } from '@/utils/apiHelper';
 
 export async function generateMetadata({ params }) {

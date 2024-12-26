@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { TiMediaPlay } from 'react-icons/ti';
-import ProgressBar from '../ProgressBar';
-import Link from 'next/link';
 import { sancoaleSoftened } from '../Font';
+import Link from 'next/link';
+import ProgressBar from '../ProgressBar';
 
 const HeaderComponent = ({ data }) => {
     const [currentIndex, setCurrentIndex] = useState(0);

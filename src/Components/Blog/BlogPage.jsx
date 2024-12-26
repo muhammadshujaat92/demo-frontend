@@ -1,15 +1,15 @@
 'use client'
 import React, { useEffect, useMemo, useState } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import BlogCard from './BlogCard'
-import { useDispatch, useSelector } from 'react-redux'
-import ContactForm from '../ContactForm'
-import { blogCardThunk } from '../../app/_redux/api/BlogCard'
-import { GiCheckMark } from "react-icons/gi";
-import { imageUrl } from '@/utils/apiHelper'
 import defaultImg from '@/public/imgs/blogimg.webp'
-import { sancoaleSoftened } from '../Font'
+import { useDispatch, useSelector } from 'react-redux';
+import { imageUrl } from '@/utils/apiHelper';
+import { blogCardThunk } from '@/app/_redux/api/BlogCard';
+import Image from 'next/image';
+import { sancoaleSoftened } from '../Font';
+import BlogCard from './BlogCard';
+import ContactForm from '../ContactForm';
+import Link from 'next/link';
+import { GiCheckMark } from "react-icons/gi";
 
 const BlogPage = ({ blogData }) => {
     const dispatch = useDispatch();
@@ -142,7 +142,7 @@ const BlogPage = ({ blogData }) => {
                                                 onClick={() => setSelectedDate(monthYearKey)}
                                                 className='bg-gray-200 flex items-center py-5 gap-2 border border-b-gray-400 cursor-pointer'
                                             >
-                                                <GiCheckMark className='text-orange-500' />
+                                                <kGiCheckMark className='text-orange-500' />
                                                 <h1 className='text-blue-500 font-semibold'>{displayDate}</h1>
                                             </div>
                                         );

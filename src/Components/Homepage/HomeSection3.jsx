@@ -1,9 +1,9 @@
 import React from 'react'
-import Link from 'next/link'
-import { imageUrl } from '@/utils/apiHelper'
-import Image from 'next/image'
 import defaultImg from '@/public/imgs/woman-mountain-peak.webp'
+import { imageUrl } from '@/utils/apiHelper'
 import { kanit } from '../Font'
+import Image from 'next/image'
+import Link from 'next/link'
 
 const HomeSection3 = ({ data }) => {
     const { ButtonText, Heading, Paragraph, image, URL } = data || {}

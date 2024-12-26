@@ -1,8 +1,8 @@
 "use client"
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { editThunk, login } from '../app/_redux/api/edit';
 import { useRouter, usePathname } from 'next/navigation';
+import { editThunk, login } from '@/app/_redux/api/edit';
 
 const Edit = () => {
     const [credentials, setCredentials] = useState({ identifier: "", password: "" });

@@ -1,7 +1,7 @@
 import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { imageUrl } from '@/utils/apiHelper'
+import { imageUrl } from '@/utils/apiHelper';
+import Image from 'next/image';
+import Link from 'next/link';
 import defaultImg from "@/public/imgs/gellary-2.jpg"
 
 const extractAndCleanDescription = (markdown) => {

@@ -1,14 +1,14 @@
 'use client'
-import Image from "next/image";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { cardThunk } from "../../app/_redux/api/Card";
-import discountImg from '@/public/imgs/discount.webp'
-import { imageUrl } from "@/utils/apiHelper";
-import ContactForm from "../ContactForm";
-import Card from "../Card";
+import { useEffect } from 'react';
+import { cardThunk } from '@/app/_redux/api/Card';
 import defaultImg from '@/public/imgs/India-tour-package.webp'
-import { sancoaleSoftened } from "../Font";
+import discountImg from '@/public/imgs/discount.webp'
+import { useDispatch, useSelector } from 'react-redux';
+import { imageUrl } from '@/utils/apiHelper';
+import Image from 'next/image';
+import { sancoaleSoftened } from '../Font';
+import Card from '../Card';
+import ContactForm from '../ContactForm';
 
 const TourPage = ({ pageData }) => {
     const dispatch = useDispatch();
