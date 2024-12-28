@@ -22,7 +22,7 @@ const HomeSection3 = ({ data }) => {
                     <Link href={`/contact/?rh=${URL}`} className='font-bold bg-green-600 text-white px-4 py-1 text-[18px]'>{ButtonText}</Link>
                 </div>
                 <div className='h-[20rem] md:h-[25rem] max-h-[25rem] relative rounded-l-[15rem] mt-7 md:mt-0'>
-                    <Image src={Img} alt='bg-img' className='rounded-l-[15rem]' priority layout='fill' style={{ objectFit: "cover" }} />
+                    <Image src={Img} alt='bg-img' className='rounded-l-[15rem]' loading='lazy' layout='fill' style={{ objectFit: "cover" }} />
                 </div>
             </div>
         </div>

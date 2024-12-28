@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import HeaderComponent from './HeaderComponent'
 const HomeSection1 = dynamic(() => import('./HomeSection1'), { loading: () => <p>Loading...</p> })
@@ -9,8 +9,8 @@ const HomeSection4 = dynamic(() => import('./HomeSection4'), { loading: () => <p
 const HomeSection5 = dynamic(() => import('./HomeSection5'), { loading: () => <p>Loading...</p> })
 const HomeSection6 = dynamic(() => import('./HomeSection6'), { loading: () => <p>Loading...</p> })
 const HomeSection7 = dynamic(() => import('./HomeSection7'), { loading: () => <p>Loading...</p> })
-const HomeSection8 = dynamic(() => import('./HomeSection8'), { loading: () => <p>Loading...</p> })
-const ContactForm = dynamic(() => import('../../app/_(Components)/ContactForm'))
+const HomeSection8 = dynamic(() => import('./HomeSection8'), { suspense: true })
+const ContactForm = dynamic(() => import('../ContactForm'))
 import headerImg from '@/public/header.webp'
 import Image from 'next/image';
 import watsappLogo from '@/public/imgs/whatsapp-logo.webp'
@@ -58,7 +58,9 @@ const Home = ({ homeData }) => {
                 <HomeSection6 item={sec6} />
             </div>
             <HomeSection7 data={faqSection} />
-            <HomeSection8 data={lastSectionData} />
+            <Suspense>
+                <HomeSection8 data={lastSectionData} />
+            </Suspense>
         </>
     );
 };

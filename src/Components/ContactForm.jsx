@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import Spinner from '../../Components/Spinner';
-import { sancoaleSoftened } from '../../Components/Font';
+import Spinner from './Spinner';
+import { sancoaleSoftened } from './Font';
 
 const ContactForm = ({ colspan2, fontSize }) => {
     const [clientInfo, setClientInfo] = useState({ ip: '', country: '', city: '', region: '' });
@@ -119,7 +119,7 @@ const ContactForm = ({ colspan2, fontSize }) => {
             </div>
             <div className="mb-4 px-3 md:px-5 flex items-center">
                 <label htmlFor="number" className='p-2 bg-[#c4c0c0] rounded-l-lg h-[40px]'>{clientInfo.country}</label>
-                <input type="text" name='number' value={formData.number} onChange={handleChange} className="text-sm rounded-r-lg block w-full p-2.5 bg-gray-200" required placeholder='Phone no.' />
+                <input type="text" name='number' id='number' value={formData.number} onChange={handleChange} className="text-sm rounded-r-lg block w-full p-2.5 bg-gray-200" required placeholder='Phone no.' />
             </div>
             <div className="mb-4 px-3 md:px-5">
                 <input type="text" name='date' value={formData.date} onChange={handleChange} className="text-sm rounded-lg block w-full p-2.5 bg-gray-200" onFocus={(e) => (e.target.type = "date")} onBlur={(e) => (e.target.type = "text")} required placeholder='Choose Date' />

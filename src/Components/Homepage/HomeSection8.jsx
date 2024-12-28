@@ -1,8 +1,9 @@
 import React from 'react'
-import ContactForm from '../../app/_(Components)/ContactForm'
+import dynamic from 'next/dynamic';
 import { IoMail, IoLocationSharp } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
 import { kanit } from '../Font';
+const ContactForm = dynamic(() => import('../ContactForm'), { loading: () => <p>Loading...</p> })
 
 const HomeSection8 = ({ data }) => {
     const { Heading, Paragraph, Title, contactDetail } = data || {}

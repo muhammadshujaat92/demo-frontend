@@ -7,7 +7,7 @@ import { blogCardThunk } from '@/app/_redux/api/BlogCard';
 import Image from 'next/image';
 import { sancoaleSoftened } from '../Font';
 import BlogCard from './BlogCard';
-import ContactForm from '../../app/_(Components)/ContactForm';
+import ContactForm from '../ContactForm';
 import Link from 'next/link';
 import { GiCheckMark } from "react-icons/gi";
 

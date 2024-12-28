@@ -6,7 +6,8 @@ import { imageUrl } from '@/utils/apiHelper';
 import { cardThunk } from '@/app/_redux/api/Card';
 import { boogaloo, kanit } from '../Font';
 import Image from 'next/image';
-import Card from '../Card';
+import dynamic from 'next/dynamic';
+const Card = dynamic(() => import('../Card'), { loading: () => <p className='text-white font-semibold text-[35px]'>Loading...</p> })
 
 const HomeSection1 = ({ secData }) => {
     const dispatch = useDispatch();
@@ -40,10 +41,7 @@ const HomeSection1 = ({ secData }) => {
                     style={{ objectFit: "cover" }}
                     className="z-[-1]"
                     layout="fill"
-                    priority
-                    fetchPriority="high"
-                    placeholder="blur"
-                    blurDataURL="/imgs/homeSection1BlurData.jpg"
+                    loading='lazy'
                 />
                 <div className='relative py-[1rem] w-full text-center'>
                     <h1 style={{ fontFamily: kanit.style.fontFamily }} className='font-semibold text-[30px] md:text-[38px]'>{BackgroundImageTitle}</h1>
