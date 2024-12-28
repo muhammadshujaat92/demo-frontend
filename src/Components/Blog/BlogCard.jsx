@@ -17,11 +17,11 @@ const extractAndCleanDescription = (markdown) => {
 
     return '';
 };
-const BlogCard = ({ BlogTitle, BlogCardImage, blogContent }) => {
+const BlogCard = ({ BlogTitle, BlogCardImage, blogContent, pageURL }) => {
     const { url } = BlogCardImage?.data?.attributes || ""
     const imgUrl = imageUrl()
     const cardImg = url ? `${imgUrl}${url}` : defaultImg
-    const slug = BlogTitle.replace(/[^A-Za-z0-9]/g, '-');
+    const slug = pageURL ? pageURL.replace(/[^A-Za-z0-9]/g, '-').toLowerCase() : BlogTitle.replace(/[^A-Za-z0-9]/g, '-').toLowerCase();
 
     return (
         <div className="max-w-[23rem] md:max-w-[14rem] lg:max-w-[19rem] xl:max-w-[23rem] border h-[33rem] max-h-[33rem] border-gray-200 rounded-lg shadow">

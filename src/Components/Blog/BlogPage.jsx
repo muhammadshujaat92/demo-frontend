@@ -7,7 +7,7 @@ import { blogCardThunk } from '@/app/_redux/api/BlogCard';
 import Image from 'next/image';
 import { sancoaleSoftened } from '../Font';
 import BlogCard from './BlogCard';
-import ContactForm from '../ContactForm';
+import ContactForm from '../../app/_(Components)/ContactForm';
 import Link from 'next/link';
 import { GiCheckMark } from "react-icons/gi";
 
@@ -96,9 +96,9 @@ const BlogPage = ({ blogData }) => {
                         {
                             filteredData && filteredData.length > 0 ? (
                                 filteredData.map((post) => {
-                                    const { BlogTitle, BlogCardImage, blogContent } = post.attributes;
+                                    const { BlogTitle, BlogCardImage, blogContent, pageURL } = post.attributes;
                                     return (
-                                        <BlogCard key={post.id} BlogTitle={BlogTitle} BlogCardImage={BlogCardImage} blogContent={blogContent} />
+                                        <BlogCard key={post.id} BlogTitle={BlogTitle} BlogCardImage={BlogCardImage} blogContent={blogContent} pageURL={pageURL} />
                                     )
                                 })
                             ) : (
@@ -113,8 +113,8 @@ const BlogPage = ({ blogData }) => {
                             <div className='px-5'>
                                 {data && data.length > 0 ? (
                                     data.slice(-5).map((data) => {
-                                        const { BlogTitle } = data.attributes;
-                                        const slug = BlogTitle.replace(/[^A-Za-z0-9]/g, '-');
+                                        const { BlogTitle, pageURL } = data.attributes;
+                                        const slug = pageURL ? pageURL.replace(/[^A-Za-z0-9]/g, '-').toLowerCase() : BlogTitle.replace(/[^A-Za-z0-9]/g, '-').toLowerCase();
                                         return (
                                             <Link key={data.id} href={`/blog/${slug}`}>
                                                 <div className='bg-gray-200 flex items-center py-5 gap-2 border border-b-gray-400'>

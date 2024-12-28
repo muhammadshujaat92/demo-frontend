@@ -32,10 +32,10 @@ const Slider = ({ imgData }) => {
             {
                 imgData ? (
                     imgData.slice(-7).map((item) => {
-                        const { BlogTitle, BlogCardImage } = item?.attributes || {};
+                        const { BlogTitle, BlogCardImage, pageURL } = item?.attributes || {};
                         const { url } = BlogCardImage?.data?.attributes || "";
                         const blogImg = url ? `${baseUrl}${url}` : ""
-                        const slug = BlogTitle.replace(/[^A-Za-z0-9]/g, '-');
+                        const slug = pageURL ? pageURL.replace(/[^A-Za-z0-9]/g, '-').toLowerCase() : BlogTitle.replace(/[^A-Za-z0-9]/g, '-').toLowerCase();
                         return (
                             <SwiperSlide className='w-fit' key={item.id}>
                                 <div className="w-[9rem] py-[1.5rem]">

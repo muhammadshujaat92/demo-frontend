@@ -10,7 +10,7 @@ const HomeSection5 = dynamic(() => import('./HomeSection5'), { loading: () => <p
 const HomeSection6 = dynamic(() => import('./HomeSection6'), { loading: () => <p>Loading...</p> })
 const HomeSection7 = dynamic(() => import('./HomeSection7'), { loading: () => <p>Loading...</p> })
 const HomeSection8 = dynamic(() => import('./HomeSection8'), { loading: () => <p>Loading...</p> })
-const ContactForm = dynamic(() => import('../ContactForm'))
+const ContactForm = dynamic(() => import('../../app/_(Components)/ContactForm'))
 import headerImg from '@/public/header.webp'
 import Image from 'next/image';
 import watsappLogo from '@/public/imgs/whatsapp-logo.webp'

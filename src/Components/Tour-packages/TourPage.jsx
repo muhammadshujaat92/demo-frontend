@@ -8,7 +8,7 @@ import { imageUrl } from '@/utils/apiHelper';
 import Image from 'next/image';
 import { sancoaleSoftened } from '../Font';
 import Card from '../Card';
-import ContactForm from '../ContactForm';
+import ContactForm from '../../app/_(Components)/ContactForm';
 
 const TourPage = ({ pageData }) => {
     const dispatch = useDispatch();

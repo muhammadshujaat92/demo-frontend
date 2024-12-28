@@ -3,7 +3,7 @@ import defaultImg from '@/public/imgs/Contact-IndiaYaatra.webp'
 import { imageUrl } from '@/utils/apiHelper';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import ContactForm from '../ContactForm';
+import ContactForm from '../../app/_(Components)/ContactForm';
 import { sancoaleSoftened } from '../Font';
 
 const ContactPage = ({ contactData }) => {

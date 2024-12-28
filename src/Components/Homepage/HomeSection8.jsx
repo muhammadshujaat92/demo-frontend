@@ -1,5 +1,5 @@
 import React from 'react'
-import ContactForm from '../ContactForm'
+import ContactForm from '../../app/_(Components)/ContactForm'
 import { IoMail, IoLocationSharp } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
 import { kanit } from '../Font';

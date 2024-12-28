@@ -7,7 +7,7 @@ import { blogContentThunk } from '@/app/_redux/api/BlogContent';
 import Image from 'next/image';
 import { sancoaleSoftened } from '../Font';
 import Slider from '../Slider';
-import ContactForm from '../ContactForm';
+import ContactForm from '../../app/_(Components)/ContactForm';
 import userImg from '@/public/user.png'
 
 const BlogContent = ({ blogData }) => {

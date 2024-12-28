@@ -1,10 +1,10 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import Spinner from './Spinner';
-import { sancoaleSoftened } from './Font';
+import Spinner from '../../Components/Spinner';
+import { sancoaleSoftened } from '../../Components/Font';
 
 const ContactForm = ({ colspan2, fontSize }) => {
-    const [clientInfo, setClientInfo] = useState({ ip: '', country: '' });
+    const [clientInfo, setClientInfo] = useState({ ip: '', country: '', city: '', region: '' });
     const [referrer, setReferrer] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [messageSend, setMessageSend] = useState("");
@@ -25,10 +25,12 @@ const ContactForm = ({ colspan2, fontSize }) => {
             setClientInfo({
                 ip: data.ip || 'Unknown',
                 country: data.country || 'Unknown',
+                city: data.city || 'Unknown',
+                region: data.region || 'Unknown'
             });
         } catch (error) {
             console.error('Error fetching client IP info:', error);
-            setClientInfo({ ip: 'Unknown', country: 'Unknown' });
+            setClientInfo({ ip: 'Unknown', country: 'Unknown', city: 'Unknown', region: 'Unknown' });
         }
     };
 

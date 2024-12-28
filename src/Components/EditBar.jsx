@@ -23,10 +23,10 @@ const EditBar = () => {
 
         if (match) {
             const blogTitle = match[1];
-            const slug = blogTitle.replace(/-/g, ' ');
+            // const slug = blogTitle.replace(/-/g, ' ');
 
             try {
-                const response = await fetch(`${baseUrl}/api/blog-contents/${slug}`);
+                const response = await fetch(`${baseUrl}/api/blog-contents/${blogTitle}`);
                 const data = await response.json();
 
                 if (data) {
