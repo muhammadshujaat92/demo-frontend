@@ -81,18 +81,14 @@ const Navbar = ({ navBarData }) => {
                 >
                     <i className={`fa-solid text-[25px] ${showMenu ? 'fa-xmark' : 'fa-bars'}`}></i>
                 </button>
-                {
-                    showMenu ? (
-                        <ul ref={menuRef} className='absolute top-0 left-0 h-[100vh] w-[70%] pt-[5rem] ps-[2rem] flex flex-col bg-black text-white gap-6 tracking-wide text-[15px] font-semibold md:hidden z-10'>
-                            <Link href={'/'} onClick={() => setShowMenu(false)}>{Link1}</Link>
-                            <Link href={'/tour-packages'} onClick={() => setShowMenu(false)}>{Link2}</Link>
-                            <Link href={'/contact'} onClick={() => setShowMenu(false)}>{Link3}</Link>
-                            <Link href={'/blog'} onClick={() => setShowMenu(false)}>{Link4}</Link>
-                        </ul>
-                    ) : (
-                        <span className='hidden'></span>
-                    )
-                }
+                {showMenu && (
+                    <ul ref={menuRef} className='absolute top-0 left-0 h-[100vh] w-[70%] pt-[5rem] ps-[2rem] flex flex-col bg-black text-white gap-6 tracking-wide text-[15px] font-semibold md:hidden z-10'>
+                        <Link href={'/'} onClick={() => setShowMenu(false)}>{Link1}</Link>
+                        <Link href={'/tour-packages'} onClick={() => setShowMenu(false)}>{Link2}</Link>
+                        <Link href={'/contact'} onClick={() => setShowMenu(false)}>{Link3}</Link>
+                        <Link href={'/blog'} onClick={() => setShowMenu(false)}>{Link4}</Link>
+                    </ul>
+                )}
             </nav>
         </div>
     )

@@ -1,11 +1,10 @@
 'use client'
 import React, { useState } from 'react';
-import { IoMail, IoLocationSharp } from "react-icons/io5";
-import { FaPhoneAlt } from "react-icons/fa";
 import Link from 'next/link';
 import Image from 'next/image';
 import logoImg from '@/public/IndiaYaatra-logo.webp';
 import { imageUrl } from '@/utils/apiHelper';
+import Icon from './Icons';
 
 const Footer = ({ footerData }) => {
     const [formData, setFormData] = useState({ name: "", email: "" })
@@ -117,9 +116,9 @@ const Footer = ({ footerData }) => {
                         <div className='h-full'>
                             <h1 className='text-[25px] font-semibold mb-[1.5rem] xl:mb-0'>Contact Details</h1>
                             <div className='h-[75%] flex justify-center flex-col gap-7'>
-                                <p className='flex items-center gap-2'><FaPhoneAlt className='p-2 text-[2rem] border rounded-full' />{contactPhone}</p>
-                                <p className='flex items-center gap-2'><IoLocationSharp className='p-2 text-[2rem] border rounded-full' />{location}</p>
-                                <p className='flex items-center gap-2'><IoMail className='p-2 text-[2rem] border rounded-full' />{contactEmail}</p>
+                                <p className='flex items-center gap-2'><Icon name="phone" className='p-2 text-[2rem] border rounded-full' />{contactPhone}</p>
+                                <p className='flex items-center gap-2'><Icon name="location" className='p-2 text-[2rem] border rounded-full' />{location}</p>
+                                <p className='flex items-center gap-2'><Icon name="email" className='p-2 text-[2rem] border rounded-full' />{contactEmail}</p>
                             </div>
                         </div>
                     </div>

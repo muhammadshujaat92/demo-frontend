@@ -9,7 +9,7 @@ import { sancoaleSoftened } from '../Font';
 import BlogCard from './BlogCard';
 import ContactForm from '../ContactForm';
 import Link from 'next/link';
-import { GiCheckMark } from "react-icons/gi";
+import Icon from '../Icons';
 
 const BlogPage = ({ blogData }) => {
     const dispatch = useDispatch();
@@ -118,7 +118,7 @@ const BlogPage = ({ blogData }) => {
                                         return (
                                             <Link key={data.id} href={`/blog/${slug}`}>
                                                 <div className='bg-gray-200 flex items-center py-5 gap-2 border border-b-gray-400'>
-                                                    <GiCheckMark className='text-orange-500' />
+                                                    <Icon name="check" className='text-orange-500' />
                                                     <h1 className='text-blue-500 font-semibold'>{BlogTitle}</h1>
                                                 </div>
                                             </Link>
@@ -142,7 +142,7 @@ const BlogPage = ({ blogData }) => {
                                                 onClick={() => setSelectedDate(monthYearKey)}
                                                 className='bg-gray-200 flex items-center py-5 gap-2 border border-b-gray-400 cursor-pointer'
                                             >
-                                                <kGiCheckMark className='text-orange-500' />
+                                                <Icon name="check" className='text-orange-500' />
                                                 <h1 className='text-blue-500 font-semibold'>{displayDate}</h1>
                                             </div>
                                         );
@@ -162,9 +162,7 @@ const BlogPage = ({ blogData }) => {
                                     ? 'text-gray-400 cursor-not-allowed'
                                     : ''
                                     }`}>
-                                <svg className="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
-                                </svg>
+                                <Icon name="previous" className="w-3 h-3 rtl:rotate-180" />
                                 Previous
                             </button>
                             {
@@ -181,9 +179,7 @@ const BlogPage = ({ blogData }) => {
                                 className={`${pageNo === totalPages ? "cursor-not-allowed" : ""} flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700`}
                             >
                                 Next
-                                <svg className="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
-                                </svg>
+                                <Icon name="next" className="w-3 h-3 rtl:rotate-180" />
                             </button>
                         </ul>
                     </div>

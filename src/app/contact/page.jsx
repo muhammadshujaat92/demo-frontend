@@ -31,11 +31,15 @@ export async function generateMetadata() {
     }
 }
 
+export const Loading = () => (
+    <div className="flex justify-center items-center h-screen"></div>
+);
+
 const page = async () => {
     try {
         const contactData = await fetchData("contact-uses/?populate=Banner&populate=contactPageBox&populate=tst.feData&populate=tst.userImgs&populate=getInTouch.conDetail")
         return (
-            <Suspense>
+            <Suspense fallback={<Loading />} >
                 <ContactPage contactData={contactData} />
             </Suspense>
         )

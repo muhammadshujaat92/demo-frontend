@@ -7,7 +7,8 @@ import { cardThunk } from '@/app/_redux/api/Card';
 import { boogaloo, kanit } from '../Font';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-const Card = dynamic(() => import('../Card'), { loading: () => <p className='text-white font-semibold text-[35px]'>Loading...</p> })
+import Link from 'next/link';
+const Card = dynamic(() => import('../Card'), { loading: () => <p>Loading...</p> })
 
 const HomeSection1 = ({ secData }) => {
     const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const HomeSection1 = ({ secData }) => {
                     <h1 style={{ fontFamily: boogaloo.style.fontFamily }} className='text-[40px] leading-[2.7rem] md:leading-none md:text-[50px] text-[#e75c00]'>{Title}</h1>
                     <p className='text-[15px] md:text-[18px] mt-3'>{Paragraph}</p>
                     <div className='flex justify-end mb-3'>
-                        <button className='bg-yellow-400 font-semibold py-[10px] px-[60px] hover:bg-yellow-500 shadow-md shadow-orange-500 mt-2'>{ButtonText}</button>
+                        <Link href={'/tour-packages'} className='bg-yellow-400 font-semibold py-[10px] px-[60px] hover:bg-yellow-500 shadow-md shadow-orange-500 mt-2'>{ButtonText}</Link>
                     </div>
                 </div>
             </div>
@@ -38,8 +39,7 @@ const HomeSection1 = ({ secData }) => {
                 <Image
                     src={backgroundImg}
                     alt="banner_image"
-                    style={{ objectFit: "cover" }}
-                    className="z-[-1]"
+                    className="z-[-1] object-cover"
                     layout="fill"
                     loading='lazy'
                 />

@@ -1,10 +1,9 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { FaArrowRightLong } from 'react-icons/fa6';
-import { TiMediaPlay } from 'react-icons/ti';
 import { sancoaleSoftened } from '../Font';
 import Link from 'next/link';
 import ProgressBar from '../ProgressBar';
+import Icon from '../Icons';
 
 const HeaderComponent = ({ data }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -27,14 +26,14 @@ const HeaderComponent = ({ data }) => {
                 <div key={animationKey} className="flex flex-col gap-[2rem] md:gap-12 h-[11rem] animate-slide-in-left">
                     <div>
                         <div style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className="flex items-center text-[28px] md:text-[40px] text-white leading-[2rem]">
-                            <TiMediaPlay className="text-orange-500" />
+                            <Icon name="boldArrow" className="text-orange-500" />
                             <h1>{data[currentIndex].Title}</h1>
                         </div>
                         <p className="text-[13px] md:text-[16px] md:w-[500px] xl:w-[800px] px-3 mt-4 md:mt-8">{data[currentIndex].Paragraph}</p>
                     </div>
-                    <Link href={`${data[currentIndex].ButtonLink}`} className="flex ms-3 items-center text-white bg-orange-500 gap-1 p-2 rounded-lg text-[15px] w-fit">
+                    <Link href={`${data[currentIndex].ButtonLink}`} className="flex ms-3 items-center text-white bg-orange-500 gap-2 p-2 rounded-lg text-[15px] w-fit">
                         {data[currentIndex].ButtonText}
-                        <FaArrowRightLong />
+                        <Icon name="arrow" />
                     </Link>
                 </div>
             ) : (

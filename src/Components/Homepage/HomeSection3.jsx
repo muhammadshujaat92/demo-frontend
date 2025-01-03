@@ -9,7 +9,8 @@ const HomeSection3 = ({ data }) => {
     const { ButtonText, Heading, Paragraph, image, URL } = data || {}
     const { url } = image?.data?.attributes || {}
     const imgUrl = imageUrl()
-    const Img = url ? `${imgUrl}${url}` : defaultImg
+    const Img = url ? `${imgUrl}${url}` : defaultImg;
+    const slug = Heading?.replace(/[^A-Za-z0-9]/g, '-');
 
     return (
         <div className='flex justify-center py-[3rem] bg-gray-200'>
@@ -19,10 +20,10 @@ const HomeSection3 = ({ data }) => {
                         <h1 style={{ fontFamily: kanit.style.fontFamily }} className='font-bold text-[27px] md:text-[38px]'>{Heading}</h1>
                         <p className='my-3 text-[15px] md:text-[18px]'>{Paragraph}</p>
                     </div>
-                    <Link href={`/contact/?rh=${URL}`} className='font-bold bg-green-600 text-white px-4 py-1 text-[18px]'>{ButtonText}</Link>
+                    <Link href={`${URL ? URL : `/contact/?rh=${slug}`}`} className='font-bold bg-green-600 text-white px-4 py-1 text-[18px]'>{ButtonText}</Link>
                 </div>
                 <div className='h-[20rem] md:h-[25rem] max-h-[25rem] relative rounded-l-[15rem] mt-7 md:mt-0'>
-                    <Image src={Img} alt='bg-img' className='rounded-l-[15rem]' loading='lazy' layout='fill' style={{ objectFit: "cover" }} />
+                    <Image src={Img} alt='bg-img' className='rounded-l-[15rem] object-cover' loading='lazy' layout='fill' />
                 </div>
             </div>
         </div>

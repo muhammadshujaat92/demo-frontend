@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { sancoaleSoftened } from '../Font';
 import Card from '../Card';
 import ContactForm from '../ContactForm';
+import Link from 'next/link';
 
 const TourPage = ({ pageData }) => {
     const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const TourPage = ({ pageData }) => {
     const { data } = useSelector(state => state?.cardThunk?.items || {});
     const imgUrl = imageUrl()
 
-    const { Banner, bannerHeading, bannerParagraph, discountHeading, discountParagraph, discountBtnText } = pageData?.[0]?.attributes || {}
+    const { Banner, bannerHeading, bannerParagraph, discountHeading, discountParagraph, discountBtnText, discountBtnUrl } = pageData?.[0]?.attributes || {}
     const { url } = Banner?.data?.attributes || {}
     const BannerImg = url ? `${imgUrl}${url}` : defaultImg
 
@@ -70,7 +71,7 @@ const TourPage = ({ pageData }) => {
                                     <p className="text-[15px] mt-[1rem]">{discountParagraph}</p>
                                 </div>
                                 <div className="flex justify-end">
-                                    <button className="font-semibold bg-green-600 hover:bg-green-500 text-white py-[10px] px-[30px] text-[20px] rounded-[35px]">{discountBtnText}</button>
+                                    <Link href={`${discountBtnUrl ? discountBtnUrl : "#"}`} className="font-semibold bg-green-600 hover:bg-green-500 text-white py-[10px] px-[30px] text-[20px] rounded-[35px]">{discountBtnText}</Link>
                                 </div>
                             </div>
                             <div className="md:w-[20rem] md:h-[16rem] mt-[2rem] md:mt-0">

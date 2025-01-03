@@ -1,16 +1,15 @@
 import React from 'react'
 import dynamic from 'next/dynamic';
-import { IoMail, IoLocationSharp } from "react-icons/io5";
-import { FaPhoneAlt } from "react-icons/fa";
 import { kanit } from '../Font';
+import Icon from '../Icons';
 const ContactForm = dynamic(() => import('../ContactForm'), { loading: () => <p>Loading...</p> })
 
 const HomeSection8 = ({ data }) => {
     const { Heading, Paragraph, Title, contactDetail } = data || {}
     const iconMap = {
-        1: <FaPhoneAlt className='p-2 text-[40px] border border-gray-500 rounded-full' />,
-        2: <IoMail className='p-2 text-[40px] border border-gray-500 rounded-full' />,
-        3: <IoLocationSharp className='p-2 text-[40px] border border-gray-500 rounded-full' />,
+        1: <Icon name="phone" className='p-2 text-[40px] border border-gray-500 rounded-full' />,
+        2: <Icon name="email" className='p-2 text-[40px] border border-gray-500 rounded-full' />,
+        3: <Icon name="location" className='p-2 text-[40px] border border-gray-500 rounded-full' />,
     };
 
     return (

@@ -16,7 +16,10 @@ import Image from 'next/image';
 import watsappLogo from '@/public/imgs/whatsapp-logo.webp'
 
 const Home = ({ homeData }) => {
-    const { slides, section1, section2, section3, section4, section5, sec6, faqSection, lastSectionData } = homeData?.[0]?.attributes || {};
+    const { slides, section1, section2, section3, section4, section5, sec6, faqSection, lastSectionData, bannerImage } = homeData?.[0]?.attributes || {};
+    const { url } = bannerImage?.data?.attributes || {}
+    const BannerImg = url ? `${process.env.NEXT_PUBLIC_BASE_URL}${url}` : headerImg
+
     const handleClick = () => {
         window.open('https://api.whatsapp.com/send?phone=3112117534&text=Hello!&type=phone_number&app_absent=0', '_blank');
     }
@@ -29,7 +32,7 @@ const Home = ({ homeData }) => {
             </div>
             <div className='h-[36rem] pb-[2rem] md:py-[2rem] relative'>
                 <Image
-                    src={headerImg}
+                    src={BannerImg}
                     alt="banner_image"
                     className="object-cover"
                     layout="fill"

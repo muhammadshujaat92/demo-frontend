@@ -3,6 +3,7 @@ import { imageUrl } from '@/utils/apiHelper';
 import Image from 'next/image';
 import Link from 'next/link';
 import defaultImg from "@/public/imgs/gellary-2.jpg"
+import Icon from '../Icons';
 
 const extractAndCleanDescription = (markdown) => {
     if (!markdown) return '';
@@ -36,9 +37,7 @@ const BlogCard = ({ BlogTitle, BlogCardImage, blogContent, pageURL }) => {
                 <div className='flex justify-end w-full'>
                     <Link href={`/blog/${slug}`} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-600 rounded-lg">
                         READ MORE
-                        <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                        </svg>
+                        <Icon name="arrow" className="rtl:rotate-180 w-3.5 h-3.5 ms-2" />
                     </Link>
                 </div>
             </div>

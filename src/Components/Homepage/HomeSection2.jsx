@@ -10,6 +10,7 @@ const HomeSection2 = ({ data }) => {
     const { url } = image?.data?.attributes || {}
     const imgUrl = imageUrl()
     const Img = url ? `${imgUrl}${url}` : defaultImg
+    const slug = Title?.replace(/[^A-Za-z0-9]/g, '-');
 
     return (
         <div className='flex justify-center'>
@@ -17,14 +18,14 @@ const HomeSection2 = ({ data }) => {
                 <h1 style={{ fontFamily: kanit.style.fontFamily }} className='font-bold text-[27px] md:text-[38px] text-center'>{Title}</h1>
                 <div className='md:grid grid-cols-2 gap-[3rem] md:gap-[1rem] xl:gap-[3rem] my-4 py-[2rem]'>
                     <div className='h-[20rem] md:h-[25rem] max-h-[25rem] relative rounded-r-[15rem]'>
-                        <Image src={Img} alt='bg-img' className='rounded-r-[15rem]' loading='lazy' layout='fill' style={{ objectFit: "cover" }} />
+                        <Image src={Img} alt='bg-img' className='rounded-r-[15rem] object-cover' loading='lazy' layout='fill' />
                     </div>
                     <div className='flex flex-col gap-[2rem] md:gap-[3rem] items-end mt-5 md:mt-0'>
                         <div>
                             <h1 className='font-semibold text-[30px]'>{Heading}</h1>
                             <p className='my-3 text-[15px] md:text-[18px]'>{Paragraph}</p>
                         </div>
-                        <Link href={`/contact/?rh=${URL}`} className='font-bold bg-green-600 text-white px-4 py-1 text-[18px]'>{ButtonText}</Link>
+                        <Link href={`${URL ? URL : `/contact/?rh=${slug}`}`} className='font-bold bg-green-600 text-white px-4 py-1 text-[18px]'>{ButtonText}</Link>
                     </div>
                 </div>
             </div>

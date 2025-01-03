@@ -1,8 +1,7 @@
 import React from 'react'
-import { IoIosPlayCircle } from "react-icons/io";
-import { BsArrowRight } from "react-icons/bs";
 import Image from 'next/image';
 import { imageUrl } from '@/utils/apiHelper';
+import Icon from '../Icons';
 
 const HomeSection5 = ({ data }) => {
     const { Title, BoxHeading1, BoxHeading2, BoxText1, BoxText2, content } = data || {}
@@ -16,11 +15,11 @@ const HomeSection5 = ({ data }) => {
                         <p className='font-semibold text-[12px] md:text-[14px] text-green-700'>{BoxHeading1}</p>
                         <h1 className='font-bold text-[40px] md:text-[38px] lg:text-[55px] text-gray-800 leading-[2.7rem] lg:leading-[4rem] my-3'>{BoxHeading2}</h1>
                         <p className='text-[12px] md:text-[14px] font-semibold'><span className='text-green-700'>{BoxText1}</span></p>
-                        <p className='text-[12px] md:text-[14px] text-blue-700 font-semibold flex items-center mt-2'><IoIosPlayCircle />{BoxText2}</p>
+                        <p className='text-[12px] md:text-[14px] text-blue-700 font-semibold flex items-center mt-2'><Icon name="boldArrow" className="bg-blue-700 text-white rounded-full p-[2px] me-1 text-[14px]" />{BoxText2}</p>
                     </div>
                     <div className='flex mt-[1rem] md:mt-0 justify-center md:justify-normal flex-wrap md:flex-nowrap items-center xl:gap-[1rem]'>
                         {
-                            content && content.length > 0 ? (
+                            content && (
                                 content.map((data, index) => {
                                     const { Paragraph, Text, image } = data;
                                     const imgUrl = imageUrl()
@@ -40,17 +39,13 @@ const HomeSection5 = ({ data }) => {
                                             </div>
                                             {index < content.length - 1 && (
                                                 <div>
-                                                    <BsArrowRight className='text-green-700 text-[20px] xl:text-[30px]' />
-                                                    {/* <i className="text-green-700 text-[30px] fa-solid fa-arrow-down md:hidden"></i> */}
+                                                    <Icon name="thinArrow" className="text-green-700 text-[20px] xl:text-[30px]" />
                                                 </div>
                                             )}
                                         </div>
                                     );
                                 })
-                            ) : (
-                                <div></div>
-                            )
-                        }
+                            )}
                     </div>
                 </div>
             </div>
