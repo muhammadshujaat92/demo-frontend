@@ -9,7 +9,7 @@ const HomeSection2 = ({ data }) => {
     const { ButtonText, Heading, Paragraph, Title, image, URL } = data || {}
     const { url } = image?.data?.attributes || {}
     const imgUrl = imageUrl()
-    const Img = url ? `${imgUrl}${url}` : defaultImg
+    const Img = url ? `${process.env.NEXT_PUBLIC_BASE_URL}${url}` : defaultImg
     const slug = Title?.replace(/[^A-Za-z0-9]/g, '-');
 
     return (

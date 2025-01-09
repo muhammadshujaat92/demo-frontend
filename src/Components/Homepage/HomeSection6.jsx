@@ -20,7 +20,7 @@ const HomeSection6 = ({ item }) => {
                         {data && (
                             data.map((data) => {
                                 const { url } = data?.attributes || {}
-                                const Img = url ? `${imgUrl}${url}` : ""
+                                const Img = url ? `${process.env.NEXT_PUBLIC_BASE_URL}${url}` : ""
                                 return (
                                     <Image key={data.id} className="w-10 h-10 border-white rounded-full dark:border-gray-800" src={Img} width={100} height={100} alt="star" />
                                 )

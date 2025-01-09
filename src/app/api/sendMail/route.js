@@ -108,9 +108,9 @@ export async function POST(req) {
             </div>
             <div style="display: flex; align-items: center; gap: 2px;">
                 <div
-                    style="border: 1px solid #999999; padding: 8px; text-align: left; font-size: 13px; width:5.5rem; margin-top: 2px; font-weight: 600;">
-                    Date</div>
-                <div style="border: 1px solid #999999; padding: 8px; margin-top: 2px; font-size: 13px; width: 100%;">${date}</div>
+                    style="border: 1px solid #999999; padding: 8px; text-align: center; font-size: 13px; width:5.5rem; margin-top: 2px; font-weight: 600;">
+                    Travel Date</div>
+                <div style="border: 1px solid #999999; padding: 11px 8px; margin-top: 2px; font-size: 13px; width: 100%;"><p>${date}</p></div>
             </div>
         </div>
         <p style="font-size: 15px;">Thanking You</p>

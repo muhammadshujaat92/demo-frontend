@@ -21,12 +21,12 @@ const HomeSection1 = ({ secData }) => {
 
     const { BackgroundImageTitle, ButtonText, Paragraph, Title, BackgroundImage } = secData || {}
     const { url } = BackgroundImage?.data?.attributes || {}
-    const backgroundImg = url ? `${imgUrl}${url}` : bgImg
+    const backgroundImg = url ? `${process.env.NEXT_PUBLIC_BASE_URL}${url}` : bgImg
 
     return (
-        <div className='py-[40px] mt-[20rem] md:mt-0'>
+        <div className='py-[40px] mt-[22rem] md:mt-0'>
             <div className='flex justify-center pt-[25px] pb-[35px]'>
-                <div className='w-full max-w-[1250px] px-2 md:pe-3 md:ps-3 xl:pe-0'>
+                <div className='w-full max-w-[1250px] px-2 md:pe-3 xl:pe-0'>
                     <h1 style={{ fontFamily: boogaloo.style.fontFamily }} className='text-[40px] leading-[2.7rem] md:leading-none md:text-[50px] text-[#e75c00]'>{Title}</h1>
                     <p className='text-[15px] md:text-[18px] mt-3'>{Paragraph}</p>
                     <div className='flex justify-end mb-3'>
@@ -52,7 +52,7 @@ const HomeSection1 = ({ secData }) => {
                             data.map((data) => {
                                 const { title, description, buttonText, price, Days, Sale, oldPrice, image, showCardToHome, icon } = data?.attributes || {}
                                 const { url } = image?.data?.attributes || {};
-                                const Img = url ? `${imgUrl}${url}` : ""
+                                const Img = url ? `${process.env.NEXT_PUBLIC_BASE_URL}${url}` : ""
                                 if (showCardToHome) {
                                     return (
                                         <Card key={data.id} Img={Img} title={title} description={description} btnText={buttonText} priceText={price} days={Days} saleBtn={Sale} spanText={oldPrice} icon={icon} />

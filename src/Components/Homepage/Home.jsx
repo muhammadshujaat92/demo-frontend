@@ -13,30 +13,21 @@ const HomeSection8 = dynamic(() => import('./HomeSection8'), { suspense: true })
 const ContactForm = dynamic(() => import('../ContactForm'))
 import headerImg from '@/public/header.webp'
 import Image from 'next/image';
-import watsappLogo from '@/public/imgs/whatsapp-logo.webp'
 
 const Home = ({ homeData }) => {
     const { slides, section1, section2, section3, section4, section5, sec6, faqSection, lastSectionData, bannerImage } = homeData?.[0]?.attributes || {};
     const { url } = bannerImage?.data?.attributes || {}
     const BannerImg = url ? `${process.env.NEXT_PUBLIC_BASE_URL}${url}` : headerImg
 
-    const handleClick = () => {
-        window.open('https://api.whatsapp.com/send?phone=3112117534&text=Hello!&type=phone_number&app_absent=0', '_blank');
-    }
-
     return (
         <>
-            <div onClick={handleClick} className='fixed bottom-[20px] right-[20px] md:right-[30px] z-10 cursor-pointer'>
-                <div className='border-[2px] border-[#7cfe04] h-full w-full absolute top-0 rounded-full animate-ping'></div>
-                <Image src={watsappLogo} alt="logo" width={55} height={55} />
-            </div>
-            <div className='h-[36rem] pb-[2rem] md:py-[2rem] relative'>
+            <div className='h-[528px] pb-[2rem] md:py-[2rem] relative'>
                 <Image
                     src={BannerImg}
                     alt="banner_image"
                     className="object-cover"
                     layout="fill"
-                    priority
+                    priority={true}
                     fetchPriority="high"
                     placeholder="blur"
                     blurDataURL="/imgs/homeSection1BlurData.jpg"

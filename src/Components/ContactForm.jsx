@@ -131,13 +131,13 @@ const ContactForm = ({ colspan2, fontSize }) => {
             <div className="mb-4 px-3 md:px-5">
                 <textarea id="message" name='message' value={formData.message} onChange={handleChange} rows="4" className="block p-2.5 w-full text-sm bg-gray-200 rounded-lg" placeholder="Tour Plan"></textarea>
             </div>
-            {messageSend && (
+            {/* {messageSend && (
                 <div className="mb-4 px-3 md:px-5">
                     <p className={`font-semibold ${messageSend.includes("successfully") ? "text-green-600" : "text-red-600"}`}>{messageSend}</p>
                 </div>
-            )}
+            )} */}
             <div className="px-3 md:px-5 mb-2">
-                <button type="submit" className="text-white mt-2 bg-green-600 hover:bg-green-500 font-medium rounded-[4px] w-full px-5 py-[3px] text-center text-[25px] flex justify-center items-center">{isLoading ? <Spinner /> : 'SUBMIT'}</button>
+                <button type="submit" className="text-white mt-2 bg-green-600 hover:bg-green-500 font-medium rounded-[4px] w-full px-5 py-[3px] text-center text-[25px] flex justify-center items-center">{messageSend ? <span className='text-[18px]'>{messageSend}</span> : isLoading ? <Spinner /> : 'SUBMIT'}</button>
             </div>
         </form>
     );

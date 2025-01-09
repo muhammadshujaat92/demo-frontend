@@ -24,13 +24,13 @@ const HomeSection5 = ({ data }) => {
                                     const { Paragraph, Text, image } = data;
                                     const imgUrl = imageUrl()
                                     const { url } = image?.data?.attributes || {}
-                                    const Img = url ? `${imgUrl}${url}` : ""
+                                    const Img = url ? `${process.env.NEXT_PUBLIC_BASE_URL}${url}` : ""
 
                                     return (
                                         <div key={data.id} className='flex items-center justify-center xl:gap-[1rem]'>
                                             <div className='flex flex-col justify-center items-center md:gap-[1rem] w-[8rem] text-center'>
                                                 <div>
-                                                    <Image src={Img} alt='icon' width={110} height={110} />
+                                                    <Image src={Img} alt='icon' width={110} height={110} className='w-auto h-auto' />
                                                 </div>
                                                 <div>
                                                     <h1 className='font-semibold text-lg leading-5'>{Text}</h1>
