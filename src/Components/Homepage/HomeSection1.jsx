@@ -47,7 +47,7 @@ const HomeSection1 = ({ secData }) => {
                     <h1 style={{ fontFamily: kanit.style.fontFamily }} className='font-semibold text-[30px] md:text-[38px]'>{BackgroundImageTitle}</h1>
                 </div>
                 <div className='flex justify-center'>
-                    <div className='relative py-[2rem] flex items-center flex-col md:flex-row w-full justify-between max-w-[1250px] gap-[2rem] xl:gap-[8rem] px-2 md:pe-3 md:ps-3 xl:pe-0'>
+                    <div className='relative py-[2rem] flex items-center flex-col md:flex-row w-full justify-between max-w-[1250px] gap-[2rem] xl:gap-[8rem] px-2 md:pe-3 md:px-0 xl:pe-0'>
                         {data && (
                             data.map((data) => {
                                 const { title, description, buttonText, price, Days, Sale, oldPrice, image, showCardToHome, icon } = data?.attributes || {}

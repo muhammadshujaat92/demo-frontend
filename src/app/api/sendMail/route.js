@@ -119,8 +119,36 @@ export async function POST(req) {
         `,
     };
 
+    const thankYouMailOptions = {
+        from: `"India Yaatra" <${process.env.EMAIL_USER}>`,
+        to: email,
+        subject: 'Thank You for Your Travel Inquiry!',
+        html: `
+            <div style="font-family: Arial, sans-serif; color: #333; padding: 20px; border: 1px solid #ddd;">
+                <h2 style="color: #ff7300;">Thank You for Contacting India Yaatra</h2>
+                <p>Dear ${name},</p>
+                <p>Thank you for reaching out to us with your travel inquiry. Our team will review your request and get back to you shortly with more details and suggestions for your journey.</p>
+                <p>Here are the details you provided:</p>
+                <ul style="line-height: 1.8;">
+                    <li><strong>Name:</strong> ${name}</li>
+                    <li><strong>Email:</strong> ${email}</li>
+                    <li><strong>Phone:</strong> ${number}</li>
+                    <li><strong>Travel Date:</strong> ${date}</li>
+                    <li><strong>Adults:</strong> ${adult}</li>
+                    <li><strong>Children:</strong> ${children}</li>
+                    <li><strong>Message:</strong> ${message}</li>
+                </ul>
+                <p>We appreciate your interest in India Yaatra and are excited to assist you in planning a memorable journey.</p>
+                <p>Warm regards,</p>
+                <p><strong>India Yaatra Team</strong></p>
+            </div>
+        `,
+    };
+
+
     try {
         await transporter.sendMail(mailOptions);
+        await transporter.sendMail(thankYouMailOptions);
         return new Response(JSON.stringify({ success: true, message: 'Email sent successfully!' }), {
             status: 200,
             headers: { 'Content-Type': 'application/json' },
