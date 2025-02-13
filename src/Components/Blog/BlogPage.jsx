@@ -18,7 +18,7 @@ const BlogPage = ({ blogData }) => {
     const { data, meta } = useSelector(state => state?.blogCardThunk?.data || {});
 
 
-    const { bannerHeading, bannerImage } = blogData?.[0]?.attributes || {};
+    const { bannerHeading, bannerDescription, bannerImage } = blogData?.[0]?.attributes || {};
     const { url } = bannerImage?.data?.attributes || {};
     const imgUrl = imageUrl()
     const bannerImg = url ? `${imgUrl}${url}` : defaultImg;
@@ -85,6 +85,7 @@ const BlogPage = ({ blogData }) => {
                         <div className={`flex justify-center inset-0 absolute bg-black bg-opacity-50`}>
                             <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
                                 <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[50px] text-white'>{bannerHeading}</h1>
+                                <p className='lg:text-[18px] text-white md:w-[550px]'>{bannerDescription}</p>
                             </div>
                         </div>
                     )}
@@ -95,10 +96,10 @@ const BlogPage = ({ blogData }) => {
                     <div className='flex flex-wrap gap-[1.5rem] col-span-2 mb-[2rem] lg:mb-0 justify-center lg:justify-normal'>
                         {
                             filteredData && (
-                                filteredData.map((post) => {
-                                    const { BlogTitle, BlogCardImage, blogContent, pageURL } = post.attributes;
+                                [...filteredData].reverse().map((post) => {
+                                    const { BlogTitle, BlogCardImage, blogContent, pageURL, createdAt } = post.attributes;
                                     return (
-                                        <BlogCard key={post.id} BlogTitle={BlogTitle} BlogCardImage={BlogCardImage} blogContent={blogContent} pageURL={pageURL} />
+                                        <BlogCard key={post.id} createdAt={createdAt} BlogTitle={BlogTitle} BlogCardImage={BlogCardImage} blogContent={blogContent} pageURL={pageURL} />
                                     )
                                 })
                             )

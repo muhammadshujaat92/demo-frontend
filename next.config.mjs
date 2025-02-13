@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    trailingSlash: true,
     // experimental: {
     //     missingSuspenseWithCSRBailout: false,
     // },
@@ -14,6 +15,16 @@ const nextConfig = {
             },
         ],
     },
+    // async redirects() {
+    //     return [
+    //         {
+    //             source: "/:path((?!api|_next|static|favicon\\.ico).*)",
+    //             has: [{ type: "header", key: "referer" }],
+    //             destination: "/:path/",
+    //             permanent: true,
+    //         },
+    //     ];
+    // },
     async rewrites() {
         return [
             {

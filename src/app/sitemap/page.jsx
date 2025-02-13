@@ -25,9 +25,9 @@ const page = async () => {
 
     const staticPages = [
         { path: "/", name: "Home" },
-        { path: "/tour-packages", name: "Travel Packages" },
-        { path: "/contact", name: "Contact Us" },
-        { path: "/blog", name: "Blog" },
+        { path: "/tour-packages/", name: "Travel Packages" },
+        { path: "/contact/", name: "Contact Us" },
+        { path: "/blog/", name: "Blog" },
     ];
 
     return (
@@ -50,7 +50,7 @@ const page = async () => {
                                 return (
                                     <li key={index} className='flex items-center text-[18px] font-semibold mb-2'>
                                         <Icon name="boldArrow" className="text-[#ff6600]" />
-                                        <Link href={`blog/${slug}`} className='hover:text-[#ff6600]'>{data.slug}</Link>
+                                        <Link href={`/blog/${slug}/`} className='hover:text-[#ff6600]'>{data.slug}</Link>
                                     </li>
                                 )
                             })

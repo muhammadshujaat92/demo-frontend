@@ -20,7 +20,7 @@ export async function generateMetadata() {
                 ]
             },
             alternates: {
-                canonical: `https://indiayaatra.com/blog`,
+                canonical: `https://indiayaatra.com/blog/`,
             }
         };
     } catch (error) {

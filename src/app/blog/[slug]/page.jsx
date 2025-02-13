@@ -19,7 +19,7 @@ export async function generateMetadata({ params }) {
             ]
         },
         alternates: {
-            canonical: `https://indiayaatra.com/blog/${params.slug}`,
+            canonical: `https://indiayaatra.com/blog/${params.slug}/`,
         }
     }
 }

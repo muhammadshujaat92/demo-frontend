@@ -18,7 +18,14 @@ const extractAndCleanDescription = (markdown) => {
 
     return '';
 };
-const BlogCard = ({ BlogTitle, BlogCardImage, blogContent, pageURL }) => {
+
+const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+};
+
+const BlogCard = ({ BlogTitle, BlogCardImage, blogContent, pageURL, createdAt }) => {
     const { url } = BlogCardImage?.data?.attributes || ""
     const imgUrl = imageUrl()
     const cardImg = url ? `${imgUrl}${url}` : defaultImg
@@ -26,16 +33,17 @@ const BlogCard = ({ BlogTitle, BlogCardImage, blogContent, pageURL }) => {
 
     return (
         <div className="max-w-[23rem] md:max-w-[14rem] lg:max-w-[19rem] xl:max-w-[23rem] border h-fit md:h-[33rem] md:max-h-[33rem] border-gray-200 rounded-lg shadow">
-            <div className='h-[18rem] md:h-[16rem] xl:h-[18rem]'>
-                <Image className="rounded-t-lg h-full object-cover" src={cardImg} alt="cardImg" width={600} height={600} loading='lazy'/>
+            <div className='h-[18rem] md:h-[16rem] xl:h-[18rem] relative'>
+                <span className='absolute bg-[#d3a102] text-white py-[3px] px-[10px] top-[10px]'>{formatDate(createdAt)}</span>
+                <Image className="rounded-t-lg h-full object-cover" src={cardImg} alt="cardImg" width={600} height={600} loading='lazy' />
             </div>
             <div className="py-5 px-[15px] h-[45%] md:h-[50%] xl:h-[45%] flex justify-between items-start flex-col">
                 <div>
-                    <h5 className="mb-4 text-2xl md:text-[1rem] lg:text-[20px] font-bold md:leading-[1.4rem] tracking-tight">{BlogTitle}</h5>
-                    <p className="mb-3 font-normal md:text-[14px] xl:text-[16px] text-gray-700">{extractAndCleanDescription(blogContent)}</p>
+                    <Link href={`/blog/${slug}/`} className="mb-4 text-2xl md:text-[1rem] lg:text-[20px] font-bold md:leading-[1.4rem] tracking-tight">{BlogTitle}</Link>
+                    <p className="my-3 font-normal md:text-[14px] xl:text-[16px] text-gray-700">{extractAndCleanDescription(blogContent)}</p>
                 </div>
                 <div className='flex justify-end w-full'>
-                    <Link href={`/blog/${slug}`} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-600 rounded-lg">
+                    <Link href={`/blog/${slug}/`} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-[#12c956]">
                         READ MORE
                         <Icon name="arrow" className="rtl:rotate-180 w-3.5 h-3.5 ms-2" />
                     </Link>

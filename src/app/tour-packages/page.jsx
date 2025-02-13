@@ -20,7 +20,7 @@ export async function generateMetadata() {
                 ]
             },
             alternates: {
-                canonical: `https://indiayaatra.com/tour-packages`,
+                canonical: `https://indiayaatra.com/tour-packages/`,
             }
         };
     } catch (error) {

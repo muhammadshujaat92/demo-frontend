@@ -23,7 +23,19 @@ const TourPage = ({ pageData }) => {
 
     const { Banner, bannerHeading, bannerParagraph, discountHeading, discountParagraph, discountBtnText, discountBtnUrl } = pageData?.[0]?.attributes || {}
     const { url } = Banner?.data?.attributes || {}
-    const BannerImg = url ? `${imgUrl}${url}` : defaultImg
+    const BannerImg = url ? `${imgUrl}${url}` : defaultImg;
+
+    const formatUrl = (url) => {
+        if (!url) return "#";
+        try {
+            const urlObj = new URL(url, "http://indiayaatra.com");
+            urlObj.searchParams.forEach((v, k) => urlObj.searchParams.set(k, v.toLowerCase().replace(/\s+/g, "-")));
+            return urlObj.pathname + urlObj.search;
+        } catch {
+            return "#";
+        }
+    };
+    
 
     return (
         <div>
@@ -71,7 +83,7 @@ const TourPage = ({ pageData }) => {
                                     <p className="text-[15px] mt-[1rem]">{discountParagraph}</p>
                                 </div>
                                 <div className="flex justify-end">
-                                    <Link href={`${discountBtnUrl ? discountBtnUrl : "#"}`} className="font-semibold bg-green-600 hover:bg-green-500 text-white py-[10px] px-[30px] text-[20px] rounded-[35px]">{discountBtnText}</Link>
+                                    <Link href={`${formatUrl(discountBtnUrl)}`} className="font-semibold bg-green-600 hover:bg-green-500 text-white py-[10px] px-[30px] text-[20px] rounded-[35px]">{discountBtnText}</Link>
                                 </div>
                             </div>
                             <div className="md:w-[20rem] md:h-[16rem] mt-[2rem] md:mt-0">

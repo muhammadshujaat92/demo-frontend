@@ -54,22 +54,22 @@ const Navbar = ({ navBarData }) => {
                     </li>
                     <li>
                         <Link
-                            href={'/tour-packages'}
-                            className={`pb-[2px] ${isActiveLink('/tour-packages') ? "border-b-[3px] border-[#ff6600]" : ""}`}>
+                            href={'/tour-packages/'}
+                            className={`pb-[2px] ${isActiveLink('/tour-packages/') ? "border-b-[3px] border-[#ff6600]" : ""}`}>
                             {Link2}
                         </Link>
                     </li>
                     <li>
                         <Link
-                            href={'/contact'}
-                            className={`pb-[2px] ${isActiveLink('/contact') ? "border-b-[3px] border-[#ff6600]" : ""}`}>
+                            href={'/contact/'}
+                            className={`pb-[2px] ${isActiveLink('/contact/') ? "border-b-[3px] border-[#ff6600]" : ""}`}>
                             {Link3}
                         </Link>
                     </li>
                     <li>
                         <Link
-                            href={'/blog'}
-                            className={`pb-[2px] ${isActiveLink('/blog') ? "border-b-[3px] border-[#ff6600]" : ""}`}>
+                            href={'/blog/'}
+                            className={`pb-[2px] ${isActiveLink('/blog/') ? "border-b-[3px] border-[#ff6600]" : ""}`}>
                             {Link4}
                         </Link>
                     </li>
@@ -84,9 +84,9 @@ const Navbar = ({ navBarData }) => {
                 {showMenu && (
                     <ul ref={menuRef} className='absolute top-0 left-0 h-[100vh] w-[70%] pt-[5rem] ps-[2rem] flex flex-col bg-black text-white gap-6 tracking-wide text-[15px] font-semibold md:hidden z-10'>
                         <Link href={'/'} onClick={() => setShowMenu(false)}>{Link1}</Link>
-                        <Link href={'/tour-packages'} onClick={() => setShowMenu(false)}>{Link2}</Link>
-                        <Link href={'/contact'} onClick={() => setShowMenu(false)}>{Link3}</Link>
-                        <Link href={'/blog'} onClick={() => setShowMenu(false)}>{Link4}</Link>
+                        <Link href={'/tour-packages/'} onClick={() => setShowMenu(false)}>{Link2}</Link>
+                        <Link href={'/contact/'} onClick={() => setShowMenu(false)}>{Link3}</Link>
+                        <Link href={'/blog/'} onClick={() => setShowMenu(false)}>{Link4}</Link>
                     </ul>
                 )}
             </nav>

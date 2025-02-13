@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Icon from './Icons';
 
 const Card = ({ Width, Img, title, description, btnText, priceText, days, saleBtn, spanText, icon, readMoreURL }) => {
-    const slug = title?.replace(/[^A-Za-z0-9]/g, '-');
+    const slug = title?.replace(/[^A-Za-z0-9]/g, '-').toLowerCase();
 
     return (
         <div className={`${Width ? `${Width}` : "max-w-[18rem]"} max-h-[31rem] bg-white border border-gray-200 rounded-lg shadow-md`}>
@@ -40,7 +40,7 @@ const Card = ({ Width, Img, title, description, btnText, priceText, days, saleBt
                         <i className={`text-yellow-500 ${icon}`}></i>
                         <i className={`text-yellow-500 ${icon}`}></i>
                     </div>
-                    <Link href={`${readMoreURL ? readMoreURL : `/contact/?rh=${slug}`}`} className="ribbon px-[25px] rounded-br-lg py-2 md:text-[12px] xl:text-[0.975rem] text-sm font-medium text-center text-white bg-green-700 hover:bg-green-800">
+                    <Link href={`${readMoreURL ? readMoreURL : `/contact/?rh=${slug}`}`} className="ribbon px-[25px] rounded-br-lg py-2 md:text-[12px] xl:text-[0.975rem] text-sm font-medium text-center text-white bg-green-700 hover:bg-[#12c956]">
                         {btnText}
                     </Link>
                 </div>

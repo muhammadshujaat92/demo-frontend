@@ -11,8 +11,12 @@ const ContactPage = ({ contactData }) => {
     const keyword = searchParams.get('rh');
 
     const toSlug = (text) => {
-        return text.replace(/[^A-Za-z0-9]/g, ' ');
+        return text
+            .split('-') // Split by hyphens
+            .map(text => text.charAt(0).toUpperCase() + text.slice(1)) // Capitalize first letter
+            .join(' '); // Join back with spaces
     }
+
 
     const imgUrl = imageUrl()
 

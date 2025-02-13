@@ -28,27 +28,27 @@ const BlogContent = ({ blogData }) => {
         // Headings
         textt = textt.replace(
             /^#\s(.+)/gm,
-            '<h1 class="font-acme text-[32px] uppercase font-bold my-[10px]">$1</h1>'
+            '<h1 class="font-acme text-[32px] uppercase font-bold my-[10px] text-[#ff6600]">$1</h1>'
         );
         textt = textt.replace(
             /^##\s(.+)/gm,
-            '<h2 class="font-acme text-[24px] uppercase font-bold my-[10px]">$1</h2>'
+            '<h2 class="font-acme text-[24px] uppercase font-bold my-[10px] text-[#ff6600]">$1</h2>'
         );
         textt = textt.replace(
             /^###\s(.+)/gm,
-            '<h3 class="font-acme text-[20px] uppercase font-bold my-[10px]">$1</h3>'
+            '<h3 class="font-acme text-[20px] uppercase font-bold my-[10px] text-[#ff6600]">$1</h3>'
         );
         textt = textt.replace(
             /^####\s(.+)/gm,
-            '<h4 class="font-acme text-[18px] uppercase font-bold my-[10px]">$1</h4>'
+            '<h4 class="font-acme text-[18px] uppercase font-bold my-[10px] text-[#ff6600]">$1</h4>'
         );
         textt = textt.replace(
             /^#####\s(.+)/gm,
-            '<h5 class="font-acme text-[16px] uppercase font-bold my-[10px]">$1</h5>'
+            '<h5 class="font-acme text-[16px] uppercase font-bold my-[10px] text-[#ff6600]">$1</h5>'
         );
         textt = textt.replace(
             /^######\s(.+)/gm,
-            '<h6 class="font-acme text-[14px] uppercase font-bold my-[10px]">$1</h6>'
+            '<h6 class="font-acme text-[14px] uppercase font-bold my-[10px] text-[#ff6600]">$1</h6>'
         );
 
         // Images
