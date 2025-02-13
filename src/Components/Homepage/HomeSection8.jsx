@@ -15,11 +15,11 @@ const HomeSection8 = ({ data }) => {
     return (
         <div className='flex justify-center'>
             <div className='w-full max-w-[1250px] px-2 md:pe-3 md:ps-3 xl:pe-0'>
-                <h1 style={{ fontFamily: kanit.style.fontFamily }} className='text-[30px] md:text-[38px] font-bold mt-8'>{Title}</h1>
+                <h1 style={{ fontFamily: kanit.style.fontFamily }} className='text-[30px] md:text-[38px] font-bold mt-8 text-[#ff6600]'>{Title}</h1>
                 <div className='md:grid grid-cols-2 gap-[3rem] py-[1.7rem] md:py-[3rem]'>
                     <ContactForm />
                     <div>
-                        <h1 className='text-[30px] md:text-[38px] font-bold leading-[2.5rem] my-5'>{Heading}</h1>
+                        <h1 className='text-[30px] md:text-[40px] font-semibold leading-[2.6rem] my-5'>{Heading}</h1>
                         <p>{Paragraph}</p>
                         <ul className='flex flex-col gap-5'>
                             {contactDetail && (

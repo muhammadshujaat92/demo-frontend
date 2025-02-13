@@ -1,9 +1,8 @@
 'use client'
 import React, { useEffect } from 'react'
-import bgImg from "@/public/imgs/homeSection1Default.webp"
+import bgImg from "../../public/imgs/homeSection1Default.webp"
 import { useDispatch, useSelector } from 'react-redux';
-import { imageUrl } from '@/utils/apiHelper';
-import { cardThunk } from '@/app/_redux/api/Card';
+import { cardThunk } from '../../app/_redux/api/Card';
 import { boogaloo, kanit } from '../Font';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
@@ -13,7 +12,6 @@ const Card = dynamic(() => import('../Card'), { loading: () => <p>Loading...</p>
 const HomeSection1 = ({ secData }) => {
     const dispatch = useDispatch();
     const { data } = useSelector(state => state?.cardThunk?.items || {});
-    const imgUrl = imageUrl()
 
     useEffect(() => {
         dispatch(cardThunk())
@@ -27,7 +25,7 @@ const HomeSection1 = ({ secData }) => {
         <div className='py-[40px] mt-[22rem] md:mt-0'>
             <div className='flex justify-center pt-[25px] pb-[35px]'>
                 <div className='w-full max-w-[1250px] px-2 md:pe-3 xl:pe-0'>
-                    <h1 style={{ fontFamily: boogaloo.style.fontFamily }} className='text-[40px] leading-[2.7rem] md:leading-none md:text-[50px] text-[#e75c00]'>{Title}</h1>
+                    <h1 style={{ fontFamily: kanit.style.fontFamily }} className='text-[40px] leading-[2.7rem] md:leading-none font-bold md:text-[50px] text-[#e75c00] tracking-tight'>{Title}</h1>
                     <p className='text-[15px] md:text-[18px] mt-3'>{Paragraph}</p>
                     <div className='flex justify-end mb-3'>
                         <Link href={'/tour-packages'} className='bg-yellow-400 font-semibold py-[10px] px-[60px] hover:bg-yellow-500 shadow-md shadow-orange-500 mt-2'>{ButtonText}</Link>

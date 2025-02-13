@@ -1,9 +1,9 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { baseUrl } from '@/utils/apiHelper';
+import { baseUrl } from '../utils/apiHelper';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '@/app/_redux/api/edit';
+import { logout } from '../app/_redux/api/edit';
 
 const EditBar = () => {
     const dispatch = useDispatch();

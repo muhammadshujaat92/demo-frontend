@@ -2,7 +2,7 @@
 import React from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import defaultImg from '@/public/imgs/recentpost.jpg'
+import defaultImg from '../public/imgs/recentpost.jpg'
 
 // Import Swiper styles
 import 'swiper/css';
@@ -11,7 +11,7 @@ import 'swiper/css/navigation';
 // import required modules
 import { Autoplay, FreeMode } from 'swiper/modules';
 import Image from 'next/image';
-import { baseUrl } from '@/utils/apiHelper';
+import { baseUrl } from '../utils/apiHelper';
 import Link from 'next/link';
 
 const Slider = ({ imgData }) => {
@@ -41,10 +41,10 @@ const Slider = ({ imgData }) => {
                                 <div className="w-[9rem] py-[1.5rem]">
                                     {
                                         blogImg ? (
-                                            <Image src={blogImg} width={130} height={130} alt="img" className="w-full min-h-[8rem] max-h-[8rem]" priority />
+                                            <Image src={blogImg} width={130} height={130} alt="img" className="w-full min-h-[8rem] max-h-[8rem]" loading='lazy'/>
 
                                         ) : (
-                                            <Image src={defaultImg} width={130} height={130} alt="img" className="w-full min-h-[8rem] max-h-[8rem]" priority />
+                                            <Image src={defaultImg} width={130} height={130} alt="img" className="w-full min-h-[8rem] max-h-[8rem]" loading='lazy'/>
                                         )
                                     }
                                     <Link href={`/blog/${slug}`} className="mt-1 text-[14px] text-[#337ab7] font-semibold">

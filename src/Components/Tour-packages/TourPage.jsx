@@ -1,10 +1,10 @@
 'use client'
 import { useEffect } from 'react';
-import { cardThunk } from '@/app/_redux/api/Card';
-import defaultImg from '@/public/imgs/India-tour-package.webp'
-import discountImg from '@/public/imgs/discount.webp'
+import { cardThunk } from '../../app/_redux/api/Card';
+import defaultImg from '../../public/imgs/India-tour-package.webp'
+import discountImg from '../../public/imgs/discount.webp'
 import { useDispatch, useSelector } from 'react-redux';
-import { imageUrl } from '@/utils/apiHelper';
+import { imageUrl } from '../../utils/apiHelper';
 import Image from 'next/image';
 import { sancoaleSoftened } from '../Font';
 import Card from '../Card';
@@ -42,8 +42,8 @@ const TourPage = ({ pageData }) => {
                     {BannerImg && (
                         <div className={`flex justify-center inset-0 absolute bg-black bg-opacity-50`}>
                             <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
-                                <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[55px] text-white'>{bannerHeading}</h1>
-                                <p className='lg:text-[18px] text-white lg:font-bold md:w-[550px]'>{bannerParagraph}</p>
+                                <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[50px] text-white'>{bannerHeading}</h1>
+                                <p className='lg:text-[18px] text-white md:w-[550px]'>{bannerParagraph}</p>
                             </div>
                         </div>
                     )}
@@ -75,7 +75,7 @@ const TourPage = ({ pageData }) => {
                                 </div>
                             </div>
                             <div className="md:w-[20rem] md:h-[16rem] mt-[2rem] md:mt-0">
-                                <Image src={discountImg} width={300} height={300} alt='img' className="w-full h-full" />
+                                <Image src={discountImg} width={300} height={300} alt='img' className="w-full h-full" loading='lazy'/>
                             </div>
                         </div>
                         {data && data.length > 0 ? (

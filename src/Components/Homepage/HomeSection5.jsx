@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image';
-import { imageUrl } from '@/utils/apiHelper';
 import Icon from '../Icons';
+import Link from 'next/link';
 
 const HomeSection5 = ({ data }) => {
     const { Title, BoxHeading1, BoxHeading2, BoxText1, BoxText2, content } = data || {}
@@ -15,14 +15,13 @@ const HomeSection5 = ({ data }) => {
                         <p className='font-semibold text-[12px] md:text-[14px] text-green-700'>{BoxHeading1}</p>
                         <h1 className='font-bold text-[40px] md:text-[38px] lg:text-[55px] text-gray-800 leading-[2.7rem] lg:leading-[4rem] my-3'>{BoxHeading2}</h1>
                         <p className='text-[12px] md:text-[14px] font-semibold'><span className='text-green-700'>{BoxText1}</span></p>
-                        <p className='text-[12px] md:text-[14px] text-blue-700 font-semibold flex items-center mt-2'><Icon name="boldArrow" className="bg-blue-700 text-white rounded-full p-[2px] me-1 text-[14px]" />{BoxText2}</p>
+                        <Link href={'https://www.youtube.com/@indiayaatra8780'} className='text-[12px] md:text-[14px] text-blue-700 font-semibold flex items-center mt-2 w-fit'><Icon name="boldArrow" className="bg-blue-700 text-white rounded-full p-[2px] me-1 text-[14px]" />{BoxText2}</Link>
                     </div>
                     <div className='flex mt-[1rem] md:mt-0 justify-center md:justify-normal flex-wrap md:flex-nowrap items-center xl:gap-[1rem]'>
                         {
                             content && (
                                 content.map((data, index) => {
                                     const { Paragraph, Text, image } = data;
-                                    const imgUrl = imageUrl()
                                     const { url } = image?.data?.attributes || {}
                                     const Img = url ? `${process.env.NEXT_PUBLIC_BASE_URL}${url}` : ""
 
@@ -30,7 +29,7 @@ const HomeSection5 = ({ data }) => {
                                         <div key={data.id} className='flex items-center justify-center xl:gap-[1rem]'>
                                             <div className='flex flex-col justify-center items-center md:gap-[1rem] w-[8rem] text-center'>
                                                 <div>
-                                                    <Image src={Img} alt='icon' width={110} height={110} className='w-auto h-auto' />
+                                                    <Image src={Img} alt='icon' width={110} height={110} className='w-auto h-auto' loading='lazy'/>
                                                 </div>
                                                 <div>
                                                     <h1 className='font-semibold text-lg leading-5'>{Text}</h1>

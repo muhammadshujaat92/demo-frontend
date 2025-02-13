@@ -1,6 +1,6 @@
 import React from 'react'
-import BlogContent from '@/Components/Blog/BlogContent';
-import { fetchData } from '@/utils/apiHelper';
+import BlogContent from '../../../Components/Blog/BlogContent';
+import { fetchData } from '../../../utils/apiHelper';
 
 export async function generateMetadata({ params }) {
     const metaData = await fetchData(`blog-contents/${params.slug}`);

@@ -1,6 +1,5 @@
 import React from 'react'
-import defaultImg from '@/public/imgs/woman-mountain-peak.webp'
-import { imageUrl } from '@/utils/apiHelper'
+import defaultImg from '../../public/imgs/woman-mountain-peak.webp'
 import { kanit } from '../Font'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -8,7 +7,6 @@ import Link from 'next/link'
 const HomeSection3 = ({ data }) => {
     const { ButtonText, Heading, Paragraph, image, URL } = data || {}
     const { url } = image?.data?.attributes || {}
-    const imgUrl = imageUrl()
     const Img = url ? `${process.env.NEXT_PUBLIC_BASE_URL}${url}` : defaultImg;
     const slug = Heading?.replace(/[^A-Za-z0-9]/g, '-');
 

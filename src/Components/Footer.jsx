@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import logoImg from '@/public/IndiaYaatra-logo.webp';
+import logoImg from "../public/IndiaYaatra-logo.webp";
 import Icon from './Icons';
-import footerImg from '@/public/imgs/footer.jpg'
-import watsappLogo from '@/public/imgs/whatsapp-logo.webp'
+import footerImg from '../public/imgs/footer.jpg'
+import watsappLogo from '../public/imgs/whatsapp-logo.webp'
 
 const Footer = ({ footerData }) => {
     const [formData, setFormData] = useState({ name: "", email: "" })
@@ -47,7 +47,7 @@ const Footer = ({ footerData }) => {
     }
 
     const handleClick = () => {
-        window.open(`https://api.whatsapp.com/send?phone=${contactPhone}&text=Hello!&type=phone_number&app_absent=0`, '_blank');
+        window.open(`https://api.whatsapp.com/send?phone=${contactPhone}&text=Hello IndiaYaatra! Help me to plan My Trip!&type=phone_number&app_absent=0`, '_blank');
     }
 
     return (
@@ -56,15 +56,16 @@ const Footer = ({ footerData }) => {
                 <div className='border-[2px] border-[#7cfe04] h-full w-full absolute top-0 rounded-full animate-ping'></div>
                 <Image src={watsappLogo} alt="logo" width={55} height={55} />
             </div>
-            <div className='relative'>
+            <div className='relative footer-style'>
                 <Image
                     src={footerImg}
                     alt='banner'
-                    className={`w-full !h-[50%] md:!h-full object-cover inset-0 absolute z-[-1]`}
+                    className={`w-full !h-[50%] md:!h-full object-contain inset-0 absolute z-[-1]`}
                     layout="fill"
+                    loading='lazy'
                 />
-                <div className='flex justify-center bg-black bg-opacity-50'>
-                    <footer className='text-white xl:flex pt-[2rem] pb-[3rem] w-full max-w-[1250px] gap-[3rem] px-3 xl:ps-3'>
+                <div className='flex justify-center footer-bg'>
+                    <footer className='text-white xl:flex pt-[90px] pb-[65px] w-full max-w-[1250px] gap-[3rem] px-3 xl:ps-3'>
                         <div className='xl:w-[35%] xl:pe-2'>
                             <Image src={Img} alt='logo' width={150} height={150} />
                             <p className='text-[15px] py-[2rem]'>{paragraph}</p>
@@ -142,7 +143,7 @@ const Footer = ({ footerData }) => {
                     </footer>
                 </div>
                 <div className='absolute bottom-0 text-white border-t-1 border-white w-full flex justify-center'>
-                    <p className='w-full max-w-[1250px] px-3 py-[8px]'>© 2025 All Rights Reserved</p>
+                    <p className='w-full max-w-[1250px] px-3 py-[10px]'>© 2025 All Rights Reserved | <Link href={'/sitemap'}> Sitemap</Link></p>
                 </div>
             </div>
         </>

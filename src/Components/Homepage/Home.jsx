@@ -11,7 +11,7 @@ const HomeSection6 = dynamic(() => import('./HomeSection6'), { loading: () => <p
 const HomeSection7 = dynamic(() => import('./HomeSection7'), { loading: () => <p>Loading...</p> })
 const HomeSection8 = dynamic(() => import('./HomeSection8'), { suspense: true })
 const ContactForm = dynamic(() => import('../ContactForm'))
-import headerImg from '@/public/header.webp'
+import headerImg from '../../public/header.webp'
 import Image from 'next/image';
 
 const Home = ({ homeData }) => {

@@ -1,10 +1,10 @@
 import "./globals.css";
-import EditBar from "@/Components/EditBar";
+import EditBar from "../Components/EditBar";
 import ReduxProvider from "./_redux/ReduxProvider";
-import Navbar from "@/Components/Navbar";
-import Footer from "@/Components/Footer";
+import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer";
 import Script from "next/script";
-import { fetchData } from "@/utils/apiHelper";
+import { fetchData } from "../utils/apiHelper";
 
 export default async function RootLayout({ children }) {
   const navBarData = await fetchData("navbars/?populate=*");

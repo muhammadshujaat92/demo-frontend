@@ -7,7 +7,7 @@ const HomeSection4 = ({ data }) => {
     return (
         <div className='flex justify-center'>
             <div className='w-full max-w-[1250px] py-[2rem] xl:py-[3rem] px-2 md:pe-3 md:ps-3 xl:pe-0'>
-                <h1 style={{ fontFamily: kanit.style.fontFamily }} className='text-gray-700 text-[30px] xl:text-[38px] font-bold'>{Title}</h1>
+                <h1 style={{ fontFamily: kanit.style.fontFamily }} className='text-[#ff6600] text-[30px] xl:text-[38px] font-bold'>{Title}</h1>
                 <div className="lg:grid grid-cols-2 pt-[1.5rem] xl:pt-[3rem] gap-[2rem]">
                     <p className='font-semibold text-[15px] xl:text-[18px] pb-[2rem] xl:pb-0'>{Paragraph}</p>
 

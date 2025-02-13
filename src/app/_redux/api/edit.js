@@ -1,5 +1,5 @@
 const { createAsyncThunk, createSlice } = require("@reduxjs/toolkit");
-import { apiUrl } from "@/utils/apiHelper";
+import { apiUrl } from "../../../utils/apiHelper";
 import axios from "axios";
 
 const initialToken = typeof window !== 'undefined' ? localStorage.getItem('token') : null;

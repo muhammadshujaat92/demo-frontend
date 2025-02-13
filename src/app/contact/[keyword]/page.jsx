@@ -1,5 +1,5 @@
-import ContactPage from '@/Components/Contact/ContactPage'
-import { fetchData } from '@/utils/apiHelper'
+import ContactPage from '../../../Components/Contact/ContactPage'
+import { fetchData } from '../../../utils/apiHelper'
 import React, { Suspense } from 'react'
 import { Loading } from '../page'
 

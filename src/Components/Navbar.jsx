@@ -3,7 +3,7 @@ import Image from 'next/image'
 import React, { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation' // Correct hook for route detection
-import { imageUrl } from '@/utils/apiHelper'
+import { imageUrl } from '../utils/apiHelper'
 
 const Navbar = ({ navBarData }) => {
     const { Link1, Link2, Link3, Link4 } = navBarData?.[0]?.attributes || {};

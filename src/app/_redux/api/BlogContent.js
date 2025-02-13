@@ -1,4 +1,4 @@
-import { apiUrl } from "@/utils/apiHelper";
+import { apiUrl } from "../../../utils/apiHelper";
 import axios from "axios";
 const { createAsyncThunk, createSlice } = require("@reduxjs/toolkit");
 

@@ -1,14 +1,14 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import defaultImg from '@/public/imgs/blogimg.webp'
+import defaultImg from '../../public/imgs/blogimg.webp'
 import { useDispatch, useSelector } from 'react-redux';
-import { imageUrl } from '@/utils/apiHelper';
-import { blogContentThunk } from '@/app/_redux/api/BlogContent';
+import { imageUrl } from '../../utils/apiHelper';
+import { blogContentThunk } from '../../app/_redux/api/BlogContent';
 import Image from 'next/image';
 import { sancoaleSoftened } from '../Font';
 import Slider from '../Slider';
 import ContactForm from '../ContactForm';
-import userImg from '@/public/user.png'
+import userImg from '../../public/user.png'
 
 const BlogContent = ({ blogData }) => {
     const dispatch = useDispatch();
@@ -135,7 +135,7 @@ const BlogContent = ({ blogData }) => {
                     {bannerImg && (
                         <div className={`flex justify-center inset-0 absolute bg-black bg-opacity-50`}>
                             <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
-                                <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[55px] text-white'>{BlogTitle}</h1>
+                                <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[3.5rem] md:text-[50px] text-white'>{BlogTitle}</h1>
                             </div>
                         </div>
                     )}
@@ -153,7 +153,7 @@ const BlogContent = ({ blogData }) => {
                             <div className="bg-[#f2f2f2] p-[1rem] mt-2 mb-[20px]">
                                 <h1 className="font-semibold text-[17px] mb-4">Author</h1>
                                 <div className="flex gap-[1rem]">
-                                    <Image src={userImg} alt="img" width={80} height={80} />
+                                    <Image src={userImg} alt="img" width={80} height={80} loading='lazy' />
                                     <p className="md:text-[20px] font-semibold">{createdBy.firstname + " " + createdBy.lastname}</p>
                                 </div>
                             </div>

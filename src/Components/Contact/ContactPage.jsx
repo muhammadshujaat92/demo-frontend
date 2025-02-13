@@ -1,6 +1,6 @@
 'use client'
-import defaultImg from '@/public/imgs/Contact-IndiaYaatra.webp'
-import { imageUrl } from '@/utils/apiHelper';
+import defaultImg from '../../public/imgs/Contact-IndiaYaatra.webp'
+import { imageUrl } from '../../utils/apiHelper';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import ContactForm from '../ContactForm';
@@ -40,8 +40,8 @@ const ContactPage = ({ contactData }) => {
                     {bannerImg && (
                         <div className={`flex justify-center inset-0 absolute bg-black bg-opacity-50`}>
                             <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
-                                <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[55px] text-white'>{bannerHeading} {keyword && `- ${toSlug(keyword)}`}</h1>
-                                <p className='lg:text-[18px] text-white lg:font-bold md:w-[550px]'>{bannerParagraph}</p>
+                                <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[50px] text-white'>{bannerHeading} {keyword && `- ${toSlug(keyword)}`}</h1>
+                                <p className='lg:text-[18px] text-white md:w-[550px]'>{bannerParagraph}</p>
                             </div>
                         </div>
                     )}
@@ -57,15 +57,13 @@ const ContactPage = ({ contactData }) => {
                         </div>
                         <ul className='flex flex-col gap-[2rem]'>
                             {
-                                conDetail && conDetail.length > 0 ? (
+                                conDetail && (
                                     conDetail.map((data) => (
                                         <li key={data.id} className="flex items-center gap-2">
                                             <i className={`py-[12px] px-3 text-[20px] border border-gray-500 rounded-full ${data.Icon}`}></i>
                                             <span className="text-[18px]">{data.contact}</span>
                                         </li>
                                     ))
-                                ) : (
-                                    <span></span>
                                 )
                             }
                         </ul>
@@ -80,16 +78,14 @@ const ContactPage = ({ contactData }) => {
                         <div className='md:flex items-center gap-[1.6rem]'>
                             <div className="flex -space-x-4 rtl:space-x-reverse">
                                 {
-                                    data && data?.length > 0 ? (
+                                    data && (
                                         data.map((data) => {
                                             const { url } = data?.attributes || {}
                                             const Img = url ? `${imgUrl}${url}` : ""
                                             return (
-                                                <Image key={data.id} className="w-10 h-10 border-white rounded-full dark:border-gray-800" src={Img} width={100} height={100} alt="" />
+                                                <Image key={data.id} className="w-10 h-10 border-white rounded-full dark:border-gray-800" src={Img} width={100} height={100} alt="img" loading='lazy' />
                                             )
                                         })
-                                    ) : (
-                                        <div></div>
                                     )
                                 }
                             </div>
@@ -107,7 +103,7 @@ const ContactPage = ({ contactData }) => {
                     </div>
                     <div className="col-span-2 flex flex-col md:flex-row items-center gap-3 xl:gap-[2rem]">
                         {
-                            feData && feData.length > 0 ? (
+                            feData && (
                                 feData.map((data) => (
                                     <div key={data.id} className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 flex flex-col justify-between h-[20rem]">
                                         <p className="font-normal text-gray-700">{data.reviewText}</p>
@@ -117,15 +113,13 @@ const ContactPage = ({ contactData }) => {
                                         </div>
                                     </div>
                                 ))
-                            ) : (
-                                <div></div>
                             )
                         }
                     </div>
                 </div>
                 <h1 className="text-[35px] w-full font-semibold max-w-[1250px] px-3 xl:ps-3 pt-[2rem]">{blowHeading}</h1>
                 <section className='flex flex-col md:flex-row justify-center items-center gap-[1rem] xl:gap-36 py-5 w-full max-w-[1250px] px-3 md:ps-3'>
-                    {contactPageBox && contactPageBox.length > 0 ? (
+                    {contactPageBox && (
                         contactPageBox.map((data, index) => {
                             const { title, text } = data || {};
                             const h1BgColor = index === 0 ? 'bg-orange-500' : index === 1 ? 'bg-gray-500' : 'bg-green-600';
@@ -143,8 +137,6 @@ const ContactPage = ({ contactData }) => {
                                 </div>
                             );
                         })
-                    ) : (
-                        <div></div>
                     )}
                 </section>
             </div>

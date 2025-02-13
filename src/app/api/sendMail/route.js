@@ -125,7 +125,7 @@ export async function POST(req) {
         subject: 'Thank You for Your Travel Inquiry!',
         html: `
             <div style="font-family: Arial, sans-serif; color: #333; padding: 20px; border: 1px solid #ddd;">
-                <h2 style="color: #ff7300;">Thank You for Contacting India Yaatra</h2>
+                <h2 style="color: #ff7300;">Thank You for Contacting India Yaatra! We will contact you soon.</h2>
                 <p>Dear ${name},</p>
                 <p>Thank you for reaching out to us with your travel inquiry. Our team will review your request and get back to you shortly with more details and suggestions for your journey.</p>
                 <p>Here are the details you provided:</p>

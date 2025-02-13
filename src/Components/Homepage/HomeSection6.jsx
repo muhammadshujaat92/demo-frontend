@@ -1,18 +1,16 @@
 import React from 'react'
 import Image from 'next/image'
-import { imageUrl } from '@/utils/apiHelper';
 import Icon from '../Icons';
 
 const HomeSection6 = ({ item }) => {
     const { Heading, Paragraph, rating, secData, userImages } = item || {};
     const { data } = userImages || {}
-    const imgUrl = imageUrl()
 
     return (
         <div className='w-full max-w-[1250px] flex-wrap flex items-center justify-between px-2 md:pe-3 md:ps-3 xl:pe-0'>
             <div className="max-w-sm bg-white rounded-lg flex flex-col justify-between h-[27rem] pb-[2rem] px-2 md:pe-3 md:ps-3 xl:pe-0">
                 <div>
-                    <h1 className='text-[38px] lg:leading-[3rem] mb-6 font-bold'>{Heading}</h1>
+                    <h1 className='text-[38px] lg:leading-[3rem] mb-6 font-bold text-[#ff6600]'>{Heading}</h1>
                     <p className="text-gray-700 font-semibold text-[15px] lg:text-[16px]">{Paragraph}</p>
                 </div>
                 <div className='flex items-center gap-[1.6rem]'>
@@ -22,7 +20,7 @@ const HomeSection6 = ({ item }) => {
                                 const { url } = data?.attributes || {}
                                 const Img = url ? `${process.env.NEXT_PUBLIC_BASE_URL}${url}` : ""
                                 return (
-                                    <Image key={data.id} className="w-10 h-10 border-white rounded-full dark:border-gray-800" src={Img} width={100} height={100} alt="star" />
+                                    <Image key={data.id} className="w-10 h-10 border-white rounded-full dark:border-gray-800" src={Img} width={100} height={100} alt="star" loading='lazy'/>
                                 )
                             })
                         )}

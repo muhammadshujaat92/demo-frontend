@@ -1,5 +1,5 @@
 import React from 'react'
-import Edit from '@/Components/Edit';
+import Edit from '../../Components/Edit';
 
 const page = ({ params }) => {
     const isEdit = params.page[params.page.length - 1] === 'edit';

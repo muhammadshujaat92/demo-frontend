@@ -1,8 +1,8 @@
 import React from 'react'
-import { imageUrl } from '@/utils/apiHelper';
+import { imageUrl } from '../../utils/apiHelper';
 import Image from 'next/image';
 import Link from 'next/link';
-import defaultImg from "@/public/imgs/gellary-2.jpg"
+import defaultImg from "../../public/imgs/gellary-2.jpg"
 import Icon from '../Icons';
 
 const extractAndCleanDescription = (markdown) => {
@@ -25,9 +25,9 @@ const BlogCard = ({ BlogTitle, BlogCardImage, blogContent, pageURL }) => {
     const slug = pageURL ? pageURL.replace(/[^A-Za-z0-9]/g, '-').toLowerCase() : BlogTitle.replace(/[^A-Za-z0-9]/g, '-').toLowerCase();
 
     return (
-        <div className="max-w-[23rem] md:max-w-[14rem] lg:max-w-[19rem] xl:max-w-[23rem] border h-[33rem] max-h-[33rem] border-gray-200 rounded-lg shadow">
+        <div className="max-w-[23rem] md:max-w-[14rem] lg:max-w-[19rem] xl:max-w-[23rem] border h-fit md:h-[33rem] md:max-h-[33rem] border-gray-200 rounded-lg shadow">
             <div className='h-[18rem] md:h-[16rem] xl:h-[18rem]'>
-                <Image className="rounded-t-lg h-full object-cover" src={cardImg} alt="cardImg" width={600} height={600} />
+                <Image className="rounded-t-lg h-full object-cover" src={cardImg} alt="cardImg" width={600} height={600} loading='lazy'/>
             </div>
             <div className="py-5 px-[15px] h-[45%] md:h-[50%] xl:h-[45%] flex justify-between items-start flex-col">
                 <div>

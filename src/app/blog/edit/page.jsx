@@ -1,4 +1,4 @@
-import Edit from '@/Components/Edit'
+import Edit from '../../../Components/Edit'
 import React from 'react'
 
 const page = () => {

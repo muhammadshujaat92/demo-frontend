@@ -69,25 +69,42 @@ const ContactForm = ({ colspan2, fontSize }) => {
         setMessageSend("");
 
         try {
-            const response = await fetch('/api/sendMail', {
+            // Send Email
+            const emailResponse = await fetch('/api/sendMail', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...formData, ...clientInfo, referrer }),
             });
 
-            const data = await response.json();
+            const emailData = await emailResponse.json();
 
-            if (data.success) {
+            if (emailData.success) {
                 setMessageSend("Message sent successfully! 🎉");
-                setFormData({
-                    name: '',
-                    email: '',
-                    number: '',
-                    date: '',
-                    adult: '',
-                    children: '',
-                    message: ''
+
+                // Save Data to Strapi
+                const strapiResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/form-datas`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        data: { ...formData, ...clientInfo, url: referrer }
+                    }),
                 });
+
+                if (strapiResponse.ok) {
+                    setFormData({
+                        name: '',
+                        email: '',
+                        number: '',
+                        date: '',
+                        adult: '',
+                        children: '',
+                        message: ''
+                    });
+                } else {
+                    console.error('Failed to save form data in Strapi');
+                }
             } else {
                 setMessageSend("Failed to send message. Please try again. 😔");
             }
@@ -96,10 +113,7 @@ const ContactForm = ({ colspan2, fontSize }) => {
             setMessageSend("Failed to send message. Please check your connection and try again.");
         } finally {
             setIsLoading(false);
-
-            setTimeout(() => {
-                setMessageSend("");
-            }, 5000);
+            setTimeout(() => setMessageSend(""), 3000);
         }
     };
 

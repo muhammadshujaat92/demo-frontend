@@ -1,5 +1,5 @@
 import React from 'react'
-import Edit from '@/Components/Edit'
+import Edit from '../../../Components/Edit'
 
 const page = () => {
     return (

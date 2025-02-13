@@ -1,6 +1,6 @@
 import React from 'react';
-import TourPage from '@/Components/Tour-packages/TourPage';
-import { fetchData } from '@/utils/apiHelper';
+import TourPage from '../../Components/Tour-packages/TourPage';
+import { fetchData } from '../../utils/apiHelper';
 
 export async function generateMetadata() {
     try {

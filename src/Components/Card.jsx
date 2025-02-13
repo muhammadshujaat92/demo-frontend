@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import cardImg from "@/public/imgs/gellary-2.jpg"
+import cardImg from "../public/imgs/gellary-2.jpg"
 import Link from 'next/link';
 import Icon from './Icons';
 
@@ -12,9 +12,9 @@ const Card = ({ Width, Img, title, description, btnText, priceText, days, saleBt
             <div className={`${Width ? `${Width}` : "max-w-[18rem]"} h-[15rem] max-h-[15rem] relative`}>
                 {
                     Img ? (
-                        <Image className="rounded-t-lg w-full h-full" src={Img} width={250} height={250} alt="cardImg" />
+                        <Image className="rounded-t-lg w-full h-full" src={Img} width={250} height={250} alt="cardImg" loading='lazy'/>
                     ) : (
-                        <Image className="rounded-t-lg w-full h-full" src={cardImg} width={250} height={250} alt="cardImg" />
+                        <Image className="rounded-t-lg w-full h-full" src={cardImg} width={250} height={250} alt="cardImg" loading='lazy'/>
                     )
                 }
                 <div className={`absolute top-3 font-semibold text-[15px] ${saleBtn ? "flex items-center justify-between w-full" : ""}`}>

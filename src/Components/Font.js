@@ -1,4 +1,4 @@
-import { Boogaloo, Kanit } from 'next/font/google';
+import { Boogaloo, Asul, ADLaM_Display, ABeeZee, Acme, Fira_Sans } from 'next/font/google';
 import localFont from 'next/font/local';
 
 // Google Font
@@ -8,7 +8,7 @@ export const boogaloo = Boogaloo({
     display: 'swap',
 });
 
-export const kanit = Kanit({
+export const kanit = Fira_Sans({
     subsets: ['latin'],
     weight: '400',
     display: 'swap',

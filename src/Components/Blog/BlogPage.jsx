@@ -1,9 +1,9 @@
 'use client'
 import React, { useEffect, useMemo, useState } from 'react'
-import defaultImg from '@/public/imgs/blogimg.webp'
+import defaultImg from '../../public/imgs/blogimg.webp'
 import { useDispatch, useSelector } from 'react-redux';
-import { imageUrl } from '@/utils/apiHelper';
-import { blogCardThunk } from '@/app/_redux/api/BlogCard';
+import { imageUrl } from '../../utils/apiHelper';
+import { blogCardThunk } from '../../app/_redux/api/BlogCard';
 import Image from 'next/image';
 import { sancoaleSoftened } from '../Font';
 import BlogCard from './BlogCard';
@@ -84,7 +84,7 @@ const BlogPage = ({ blogData }) => {
                     {bannerImg && (
                         <div className={`flex justify-center inset-0 absolute bg-black bg-opacity-50`}>
                             <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
-                                <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[55px] text-white'>{bannerHeading}</h1>
+                                <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[50px] text-white'>{bannerHeading}</h1>
                             </div>
                         </div>
                     )}
@@ -94,15 +94,13 @@ const BlogPage = ({ blogData }) => {
                 <div className='lg:grid grid-cols-3 py-[2rem] w-full max-w-[1250px] px-3 xl:ps-3 gap-[1rem]'>
                     <div className='flex flex-wrap gap-[1.5rem] col-span-2 mb-[2rem] lg:mb-0 justify-center lg:justify-normal'>
                         {
-                            filteredData && filteredData.length > 0 ? (
+                            filteredData && (
                                 filteredData.map((post) => {
                                     const { BlogTitle, BlogCardImage, blogContent, pageURL } = post.attributes;
                                     return (
                                         <BlogCard key={post.id} BlogTitle={BlogTitle} BlogCardImage={BlogCardImage} blogContent={blogContent} pageURL={pageURL} />
                                     )
                                 })
-                            ) : (
-                                <div>No posts available</div>
                             )
                         }
                     </div>
@@ -111,7 +109,7 @@ const BlogPage = ({ blogData }) => {
                         <div className='border border-gray-500 rounded-2xl pb-4 bg-gray-200 mt-5'>
                             <h1 className='font-sancoaleSoftened text-white bg-orange-500 text-[28px] text-center rounded-t-2xl'>Recent Posts</h1>
                             <div className='px-5'>
-                                {data && data.length > 0 ? (
+                                {data && (
                                     data.slice(-5).map((data) => {
                                         const { BlogTitle, pageURL } = data.attributes;
                                         const slug = pageURL ? pageURL.replace(/[^A-Za-z0-9]/g, '-').toLowerCase() : BlogTitle.replace(/[^A-Za-z0-9]/g, '-').toLowerCase();
@@ -124,8 +122,6 @@ const BlogPage = ({ blogData }) => {
                                             </Link>
                                         );
                                     })
-                                ) : (
-                                    <div></div>
                                 )}
                             </div>
                         </div>
