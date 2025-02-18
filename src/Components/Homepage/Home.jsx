@@ -26,19 +26,19 @@ const Home = ({ homeData }) => {
                     src={BannerImg}
                     alt="banner_image"
                     className="object-cover"
-                    layout="fill"
-                    priority={true}
+                    fill
+                    priority
                     fetchPriority="high"
                     placeholder="blur"
-                    blurDataURL="/imgs/homeSection1BlurData.jpg"
+                    blurDataURL="../../public/imgs/homeSection1BlurData.webp"
                 />
-                <div className='inset-0 absolute bg-black bg-opacity-60 md:flex justify-center items-center'>
+                <div className='inset-0 absolute bg-black bg-opacity-[0.2] md:flex justify-center items-center'>
                     <div className='w-full max-w-[1250px] md:flex justify-between'>
                         <div className='h-[25rem] flex flex-col justify-center gap-[5rem] md:gap-28 text-white'>
                             <HeaderComponent data={slides} />
                         </div>
                         <div className='xl:w-[340px] px-2 md:ps-0'>
-                            <ContactForm fontSize={'[25px]'} />
+                            <ContactForm fontSize={'text-[20px] lg:text-[25px]'} />
                         </div>
                     </div>
                 </div>
@@ -55,6 +55,7 @@ const Home = ({ homeData }) => {
             <Suspense>
                 <HomeSection8 data={lastSectionData} />
             </Suspense>
+
         </>
     );
 };

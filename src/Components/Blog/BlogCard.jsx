@@ -2,7 +2,7 @@ import React from 'react'
 import { imageUrl } from '../../utils/apiHelper';
 import Image from 'next/image';
 import Link from 'next/link';
-import defaultImg from "../../public/imgs/gellary-2.jpg"
+import defaultImg from "../../public/imgs/gellary-2.webp"
 import Icon from '../Icons';
 
 const extractAndCleanDescription = (markdown) => {
@@ -39,11 +39,11 @@ const BlogCard = ({ BlogTitle, BlogCardImage, blogContent, pageURL, createdAt })
             </div>
             <div className="py-5 px-[15px] h-[45%] md:h-[50%] xl:h-[45%] flex justify-between items-start flex-col">
                 <div>
-                    <Link href={`/blog/${slug}/`} className="mb-4 text-2xl md:text-[1rem] lg:text-[20px] font-bold md:leading-[1.4rem] tracking-tight">{BlogTitle}</Link>
+                    <Link href={`/blog/${slug}/`} className="mb-4 text-2xl md:text-[1rem] lg:text-[20px] font-bold md:leading-[1.4rem] tracking-tight text-[#ff6600]">{BlogTitle}</Link>
                     <p className="my-3 font-normal md:text-[14px] xl:text-[16px] text-gray-700">{extractAndCleanDescription(blogContent)}</p>
                 </div>
                 <div className='flex justify-end w-full'>
-                    <Link href={`/blog/${slug}/`} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-[#12c956]">
+                    <Link href={`/blog/${slug}/`} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-[#12c956] border-[2px] border-gray-500">
                         READ MORE
                         <Icon name="arrow" className="rtl:rotate-180 w-3.5 h-3.5 ms-2" />
                     </Link>

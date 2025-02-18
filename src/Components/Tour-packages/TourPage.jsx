@@ -10,6 +10,7 @@ import { sancoaleSoftened } from '../Font';
 import Card from '../Card';
 import ContactForm from '../ContactForm';
 import Link from 'next/link';
+import discBgImg from '../../public/imgs/discBgImg.webp'
 
 const TourPage = ({ pageData }) => {
     const dispatch = useDispatch();
@@ -35,7 +36,7 @@ const TourPage = ({ pageData }) => {
             return "#";
         }
     };
-    
+
 
     return (
         <div>
@@ -45,14 +46,14 @@ const TourPage = ({ pageData }) => {
                         src={BannerImg}
                         alt='banner'
                         className={`w-full object-cover`}
-                        layout="fill"
+                        fill
                         fetchPriority="high"
                         placeholder="blur"
-                        blurDataURL="/imgs/homeSection1BlurData.jpg"
+                        blurDataURL="../../public/imgs/homeSection1BlurData.webp"
                         priority
                     />
                     {BannerImg && (
-                        <div className={`flex justify-center inset-0 absolute bg-black bg-opacity-50`}>
+                        <div className={`flex justify-center inset-0 absolute bg-black bg-opacity-[0.4]`}>
                             <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
                                 <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[50px] text-white'>{bannerHeading}</h1>
                                 <p className='lg:text-[18px] text-white md:w-[550px]'>{bannerParagraph}</p>
@@ -76,18 +77,21 @@ const TourPage = ({ pageData }) => {
                         ) : (
                             <div>Loading...</div>
                         )}
-                        <div className="md:flex gap-[2rem] px-[1rem] pt-[3rem] pb-[2rem] rounded-xl bg-orange-500 text-white min-w-full max-w-full">
-                            <div className="flex flex-col md:w-[28rem] gap-[1.5rem]">
-                                <div>
-                                    <h1 className="font-semibold text-[30px] leading-[2.2rem]">{discountHeading}</h1>
-                                    <p className="text-[15px] mt-[1rem]">{discountParagraph}</p>
+                        <div className='relative min-w-full max-w-full h-[420px]'>
+                            <Image alt='backImg' src={discBgImg} width={500} height={500} className='z-[-1] rounded-xl object-cover w-full h-full' loading='lazy' />
+                            <div className="md:flex md:justify-evenly gap-[2rem] px-[1rem] pt-[3rem] pb-[2rem] text-white inset-0 absolute rounded-xl bg-orange-500 bg-opacity-[0.8]">
+                                <div className="flex flex-col md:w-[28rem] gap-[1.5rem]">
+                                    <div>
+                                        <h2 className="font-semibold text-[30px] leading-[2.2rem]">{discountHeading}</h2>
+                                        <p className="text-[15px] mt-[1rem]">{discountParagraph}</p>
+                                    </div>
+                                    <div className="flex justify-end">
+                                        <Link href={`${formatUrl(discountBtnUrl)}`} className="font-semibold bg-green-600 hover:bg-green-500 text-white py-[10px] px-[30px] text-[20px] rounded-[35px]">{discountBtnText}</Link>
+                                    </div>
                                 </div>
-                                <div className="flex justify-end">
-                                    <Link href={`${formatUrl(discountBtnUrl)}`} className="font-semibold bg-green-600 hover:bg-green-500 text-white py-[10px] px-[30px] text-[20px] rounded-[35px]">{discountBtnText}</Link>
+                                <div className="md:w-[20rem] md:h-[16rem] mt-[2rem] md:mt-0 hidden md:block">
+                                    <Image src={discountImg} width={300} height={300} alt='img' className="w-full h-full" loading='lazy' />
                                 </div>
-                            </div>
-                            <div className="md:w-[20rem] md:h-[16rem] mt-[2rem] md:mt-0">
-                                <Image src={discountImg} width={300} height={300} alt='img' className="w-full h-full" loading='lazy'/>
                             </div>
                         </div>
                         {data && data.length > 0 ? (

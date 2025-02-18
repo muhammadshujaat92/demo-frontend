@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 export const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 export const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -18,7 +20,6 @@ export const fetchData = async (endpoint) => {
         const data = await response.json();
         return data.data;
     } catch (error) {
-        console.error(`Error fetching data: ${error.message}`);
-        throw new Error('Internal Server Error');
+        return notFound()
     }
 };

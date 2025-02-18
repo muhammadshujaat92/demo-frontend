@@ -7,11 +7,11 @@ const HomeSection6 = ({ item }) => {
     const { data } = userImages || {}
 
     return (
-        <div className='w-full max-w-[1250px] flex-wrap flex items-center justify-between px-2 md:pe-3 md:ps-3 xl:pe-0'>
+        <div className='w-full max-w-[1250px] flex-wrap flex items-center justify-between md:grid md:grid-cols-3 px-2 md:pe-3 md:ps-3 xl:pe-0'>
             <div className="max-w-sm bg-white rounded-lg flex flex-col justify-between h-[27rem] pb-[2rem] px-2 md:pe-3 md:ps-3 xl:pe-0">
                 <div>
-                    <h1 className='text-[38px] lg:leading-[3rem] mb-6 font-bold text-[#ff6600]'>{Heading}</h1>
-                    <p className="text-gray-700 font-semibold text-[15px] lg:text-[16px]">{Paragraph}</p>
+                    <h2 className='text-[28px] lg:text-[38px] lg:leading-[3rem] lg:mb-6 font-bold text-[#ff6600]'>{Heading}</h2>
+                    <p className="text-gray-700 font-semibold text-[15px] md:text-[14px] xl:text-[16px]">{Paragraph}</p>
                 </div>
                 <div className='flex items-center gap-[1.6rem]'>
                     <div className="flex -space-x-4 rtl:space-x-reverse">
@@ -33,20 +33,20 @@ const HomeSection6 = ({ item }) => {
                             <Icon name="star" className='text-yellow-400 text-[20px]' />
                             <Icon name="star" className='text-yellow-400 text-[20px]' />
                         </div>
-                        <p className='text-gray-400'>{rating}</p>
+                        <span className='text-gray-400'>{rating}</span>
                     </div>
                 </div>
             </div>
-            <div className='flex flex-wrap items-center gap-[2rem]'>
+            <div className='flex flex-wrap items-center md:grid md:grid-cols-2 md:col-span-2 lg:gap-[2rem]'>
                 {secData && (
                     secData.map((data) => {
                         const { ReviewText, AuthorName, AuthorCountry } = data
                         return (
                             <div key={data.id} className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 flex flex-col justify-between h-[27rem]">
-                                <p className="font-normal text-gray-700 text-[15px] lg:text-[16px]">{ReviewText}</p>
+                                <p className="font-normal text-gray-700 text-[15px] md:text-[14px] xl:text-[16px]">{ReviewText}</p>
                                 <div>
-                                    <h1 className='font-semibold leading-[2rem] text-[25px]'>{AuthorName}</h1>
-                                    <p className='text-orange-500 font-semibold'>{AuthorCountry}</p>
+                                    <span className='font-semibold leading-[2rem] text-[20md] xl:text-[25px] block'>{AuthorName}</span>
+                                    <span className='text-orange-500 font-semibold block'>{AuthorCountry}</span>
                                 </div>
                             </div>
                         )

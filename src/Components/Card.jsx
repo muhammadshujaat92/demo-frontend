@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import cardImg from "../public/imgs/gellary-2.jpg"
+import cardImg from "../public/imgs/gellary-2.webp"
 import Link from 'next/link';
 import Icon from './Icons';
 

@@ -5,10 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { imageUrl } from '../../utils/apiHelper';
 import { blogContentThunk } from '../../app/_redux/api/BlogContent';
 import Image from 'next/image';
-import { sancoaleSoftened } from '../Font';
+import { fira, sancoaleSoftened } from '../Font';
 import Slider from '../Slider';
 import ContactForm from '../ContactForm';
-import userImg from '../../public/user.png'
+import userImg from '../../public/user.webp'
 
 const BlogContent = ({ blogData }) => {
     const dispatch = useDispatch();
@@ -28,27 +28,27 @@ const BlogContent = ({ blogData }) => {
         // Headings
         textt = textt.replace(
             /^#\s(.+)/gm,
-            '<h1 class="font-acme text-[32px] uppercase font-bold my-[10px] text-[#ff6600]">$1</h1>'
+            `<h1 style="font-family: ${fira.style.fontFamily}" class="font-acme text-[28px] uppercase font-bold my-[10px] text-[#ff6600]">$1</h1>`
         );
         textt = textt.replace(
             /^##\s(.+)/gm,
-            '<h2 class="font-acme text-[24px] uppercase font-bold my-[10px] text-[#ff6600]">$1</h2>'
+            `<h2 style="font-family: ${fira.style.fontFamily}" class="font-acme text-[26px] uppercase font-bold my-[10px] text-[#ff6600]">$1</h2>`
         );
         textt = textt.replace(
             /^###\s(.+)/gm,
-            '<h3 class="font-acme text-[20px] uppercase font-bold my-[10px] text-[#ff6600]">$1</h3>'
+            `<h3 style="font-family: ${fira.style.fontFamily}" class="font-acme text-[24px] uppercase font-bold my-[10px] text-[#ff6600]">$1</h3>`
         );
         textt = textt.replace(
             /^####\s(.+)/gm,
-            '<h4 class="font-acme text-[18px] uppercase font-bold my-[10px] text-[#ff6600]">$1</h4>'
+            `<h4 style="font-family: ${fira.style.fontFamily}" class="font-acme text-[20px] uppercase font-bold my-[10px] text-[#ff6600]">$1</h4>`
         );
         textt = textt.replace(
             /^#####\s(.+)/gm,
-            '<h5 class="font-acme text-[16px] uppercase font-bold my-[10px] text-[#ff6600]">$1</h5>'
+            `<h5 style="font-family: ${fira.style.fontFamily}" class="font-acme text-[18px] uppercase font-bold my-[10px] text-[#ff6600]">$1</h5>`
         );
         textt = textt.replace(
             /^######\s(.+)/gm,
-            '<h6 class="font-acme text-[14px] uppercase font-bold my-[10px] text-[#ff6600]">$1</h6>'
+            `<h6 style="font-family: ${fira.style.fontFamily}" class="font-acme text-[14px] uppercase font-bold my-[10px] text-[#ff6600]">$1</h6>`
         );
 
         // Images
@@ -73,9 +73,10 @@ const BlogContent = ({ blogData }) => {
         textt = textt.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
         textt = textt.replace(/_(?![^<]*>)(.*?)_(?![^<]*>)/g, '<em>$1</em>');
         textt = textt.replace(/~~(.*?)~~/g, '<del>$1</del>');
+        textt = textt.replace(/::arrow::/g, "<span class='me-[6px]'>&#11166;</span>");
 
         // Blockquote
-        textt = textt.replace(/^>\s(.+)/gm, '<blockquote class="border-l-4 pl-4 italic text-gray-600">$1</blockquote>');
+        textt = textt.replace(/^>\s(.+)/gm, '<blockquote class="border-l-4 relative border-green-600 pt-[25px] pb-[16px] ps-[30px] italic text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 text-gray-400 absolute top-[4px] left-[13px] rotate-180" viewBox="0 0 975.036 975.036"><path d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"></path></svg> $1 </blockquote>');
 
         // Numbered lists
         textt = textt.replace(/^(\d+)\.\s(.+)(\n\d+\.\s.+)*/gm, function (match) {
@@ -84,10 +85,10 @@ const BlogContent = ({ blogData }) => {
                 .split('\n')
                 .map((item) => {
                     const matchItem = item.match(/^(\d+)\.\s(.+)/);
-                    return matchItem ? `<li class="list-decimal">${matchItem[2]}</li>` : '';
+                    return matchItem ? `<li>${matchItem[2]}</li>` : '';
                 })
                 .join('\n');
-            return `<ol class='ms-[15px]'>\n${listItems}\n</ol>`;
+            return `<ol class='ms-[2px]'>\n${listItems}\n</ol>`;
         });
 
         // Bullet lists
@@ -97,7 +98,7 @@ const BlogContent = ({ blogData }) => {
                 .split('\n')
                 .map((item) => `<li class="list-disc">${item.slice(2)}</li>`)
                 .join('\n');
-            return `<ul class='ms-[20px]'>\n${listItems}\n</ul>`;
+            return `<ul class='ms-[2px]'>\n${listItems}\n</ul>`;
         });
 
         textt = textt.replace(/(\n\s*\n)/g, '<br/>');
@@ -126,14 +127,14 @@ const BlogContent = ({ blogData }) => {
                         src={bannerImg}
                         alt='banner'
                         className={`w-full object-cover`}
-                        layout="fill"
+                        fill
                         priority
                         fetchPriority="high"
                         placeholder="blur"
-                        blurDataURL="/imgs/homeSection1BlurData.jpg"
+                        blurDataURL="../../public/imgs/homeSection1BlurData.webp"
                     />
                     {bannerImg && (
-                        <div className={`flex justify-center inset-0 absolute bg-black bg-opacity-50`}>
+                        <div className={`flex justify-center inset-0 absolute bg-black bg-opacity-[0.2]`}>
                             <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
                                 <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[3.5rem] md:text-[50px] text-white'>{BlogTitle}</h1>
                             </div>
@@ -148,10 +149,10 @@ const BlogContent = ({ blogData }) => {
                             <div dangerouslySetInnerHTML={{ __html: text }}></div>
                         </div>
                         <section className="md:ps-3 xl:ps-0 md:py-[2rem]">
-                            <h1 className="text-white bg-orange-500 font-semibold text-[25px] text-center">RECENT POSTS</h1>
+                            <h2 className="text-white bg-orange-500 font-semibold text-[25px] text-center">RECENT POSTS</h2>
                             <Slider imgData={data} />
                             <div className="bg-[#f2f2f2] p-[1rem] mt-2 mb-[20px]">
-                                <h1 className="font-semibold text-[17px] mb-4">Author</h1>
+                                <span className="font-semibold text-[17px] mb-4 block">Author</span>
                                 <div className="flex gap-[1rem]">
                                     <Image src={userImg} alt="img" width={80} height={80} loading='lazy' />
                                     <p className="md:text-[20px] font-semibold">{createdBy.firstname + " " + createdBy.lastname}</p>

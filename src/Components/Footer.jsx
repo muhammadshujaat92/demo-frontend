@@ -5,7 +5,6 @@ import Image from 'next/image';
 import logoImg from "../public/IndiaYaatra-logo.webp";
 import Icon from './Icons';
 import footerImg from '../public/imgs/footer.jpg'
-import watsappLogo from '../public/imgs/whatsapp-logo.webp'
 
 const Footer = ({ footerData }) => {
     const [formData, setFormData] = useState({ name: "", email: "" })
@@ -46,33 +45,33 @@ const Footer = ({ footerData }) => {
         }
     }
 
-    const handleClick = () => {
-        window.open(`https://api.whatsapp.com/send?phone=${contactPhone}&text=Hello IndiaYaatra! Help me to plan My Trip!&type=phone_number&app_absent=0`, '_blank');
-    }
+    // const handleClick = () => {
+    //     window.open(`https://api.whatsapp.com/send?phone=${contactPhone}&text=Hello IndiaYaatra! Help me to plan My Trip!&type=phone_number&app_absent=0`, '_blank');
+    // }
 
     return (
         <>
-            <div onClick={handleClick} className='fixed bottom-[20px] right-[20px] md:right-[30px] z-10 cursor-pointer'>
+            {/* <div onClick={handleClick} className='fixed bottom-[20px] right-[20px] md:right-[30px] z-10 cursor-pointer'>
                 <div className='border-[2px] border-[#7cfe04] h-full w-full absolute top-0 rounded-full animate-ping'></div>
                 <Image src={watsappLogo} alt="logo" width={55} height={55} />
-            </div>
+            </div> */}
             <div className='relative footer-style'>
                 <Image
                     src={footerImg}
                     alt='banner'
-                    className={`w-full !h-[50%] md:!h-full object-contain inset-0 absolute z-[-1]`}
-                    layout="fill"
+                    className={`w-full !h-[50%] md:!h-full object-cover md:object-contain inset-0 absolute z-[-1]`}
+                    fill
                     loading='lazy'
                 />
                 <div className='flex justify-center footer-bg'>
-                    <footer className='text-white xl:flex pt-[90px] pb-[65px] w-full max-w-[1250px] gap-[3rem] px-3 xl:ps-3'>
+                    <footer className='text-white xl:flex pt-[130px] md:pt-[90px] pb-[65px] w-full max-w-[1250px] gap-[3rem] px-3 xl:ps-3'>
                         <div className='xl:w-[35%] xl:pe-2'>
-                            <Image src={Img} alt='logo' width={150} height={150} />
+                            <Image src={Img} alt='logo' width={150} height={150} className='w-auto h-auto' />
                             <p className='text-[15px] py-[2rem]'>{paragraph}</p>
                         </div>
                         <div className='flex justify-between flex-wrap xl:w-[65%] gap-[2rem] md:gap-0'>
                             <div className='flex flex-col items-center gap-[1.5rem] xl:gap-0'>
-                                <h1 className='text-[25px] font-semibold'>Useful Links</h1>
+                                <h3 className='text-[25px] font-semibold'>Useful Links</h3>
                                 <ul className='flex flex-col justify-center h-[75%] text-[20px] gap-5'>
                                     <li><Link href={'/'}>Home</Link></li>
                                     <li><Link href={'/tour-packages/'}>Tour Packages</Link></li>
@@ -82,7 +81,7 @@ const Footer = ({ footerData }) => {
                             </div>
 
                             <div className="flex flex-col gap-[1.5rem] xl:gap-[3rem]">
-                                <h1 className='text-[25px] font-semibold'>News Letter</h1>
+                                <h3 className='text-[25px] font-semibold'>News Letter</h3>
                                 <div>
                                     <div className='mb-4'>
                                         <input
@@ -131,11 +130,11 @@ const Footer = ({ footerData }) => {
 
                             <div className='flex flex-col items-center'>
                                 <div className='h-full'>
-                                    <h1 className='text-[25px] font-semibold mb-[1.5rem] xl:mb-0'>Contact Details</h1>
+                                    <h3 className='text-[25px] font-semibold mb-[1.5rem] xl:mb-0'>Contact Details</h3>
                                     <div className='h-[75%] flex justify-center flex-col gap-7'>
-                                        <p className='flex items-center gap-2'><Icon name="phone" className='p-2 text-[2rem] border rounded-full' />{contactPhone}</p>
-                                        <p className='flex items-center gap-2'><Icon name="location" className='p-2 text-[2rem] border rounded-full' />{location}</p>
-                                        <p className='flex items-center gap-2'><Icon name="email" className='p-2 text-[2rem] border rounded-full' />{contactEmail}</p>
+                                        <span className='flex items-center gap-2'><Icon name="phone" className='p-2 text-[2rem] border rounded-full' />{contactPhone}</span>
+                                        <span className='flex items-center gap-2'><Icon name="location" className='p-2 text-[2rem] border rounded-full' />{location}</span>
+                                        <span className='flex items-center gap-2'><Icon name="email" className='p-2 text-[2rem] border rounded-full' />{contactEmail}</span>
                                     </div>
                                 </div>
                             </div>

@@ -2,7 +2,7 @@
 import React from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import defaultImg from '../public/imgs/recentpost.jpg'
+import defaultImg from '../public/imgs/recentpost.webp'
 
 // Import Swiper styles
 import 'swiper/css';

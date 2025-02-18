@@ -75,16 +75,16 @@ const BlogPage = ({ blogData }) => {
                         src={bannerImg}
                         alt='banner'
                         className={`w-full object-cover`}
-                        layout="fill"
+                        fill
                         priority
                         fetchPriority="high"
                         placeholder="blur"
-                        blurDataURL="/imgs/homeSection1BlurData.jpg"
+                        blurDataURL="../../public/imgs/homeSection1BlurData.webp"
                     />
                     {bannerImg && (
                         <div className={`flex justify-center inset-0 absolute bg-black bg-opacity-50`}>
                             <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
-                                <h1 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[50px] text-white'>{bannerHeading}</h1>
+                                <h2 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[50px] text-white'>{bannerHeading}</h2>
                                 <p className='lg:text-[18px] text-white md:w-[550px]'>{bannerDescription}</p>
                             </div>
                         </div>
@@ -108,7 +108,7 @@ const BlogPage = ({ blogData }) => {
                     <div>
                         <ContactForm />
                         <div className='border border-gray-500 rounded-2xl pb-4 bg-gray-200 mt-5'>
-                            <h1 className='font-sancoaleSoftened text-white bg-orange-500 text-[28px] text-center rounded-t-2xl'>Recent Posts</h1>
+                            <h2 className='font-sancoaleSoftened text-white bg-orange-500 text-[28px] text-center rounded-t-2xl'>Recent Posts</h2>
                             <div className='px-5'>
                                 {data && (
                                     data.slice(-5).map((data) => {
@@ -118,7 +118,7 @@ const BlogPage = ({ blogData }) => {
                                             <Link key={data.id} href={`/blog/${slug}`}>
                                                 <div className='bg-gray-200 flex items-center py-5 gap-2 border border-b-gray-400'>
                                                     <Icon name="check" className='text-orange-500' />
-                                                    <h1 className='text-blue-500 font-semibold'>{BlogTitle}</h1>
+                                                    <span className='text-blue-500 font-semibold block'>{BlogTitle}</span>
                                                 </div>
                                             </Link>
                                         );
@@ -127,7 +127,7 @@ const BlogPage = ({ blogData }) => {
                             </div>
                         </div>
                         <div className='border border-gray-500 rounded-2xl pb-4 bg-gray-200 mt-5'>
-                            <h1 className='font-sancoaleSoftened text-white bg-orange-500 text-[28px] text-center rounded-t-2xl'>Archives</h1>
+                            <h2 className='font-sancoaleSoftened text-white bg-orange-500 text-[28px] text-center rounded-t-2xl'>Archives</h2>
                             <div className='px-5'>
                                 {uniqueDates.length > 0 ? (
                                     uniqueDates.map((monthYearKey) => {
@@ -140,7 +140,7 @@ const BlogPage = ({ blogData }) => {
                                                 className='bg-gray-200 flex items-center py-5 gap-2 border border-b-gray-400 cursor-pointer'
                                             >
                                                 <Icon name="check" className='text-orange-500' />
-                                                <h1 className='text-blue-500 font-semibold'>{displayDate}</h1>
+                                                <span className='text-blue-500 font-semibold block'>{displayDate}</span>
                                             </div>
                                         );
                                     })

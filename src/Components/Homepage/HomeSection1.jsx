@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import bgImg from "../../public/imgs/homeSection1Default.webp"
 import { useDispatch, useSelector } from 'react-redux';
 import { cardThunk } from '../../app/_redux/api/Card';
-import { boogaloo, kanit } from '../Font';
+import { fira } from '../Font';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
@@ -23,9 +23,9 @@ const HomeSection1 = ({ secData }) => {
 
     return (
         <div className='py-[40px] mt-[22rem] md:mt-0'>
-            <div className='flex justify-center pt-[25px] pb-[35px]'>
+            <div className='flex justify-center pt-[25px] pb-[35px] relative'>
                 <div className='w-full max-w-[1250px] px-2 md:pe-3 xl:pe-0'>
-                    <h1 style={{ fontFamily: kanit.style.fontFamily }} className='text-[40px] leading-[2.7rem] md:leading-none font-bold text-[#ff6600] tracking-tight'>{Title}</h1>
+                    <h1 style={{ fontFamily: fira.style.fontFamily }} className='text-[40px] leading-[2.7rem] md:leading-none font-bold text-[#ff6600] tracking-tight'>{Title}</h1>
                     <p className='text-[15px] md:text-[18px] mt-3'>{Paragraph}</p>
                     <div className='flex justify-end mb-3'>
                         <Link href={'/tour-packages'} className='bg-yellow-400 font-semibold py-[10px] px-[60px] hover:bg-yellow-500 shadow-md shadow-orange-500 mt-2'>{ButtonText}</Link>
@@ -33,19 +33,19 @@ const HomeSection1 = ({ secData }) => {
                 </div>
             </div>
 
-            <div className='relative h-fit'>
+            <div className='relative h-fit md:h-[610px]'>
                 <Image
                     src={backgroundImg}
                     alt="banner_image"
                     className="z-[-1] object-cover"
-                    layout="fill"
+                    fill
                     loading='lazy'
                 />
-                <div className='relative py-[1rem] w-full text-center'>
-                    <h1 style={{ fontFamily: kanit.style.fontFamily }} className='font-semibold text-[30px] md:text-[38px]'>{BackgroundImageTitle}</h1>
+                <div className='relative py-[1rem] md:py-[18px] w-full text-center'>
+                    <h2 style={{ fontFamily: fira.style.fontFamily }} className='font-semibold text-[30px] md:text-[38px]'>{BackgroundImageTitle}</h2>
                 </div>
                 <div className='flex justify-center'>
-                    <div className='relative py-[2rem] flex items-center flex-col md:flex-row w-full justify-between max-w-[1250px] gap-[2rem] xl:gap-[8rem] px-2 md:pe-3 md:px-0 xl:pe-0'>
+                    <div className='relative flex py-[2rem] md:py-0 items-center flex-col md:flex-row w-full justify-between max-w-[1250px] gap-[2rem] xl:gap-[8rem] px-2 md:pe-3 md:px-0 xl:pe-0'>
                         {data && (
                             data.map((data) => {
                                 const { title, description, buttonText, price, Days, Sale, oldPrice, image, showCardToHome, icon } = data?.attributes || {}

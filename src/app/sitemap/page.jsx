@@ -35,21 +35,23 @@ const page = async () => {
             <div className='w-full max-w-[1250px]'>
                 <h1 className='font-bold text-[50px] border-b-[2px] border-black'>Sitemap</h1>
                 <div className='py-[30px] px-[10px]'>
-                    <ul>
+                    <h1 className='font-semibold text-[30px] mb-3 underline'>Pages</h1>
+                    <ul className='md:grid grid-cols-3 xl:grid-cols-4 list-disc md:ms-5 xl:ms-0'>
                         {staticPages.map((data, index) => (
-                            <li key={index} className='flex items-center text-[18px] font-semibold mb-2'>
-                                <Icon name="boldArrow" className="text-[#ff6600]" />
+                            <li key={index} className='text-[18px] font-semibold mb-2 xl:flex xl:items-center'>
+                                <Icon name="boldArrow" className="text-[#ff6600] text-[22px] hidden xl:block" />
                                 <Link href={data.path} className='hover:text-[#ff6600]'>{data.name}</Link>
                             </li>
                         ))}
                     </ul>
-                    <ul>
+                    <h1 className='font-semibold text-[30px] mt-[20px] underline'>Blogs</h1>
+                    <ul className='md:grid grid-cols-3 xl:grid-cols-4 list-disc md:ms-5 xl:ms-0'>
                         {blogs && (
                             blogs.map((data, index) => {
                                 const slug = data?.slug.replace(/[^A-Za-z0-9]/g, '-').toLowerCase()
                                 return (
-                                    <li key={index} className='flex items-center text-[18px] font-semibold mb-2'>
-                                        <Icon name="boldArrow" className="text-[#ff6600]" />
+                                    <li key={index} className='text-[18px] font-semibold mb-2 xl:flex xl:items-center'>
+                                        <Icon name="boldArrow" className="text-[#ff6600] text-[22px] hidden xl:block" />
                                         <Link href={`/blog/${slug}/`} className='hover:text-[#ff6600]'>{data.slug}</Link>
                                     </li>
                                 )

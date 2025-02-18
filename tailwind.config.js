@@ -27,6 +27,10 @@ module.exports = {
           '0%': { transform: 'translateX(-300px)', opacity: '0' },
           '100%': { transform: 'translateX(0)', opacity: '1' },
         },
+        'bounce': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
         'progress': {
           '0%': { width: '0%' },
           '100%': { width: '100%' },
@@ -50,6 +54,8 @@ module.exports = {
         'rotate4': 'rotate4 1s linear infinite',
         'dash4': 'dash4 1.6s ease-in-out infinite',
         'ping': 'ping 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'spin': 'spin 25s linear infinite',
+        'bounce': 'bounce 4s ease-out infinite'
       },
     },
   },

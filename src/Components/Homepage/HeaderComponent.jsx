@@ -22,12 +22,12 @@ const HeaderComponent = ({ data }) => {
 
     return (
         <>
-            {data?.length ? (
+            {data && (
                 <div key={animationKey} className="flex flex-col gap-[2rem] md:gap-12 h-[11rem] animate-slide-in-left">
                     <div>
-                        <div style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className="flex items-center text-[28px] md:text-[40px] text-white leading-[2rem]">
+                        <div style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className="flex items-center text-[28px] md:text-[30px] lg:text-[40px] text-white leading-[2rem]">
                             <Icon name="boldArrow" className="text-orange-500" />
-                            <h1>{data[currentIndex].Title}</h1>
+                            <span>{data[currentIndex].Title}</span>
                         </div>
                         <p className="text-[13px] md:text-[16px] md:w-[500px] xl:w-[800px] px-3 mt-4 md:mt-8">{data[currentIndex].Paragraph}</p>
                     </div>
@@ -36,8 +36,6 @@ const HeaderComponent = ({ data }) => {
                         <Icon name="arrow" />
                     </Link>
                 </div>
-            ) : (
-                <span></span>
             )}
             <div className="flex items-center text-[9.5px] md:text-[12.5px] gap-[0.8rem] md:gap-[2rem] xl:gap-[5rem] xl:text-[18px] px-3">
                 {data?.map((item, index) => (

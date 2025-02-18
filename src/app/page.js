@@ -19,7 +19,7 @@ export async function generateMetadata() {
         ]
       },
       alternates: {
-        canonical: `https://indiayaatra.com`,
+        canonical: `https://indiayaatra.com/`,
       }
     };
   } catch (error) {
