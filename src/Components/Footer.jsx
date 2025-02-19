@@ -55,6 +55,7 @@ const Footer = ({ footerData }) => {
                 <div className='border-[2px] border-[#7cfe04] h-full w-full absolute top-0 rounded-full animate-ping'></div>
                 <Image src={watsappLogo} alt="logo" width={55} height={55} />
             </div> */}
+            {/* <div className='animate-left-to-right'>this</div> */}
             <div className='relative footer-style'>
                 <Image
                     src={footerImg}
@@ -71,7 +72,7 @@ const Footer = ({ footerData }) => {
                         </div>
                         <div className='flex justify-between flex-wrap xl:w-[65%] gap-[2rem] md:gap-0'>
                             <div className='flex flex-col items-center gap-[1.5rem] xl:gap-0'>
-                                <h3 className='text-[25px] font-semibold'>Useful Links</h3>
+                                <h3 className='text-[25px] font-semibold relative pb-[8px] footer-widge'>Useful Links</h3>
                                 <ul className='flex flex-col justify-center h-[75%] text-[20px] gap-5'>
                                     <li><Link href={'/'}>Home</Link></li>
                                     <li><Link href={'/tour-packages/'}>Tour Packages</Link></li>
@@ -81,7 +82,7 @@ const Footer = ({ footerData }) => {
                             </div>
 
                             <div className="flex flex-col gap-[1.5rem] xl:gap-[3rem]">
-                                <h3 className='text-[25px] font-semibold'>News Letter</h3>
+                                <h3 className='text-[25px] font-semibold relative pb-[8px] footer-widge'>News Letter</h3>
                                 <div>
                                     <div className='mb-4'>
                                         <input
@@ -130,7 +131,7 @@ const Footer = ({ footerData }) => {
 
                             <div className='flex flex-col items-center'>
                                 <div className='h-full'>
-                                    <h3 className='text-[25px] font-semibold mb-[1.5rem] xl:mb-0'>Contact Details</h3>
+                                    <h3 className='text-[25px] font-semibold mb-[1.5rem] xl:mb-0 relative pb-[8px] footer-widge'>Contact Details</h3>
                                     <div className='h-[75%] flex justify-center flex-col gap-7'>
                                         <span className='flex items-center gap-2'><Icon name="phone" className='p-2 text-[2rem] border rounded-full' />{contactPhone}</span>
                                         <span className='flex items-center gap-2'><Icon name="location" className='p-2 text-[2rem] border rounded-full' />{location}</span>

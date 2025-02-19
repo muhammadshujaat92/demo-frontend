@@ -121,8 +121,8 @@ const ContactPage = ({ contactData }) => {
                         }
                     </div>
                 </div>
-                <h2 className="text-[35px] w-full font-semibold max-w-[1250px] px-3 xl:ps-3 pt-[2rem]">{blowHeading}</h2>
-                <section className='flex flex-col md:flex-row justify-center items-center gap-[1rem] xl:gap-36 py-5 w-full max-w-[1250px] px-3 md:ps-3'>
+                <h2 className="text-[35px] w-full font-semibold max-w-[1250px] px-3 xl:ps-3 py-[2rem]">{blowHeading}</h2>
+                <section className='flex flex-col md:flex-row justify-center items-center gap-[1rem] xl:gap-36 pb-5 w-full max-w-[1250px] px-3 md:ps-3'>
                     {contactPageBox && (
                         contactPageBox.map((data, index) => {
                             const { title, text } = data || {};
@@ -132,7 +132,7 @@ const ContactPage = ({ contactData }) => {
                             return (
                                 <div className='md:w-[20rem]' key={data.id}>
                                     <h3 className={`${h1BgColor} text-white py-3 px-4 rounded-t-3xl font-semibold text-center flex items-center text-lg md:text-[1rem] xl:text-lg`}>
-                                        <i className={`me-4 ${data.icon}`}></i>
+                                        <i className={`me-8 ${data.icon}`}></i>
                                         {title}
                                     </h3>
                                     <p className={`${pBgColor} p-3 text-[15px] md:text-[13px] xl:text-[15px] h-[8rem] max-h-[8rem] md:h-[10rem] md:max-h-[10rem] xl:h-[8rem] xl:max-h-[8rem] flex items-center`}>

@@ -82,7 +82,7 @@ const BlogPage = ({ blogData }) => {
                         blurDataURL="../../public/imgs/homeSection1BlurData.webp"
                     />
                     {bannerImg && (
-                        <div className={`flex justify-center inset-0 absolute bg-black bg-opacity-50`}>
+                        <div className={`flex justify-center inset-0 absolute bg-black bg-opacity-[0.3]`}>
                             <div className='md:absolute md:top-[10rem] w-full max-w-[1250px] flex flex-col justify-center md:justify-normal gap-[1rem] md:gap-8 px-3'>
                                 <h2 style={{ fontFamily: sancoaleSoftened.style.fontFamily }} className='text-[35px] leading-[2.5rem] md:text-[50px] text-white'>{bannerHeading}</h2>
                                 <p className='lg:text-[18px] text-white md:w-[550px]'>{bannerDescription}</p>

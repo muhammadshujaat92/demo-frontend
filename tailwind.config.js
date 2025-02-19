@@ -31,6 +31,10 @@ module.exports = {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-20px)' },
         },
+        'left-to-right': {
+          '0%,100%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(66px)' },
+        },
         'progress': {
           '0%': { width: '0%' },
           '100%': { width: '100%' },
@@ -55,7 +59,8 @@ module.exports = {
         'dash4': 'dash4 1.6s ease-in-out infinite',
         'ping': 'ping 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'spin': 'spin 25s linear infinite',
-        'bounce': 'bounce 4s ease-out infinite'
+        'bounce': 'bounce 4s ease-out infinite',
+        'left-to-right': 'left-to-right 5s linear infinite'
       },
     },
   },

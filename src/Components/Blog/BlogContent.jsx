@@ -55,7 +55,7 @@ const BlogContent = ({ blogData }) => {
         textt = textt.replace(
             /!\[([^\]]+)\]\(([^)]+)\)/g,
             `
-            <div class="my-[6px] relative">
+            <div class="my-[20px] relative">
                 <img src="$2" alt="Image">
                 ${!displayImageUrl ? `` : `<a target="_blank" href="${displayImageUrl}" class="inset-0 absolute"></a>`}
                 ${!displayImageText ? `` : `<span class="text-white bg-black bg-opacity-50 absolute w-full text-center lg:text-[25px] font-semibold py-[5px] lg:py-[10px] bottom-[50px] lg:bottom-[75px]">${displayImageText}</span>`}
@@ -66,17 +66,17 @@ const BlogContent = ({ blogData }) => {
         // Links
         textt = textt.replace(
             /\[([^\]]+)\]\(([^)]+)\)/g,
-            '<a target="_blank" href="$2" class="underline text-blue-700 font-semibold">$1</a>'
+            '<a target="_blank" href="$2" class="text-[#083fdb] font-bold">$1</a>'
         );
 
         // Bold, Italic, and Strikethrough
-        textt = textt.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        textt = textt.replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-600">$1</strong>');
         textt = textt.replace(/_(?![^<]*>)(.*?)_(?![^<]*>)/g, '<em>$1</em>');
         textt = textt.replace(/~~(.*?)~~/g, '<del>$1</del>');
         textt = textt.replace(/::arrow::/g, "<span class='me-[6px]'>&#11166;</span>");
 
         // Blockquote
-        textt = textt.replace(/^>\s(.+)/gm, '<blockquote class="border-l-4 relative border-green-600 pt-[25px] pb-[16px] ps-[30px] italic text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 text-gray-400 absolute top-[4px] left-[13px] rotate-180" viewBox="0 0 975.036 975.036"><path d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"></path></svg> $1 </blockquote>');
+        textt = textt.replace(/^>\s(.+)/gm, '<blockquote class="border-l-4 relative border-green-600 pt-[25px] my-[15px] pb-[16px] ps-[30px] italic text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 text-gray-400 absolute top-[4px] left-[13px] rotate-180" viewBox="0 0 975.036 975.036"><path d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"></path></svg> $1 </blockquote>');
 
         // Numbered lists
         textt = textt.replace(/^(\d+)\.\s(.+)(\n\d+\.\s.+)*/gm, function (match) {
@@ -101,7 +101,7 @@ const BlogContent = ({ blogData }) => {
             return `<ul class='ms-[2px]'>\n${listItems}\n</ul>`;
         });
 
-        textt = textt.replace(/(\n\s*\n)/g, '<br/>');
+        textt = textt.replace(/::br::/g, '<br/>');
 
         setText(textt);
     }, [blogContent]);

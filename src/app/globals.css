@@ -65,6 +65,28 @@
         background: linear-gradient(166deg, rgba(255, 102, 0, 0.6690848214285714) 13%, rgba(22, 163, 74, 0.6690848214285714) 67%);
     }
 
+    .footer-widge::before {
+        content: '';
+        position: absolute;
+        width: 80px;
+        height: 2px;
+        background-color: #ff6600;
+        left: 0;
+        bottom: 0;
+    }
+
+    .footer-widge::after {
+        content: '';
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        outline: 4px solid #ff6600;
+        border-radius: 50%;
+        background-color: white;
+        left: 4px;
+        bottom: -1px;
+        animation: left-to-right infinite 5s linear;
+    }
 
     @media only screen and (max-width:768px) {
         .text-large {
