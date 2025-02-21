@@ -20,7 +20,7 @@ const HomeSection3 = ({ data }) => {
                         <h3 style={{ fontFamily: fira.style.fontFamily }} className='font-bold text-[27px] md:text-[28px] lg:text-[38px]'>{Heading}</h3>
                         <p className='my-3 text-[15px] md:text-[14px] lg:text-[18px]'>{Paragraph}</p>
                     </div>
-                    <Link href={`${URL ? URL : `/contact/?rh=${slug}`}`} className='font-bold bg-green-600 text-white px-4 py-1 text-[18px]'>{ButtonText}</Link>
+                    <Link href={`${URL ? URL : `/india-travel-contact/?rh=${slug}`}`} className='font-bold bg-green-600 text-white px-4 py-1 text-[18px]'>{ButtonText}</Link>
                 </div>
                 <div className='h-[20rem] md:h-[25rem] max-h-[25rem] relative rounded-l-[15rem] mt-7 md:mt-0'>
                     <Image src={Img} alt='bg-img' className='rounded-l-[15rem] object-cover' loading='lazy' fill />

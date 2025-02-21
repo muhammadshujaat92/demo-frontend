@@ -23,7 +23,7 @@ const HomeSection2 = ({ data }) => {
                             <h3 style={{ fontFamily: fira.style.fontFamily }} className='font-semibold text-[27px] md:text-[28px] lg:text-[38px]'>{Heading}</h3>
                             <p className='my-3 text-[15px] md:text-[14px] lg:text-[18px]'>{Paragraph}</p>
                         </div>
-                        <Link href={`${URL ? URL : `/contact/?rh=${slug}`}`} className='font-bold bg-green-600 text-white px-4 py-1 text-[18px]'>{ButtonText}</Link>
+                        <Link href={`${URL ? URL : `/india-travel-contact/?rh=${slug}`}`} className='font-bold bg-green-600 text-white px-4 py-1 text-[18px]'>{ButtonText}</Link>
                     </div>
                 </div>
             </div>

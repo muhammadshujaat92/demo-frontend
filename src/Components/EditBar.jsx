@@ -42,10 +42,10 @@ const EditBar = () => {
                 case '/':
                     editUrl = `${baseUrl}/admin/content-manager/collection-types/api::home-page.home-page/1`;
                     break;
-                case '/tour-packages':
+                case '/india-tour-packages':
                     editUrl = `${baseUrl}/admin/content-manager/collection-types/api::tour-package.tour-package/1`;
                     break;
-                case '/contact':
+                case '/india-travel-contact':
                     editUrl = `${baseUrl}/admin/content-manager/collection-types/api::contact-us.contact-us/1`;
                     break;
                 case '/blog':

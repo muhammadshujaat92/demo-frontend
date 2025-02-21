@@ -8,11 +8,19 @@ import Icon from '../Icons';
 const extractAndCleanDescription = (markdown) => {
     if (!markdown) return '';
 
+    // Match paragraph lines while ignoring markdown syntax
     const paragraphRegex = /^(?![#\-*!1\.\s]|!\[)(.+)$/gm;
     const matches = markdown.match(paragraphRegex);
 
     if (matches && matches.length > 0) {
-        const description = matches[0].trim();
+        let description = matches[0].trim();
+
+        // Remove markdown links [text](url)
+        description = description.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+
+        // Remove any remaining special characters, keeping letters, numbers, spaces, and basic punctuation
+        description = description.replace(/[^a-zA-Z0-9 .,!?'-]/g, '');
+
         return description.length > 100 ? description.slice(0, 100) + '...' : description;
     }
 
@@ -43,7 +51,7 @@ const BlogCard = ({ BlogTitle, BlogCardImage, blogContent, pageURL, createdAt })
                     <p className="my-3 font-normal md:text-[14px] xl:text-[16px] text-gray-700">{extractAndCleanDescription(blogContent)}</p>
                 </div>
                 <div className='flex justify-end w-full'>
-                    <Link href={`/blog/${slug}/`} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-[#12c956] border-[2px] border-gray-500">
+                    <Link href={`/blog/${slug}/`} className="inline-flex items-center px-3 py-2 text-[1rem] font-medium text-center text-green-600 rounded-lg hover:bg-green-600 hover:text-white border-[2px] border-green-600">
                         READ MORE
                         <Icon name="arrow" className="rtl:rotate-180 w-3.5 h-3.5 ms-2" />
                     </Link>

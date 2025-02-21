@@ -40,7 +40,7 @@ const Card = ({ Width, Img, title, description, btnText, priceText, days, saleBt
                         <i className={`text-yellow-500 ${icon}`}></i>
                         <i className={`text-yellow-500 ${icon}`}></i>
                     </div>
-                    <Link href={`${readMoreURL ? readMoreURL : `/contact/?rh=${slug}`}`} className="ribbon px-[25px] rounded-br-lg py-2 md:text-[12px] xl:text-[0.975rem] text-sm font-medium text-center text-white bg-green-700 hover:bg-[#12c956]">
+                    <Link href={`${readMoreURL ? readMoreURL : `/india-travel-contact/?rh=${slug}`}`} className="ribbon px-[25px] rounded-br-lg py-2 md:text-[12px] xl:text-[0.975rem] text-sm font-medium text-center text-white bg-green-700 hover:bg-[#12c956]">
                         {btnText}
                     </Link>
                 </div>

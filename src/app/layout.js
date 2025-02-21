@@ -21,7 +21,7 @@ export default async function RootLayout({ children }) {
           <div>
             <EditBar />
             <Navbar navBarData={navBarData} />
-            <div className="elfsight-app-096cb500-3365-4391-bfe5-2c160faa9495"></div>
+            <div className="elfsight-app-383cb11d-c84a-4b91-a0c2-96395a1db35c" data-elfsight-app-lazy></div>
             {children}
             <Footer footerData={footerData} />
           </div>

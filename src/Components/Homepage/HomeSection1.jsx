@@ -28,7 +28,7 @@ const HomeSection1 = ({ secData }) => {
                     <h1 style={{ fontFamily: fira.style.fontFamily }} className='text-[40px] leading-[2.7rem] md:leading-none font-bold text-[#ff6600] tracking-tight'>{Title}</h1>
                     <p className='text-[15px] md:text-[18px] mt-3'>{Paragraph}</p>
                     <div className='flex justify-end mb-3'>
-                        <Link href={'/tour-packages'} className='bg-yellow-400 font-semibold py-[10px] px-[60px] hover:bg-yellow-500 shadow-md shadow-orange-500 mt-2'>{ButtonText}</Link>
+                        <Link href={'/india-tour-packages'} className='bg-yellow-400 font-semibold py-[10px] px-[60px] hover:bg-yellow-500 shadow-md shadow-orange-500 mt-2'>{ButtonText}</Link>
                     </div>
                 </div>
             </div>

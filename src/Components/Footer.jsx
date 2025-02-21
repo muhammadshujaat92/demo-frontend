@@ -75,8 +75,8 @@ const Footer = ({ footerData }) => {
                                 <h3 className='text-[25px] font-semibold relative pb-[8px] footer-widge'>Useful Links</h3>
                                 <ul className='flex flex-col justify-center h-[75%] text-[20px] gap-5'>
                                     <li><Link href={'/'}>Home</Link></li>
-                                    <li><Link href={'/tour-packages/'}>Tour Packages</Link></li>
-                                    <li><Link href={'/contact/'}>Contact</Link></li>
+                                    <li><Link href={'/india-tour-packages/'}>Tour Packages</Link></li>
+                                    <li><Link href={'/india-travel-contact/'}>Contact</Link></li>
                                     <li><Link href={'/blog/'}>Blogs</Link></li>
                                 </ul>
                             </div>
