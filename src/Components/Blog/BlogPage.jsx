@@ -96,12 +96,21 @@ const BlogPage = ({ blogData }) => {
                     <div className='flex flex-wrap gap-[1.5rem] col-span-2 mb-[2rem] lg:mb-0 justify-center lg:justify-normal'>
                         {
                             filteredData && (
-                                [...filteredData].reverse().map((post) => {
-                                    const { BlogTitle, BlogCardImage, blogContent, pageURL, createdAt } = post.attributes;
-                                    return (
-                                        <BlogCard key={post.id} createdAt={createdAt} BlogTitle={BlogTitle} BlogCardImage={BlogCardImage} blogContent={blogContent} pageURL={pageURL} />
-                                    )
-                                })
+                                [...filteredData]
+                                    .sort((a, b) => new Date(b.attributes.createdAt) - new Date(a.attributes.createdAt))
+                                    .map((post) => {
+                                        const { BlogTitle, BlogCardImage, blogContent, pageURL, createdAt } = post.attributes;
+                                        return (
+                                            <BlogCard
+                                                key={post.id}
+                                                createdAt={createdAt}
+                                                BlogTitle={BlogTitle}
+                                                BlogCardImage={BlogCardImage}
+                                                blogContent={blogContent}
+                                                pageURL={pageURL}
+                                            />
+                                        );
+                                    })
                             )
                         }
                     </div>

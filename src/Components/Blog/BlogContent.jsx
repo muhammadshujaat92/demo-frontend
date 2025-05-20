@@ -12,7 +12,7 @@ import userImg from '../../public/user.webp'
 
 const BlogContent = ({ blogData }) => {
     const dispatch = useDispatch();
-    const { BlogTitle, blogContent, bannerImage, createdBy, displayImageText, displayImageUrl } = blogData?.attributes?.attributes || {}
+    const { BlogTitle, blogContent, bannerImage, createdBy, displayImageText, displayImageUrl, blogAdmin, blogAdminDescription } = blogData?.attributes?.attributes || {}
     const { data } = useSelector(state => state?.blogContentThunk?.data || {});
     const { url } = bannerImage || {}
     const imgUrl = imageUrl()
@@ -106,6 +106,7 @@ const BlogContent = ({ blogData }) => {
         setText(textt);
     }, [blogContent]);
 
+    console.log(blogAdmin, blogAdminDescription)
 
     useEffect(() => {
         dispatch(blogContentThunk());
@@ -153,9 +154,14 @@ const BlogContent = ({ blogData }) => {
                             <Slider imgData={data} />
                             <div className="bg-[#f2f2f2] p-[1rem] mt-2 mb-[20px]">
                                 <span className="font-semibold text-[17px] mb-4 block">Author</span>
-                                <div className="flex gap-[1rem]">
-                                    <Image src={userImg} alt="img" width={80} height={80} loading='lazy' />
-                                    <p className="md:text-[20px] font-semibold">{createdBy.firstname + " " + createdBy.lastname}</p>
+                                <div className={`flex ${blogAdminDescription ? "flex-col xl:flex-row" : ""} gap-[1rem]`}>
+                                    <div className={`${blogAdminDescription ? "w-[40%]" : ""}`}>
+                                        <Image src={userImg} alt="img" width={80} height={80} loading='lazy' />
+                                    </div>
+                                    <div>
+                                        <p className="text-[20px] font-semibold">{blogAdmin ? blogAdmin : createdBy.firstname + " " + createdBy.lastname}</p>
+                                        {blogAdminDescription && <p className="text-[13px]">{blogAdminDescription}</p>}
+                                    </div>
                                 </div>
                             </div>
                         </section>

@@ -9,7 +9,10 @@ const initialState = {
 }
 export const blogCardThunk = createAsyncThunk('page/blogCard', async ({ pageSize, page }) => {
     try {
-        const url = pageSize || page ? `${apiUrl}/blog-contents/?populate=*&pagination[pageSize]=${pageSize}&pagination[page]=${page}` : `${apiUrl}/blog-contents/?populate=*`;
+        const url = pageSize || page
+            ? `${apiUrl}/blog-contents/?populate=*&pagination[pageSize]=${pageSize}&pagination[page]=${page}&sort=createdAt:desc`
+            : `${apiUrl}/blog-contents/?populate=*&sort=createdAt:desc`;
+
         const response = await axios.get(url, {
             headers: {
                 'Content-Type': 'application/json'
